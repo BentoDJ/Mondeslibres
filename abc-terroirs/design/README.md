@@ -18,7 +18,13 @@ Les comparaisons avant/après (`comparaison-*.jpg`) ont été faites sur le **vr
 - **Pied de page aux couleurs de la boutique** : fond crème avec un liseré olive, titres en vert olive, et une barre olive tout en bas. Il remplace le fond noir et la photo de nouilles du thème.
 - **Touches modernes** : légère ombre sous l'en-tête, soulignement animé du menu au survol, petit trait olive sous les titres de sections, photos produits sur un fond harmonisé, champs de formulaire arrondis.
 
-## Mise en ligne (10 minutes, compte OVH)
+## ✅ En ligne depuis le 13/10/2026, via le module « ABC Terroirs - Habillage du site »
+
+Le design a été installé sous forme d'un petit module (`module/abcdesign.zip`), qui charge la feuille de style sur toutes les pages. **Pour revenir en arrière :** Modules → rechercher « ABC Terroirs » → Désactiver.
+
+Pour modifier le design plus tard, il faut modifier `module/abcdesign/views/css/abc.css`, refaire le zip et réinstaller le module, ou remplacer ce fichier par FTP.
+
+## Autre méthode : via FTP (10 minutes, compte OVH)
 
 1. Se connecter sur **ovh.com/manager**, puis **Web Cloud → Hébergements → abcterroirs.com → onglet « FTP - SSH »**.
 2. Cliquer sur **« FTP Explorer »**, et se connecter avec l'identifiant FTP indiqué sur cette page. Si le mot de passe FTP est inconnu, on peut le changer sur cette même page.

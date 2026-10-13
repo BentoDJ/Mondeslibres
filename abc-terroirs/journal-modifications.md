@@ -83,6 +83,16 @@ Les adresses web (URL) sont **inchangées** : les liens déjà partagés et le r
 
 Non renommé : n° 671 « BOITE PETIT BEURRE BONNES FETES v2 » (30,70 €), qui semble faire doublon avec le n° 649. **À vérifier par le gérant.**
 
+## Quatrième série (13/10/2026) : nouveau design en ligne
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 26 | Modules → **« ABC Terroirs - Habillage du site »** (module `abcdesign`, installé depuis le gestionnaire de modules) | Design d'origine du thème Paprica | Nouveau design : polices Fraunces/Inter, couleurs olive et crème, cartes produits, bandeau « Attention » et pied de page aux couleurs de la boutique. Code source : `design/module/abcdesign/`. |
+
+**Pour revenir à l'ancien design :** Modules → Gestionnaire de modules → rechercher « ABC Terroirs » → **Désactiver**. Rien d'autre n'a été touché : ni le thème, ni ses fichiers.
+
+L'installation du module a aussi vidé le cache : le menu affiche maintenant « NOTRE ENSEIGNE DEPUIS 2006 », et les meilleures ventes ont leurs nouveaux noms.
+
 ## Volontairement non modifié
 
 - Catégorie n° 156 « Histoire » : « présence dans le guide du Routard **depuis 15 ans** ». C'est un autre fait (depuis quand la boutique est dans le Routard), pas l'ancienneté de la boutique. **À vérifier par le gérant.**
@@ -91,6 +101,6 @@ Non renommé : n° 671 « BOITE PETIT BEURRE BONNES FETES v2 » (30,70 €), qui
 
 ## Restant à faire par un compte administrateur
 
-- **Vider le cache** pour que le menu du haut affiche le nouveau nom et n'affiche plus les catégories désactivées, et que le bloc « Meilleures ventes » de l'accueil affiche les nouveaux noms des coffrets : Paramètres avancés → Performances → bouton « Vider le cache ».
+- ~~Vider le cache~~ : fait automatiquement lors de l'installation du module de design.
 - **Remettre « Vérifier l'adresse IP du cookie » sur Oui** : Paramètres avancés → Administration.
 - **Désactiver le compte « Assistant contenu »** : Paramètres avancés → Équipe → Employés → Actif = Non.
