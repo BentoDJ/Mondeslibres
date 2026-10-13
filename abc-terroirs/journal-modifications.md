@@ -46,6 +46,43 @@ Pour réactiver une catégorie quand elle aura des produits : Catalogue → Cat�
 
 **Volontairement non désactivée :** la catégorie n° 199 « ATTENTION MENTIONS LEGALES », parce qu'elle contient le texte légal sur l'alcool. Même chose pour la catégorie racine n° 2, dont la description et le méta-titre (« ATTENTION, MENTIONS LEGALES ») contiennent aussi ce texte : seul son nom a changé.
 
+## Troisième série (13/10/2026) : images et noms des coffrets
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 23 | Modules → Bannière (mention alcool, accueil) | Image « angelot qui boit » (sauvegardée dans `sauvegardes/ancienne-banniere-alcool-angelot.jpg`) | `images-pretes/bandeau-mention-alcool-556.png`, même taille que l'ancienne. Description : « L'abus d'alcool est dangereux pour la santé, à consommer avec modération. Vente interdite aux mineurs. » |
+| 24 | Modules → CZ Image slider | — | Nouvelle diapositive n° 3 « Coffrets de Noël », lien vers Idées cadeaux Noël, **placée en premier** |
+| 25 | Modules → CZ Image slider → diapositive n° 1 « Just for you » | Activée | **Désactivée**, pas supprimée (image sauvegardée dans `sauvegardes/ancienne-diapo-1-just-for-you.jpg`). À réactiver après Noël, en même temps que la désactivation de la diapositive Noël. |
+
+### Renommage des coffrets (V1/V2/V3 → Petit/Moyen/Grand)
+
+Les adresses web (URL) sont **inchangées** : les liens déjà partagés et le référencement Google continuent de fonctionner.
+
+| Produit | Avant | Après | Adresse conservée |
+|---|---|---|---|
+| 240 | BOITE SUCRETTE TOUR LU garnie V1 | Boîte sucrette Tour LU garnie – Petite | `boite-sucrette-tour-lu-garnie-v1` |
+| 241 | BOITE SUCRETTE TOUR LU garnie V2 | Boîte sucrette Tour LU garnie – Grande | `boite-sucrette-tour-lu-garnie-v2` |
+| 389 | COFFRET 100% NANTAISES V1 | Coffret 100 % Nantaises – Petit | `coffret-100-nantaises-v1` |
+| 132 | COFFRET 100% NANTAISES V2 | Coffret 100 % Nantaises – Moyen | `coffret-100-nantaises-v2` |
+| 237 | COFFRET 100% NANTAISES V3 | Coffret 100 % Nantaises – Grand | `coffret-100-nantaises-v3-` |
+| 392 | COFFRET 100% SARRAZIN V1 | Coffret 100 % sarrasin – Petit | `coffret-100-sarrazin-v1` |
+| 127 | COFFRET 100% SARRAZIN V2 | Coffret 100 % sarrasin – Moyen | `coffret-100-sarrazin-v2` |
+| 393 | COFFRET 100% SARRAZIN V3 | Coffret 100 % sarrasin – Grand | `coffret-100-sarrazin-v3` |
+| 396 | COFFRET GRUE JAUNE V2 | Coffret Grue jaune – Moyen | `coffret-grue-jaune-v2` |
+| 397 | COFFRET GRUE JAUNE V3 | Coffret Grue jaune – Grand | `coffret-grue-jaune-v3` |
+| 231 | COFFRET LA NANTILLAISE V1 | Coffret La Nantillaise – Petit | `coffret-la-nantillaise-v1` |
+| 126 | COFFRET LA NANTILLAISE V2 | Coffret La Nantillaise – Grand | `coffret-la-nantillaise-v2` |
+| 394 | COFFRET NANTES SURPRENANT V1 | Coffret Nantes surprenant – Petit | `coffret-nantes-surprenant-v1` |
+| 131 | COFFRET NANTES SURPRENANT V2 | Coffret Nantes surprenant – Moyen | `coffret-nantes-surprenant-v2` |
+| 395 | COFFRET NANTES SURPRENANT V3 | Coffret Nantes surprenant – Grand | `coffret-nantes-surprenant-v3` |
+| 650 | COFFRET PETIT BEURRE "BONNES FETES" sucré salé V1 | Coffret petit beurre « Bonnes fêtes » sucré-salé – Petit | `coffret-petit-beurre-bonnes-fetes-sucre-sale-v1` |
+| 649 | COFFRET PETIT BEURRE "BONNES FETES" sucré salé v2 | Coffret petit beurre « Bonnes fêtes » sucré-salé – Grand | `coffret-petit-beurre-bonnes-fetes-sucre-sale-v2` |
+| 390 | COFFRET VOYAGE EXTRAORDINAIRE V1 | Coffret Voyage extraordinaire – Petit | `coffret-voyage-extraordinaire-v1` |
+| 243 | COFFRET VOYAGE EXTRAORDINAIRE V2 | Coffret Voyage extraordinaire – Moyen | `coffret-voyage-extraordinaire-v2` |
+| 391 | COFFRET VOYAGE EXTRAORDINAIRE V3 | Coffret Voyage extraordinaire – Grand | `coffret-voyage-extraordinaire-v3` |
+
+Non renommé : n° 671 « BOITE PETIT BEURRE BONNES FETES v2 » (30,70 €), qui semble faire doublon avec le n° 649. **À vérifier par le gérant.**
+
 ## Volontairement non modifié
 
 - Catégorie n° 156 « Histoire » : « présence dans le guide du Routard **depuis 15 ans** ». C'est un autre fait (depuis quand la boutique est dans le Routard), pas l'ancienneté de la boutique. **À vérifier par le gérant.**
@@ -54,6 +91,6 @@ Pour réactiver une catégorie quand elle aura des produits : Catalogue → Cat�
 
 ## Restant à faire par un compte administrateur
 
-- **Vider le cache** pour que le menu du haut affiche le nouveau nom et n'affiche plus les catégories désactivées : Paramètres avancés → Performances → bouton « Vider le cache ».
+- **Vider le cache** pour que le menu du haut affiche le nouveau nom et n'affiche plus les catégories désactivées, et que le bloc « Meilleures ventes » de l'accueil affiche les nouveaux noms des coffrets : Paramètres avancés → Performances → bouton « Vider le cache ».
 - **Remettre « Vérifier l'adresse IP du cookie » sur Oui** : Paramètres avancés → Administration.
 - **Désactiver le compte « Assistant contenu »** : Paramètres avancés → Équipe → Employés → Actif = Non.
