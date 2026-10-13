@@ -87,7 +87,7 @@
         var grid = el('div', 'abc-budgets__grid');
         BUDGETS.forEach(function (b, i) {
           var a = el('a', 'abc-budget' + (i === BUDGETS.length - 1 ? ' abc-budget--custom' : ''),
-            '<strong>' + esc(b[0]) + '</strong><span>' + esc(b[1]) + ' →</span>');
+            '<strong>' + esc(b[0]) + '</strong><span>' + esc(b[1]) + '</span>');
           a.href = BASE + b[2];
           grid.appendChild(a);
         });
