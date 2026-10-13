@@ -1,0 +1,224 @@
+/* ==========================================================================
+   ABC Terroirs : habillage du thème Paprica (PrestaShop 1.7.8)
+   À coller À LA FIN de themes/Paprica/assets/css/custom.css
+   Pour revenir en arrière : supprimer tout ce bloc, puis vider le cache.
+   ========================================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --abc-olive: #7d8c1f;
+  --abc-olive-dark: #5e6a14;
+  --abc-olive-soft: #f1f4e0;
+  --abc-cream: #fbf8f1;
+  --abc-ink: #23261f;
+  --abc-muted: #646a5c;
+  --abc-line: #e7e3d8;
+  --abc-radius: 14px;
+}
+
+/* --- Base ---------------------------------------------------------------- */
+body, p, li, a, span, input, button, select, textarea, label, td, th {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif !important;
+}
+body { color: var(--abc-ink); font-size: 15px; background: #fff; }
+p { line-height: 1.65; }
+a { color: var(--abc-ink); }
+a:hover, a:focus { color: var(--abc-olive); }
+h1, h2, .h1, .h2, .products-section-title, .block_title, .productpage_title,
+#cztestimonialcmsblock h2, .czbanners h2, .page-heading {
+  font-family: Fraunces, Georgia, serif !important;
+  letter-spacing: -0.01em;
+}
+
+/* --- Boutons ------------------------------------------------------------- */
+.btn-primary, .btn.btn-primary, .add-to-cart, button.btn-primary {
+  background: var(--abc-olive) !important;
+  border: 0 !important;
+  border-radius: 999px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+  padding: 11px 22px !important;
+  box-shadow: none !important;
+  transition: background .2s, transform .15s;
+}
+.btn-primary:hover, .add-to-cart:hover, button.btn-primary:hover {
+  background: var(--abc-olive-dark) !important;
+  transform: translateY(-1px);
+}
+
+/* --- En-tête ------------------------------------------------------------- */
+#header .header-top { padding: 4px 0; border-bottom: 1px solid var(--abc-line); }
+#header .header_logo img.logo { max-height: 140px; width: auto; }
+#header .header-top .container { min-height: 0; }
+#search_widget form input[type=text] {
+  border-radius: 999px 0 0 999px !important;
+  background: var(--abc-cream) !important;
+  border: 1px solid var(--abc-line) !important;
+  padding-left: 20px !important;
+}
+#search_widget form button[type=submit] {
+  border-radius: 0 999px 999px 0 !important;
+  background: var(--abc-olive) !important;
+}
+#header .header-top-inner { background: #fff !important; border-bottom: 1px solid var(--abc-line); }
+#verticalmenu-dropdown {
+  background: var(--abc-olive) !important;
+  border-radius: 10px 10px 0 0;
+  font-family: Inter, sans-serif !important;
+  font-weight: 600 !important;
+}
+#_desktop_top_menu.verticalmenu_block { background: var(--abc-olive-dark) !important; border-radius: 0 0 10px 10px; }
+#top-menu > li > a, #top-menu > li > a.dropdown-item {
+  text-transform: none !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  letter-spacing: .02em !important;
+  color: var(--abc-ink) !important;
+}
+#top-menu > li > a:hover { color: var(--abc-olive) !important; }
+#header .blockcart, #header .blockcart-header { border-radius: 10px; }
+
+/* --- Fil d'Ariane -------------------------------------------------------- */
+.breadcrumb, .breadcrumb a, .breadcrumb span { color: var(--abc-muted) !important; font-size: 13px !important; }
+
+/* --- Accueil : diaporama ------------------------------------------------- */
+.flexslider, .flexslider .slides img { border-radius: var(--abc-radius); overflow: hidden; }
+
+#czoffercmsblock { margin: 0 !important; }
+#cztestimonialcmsblock { padding-top: 24px !important; }
+
+/* --- Accueil : bandeau « Attention, magasins dangereux… » ---------------- */
+#cztestimonialcmsblock .parallax { border-radius: var(--abc-radius); overflow: hidden; }
+#cztestimonialcmsblock .testimonial_container h2,
+#cztestimonialcmsblock .testimonial_container h2 span,
+#cztestimonialcmsblock .testimonial_container h2 strong {
+  background: transparent !important;
+  color: #fff !important;
+  font-family: Fraunces, Georgia, serif !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  font-size: clamp(22px, 3vw, 34px) !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.45);
+}
+#cztestimonialcmsblock .testimonial_container h2 span { font-size: inherit !important; }
+
+/* --- Accueil : texte de présentation ------------------------------------- */
+#czbannercmsblock .container {
+  max-width: 1170px;
+  background: var(--abc-cream);
+  border-radius: var(--abc-radius);
+  padding: 36px 40px !important;
+  text-align: center;
+}
+#czbannercmsblock h2 { font-size: clamp(24px, 3vw, 34px) !important; color: var(--abc-ink) !important; margin-bottom: 12px; }
+#czbannercmsblock p { color: var(--abc-muted); font-size: 16px; margin: 6px auto; max-width: 62ch; }
+
+/* --- Titres de sections -------------------------------------------------- */
+.products-section-title, .bestseller-products .h1, .crosssell-products .h1, section h2.h1 {
+  text-transform: none !important;
+  font-size: clamp(24px, 3vw, 32px) !important;
+  font-weight: 600 !important;
+  color: var(--abc-ink) !important;
+  border: 0 !important;
+}
+
+/* --- Cartes produits ----------------------------------------------------- */
+.product-miniature {
+  background: #fff;
+  border: 1px solid var(--abc-line);
+  border-radius: var(--abc-radius);
+  overflow: hidden;
+  height: 100%;
+  transition: box-shadow .2s, transform .2s;
+  margin-bottom: 24px;
+}
+.product-miniature:hover { box-shadow: 0 10px 28px rgba(35,38,31,.10); transform: translateY(-2px); }
+.product-miniature .thumbnail-container { border: 0 !important; background: #fff; }
+.product-miniature .product-thumbnail img { width: 100%; height: auto; transition: transform .35s; }
+.product-miniature:hover .product-thumbnail img { transform: scale(1.03); }
+.product-miniature .product-description { padding: 4px 16px 16px !important; text-align: left !important; }
+.product-miniature .product-title, .product-miniature .product-title a {
+  display: block;
+  font-family: Inter, sans-serif !important;
+  font-size: 14.5px !important;
+  font-weight: 600 !important;
+  line-height: 1.35 !important;
+  color: var(--abc-ink) !important;
+  text-transform: none !important;
+  white-space: normal !important;      /* le thème coupait les noms (« COFFRET NAN… ») */
+  overflow: visible !important;
+  text-overflow: clip !important;
+  min-height: 2.7em;
+}
+.product-miniature .price, .product-price-and-shipping .price {
+  color: var(--abc-olive-dark) !important;
+  font-weight: 700 !important;
+  font-size: 17px !important;
+}
+.product-miniature .product-price-and-shipping { margin-top: 6px; }
+.all-product-link {
+  background: var(--abc-olive) !important; color: #fff !important; border-radius: 999px !important;
+  padding: 12px 26px !important; font-weight: 600 !important; text-transform: none !important;
+}
+.all-product-link:hover { background: var(--abc-olive-dark) !important; }
+
+/* --- Fiche produit ------------------------------------------------------- */
+#product .productpage_title { font-size: clamp(24px, 2.6vw, 30px) !important; text-transform: none !important; font-weight: 500 !important; line-height: 1.25; }
+#product .current-price span[itemprop=price], #product .current-price .price {
+  color: var(--abc-olive-dark) !important;
+  font-family: Fraunces, Georgia, serif !important;
+  font-size: 32px !important;
+}
+#product .product-information, #product .product-description-short { color: var(--abc-muted); font-size: 15px; }
+#product .product-cover img, #product .images-container img { border-radius: var(--abc-radius); }
+.blockreassurance_product > div {
+  background: var(--abc-cream) !important;
+  border: 1px solid var(--abc-line);
+  border-radius: 12px;
+}
+.product-tabcontent .nav-tabs .nav-link.active, .product-tabcontent .nav-tabs .nav-link:hover {
+  background: var(--abc-olive) !important;
+  border-radius: 10px 10px 0 0;
+}
+
+/* --- Catégories ---------------------------------------------------------- */
+#category .block-category h1, #category #js-product-list-header h1 { text-transform: none !important; }
+#category .category-cover img, #category .block-category img { border-radius: var(--abc-radius); }
+#left-column .block-categories, #left-column .block {
+  border-radius: var(--abc-radius);
+  border: 1px solid var(--abc-line) !important;
+  overflow: hidden;
+}
+#left-column .block-categories .block_title, #left-column .block .block_title { background: var(--abc-cream) !important; }
+/* Pages de présentation (Histoire, Nos boutiques…) : masquer « Désolé pour le dérangement » */
+#category #js-product-list .page-not-found { display: none !important; }
+
+/* --- Mention alcool (bannière) ------------------------------------------- */
+.banner img.img-fluid, a.banner img { margin: 24px auto; display: block; max-width: 520px; }
+
+/* --- Pied de page -------------------------------------------------------- */
+#footer {
+  background: var(--abc-ink) !important;   /* remplace la photo de nouilles du thème */
+  margin-top: 48px;
+}
+#footer .footer-before { border-bottom: 1px solid rgba(255,255,255,.08); }
+#footer h3, #footer .h3, #footer .block-contact-title, #footer .block-contact .block-contact-title, #footer .text-uppercase.block-contact-title {
+  color: #cfdc7a !important;
+  font-family: Fraunces, Georgia, serif !important;
+  text-transform: none !important;
+  font-size: 19px !important;
+  font-weight: 600 !important;
+}
+#footer .footer-container .block-contact h3, #footer .footer-container h3.block-contact-title, #footer h3.block-contact-title a { color: #cfdc7a !important; font-family: Fraunces, Georgia, serif !important; text-transform: none !important; }
+#footer a, #footer li, #footer .block-contact { color: rgba(255,255,255,.78) !important; }
+#footer a:hover { color: #fff !important; }
+#footer .footer-after { background: rgba(0,0,0,.25); }
+#footer .copyright, #footer .copyright a { color: rgba(255,255,255,.6) !important; }
+
+/* --- Mobile -------------------------------------------------------------- */
+@media (max-width: 767px) {
+  #czbannercmsblock .container { padding: 24px 18px !important; }
+  #header .header_logo img.logo { max-height: 70px; }
+  .product-miniature .product-title, .product-miniature .product-title a { font-size: 14px !important; }
+}
