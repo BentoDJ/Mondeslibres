@@ -46,7 +46,7 @@ Je ne suis pas juriste : ce sont des écarts apparents avec le Code de la consom
 ## Correction n°3 : sécurité du serveur (le point le plus important après la TVA)
 
 - **Le site tourne en PHP 7.4**, comme l'annonce l'en-tête `X-Powered-By: PHP/7.4`. Cette version ne reçoit plus aucun correctif de sécurité depuis novembre 2022. Pour une boutique qui gère des comptes clients et des commandes, c'est le risque principal.
-  Les modules installés (ps_emailalerts 3.0.1, ps_searchbar 2.1.3…) indiquent un PrestaShop 8.x, qui fonctionne en PHP 8.1. Chez OVH, la version se change dans l'espace client : Hébergements > Configuration > Modifier la configuration > PHP 8.1. Il faut d'abord faire une sauvegarde, puis tester le site, idéalement sur une copie.
+  **Correction (13/10/2026, après connexion à l'administration) : le site tourne en PrestaShop 1.7.8.11**, et non en 8.x comme je l'avais d'abord déduit des modules. Or **PrestaShop 1.7.8 ne fonctionne pas au-delà de PHP 7.4**. ⚠️ **Il ne faut donc surtout pas changer la version de PHP seule chez OVH : le site tomberait en panne.** Il faut d'abord **migrer PrestaShop en 8.x**, en vérifiant que le thème Paprica et les modules (Codezeel, PayPal, Payplug, click & collect) sont compatibles, puis passer en PHP 8.1. C'est un travail de prestataire, à faire sur une copie du site, avec une sauvegarde. Budget à prévoir : plus qu'une simple mise à jour, possiblement un changement de thème si Paprica n'existe pas en version 8.
 - Il faudrait aussi masquer la version (`expose_php = Off`) et ajouter l'en-tête HSTS. Les deux s'activent dans `.htaccess` :
 
 ```apache
