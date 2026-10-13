@@ -115,7 +115,7 @@
 
     // 2 ter. Nos 3 boutiques : en bas de toutes les pages, et sur la page « Magasins »
     var fc = document.querySelector('#footer .footer-container');
-    if (fc && !document.querySelector('.abc-stores')) {
+    if (fc && page !== 'stores' && !document.querySelector('.abc-stores')) {
       var sec = el('section', 'abc-stores', '<h2>Nos 3 boutiques à Nantes</h2><div class="abc-stores__grid">' + BOUTIQUES.map(carteBoutique).join('') + '</div>');
       fc.parentNode.insertBefore(sec, fc);
     }
