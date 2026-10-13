@@ -89,7 +89,12 @@ h1, h2, .h1, .h2, .products-section-title, .block_title, .productpage_title,
 #cztestimonialcmsblock { padding-top: 24px !important; }
 
 /* --- Accueil : bandeau « Attention, magasins dangereux… » ---------------- */
-#cztestimonialcmsblock .parallax { border-radius: var(--abc-radius); overflow: hidden; }
+#cztestimonialcmsblock .parallax {
+  border-radius: var(--abc-radius);
+  overflow: hidden;
+  background: linear-gradient(120deg, var(--abc-olive-dark) 0%, var(--abc-olive) 100%) !important;  /* remplace l'image de démo du thème */
+  padding: 38px 24px !important;
+}
 #cztestimonialcmsblock .testimonial_container h2,
 #cztestimonialcmsblock .testimonial_container h2 span,
 #cztestimonialcmsblock .testimonial_container h2 strong {
@@ -99,7 +104,8 @@ h1, h2, .h1, .h2, .products-section-title, .block_title, .productpage_title,
   font-weight: 600 !important;
   text-transform: none !important;
   font-size: clamp(22px, 3vw, 34px) !important;
-  text-shadow: 0 2px 12px rgba(0,0,0,.45);
+  text-shadow: none;
+  margin: 0 !important;
 }
 #cztestimonialcmsblock .testimonial_container h2 span { font-size: inherit !important; }
 
@@ -197,24 +203,54 @@ h1, h2, .h1, .h2, .products-section-title, .block_title, .productpage_title,
 /* --- Mention alcool (bannière) ------------------------------------------- */
 .banner img.img-fluid, a.banner img { margin: 24px auto; display: block; max-width: 520px; }
 
-/* --- Pied de page -------------------------------------------------------- */
+/* --- Pied de page : crème et olive (remplace la photo de démo sur fond noir) */
 #footer {
-  background: var(--abc-ink) !important;   /* remplace la photo de nouilles du thème */
-  margin-top: 48px;
+  background: var(--abc-cream) !important;
+  border-top: 4px solid var(--abc-olive);
+  margin-top: 56px;
 }
-#footer .footer-before { border-bottom: 1px solid rgba(255,255,255,.08); }
-#footer h3, #footer .h3, #footer .block-contact-title, #footer .block-contact .block-contact-title, #footer .text-uppercase.block-contact-title {
-  color: #cfdc7a !important;
+#footer .footer-before { display: none; }
+#footer .footer-container { padding-top: 40px !important; padding-bottom: 24px; }
+#footer #block-contact_list, #footer #block-contact_list li, #footer #block-contact_list span,
+#footer #block-contact_list a, #footer .block-contact .contact-info, #footer .block-contact div { color: var(--abc-ink) !important; opacity: 1 !important; }
+#footer h3, #footer .h3, #footer .block-contact-title, #footer .block-contact .block-contact-title,
+#footer .text-uppercase.block-contact-title, #footer h3.block-contact-title a {
+  color: var(--abc-olive-dark) !important;
   font-family: Fraunces, Georgia, serif !important;
   text-transform: none !important;
-  font-size: 19px !important;
+  font-size: 20px !important;
   font-weight: 600 !important;
 }
-#footer .footer-container .block-contact h3, #footer .footer-container h3.block-contact-title, #footer h3.block-contact-title a { color: #cfdc7a !important; font-family: Fraunces, Georgia, serif !important; text-transform: none !important; }
-#footer a, #footer li, #footer .block-contact { color: rgba(255,255,255,.78) !important; }
-#footer a:hover { color: #fff !important; }
-#footer .footer-after { background: rgba(0,0,0,.25); }
-#footer .copyright, #footer .copyright a { color: rgba(255,255,255,.6) !important; }
+#footer a, #footer li, #footer .block-contact, #footer .block-contact a { color: var(--abc-ink) !important; }
+#footer li a { transition: color .2s, padding-left .2s; }
+#footer li a:hover { color: var(--abc-olive) !important; padding-left: 4px; }
+#footer .block-contact i, #footer .material-icons { color: var(--abc-olive) !important; }
+#footer .footer-after { background: var(--abc-olive-dark) !important; }
+#footer .footer-after, #footer .copyright, #footer .copyright a, #footer .block-social a { color: rgba(255,255,255,.85) !important; }
+#footer .payement_logo_block img { border-radius: 4px; }
+
+/* --- Touches modernes --------------------------------------------------- */
+html { scroll-behavior: smooth; }
+::selection { background: var(--abc-olive-soft); }
+#header { box-shadow: 0 2px 18px rgba(35,38,31,.06); position: relative; z-index: 20; }
+#header .header-top { border-bottom: 0 !important; }
+/* menu : soulignement animé au survol */
+#top-menu > li > a { position: relative; }
+#top-menu > li > a::after {
+  content: ""; position: absolute; left: 20px; right: 20px; bottom: 8px; height: 2px;
+  background: var(--abc-olive); transform: scaleX(0); transform-origin: left; transition: transform .25s;
+}
+#top-menu > li > a:hover::after { transform: scaleX(1); }
+/* titres de sections : petit trait olive */
+.products-section-title::after, .bestseller-products .h1::after, .crosssell-products .h1::after {
+  content: ""; display: block; width: 48px; height: 3px; border-radius: 3px; background: var(--abc-olive); margin-top: 10px;
+}
+/* photos produits : fond harmonisé (les photos à fond gris/blanc se fondent dans la carte) */
+.product-miniature .thumbnail-container, .product-miniature .product-thumbnail { background: #f6f4ee !important; }
+.product-miniature .product-thumbnail img { mix-blend-mode: multiply; }
+/* champs de formulaire arrondis */
+input.form-control, select.form-control, textarea.form-control { border-radius: 10px !important; }
+.input-group .form-control, .bootstrap-touchspin input { border-radius: 10px 0 0 10px !important; }
 
 /* --- Mobile -------------------------------------------------------------- */
 @media (max-width: 767px) {

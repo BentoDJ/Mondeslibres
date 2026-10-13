@@ -10,12 +10,13 @@ Les comparaisons avant/après (`comparaison-*.jpg`) ont été faites sur le **vr
 - **Couleurs** : un vert olive plus profond et des fonds crème, à la place du vert anis et du gris.
 - **Boutons** arrondis, en olive.
 - **En-tête** plus aéré, barre de recherche arrondie, menu plus lisible.
-- **Bandeau « Attention, magasins dangereux… »** : grand titre blanc, sans le surlignage blanc parasite.
+- **Bandeau « Attention, magasins dangereux… »** : fond dégradé vert olive à la place de l'image de démonstration du thème (des épices sur fond noir), grand titre blanc, sans le surlignage blanc parasite.
 - **Texte de présentation** de l'accueil mis en valeur dans un encadré crème.
 - **Cartes produits** encadrées et arrondies, avec un léger effet au survol. Les noms ne sont plus coupés sur mobile (« COFFRET NAN… »).
 - **Fiche produit** : prix mis en avant, encadrés Réassurance en crème.
 - **Pages Histoire, Nos boutiques, Demande de devis…** : l'encadré « Désolé pour le dérangement » est masqué.
-- **Pied de page** : fond uni sombre à la place de la photo de nouilles du thème, titres et liens lisibles.
+- **Pied de page aux couleurs de la boutique** : fond crème avec un liseré olive, titres en vert olive, et une barre olive tout en bas. Il remplace le fond noir et la photo de nouilles du thème.
+- **Touches modernes** : légère ombre sous l'en-tête, soulignement animé du menu au survol, petit trait olive sous les titres de sections, photos produits sur un fond harmonisé, champs de formulaire arrondis.
 
 ## Mise en ligne (10 minutes, compte OVH)
 
