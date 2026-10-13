@@ -21,6 +21,8 @@ Les deux pages légales du site se contredisent donc, et les CGV, qui ont valeur
 
 ### Correction
 
+✅ **Corrigé le 13/10/2026** (voir [journal-modifications.md](journal-modifications.md)).
+
 Dans l'admin PrestaShop, aller dans **Apparence > Pages**, ouvrir « Conditions d'utilisation », article 1, et remplacer `TVA FR68533172094` par `TVA FR06489517870`.
 
 ## Correction n°2 : la page Mentions légales
