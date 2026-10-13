@@ -104,7 +104,7 @@
         '<div class="abc-cta-band__inner">' +
           '<div class="abc-cta-band__text">' +
             '<h2>Un coffret sur mesure, pour offrir ou pour votre entreprise ?</h2>' +
-            '<p>Dites-nous votre budget et vos envies : nous le composons à la main, place Saint-Pierre à Nantes.</p>' +
+            '<p>Dites-nous votre budget et vos envies : nous le confectionnons sur mesure dans nos boutiques de la place Saint-Pierre et de la rue Franklin, à Nantes.</p>' +
           '</div>' +
           '<div class="abc-cta-band__actions">' +
             '<a class="abc-btn abc-btn--light" href="' + BASE + 'nous-contacter">Demander un devis</a>' +
