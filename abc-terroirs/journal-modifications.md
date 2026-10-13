@@ -142,6 +142,7 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 43 | Module 1.1.6 : bandeau « Un coffret sur mesure » | « nous le composons à la main, place Saint-Pierre à Nantes » | « nous le confectionnons sur mesure dans nos boutiques de la place Saint-Pierre et de la rue Franklin, à Nantes » |
 | 44 | Module 1.1.7 : icônes des réseaux sociaux (barre verte en bas) | Seule une petite icône Instagram visible ; LinkedIn présent mais invisible | Icônes blanches dans un cercle pour Instagram et LinkedIn (et Facebook dès que son lien est ajouté dans le module « Liens réseaux sociaux »), ouverture dans un nouvel onglet. **Reste à faire (droit manquant) :** Modules → Liens réseaux sociaux → Facebook = https://www.facebook.com/AbcTerroirs/ |
 | 45 | Module 1.1.8 : Facebook et Instagram en haut de page | — | Deux petites icônes rondes vert olive : sous « Mon compte » sur ordinateur, entre le logo et la loupe sur mobile. Facebook est aussi ajouté dans le pied de page par le module, donc il n'est plus nécessaire de configurer « Liens réseaux sociaux ». Les liens se modifient dans `abc-v118.js` (liste `SOCIAL`). |
+| 46 | Modules → Liens réseaux sociaux (ps_socialfollow) → Facebook | vide | https://www.facebook.com/AbcTerroirs/ (le module affiche désormais Facebook lui-même dans le pied de page ; le script ne l'ajoute plus en double) |
 
 ## Volontairement non modifié
 
