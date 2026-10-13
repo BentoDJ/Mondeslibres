@@ -28,6 +28,23 @@
     ['Instagram', 'https://www.instagram.com/abcterroirs/', 'instagram']
   ];
 
+  // Les 3 boutiques (horaires : site, PagesJaunes et Mappy, octobre 2026)
+  var BOUTIQUES = [
+    { nom: 'ABC Terroirs Saint-Pierre', sous: 'Épicerie fine & cave (boutique historique)', adr: '5 place Saint-Pierre, 44000 Nantes', tel: '02 40 89 76 26',
+      h: [['Lundi – vendredi', '9h30 – 19h30'], ['Samedi', '9h30 – 20h'], ['Dimanche', 'Fermé']] },
+    { nom: 'ABC Terroirs Franklin', sous: 'Épicerie fine & cave', adr: '9 rue Franklin, 44000 Nantes', tel: '09 86 22 05 28',
+      h: [['Lundi', '11h – 14h / 15h – 19h30'], ['Mardi – samedi', '10h – 14h / 15h – 19h30'], ['Dimanche', 'Fermé']] },
+    { nom: 'Spi & Bi', sous: 'Cave à spiritueux, bières et cidres', adr: '5 place Paul-Émile Ladmirault, 44000 Nantes', tel: '02 55 54 79 80',
+      h: [['Mardi – samedi', '10h30 – 14h / 15h – 19h30'], ['Dimanche – lundi', 'Fermé']] }
+  ];
+  function carteBoutique(bq) {
+    var tel = bq.tel.replace(/\s/g, '');
+    return '<div class="abc-store"><h3>' + esc(bq.nom) + '</h3><p class="abc-store__sous">' + esc(bq.sous) + '</p>' +
+      '<p><a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(bq.adr) + '" target="_blank" rel="noopener">' + esc(bq.adr) + '</a></p>' +
+      '<table>' + bq.h.map(function (l) { return '<tr><td>' + esc(l[0]) + '</td><td>' + esc(l[1]) + '</td></tr>'; }).join('') + '</table>' +
+      '<p><a href="tel:+33' + tel.slice(1) + '">' + esc(bq.tel) + '</a></p></div>';
+  }
+
   // Blocs « Un coffret pour chaque budget » de l'accueil
   var BUDGETS = [
     ['Moins de 25 €', 'Petites attentions', '30-selection-moins-de-25'],
@@ -94,6 +111,21 @@
     if (socialUl && !socialUl.querySelector('li.facebook')) {
       var li = el('li', 'facebook', '<a href="' + SOCIAL[0][1] + '" target="_blank" rel="noopener"><span>Facebook</span></a>');
       socialUl.insertBefore(li, socialUl.firstChild);
+    }
+
+    // 2 ter. Nos 3 boutiques : en bas de toutes les pages, et sur la page « Magasins »
+    var fc = document.querySelector('#footer .footer-container');
+    if (fc && !document.querySelector('.abc-stores')) {
+      var sec = el('section', 'abc-stores', '<h2>Nos 3 boutiques à Nantes</h2><div class="abc-stores__grid">' + BOUTIQUES.map(carteBoutique).join('') + '</div>');
+      fc.parentNode.insertBefore(sec, fc);
+    }
+    if (page === 'stores') {
+      var main = document.querySelector('#main .page-content, #main');
+      if (main && !main.querySelector('.abc-stores--page')) {
+        var sp = el('section', 'abc-stores abc-stores--page', '<h2>Nos 3 boutiques</h2><div class="abc-stores__grid">' + BOUTIQUES.map(carteBoutique).join('') + '</div>');
+        main.insertBefore(sp, main.firstChild);
+        [...main.children].forEach(function (c) { if (c !== sp && !c.matches('h1, header, .page-header')) c.style.display = 'none'; });
+      }
     }
 
     // 3. Accueil : boutons sous le texte de présentation + blocs par budget

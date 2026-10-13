@@ -366,6 +366,24 @@ input.form-control, select.form-control, textarea.form-control { border-radius: 
   .abc-social { width: 28px; height: 28px; background-size: 14px 14px; }
 }
 
+/* --- Nos 3 boutiques ----------------------------------------------------- */
+.abc-stores { max-width: 1200px; margin: 0 auto; padding: 40px 15px 8px; }
+#footer .abc-stores { border-bottom: 1px solid var(--abc-line); }
+.abc-stores h2 { font-family: Fraunces, Georgia, serif !important; font-size: clamp(22px, 2.6vw, 28px) !important; font-weight: 600 !important; color: var(--abc-olive-dark) !important; margin: 0 0 18px; text-transform: none !important; }
+.abc-stores__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.abc-store { background: #fff; border: 1px solid var(--abc-line); border-radius: var(--abc-radius); padding: 18px 20px; }
+.abc-store h3 { font-family: Fraunces, Georgia, serif !important; font-size: 19px !important; font-weight: 600 !important; margin: 0 !important; color: var(--abc-ink) !important; text-transform: none !important; }
+.abc-store p { margin: 6px 0 0; font-size: 14px; color: var(--abc-ink) !important; }
+.abc-store .abc-store__sous { color: var(--abc-muted) !important; font-size: 13px; margin-top: 2px; }
+.abc-store a { color: var(--abc-olive-dark) !important; text-decoration: underline; text-underline-offset: 2px; }
+.abc-store table { width: 100%; margin-top: 10px; font-size: 13.5px; border-collapse: collapse; }
+.abc-store td { padding: 3px 0; color: var(--abc-ink) !important; border: 0 !important; }
+.abc-store td + td { text-align: right; font-weight: 500; }
+.abc-stores--page { padding-top: 0; }
+.abc-stores--page .abc-store td { display: block; text-align: left !important; padding: 0; }
+.abc-stores--page .abc-store td:first-child { font-weight: 600; margin-top: 6px; }
+@media (max-width: 767px) { .abc-stores__grid { grid-template-columns: 1fr; } }
+
 /* --- Mobile -------------------------------------------------------------- */
 @media (max-width: 767px) {
   #czbannercmsblock .container { padding: 24px 18px !important; }
