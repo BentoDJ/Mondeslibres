@@ -28,6 +28,24 @@ Pour annuler une modification, il suffit de remettre le texte « Avant » au mê
 | 12 | Catalogue → Produits → n° 312 « Mètre de bière nantaises », résumé | Depuis 18 ans, nous valorisons les brasseurs locaux | Depuis 2006, nous valorisons… |
 | 13 | Catalogue → Produits → n° 241 « Boîte sucrette Tour LU V2 », méta-description | l'équipe fait depuis 16 ans du sur-mesure | l'équipe fait depuis 2006 du sur-mesure |
 
+## Deuxième série (13/10/2026, avec l'accord du gérant)
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 14 | Modules → Réassurance → bloc « Politique retours », description (visible sur **toutes les fiches produits**) | (à modifier dans le module "Réassurance") | Retour possible sous 14 jours, voir nos conditions de vente |
+| 15 | Apparence → Liste de liens → bloc « Produits » (bas de page) | Nouveaux produits (page vide « Désolé pour le dérangement ») | Meilleures ventes, Alcool, Bières, Coffrets gourmands, Épicerie, Idées cadeaux NOEL, Sans alcool |
+| 16 | Catalogue → Catégories → n° 2 (catégorie racine), nom | ATTENTION | Accueil (adresse `attention` **inchangée** : les 98 adresses produits `/attention/…` fonctionnent toujours) |
+| 17 | Catalogue → Catégories → n° 185 | Whiskies américain, active | Whiskies américains, **désactivée** (vide) |
+| 18 | Catalogue → Catégories → n° 168 « Bières » (sans alcool) | active | **désactivée** (vide) |
+| 19 | Catalogue → Catégories → n° 203 « Jus et Soft » | active | **désactivée** (vide) |
+| 20 | Catalogue → Catégories → n° 198 « Autres vignobles » | active | **désactivée** (vide) |
+| 21 | Produit n° 312, résumé | on ne décompte une 100aine actuellement en LA | on en compte une centaine actuellement en Loire-Atlantique |
+| 22 | Produits n° 131, 394 et 395 (Coffret Nantes surprenant), résumé | quelques uns | quelques-uns |
+
+Pour réactiver une catégorie quand elle aura des produits : Catalogue → Catégories → la catégorie → Afficher = Oui.
+
+**Volontairement non désactivée :** la catégorie n° 199 « ATTENTION MENTIONS LEGALES », parce qu'elle contient le texte légal sur l'alcool. Même chose pour la catégorie racine n° 2, dont la description et le méta-titre (« ATTENTION, MENTIONS LEGALES ») contiennent aussi ce texte : seul son nom a changé.
+
 ## Volontairement non modifié
 
 - Catégorie n° 156 « Histoire » : « présence dans le guide du Routard **depuis 15 ans** ». C'est un autre fait (depuis quand la boutique est dans le Routard), pas l'ancienneté de la boutique. **À vérifier par le gérant.**
@@ -36,6 +54,6 @@ Pour annuler une modification, il suffit de remettre le texte « Avant » au mê
 
 ## Restant à faire par un compte administrateur
 
-- **Vider le cache** pour que le menu du haut affiche le nouveau nom : Paramètres avancés → Performances → bouton « Vider le cache ».
+- **Vider le cache** pour que le menu du haut affiche le nouveau nom et n'affiche plus les catégories désactivées : Paramètres avancés → Performances → bouton « Vider le cache ».
 - **Remettre « Vérifier l'adresse IP du cookie » sur Oui** : Paramètres avancés → Administration.
 - **Désactiver le compte « Assistant contenu »** : Paramètres avancés → Équipe → Employés → Actif = Non.
