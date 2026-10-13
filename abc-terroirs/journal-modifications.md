@@ -135,6 +135,7 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 36 | Logo encore trop gros sur mobile (module 1.1.2) | Logo à 40 px sur toutes les pages mobiles, sans fond blanc. Feuille de style renommée `abc-v112.css` pour forcer les téléphones à recharger le style. |
 | 37 | Emoji 🎄 devant « Noël » dans les raccourcis (module 1.1.3) | Retiré. Script renommé `abc-v113.js` pour forcer le rechargement. |
 | 38 | Emojis 📞 (bandeau) et 🎁 (encart fiche produit) (module 1.1.4) | Retirés. Le bouton devient « Appeler le 02 40 89 76 26 ». Script renommé `abc-v114.js`. |
+| 39 | Catalogue → Catégories → n° 30, 31, 32 et 172 → **image de couverture** (vignettes des sous-catégories de « Coffrets gourmands ») | Pouces levés, homme en costume, « Aucune image disponible » → photos de coffrets : boîte sucrette Tour LU (< 25 €), Nantes surprenant (25 à 50 €), Voyage extraordinaire (> 50 €), Folie foie gras (Noël). Anciennes images : `sauvegardes/images-categories/` ; nouvelles : `images-pretes/categories/`. |
 
 ## Volontairement non modifié
 
