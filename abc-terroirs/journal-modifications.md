@@ -111,6 +111,16 @@ L'installation du module a aussi vidé le cache : le menu affiche maintenant « 
 
 **Pour modifier les raccourcis ou les boutons :** fichier `design/module/abcdesign/views/js/abc.js` (listes `LIENS_RAPIDES` et `BUDGETS`), puis refaire le zip et réinstaller le module. **Pour tout retirer :** désactiver le module.
 
+## Sixième série (13/10/2026) : alias de recherche
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 29 | Paramètres de la boutique → Rechercher → **Alias** | 14 alias (fautes de « coffret ») | +14 alias : whiskey, wisky, whiskys → whisky ; sarrazin → sarrasin ; coffrets → coffret ; paniers → panier ; bieres → biere ; cadeaux → cadeau ; vins → vin ; chocolats → chocolat ; calvas → calvados ; champagnes → champagne ; rhums → rhum ; gins → gin |
+
+Effet testé sur le site : « whiskey » passe de 3 à 35 résultats, « sarrazin » de 4 à 12, « paniers garnis » de 0 à 47.
+
+**Non fait, faute de droit de modification :** passer la « longueur minimale des mots » de 3 à 2 (pour que « LU » trouve les boîtes Tour LU). Paramètres de la boutique → Rechercher → Longueur minimale = 2 → Enregistrer, puis « Reconstruire l'index entier ».
+
 ## Volontairement non modifié
 
 - Catégorie n° 156 « Histoire » : « présence dans le guide du Routard **depuis 15 ans** ». C'est un autre fait (depuis quand la boutique est dans le Routard), pas l'ancienneté de la boutique. **À vérifier par le gérant.**
