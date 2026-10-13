@@ -75,3 +75,19 @@ Je ne suis pas juriste : ce sont des écarts apparents avec le Code de la consom
 ## Ce qui va bien
 
 Toutes les pages explorées répondent (aucune erreur 404 interne), il n'y a pas de contenu mixte http/https, les anciennes URL des pages Livraison et À propos redirigent correctement, et il n'y a aucune erreur JavaScript ni débordement horizontal sur mobile (vérifié dans Chromium, en vue bureau et en vue mobile).
+
+## Deuxième passe (13/10/2026) : erreurs visibles par les clients
+
+Exploration complète du site public : 552 pages, dont 353 fiches produits. Les captures sont dans [`captures-erreurs/`](captures-erreurs/).
+
+| # | Erreur | Ampleur | Correction proposée |
+|---|---|---|---|
+| A | « Politique retours (à modifier dans le module "Réassurance") », un texte d'exemple du thème | **Les 353 fiches produits** | Remplacer le texte dans le module Réassurance |
+| B | Encadré « Désolé pour le dérangement. Veuillez réessayer une autre recherche » sous les pages de présentation (Histoire, Nos boutiques, Demande de devis, Exemple de partenaires, Location tireuse…). Ce sont des catégories sans produit, que le thème traite comme une recherche vide. | 8 pages, dont 3 dans le menu principal | Masquer cet encadré par une ligne de CSS (`custom.css`), ou transformer ces pages en pages CMS |
+| C | Le lien « Nouveaux produits » du bas de page mène à une page vide (« Désolé… ») | Toutes les pages | Remplacer le lien (Apparence → Lien), ou allonger la durée « nouveau produit » (Paramètres de la boutique → Produits) |
+| D | Catégories vides affichées dans le menu : Whiskies américain, Bières (sans alcool), Jus et Soft, Autres vignobles (n° 198), ATTENTION MENTIONS LEGALES | 5 catégories | Les désactiver tant qu'elles sont vides, ou y mettre des produits |
+| E | La catégorie racine « Accueil » (n° 2) a été renommée **« ATTENTION »**. Ce nom apparaît en titre de la colonne de gauche, et **98 adresses de produits** contiennent `/attention/`. | 98 produits | Renommer la catégorie en « Accueil ». Le nom seulement : les adresses restent identiques pour ne pas casser les liens |
+| F | Produits **sans photo** (« Aucune image disponible ») | 10 produits | Ajouter une photo |
+| G | Produits **sans aucune description** | 20 produits | Ajouter au moins un résumé |
+| H | « Diablotine petite 37,5 cl » : le client doit **taper lui-même le parfum** dans un champ texte, sinon le bouton « Ajouter au panier » reste grisé | 1 produit | Utiliser des déclinaisons (liste de parfums) |
+| I | Fautes : « Whiskies américain » (→ américains), « on ne décompte une 100aine actuellement en LA » (→ on en compte une centaine en Loire-Atlantique), « quelques uns » (→ quelques-uns) | Quelques pages | Corriger les textes |
