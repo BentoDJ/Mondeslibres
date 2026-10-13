@@ -124,6 +124,15 @@ Effet testé sur le site : « whiskey » passe de 3 à 35 résultats, « sarrazi
 
 Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur minimale n'a pas pu être changée. Cette astuce contourne le problème : l'alias est appliqué avant la vérification de longueur. Résultat : « lu » trouve exactement les 12 produits LU (0 avant). Pour un nouveau produit LU, il suffit d'ajouter le mot-clé « tourlu ».
 
+## Septième série (13/10/2026) : corrections mobiles (module 1.1.1)
+
+| # | Problème signalé | Correction |
+|---|---|---|
+| 32 | Logo trop gros sur l'accueil mobile, qui débordait sur les raccourcis | Logo limité à 50 px de haut sur mobile |
+| 33 | Une bouteille seule sur sa rangée (grille décalée) | Grille de produits en rangées alignées (flexbox) au lieu des flottants du thème |
+| 34 | Pastille verte vide sur les cartes produits (bouton panier du thème déformé) | Le style des boutons ne s'applique plus aux boutons des cartes |
+| 35 | Raccourcis (Noël, Coffrets cadeaux…) trop marqués | Simples liens texte, soulignés en olive au survol |
+
 ## Volontairement non modifié
 
 - Catégorie n° 156 « Histoire » : « présence dans le guide du Routard **depuis 15 ans** ». C'est un autre fait (depuis quand la boutique est dans le Routard), pas l'ancienneté de la boutique. **À vérifier par le gérant.**
