@@ -108,7 +108,7 @@
           '</div>' +
           '<div class="abc-cta-band__actions">' +
             '<a class="abc-btn abc-btn--light" href="' + BASE + 'nous-contacter">Demander un devis</a>' +
-            '<a class="abc-btn abc-btn--outline-light" href="tel:+33240897626">📞 ' + TEL + '</a>' +
+            '<a class="abc-btn abc-btn--outline-light" href="tel:+33240897626">Appeler le ' + TEL + '</a>' +
           '</div>' +
         '</div>');
       footer.parentNode.insertBefore(band, footer);
@@ -119,7 +119,7 @@
       var add = document.querySelector('.product-add-to-cart');
       if (add && !document.querySelector('.abc-product-help')) {
         var help = el('p', 'abc-product-help',
-          '🎁 Envie d\'un coffret personnalisé ou d\'une commande pour votre entreprise ? ' +
+          'Envie d\'un coffret personnalisé ou d\'une commande pour votre entreprise ? ' +
           '<a href="' + BASE + 'nous-contacter">Contactez-nous</a> ou appelez le <a href="tel:+33240897626">' + TEL + '</a>.');
         add.parentNode.insertBefore(help, add.nextSibling);
       }

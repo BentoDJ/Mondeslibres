@@ -17,7 +17,7 @@ class Abcdesign extends Module
     {
         $this->name = 'abcdesign';
         $this->tab = 'front_office_features';
-        $this->version = '1.1.3';
+        $this->version = '1.1.4';
         $this->author = 'ABC Terroirs';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = ['min' => '1.7.0.0', 'max' => _PS_VERSION_];
@@ -48,7 +48,7 @@ class Abcdesign extends Module
         );
         $this->context->controller->registerJavascript(
             'abcdesign-js',
-            'modules/' . $this->name . '/views/js/abc-v113.js',
+            'modules/' . $this->name . '/views/js/abc-v114.js',
             ['position' => 'bottom', 'priority' => 1000]
         );
     }

@@ -134,6 +134,7 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 35 | Raccourcis (Noël, Coffrets cadeaux…) trop marqués | Simples liens texte, soulignés en olive au survol |
 | 36 | Logo encore trop gros sur mobile (module 1.1.2) | Logo à 40 px sur toutes les pages mobiles, sans fond blanc. Feuille de style renommée `abc-v112.css` pour forcer les téléphones à recharger le style. |
 | 37 | Emoji 🎄 devant « Noël » dans les raccourcis (module 1.1.3) | Retiré. Script renommé `abc-v113.js` pour forcer le rechargement. |
+| 38 | Emojis 📞 (bandeau) et 🎁 (encart fiche produit) (module 1.1.4) | Retirés. Le bouton devient « Appeler le 02 40 89 76 26 ». Script renommé `abc-v114.js`. |
 
 ## Volontairement non modifié
 
