@@ -6,6 +6,8 @@ Constat fait le 13/10/2026 en parcourant le site comme un client, sur ordinateur
 
 Tout ce qui suit se fait **dans le back-office PrestaShop, sans code**, sauf mention contraire.
 
+**Version pas à pas, avec chaque clic : [`guide/fiche-pratique-site-attractif.pdf`](guide/fiche-pratique-site-attractif.pdf)**, à imprimer et cocher. Les images prêtes à téléverser (diapositive Noël, bandeau alcool) sont dans [`images-pretes/`](images-pretes/).
+
 ---
 
 ## 1. Gains rapides : environ 2 heures, gratuit
