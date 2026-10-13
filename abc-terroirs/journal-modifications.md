@@ -93,6 +93,24 @@ Non renommé : n° 671 « BOITE PETIT BEURRE BONNES FETES v2 » (30,70 €), qui
 
 L'installation du module a aussi vidé le cache : le menu affiche maintenant « NOTRE ENSEIGNE DEPUIS 2006 », et les meilleures ventes ont leurs nouveaux noms.
 
+## Cinquième série (13/10/2026) : recherche, raccourcis et boutons d'action
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 27 | Catalogue → Produits → onglet Options → **mots-clés (tags)** de 77 produits (catégories Coffrets gourmands et Idées cadeaux Noël) | Tags existants (souvent vides) | Ajout de « panier garni, coffret cadeau, cadeau, cadeau entreprise » sur les coffrets, « cadeau » sur les bouteilles seules, « noël, cadeau de noël » sur les idées de Noël. Les tags existants sont conservés. Liste avant/après : `sauvegardes/mots-cles-avant-apres.jsonl`. |
+| 28 | Modules → « ABC Terroirs - Habillage du site » **version 1.1** | Version 1.0 (design seul) | Ajout de raccourcis sous le logo (Noël, Coffrets cadeaux, Moins de 25 €, Vins, Whiskies, Bières locales, Épicerie fine, Sans alcool, Cadeaux d'entreprise), de 3 boutons sur l'accueil, des blocs « Un coffret pour chaque budget », d'un bandeau « sur mesure / entreprises » avec devis et téléphone avant le pied de page, d'un encart d'aide sur les fiches produits et en haut des résultats de recherche, et d'un exemple dans la barre de recherche (« Coffret, muscadet, whisky, petit beurre… »). |
+
+**Effet sur la recherche** (testé sur le site) :
+
+| Recherche | Avant | Après |
+|---|---|---|
+| panier garni | 0 résultat | 47 |
+| coffret cadeau | 2 (whiskies) | 47 |
+| cadeau entreprise | 0 | 47 |
+| noël | 3 (vins « Hautes Noëlles ») | 33 |
+
+**Pour modifier les raccourcis ou les boutons :** fichier `design/module/abcdesign/views/js/abc.js` (listes `LIENS_RAPIDES` et `BUDGETS`), puis refaire le zip et réinstaller le module. **Pour tout retirer :** désactiver le module.
+
 ## Volontairement non modifié
 
 - Catégorie n° 156 « Histoire » : « présence dans le guide du Routard **depuis 15 ans** ». C'est un autre fait (depuis quand la boutique est dans le Routard), pas l'ancienneté de la boutique. **À vérifier par le gérant.**
