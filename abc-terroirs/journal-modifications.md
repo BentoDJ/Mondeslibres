@@ -141,6 +141,7 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 42 | Modules → CZ Image slider → diapositive « Coffrets de Noël » : image et légende | « Composés à la main place Saint-Pierre » (ancienne image : `sauvegardes/diapo-noel-v1.jpg`) | « Noël 2026 · Sur mesure » / « Confectionnés sur mesure dans nos boutiques Saint-Pierre et Franklin, à Nantes. » |
 | 43 | Module 1.1.6 : bandeau « Un coffret sur mesure » | « nous le composons à la main, place Saint-Pierre à Nantes » | « nous le confectionnons sur mesure dans nos boutiques de la place Saint-Pierre et de la rue Franklin, à Nantes » |
 | 44 | Module 1.1.7 : icônes des réseaux sociaux (barre verte en bas) | Seule une petite icône Instagram visible ; LinkedIn présent mais invisible | Icônes blanches dans un cercle pour Instagram et LinkedIn (et Facebook dès que son lien est ajouté dans le module « Liens réseaux sociaux »), ouverture dans un nouvel onglet. **Reste à faire (droit manquant) :** Modules → Liens réseaux sociaux → Facebook = https://www.facebook.com/AbcTerroirs/ |
+| 45 | Module 1.1.8 : Facebook et Instagram en haut de page | — | Deux petites icônes rondes vert olive : sous « Mon compte » sur ordinateur, entre le logo et la loupe sur mobile. Facebook est aussi ajouté dans le pied de page par le module, donc il n'est plus nécessaire de configurer « Liens réseaux sociaux ». Les liens se modifient dans `abc-v118.js` (liste `SOCIAL`). |
 
 ## Volontairement non modifié
 

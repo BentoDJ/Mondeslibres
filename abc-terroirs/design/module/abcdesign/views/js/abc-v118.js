@@ -22,6 +22,12 @@
     ['Cadeaux d\'entreprise', '163-infos-pour-les-pros']
   ];
 
+  // Réseaux sociaux (en haut de page, et Facebook ajouté en bas s'il manque)
+  var SOCIAL = [
+    ['Facebook', 'https://www.facebook.com/AbcTerroirs/', 'facebook'],
+    ['Instagram', 'https://www.instagram.com/abcterroirs/', 'instagram']
+  ];
+
   // Blocs « Un coffret pour chaque budget » de l'accueil
   var BUDGETS = [
     ['Moins de 25 €', 'Petites attentions', '30-selection-moins-de-25'],
@@ -70,6 +76,24 @@
       var menuBar = header.querySelector('.header-top-inner');
       if (menuBar && window.innerWidth >= 992) menuBar.parentNode.insertBefore(bar, menuBar);   // ordinateur : entre logo et menu
       else header.parentNode.insertBefore(bar, header.nextSibling);                              // mobile : sous l'en-tête
+    }
+
+    // 2 bis. Icônes Facebook et Instagram en haut de page
+    var top = document.querySelector('#header .header-top .container') || document.querySelector('#header .header-top');
+    if (top && !document.querySelector('.abc-social-top')) {
+      var box = el('div', 'abc-social-top');
+      SOCIAL.forEach(function (n) {
+        var a = el('a', 'abc-social abc-social--' + n[2], '<span>' + n[0] + '</span>');
+        a.href = n[1]; a.target = '_blank'; a.rel = 'noopener'; a.title = n[0] + ' ABC Terroirs'; a.setAttribute('aria-label', n[0] + ' ABC Terroirs');
+        box.appendChild(a);
+      });
+      top.appendChild(box);
+    }
+    // Pied de page : ajouter Facebook s'il n'est pas configuré dans le module « Liens réseaux sociaux »
+    var socialUl = document.querySelector('#footer .block-social ul');
+    if (socialUl && !socialUl.querySelector('li.facebook')) {
+      var li = el('li', 'facebook', '<a href="' + SOCIAL[0][1] + '" target="_blank" rel="noopener"><span>Facebook</span></a>');
+      socialUl.insertBefore(li, socialUl.firstChild);
     }
 
     // 3. Accueil : boutons sous le texte de présentation + blocs par budget
