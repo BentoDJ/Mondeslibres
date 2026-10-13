@@ -11,7 +11,7 @@
 
   // Raccourcis affichés sous le menu, sur toutes les pages
   var LIENS_RAPIDES = [
-    ['🎄 Noël', '172-idees-cadeaux-noel'],
+    ['Noël', '172-idees-cadeaux-noel'],
     ['Coffrets cadeaux', '3-coffrets-gourmands'],
     ['Moins de 25 €', '30-selection-moins-de-25'],
     ['Vins', '5-vins'],
