@@ -147,6 +147,8 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 48 | Apparence → Pages → **Mentions légales** | Sans directeur de publication ni hébergeur, texte par défaut PrestaShop avec lien cassé, carré doré parasite (sauvegarde : `sauvegardes/cms2-mentions-legales-avant.html`) | Contenu de `mentions-legales.html` : éditeur (boutiques Saint-Pierre et Franklin), RCS, TVA, directeur de la publication, hébergeur OVH, crédits |
 | 49 | Apparence → Pages → **Paiement sécurisé** | « Avec SSL / Avec Visa/Mastercard/Paypal / A propos de ce service » (sauvegarde : `sauvegardes/cms5-paiement-securise-avant.html`) | Contenu de `paiement-securise.html` : paiement chiffré, moyens acceptés, contact |
 | 50 | Apparence → Pages → **CGV** (conditions d'utilisation) | Sauvegarde : `sauvegardes/cms3-cgv-avant-corrections.html` | Rétractation remboursée sous **14 jours** (et non 30), par le même moyen de paiement ; renvoi corrigé (article 11) ; mention de la plateforme européenne des litiges (fermée) remplacée par un contact amiable ; **article 15 réécrit (RGPD)**, sans Criteo/Shopzilla ni loi de 2004. Version complète : `cgv-corrigees.html`. **Pas de médiateur** de la consommation : obligatoire pour la vente aux particuliers, à choisir (voir README). |
+| 51 | Catalogue → Produits → **photos** de 50 produits (61 photos) | Photos sur fond gris de studio (originales : `sauvegardes/photos-produits-originales/`, correspondance ancienne → nouvelle image : `sauvegardes/photos-remplacees.jsonl`) | Même photo détourée sur fond blanc, même légende, même image principale. 23 photos écartées car le détourage automatique les abîmait (sachets transparents, boîtes ouvertes, bouteilles en verre clair) ou parce qu'elles étaient trop petites : elles restent telles quelles. |
+| 52 | Paramètres avancés → Performances → Vider le cache | — | Fait : le menu affiche bien « NOTRE ENSEIGNE DEPUIS 2006 ». |
 
 ## Volontairement non modifié
 
@@ -156,6 +158,6 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 
 ## Restant à faire par un compte administrateur
 
-- ~~Vider le cache~~ : fait automatiquement lors de l'installation du module de design.
+- ~~Vider le cache~~ : fait.
 - **Remettre « Vérifier l'adresse IP du cookie » sur Oui** : Paramètres avancés → Administration.
 - **Désactiver le compte « Assistant contenu »** : Paramètres avancés → Équipe → Employés → Actif = Non.
