@@ -119,7 +119,10 @@ L'installation du module a aussi vidé le cache : le menu affiche maintenant « 
 
 Effet testé sur le site : « whiskey » passe de 3 à 35 résultats, « sarrazin » de 4 à 12, « paniers garnis » de 0 à 47.
 
-**Non fait, faute de droit de modification :** passer la « longueur minimale des mots » de 3 à 2 (pour que « LU » trouve les boîtes Tour LU). Paramètres de la boutique → Rechercher → Longueur minimale = 2 → Enregistrer, puis « Reconstruire l'index entier ».
+| 30 | Catalogue → Produits → mots-clés des 12 produits LU (n° 156, 238, 239, 240, 241, 479, 480, 481, 504, 505, 741, 742) | — | Ajout du mot-clé « tourlu » |
+| 31 | Paramètres de la boutique → Rechercher → Alias | — | **lu → tourlu** |
+
+Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur minimale n'a pas pu être changée. Cette astuce contourne le problème : l'alias est appliqué avant la vérification de longueur. Résultat : « lu » trouve exactement les 12 produits LU (0 avant). Pour un nouveau produit LU, il suffit d'ajouter le mot-clé « tourlu ».
 
 ## Volontairement non modifié
 
