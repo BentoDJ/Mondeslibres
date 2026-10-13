@@ -132,6 +132,7 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 33 | Une bouteille seule sur sa rangée (grille décalée) | Grille de produits en rangées alignées (flexbox) au lieu des flottants du thème |
 | 34 | Pastille verte vide sur les cartes produits (bouton panier du thème déformé) | Le style des boutons ne s'applique plus aux boutons des cartes |
 | 35 | Raccourcis (Noël, Coffrets cadeaux…) trop marqués | Simples liens texte, soulignés en olive au survol |
+| 36 | Logo encore trop gros sur mobile (module 1.1.2) | Logo à 40 px sur toutes les pages mobiles, sans fond blanc. Feuille de style renommée `abc-v112.css` pour forcer les téléphones à recharger le style. |
 
 ## Volontairement non modifié
 

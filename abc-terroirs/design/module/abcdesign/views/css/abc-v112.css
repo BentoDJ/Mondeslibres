@@ -331,6 +331,7 @@ input.form-control, select.form-control, textarea.form-control { border-radius: 
 /* --- Mobile -------------------------------------------------------------- */
 @media (max-width: 767px) {
   #czbannercmsblock .container { padding: 24px 18px !important; }
-  #header .header_logo img.logo { max-height: 50px !important; width: auto !important; }
+  #header .header_logo img.logo { max-height: 40px !important; width: auto !important; }
+  #header .header_logo { background: transparent !important; height: auto !important; }
   .product-miniature .product-title, .product-miniature .product-title a { font-size: 14px !important; }
 }
