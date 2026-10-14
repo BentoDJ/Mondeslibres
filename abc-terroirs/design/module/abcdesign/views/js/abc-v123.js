@@ -137,7 +137,8 @@
       var gal = el('section', 'abc-photos', '<h2>Nos dégustations en images</h2><p>Une soirée de dégustation de whiskies et de rhums chez Spi &amp; Bi, en octobre 2026.</p>' +
         '<div class="abc-photos__grid"><img src="' + IMG + 'degustation-1.jpg" alt="Participants levant leur verre lors d\'une dégustation chez Spi & Bi" loading="lazy">' +
         '<img src="' + IMG + 'degustation-2.jpg" alt="Animateur présentant une bouteille lors d\'une dégustation chez Spi & Bi" loading="lazy"></div>' +
-        '<p class="abc-photos__cta">Réservez votre place en boutique, au <a href="tel:+33255547980">02 55 54 79 80</a> ou à <a href="mailto:abc3ladmirault@yahoo.com">abc3ladmirault@yahoo.com</a>.</p>');
+        '<p class="abc-photos__cta"><strong>Comment réserver ?</strong> 1. Achetez une ou plusieurs places sur le site. 2. Appelez le <a href="tel:+33255547980">02 55 54 79 80</a> avec votre numéro de commande pour choisir la date de votre séance. ' +
+        'Séance privée ou en entreprise : écrivez-nous à <a href="mailto:abc3ladmirault@yahoo.com">abc3ladmirault@yahoo.com</a>.</p>');
       var anchor = page === 'product' ? document.querySelector('.product-tabcontent, .tabs, #product-description') : document.querySelector('#js-product-list-header, .block-category, #category-description');
       if (anchor) (page === 'product' ? anchor.parentNode.insertBefore(gal, anchor) : anchor.parentNode.insertBefore(gal, anchor.nextSibling));
     }
@@ -172,8 +173,9 @@
           '<div class="abc-deg-home__txt"><p class="abc-deg-home__k">Dégustations &amp; ateliers</p>' +
           '<h2>Venez déguster avec nous</h2>' +
           '<p>Whiskies, rhums, gins, vins, bières, cidres : 1 à 2 heures pour découvrir, comparer et échanger, accompagnées de produits du terroir. Entre amis, en famille ou entre collègues, et aussi en séance privée sur mesure.</p>' +
+          '<p>Achetez vos places en ligne, puis appelez-nous pour choisir votre date.</p>' +
           '<div class="abc-cta-row abc-cta-row--left"><a class="abc-btn abc-btn--main" href="' + BASE + '162-degustations-sur-mesure-">Voir les dégustations</a>' +
-          '<a class="abc-btn abc-btn--ghost" href="tel:+33255547980">Réserver : 02 55 54 79 80</a></div></div>');
+          '<a class="abc-btn abc-btn--ghost" href="tel:+33255547980">Choisir sa date : 02 55 54 79 80</a></div></div>');
         budgets.parentNode.insertBefore(deg, budgets.nextSibling);
       }
     }
@@ -199,9 +201,13 @@
     if (page === 'product') {
       var add = document.querySelector('.product-add-to-cart');
       if (add && !document.querySelector('.abc-product-help')) {
-        var help = el('p', 'abc-product-help',
-          'Envie d\'un coffret personnalisé ou d\'une commande pour votre entreprise ? ' +
-          '<a href="' + BASE + 'nous-contacter">Contactez-nous</a> ou appelez le <a href="tel:+33240897626">' + TEL + '</a>.');
+        // Dégustation : rappeler qu'après l'achat, la date se choisit par téléphone
+        var help = isDeg
+          ? el('p', 'abc-product-help abc-product-help--deg',
+            '<strong>Après votre achat</strong>, appelez le <a href="tel:+33255547980">02 55 54 79 80</a> avec votre numéro de commande pour choisir la date de votre séance.')
+          : el('p', 'abc-product-help',
+            'Envie d\'un coffret personnalisé ou d\'une commande pour votre entreprise ? ' +
+            '<a href="' + BASE + 'nous-contacter">Contactez-nous</a> ou appelez le <a href="tel:+33240897626">' + TEL + '</a>.');
         add.parentNode.insertBefore(help, add.nextSibling);
       }
     }
