@@ -383,6 +383,16 @@ input.form-control, select.form-control, textarea.form-control { border-radius: 
 .abc-stores--page .abc-store td:first-child { font-weight: 600; margin-top: 6px; }
 @media (max-width: 767px) { .abc-stores__grid { grid-template-columns: 1fr; } }
 
+/* --- Photos des dégustations ---------------------------------------------- */
+.abc-photos { margin: 24px 0 32px; }
+.abc-photos h2 { font-family: Fraunces, Georgia, serif !important; font-size: clamp(22px, 2.6vw, 28px) !important; font-weight: 600 !important; color: var(--abc-olive-dark) !important; margin: 0 0 6px; text-transform: none !important; }
+.abc-photos p { color: var(--abc-muted); margin: 0 0 14px; }
+.abc-photos__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.abc-photos__grid img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--abc-radius); display: block; }
+.abc-photos .abc-photos__cta { margin-top: 12px; color: var(--abc-ink); }
+.abc-photos a { color: var(--abc-olive-dark) !important; font-weight: 600; text-decoration: underline; }
+@media (max-width: 767px) { .abc-photos__grid { grid-template-columns: 1fr; } }
+
 /* --- Mobile -------------------------------------------------------------- */
 @media (max-width: 767px) {
   #czbannercmsblock .container { padding: 24px 18px !important; }

@@ -128,6 +128,19 @@
       }
     }
 
+    // 2 quater. Photos des dégustations (page « Dégustations sur mesure » et fiches « 1 place séance dégustation »)
+    var isDeg = body.classList.contains('category-id-162') || (page === 'product' && /s[ée]ance/i.test((document.querySelector('h1') || {}).textContent || ''));
+    if (isDeg && !document.querySelector('.abc-photos')) {
+      var IMG = (document.querySelector('link[href*="abcdesign/views/css"]') || {}).href || '';
+      IMG = IMG.replace(/views\/css\/[^/?]+.*$/, 'views/img/');
+      var gal = el('section', 'abc-photos', '<h2>Nos dégustations en images</h2><p>Une soirée de dégustation de whiskies et de rhums chez Spi &amp; Bi, en octobre 2026.</p>' +
+        '<div class="abc-photos__grid"><img src="' + IMG + 'degustation-1.jpg" alt="Participants levant leur verre lors d\'une dégustation chez Spi & Bi" loading="lazy">' +
+        '<img src="' + IMG + 'degustation-2.jpg" alt="Animateur présentant une bouteille lors d\'une dégustation chez Spi & Bi" loading="lazy"></div>' +
+        '<p class="abc-photos__cta">Réservez votre place en boutique, au <a href="tel:+33255547980">02 55 54 79 80</a> ou à <a href="mailto:abc3ladmirault@yahoo.com">abc3ladmirault@yahoo.com</a>.</p>');
+      var anchor = page === 'product' ? document.querySelector('.product-tabcontent, .tabs, #product-description') : document.querySelector('#js-product-list-header, .block-category, #category-description');
+      if (anchor) (page === 'product' ? anchor.parentNode.insertBefore(gal, anchor) : anchor.parentNode.insertBefore(gal, anchor.nextSibling));
+    }
+
     // 3. Accueil : boutons sous le texte de présentation + blocs par budget
     if (page === 'index') {
       var intro = document.querySelector('#czbannercmsblock .container');

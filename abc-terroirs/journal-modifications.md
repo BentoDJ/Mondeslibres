@@ -152,6 +152,17 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 53 | Module 1.1.9 : **Nos 3 boutiques** | Seule l'adresse de Saint-Pierre en bas de page ; la page « Magasins » ne montrait que 2 boutiques (sans Spi & Bi) | Bloc « Nos 3 boutiques à Nantes » en bas de **toutes les pages** et sur la page « Magasins » : Saint-Pierre, Franklin et Spi & Bi, avec adresse (lien Google Maps), horaires et téléphone cliquable. Les horaires viennent du site, de PagesJaunes (mis à jour en août 2026) et de Mappy. Ils se modifient dans `abc-v119.js` (liste `BOUTIQUES`). |
 | 54 | Catalogue → Catégories → n° 157 « Nos boutiques », description | Liste des 3 boutiques sans horaires (sauvegarde : `sauvegardes/cat157-nos-boutiques-avant.html`) | Les 3 boutiques avec adresses, téléphones et horaires (`nos-boutiques.html`) |
 
+## Huitième série (14/10/2026) : demandes d'Axel
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 55 | Produits **mis hors ligne** (non supprimés) : Nona Spritz 20 cl (521), Nona June 20 cl (522), Nona Ginger 20 cl (523), Nona Ginger 70 cl (524), liqueur St Germain 50 cl (493), tequilas José Cuervo Silver (541) et Reposado (542), mezcal Tobala 12 ans Lokita (544), sauce Fat Cat (641), purée de piment Hellicious (643), coffret purées Hellicious (673) | En ligne | Hors ligne (page introuvable pour les visiteurs). Pour les remettre : fiche produit → interrupteur « En ligne ». Pour les supprimer définitivement : Catalogue → Produits → Supprimer. |
+| 56 | Produits en **rupture temporaire** : rhum Worthy Park 109 Proof (495), gin Ki No Bi (348), gin Saxon Garden – Wessex (532), gin Komasa Ichigo (534) | Disponibles à la vente | Toujours visibles, mais « Disponible à la vente » décoché (pas de bouton panier), avec la mention « Rupture temporaire : ce produit revient bientôt… » en tête du résumé. Pour les remettre en vente : recocher « Disponible à la vente » (onglet Options) et retirer la mention. |
+| 57 | Sauce piquante Hellicious (642), résumé | Parfums « La Pizza » et « La Méchante Myrtille » (sauvegarde : `sauvegardes/produit-642-hellicious-avant.html`) | « La Jalapeño Rhum » (jalapeño, rhum et citron, piquant 2/5) remplace « La Pizza ». **Le champ « Choisissez votre parfum » ne propose pas de liste** : le client tape lui-même le parfum (voir la remarque sur la création d'un article par recette). |
+| 58 | Module 1.2.1 : photos de la dégustation | — | Galerie « Nos dégustations en images » (2 photos, avec l'accord des participants) sur la page « Dégustations sur mesure » et sur les fiches « 1 place séance dégustation », avec le téléphone et l'e-mail de réservation |
+
+**Non fait :** l'image du **whisky Paul John Bold** (342) est bien la mauvaise (c'est un « As We Get It » d'Ian Macleod). Il faut une photo de la vraie bouteille, prise en boutique : je ne reprends pas les photos d'autres sites pour une question de droits.
+
 **À vérifier :** le téléphone de Franklin. La fiche magasin de PrestaShop indique 02 28 29 30 08, alors que la page « Nos boutiques » et PagesJaunes indiquent **09 86 22 05 28** (c'est ce numéro qui est affiché). Spi & Bi ne peut pas être ajouté comme vrai « magasin » PrestaShop sans le droit « Magasins » (Paramètres de la boutique → Contact).
 
 ## Volontairement non modifié
