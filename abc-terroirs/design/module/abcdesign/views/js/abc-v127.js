@@ -171,7 +171,6 @@
           '<div class="abc-deg-home__txt"><p class="abc-deg-home__k">Dégustations &amp; ateliers</p>' +
           '<h2>Venez déguster avec nous</h2>' +
           '<p>Whiskies, rhums, gins, bières… 1 à 2 heures entre amis, en famille ou entre collègues.</p>' +
-          '<ol class="abc-steps"><li>Achetez vos places en ligne.</li><li>Choisissez votre date : <a href="tel:+33255547980">02 55 54 79 80</a>, <a href="mailto:abc3ladmirault@yahoo.com">e-mail</a> ou <a href="' + BASE + 'nous-contacter">message</a>.</li></ol>' +
           '<div class="abc-cta-row abc-cta-row--left"><a class="abc-btn abc-btn--main" href="' + BASE + '162-degustations-sur-mesure-">Voir les dégustations</a></div></div>');
         budgets.parentNode.insertBefore(deg, budgets.nextSibling);
       }
