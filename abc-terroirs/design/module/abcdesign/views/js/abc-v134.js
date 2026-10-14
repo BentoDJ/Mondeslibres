@@ -110,8 +110,21 @@
         news.className += ' abc-news--header';
         news.style.left = sw.offsetLeft + 'px';
         news.style.width = sw.offsetWidth + 'px';
-        news.style.top = (sw.offsetTop + sw.offsetHeight + 10) + 'px';
         hc.appendChild(news);
+        // Même espace au-dessus (barre de recherche) et en dessous (raccourcis Noël, Coffrets cadeaux…)
+        var centrer = function () {
+          var haut = sw.getBoundingClientRect().bottom;
+          var cible = document.querySelector('.abc-quick .abc-chip') || document.querySelector('.abc-quick') || hc.parentNode;
+          var bas = cible === hc.parentNode ? cible.getBoundingClientRect().bottom : cible.getBoundingClientRect().top;
+          if (cible.classList && cible.classList.contains('abc-chip')) {   // on vise le texte « Noël », pas la marge du bouton
+            var r = document.createRange(); r.selectNodeContents(cible); bas = r.getBoundingClientRect().top;
+          }
+          var h = news.getBoundingClientRect().height;
+          news.style.top = Math.round(haut + (bas - haut - h) / 2 - hc.getBoundingClientRect().top) + 'px';
+        };
+        centrer();
+        window.addEventListener('load', centrer);
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(centrer);
       } else {
         // Mobile et tablette : bandeau sous la barre du logo
         var quick = document.querySelector('.abc-quick');
