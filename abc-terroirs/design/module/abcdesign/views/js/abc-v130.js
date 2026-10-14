@@ -23,6 +23,9 @@
     ['Cadeaux d\'entreprise', '163-infos-pour-les-pros']
   ];
 
+  // Encart « Nouveau » de l'accueil (laisser '' pour ne rien afficher)
+  var NOUVEAUTE = 'Remises dégressives : <strong>-5 %</strong> dès 300 € HT d\'achat, <strong>-10 %</strong> dès 600 € HT.';
+
   // Réseaux sociaux (en haut de page, et Facebook ajouté en bas s'il manque)
   var SOCIAL = [
     ['Facebook', 'https://www.facebook.com/AbcTerroirs/', 'facebook'],
@@ -173,6 +176,13 @@
           '<p>Whiskies, rhums, gins, bières… 1 à 2 heures entre amis, en famille ou entre collègues.</p>' +
           '<div class="abc-cta-row abc-cta-row--left"><a class="abc-btn abc-btn--main" href="' + BASE + '162-degustations-sur-mesure-">Voir les dégustations</a></div></div>');
         budgets.parentNode.insertBefore(deg, budgets.nextSibling);
+
+        // Encart « Nouveau » au milieu de l'accueil (entre les budgets et les dégustations).
+        // Pour le retirer : mettre NOUVEAUTE = '' en haut de ce fichier.
+        if (NOUVEAUTE) {
+          var news = el('section', 'abc-news', '<div class="abc-news__box"><span class="abc-news__tag">Nouveau</span><p>' + NOUVEAUTE + '</p></div>');
+          budgets.parentNode.insertBefore(news, budgets.nextSibling);
+        }
       }
     }
 
