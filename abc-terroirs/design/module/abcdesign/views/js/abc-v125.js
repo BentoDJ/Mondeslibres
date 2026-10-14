@@ -227,4 +227,27 @@
       }
     }
   });
+
+  // 7. Tri, filtres et pages de la liste des produits : le thème remonte tout en haut de la page
+  //    après chaque mise à jour (window.scrollTo(0, 0) dans theme.js). On replace la page sur le
+  //    début de la liste, juste sous l'en-tête s'il reste collé en haut de l'écran.
+  function versLaListe() {
+    var cible = document.getElementById('js-product-list-top') || document.getElementById('products');
+    if (!cible) return;
+    var haut = 0;
+    document.querySelectorAll('#header, #header *').forEach(function (e) {
+      var pos = getComputedStyle(e).position;
+      if (pos === 'fixed' || pos === 'sticky') {
+        var r = e.getBoundingClientRect();
+        if (r.top <= 0 && r.bottom > haut && r.height < window.innerHeight / 2) haut = r.bottom;
+      }
+    });
+    window.scrollTo(0, Math.max(0, cible.getBoundingClientRect().top + window.pageYOffset - haut - 12));
+  }
+  function brancherTri() {
+    if (window.prestashop && typeof window.prestashop.on === 'function') {
+      window.prestashop.on('updateProductList', function () { setTimeout(versLaListe, 50); });
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', brancherTri); else brancherTri();
 })();
