@@ -99,6 +99,15 @@
       else header.parentNode.insertBefore(bar, header.nextSibling);                              // mobile : sous l'en-tête
     }
 
+    // 2 ter. Encart « Nouveau », tout en haut de toutes les pages, sous la barre de recherche
+    //        (texte : variable NOUVEAUTE en haut de ce fichier ; '' pour le retirer)
+    if (NOUVEAUTE && header && !document.querySelector('.abc-news')) {
+      var news = el('div', 'abc-news', '<div class="abc-news__box"><span class="abc-news__tag">Nouveau</span><p>' + NOUVEAUTE + '</p></div>');
+      var quick = document.querySelector('.abc-quick');
+      if (quick) quick.parentNode.insertBefore(news, quick);
+      else header.parentNode.insertBefore(news, header.nextSibling);
+    }
+
     // 2 bis. Icônes Facebook et Instagram en haut de page
     var top = document.querySelector('#header .header-top .container') || document.querySelector('#header .header-top');
     if (top && !document.querySelector('.abc-social-top')) {
@@ -177,12 +186,6 @@
           '<div class="abc-cta-row abc-cta-row--left"><a class="abc-btn abc-btn--main" href="' + BASE + '162-degustations-sur-mesure-">Voir les dégustations</a></div></div>');
         budgets.parentNode.insertBefore(deg, budgets.nextSibling);
 
-        // Encart « Nouveau » au milieu de l'accueil (entre les budgets et les dégustations).
-        // Pour le retirer : mettre NOUVEAUTE = '' en haut de ce fichier.
-        if (NOUVEAUTE) {
-          var news = el('section', 'abc-news', '<div class="abc-news__box"><span class="abc-news__tag">Nouveau</span><p>' + NOUVEAUTE + '</p></div>');
-          budgets.parentNode.insertBefore(news, budgets.nextSibling);
-        }
       }
     }
 
