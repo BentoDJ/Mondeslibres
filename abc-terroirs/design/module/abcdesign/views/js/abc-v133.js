@@ -103,9 +103,21 @@
     //        (texte : variable NOUVEAUTE en haut de ce fichier ; '' pour le retirer)
     if (NOUVEAUTE && header && !document.querySelector('.abc-news')) {
       var news = el('div', 'abc-news', '<div class="abc-news__box"><span class="abc-news__tag">Nouveau</span><p>' + NOUVEAUTE + '</p></div>');
-      var quick = document.querySelector('.abc-quick');
-      if (quick) quick.parentNode.insertBefore(news, quick);
-      else header.parentNode.insertBefore(news, header.nextSibling);
+      var sw = document.getElementById('search_widget');
+      var hc = sw && sw.parentNode;
+      if (sw && hc && window.innerWidth >= 992) {
+        // Ordinateur : à droite du logo, juste sous la barre de recherche, même largeur qu'elle
+        news.className += ' abc-news--header';
+        news.style.left = sw.offsetLeft + 'px';
+        news.style.width = sw.offsetWidth + 'px';
+        news.style.top = (sw.offsetTop + sw.offsetHeight + 10) + 'px';
+        hc.appendChild(news);
+      } else {
+        // Mobile et tablette : bandeau sous la barre du logo
+        var quick = document.querySelector('.abc-quick');
+        if (quick) quick.parentNode.insertBefore(news, quick);
+        else header.parentNode.insertBefore(news, header.nextSibling);
+      }
     }
 
     // 2 bis. Icônes Facebook et Instagram en haut de page
