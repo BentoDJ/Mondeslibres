@@ -441,3 +441,21 @@ input.form-control, select.form-control, textarea.form-control { border-radius: 
 .abc-news__box p { margin: 0; font-size: 15px; line-height: 1.4; color: var(--abc-ink); }
 .abc-news__box strong { color: var(--abc-olive-dark); font-weight: 700; }
 @media (max-width: 767px) { .abc-news { padding: 8px 10px; } .abc-news__box { padding: 8px 10px; gap: 8px; flex-wrap: nowrap; text-align: left; } .abc-news__tag { flex-shrink: 0; } .abc-news__box p { font-size: 13px; } }
+
+/* Rhums (13) et Whiskies (12) : pas de drapeaux ni de cartes pour les sous-catégories,
+   seulement des boutons avec le nom. Pour remettre les images : supprimer ce bloc. */
+body.category-id-12 #subcategories .subcategory-image,
+body.category-id-13 #subcategories .subcategory-image { display: none !important; }
+body.category-id-12 #subcategories ul,
+body.category-id-13 #subcategories ul { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; padding: 0; }
+body.category-id-12 #subcategories li,
+body.category-id-13 #subcategories li { float: none !important; width: auto !important; margin: 0 !important; padding: 0 !important; border: 0 !important; background: none !important; min-height: 0 !important; }
+body.category-id-12 #subcategories h5,
+body.category-id-13 #subcategories h5 { margin: 0 !important; }
+body.category-id-12 #subcategories .subcategory-name,
+body.category-id-13 #subcategories .subcategory-name {
+  display: inline-block; padding: 9px 18px; border: 1px solid var(--abc-olive); border-radius: 999px;
+  background: #fff; color: var(--abc-olive-dark) !important; font-size: 15px; font-weight: 500; text-decoration: none !important;
+}
+body.category-id-12 #subcategories .subcategory-name:hover,
+body.category-id-13 #subcategories .subcategory-name:hover { background: var(--abc-olive); color: #fff !important; }
