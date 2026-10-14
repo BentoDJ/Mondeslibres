@@ -284,4 +284,40 @@
     }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', brancherTri); else brancherTri();
+
+  // 8. Catégorie sans sous-catégories (ex. Martinique), ouverte depuis un lien du site :
+  //    on arrive directement sur les produits au lieu du haut de la page.
+  function arriverSurLesProduits() {
+    if (!document.body.classList.contains('page-category') || document.getElementById('subcategories')) return;
+    if (location.hash || window.pageYOffset > 50) return;
+    if (!document.referrer || document.referrer.indexOf(location.host) === -1) return;
+    var nav = window.performance && performance.getEntriesByType ? performance.getEntriesByType('navigation')[0] : null;
+    if (nav && nav.type !== 'navigate') return;   // pas sur « actualiser » ni « retour »
+    var titre = document.querySelector('#main .block-category h1, #main h1');
+    if (!titre || !document.getElementById('js-product-list-top')) return;
+    // une barre peut rester collée en haut de l'écran (en-tête sur mobile) : on la compte
+    var hautColle = function () {
+      var h = 0;
+      document.querySelectorAll('#header, #header *').forEach(function (e) {
+        var pos = getComputedStyle(e).position;
+        if (pos !== 'fixed' && pos !== 'sticky') return;
+        var r = e.getBoundingClientRect();
+        if (r.top <= 1 && r.height > 0 && r.height < window.innerHeight / 2 && r.bottom > h) h = r.bottom;
+      });
+      return h;
+    };
+    // sur mobile, la barre du logo se colle en haut (avec une petite animation) : on réserve sa hauteur
+    var barreMobile = window.innerWidth < 992 ? ((document.querySelector('#header .header-top') || {}).offsetHeight || 0) : 0;
+    var aller = function () {
+      window.scrollTo(0, Math.max(0, titre.getBoundingClientRect().top + window.pageYOffset - Math.max(hautColle(), barreMobile) - 12));
+    };
+    aller();
+    // l'en-tête peut se coller en haut juste après le défilement et cacher le titre : on remonte un peu si besoin
+    var verifier = function () {
+      var cache = Math.max(hautColle(), 0) + 8 - titre.getBoundingClientRect().top;
+      if (cache > 0) window.scrollBy(0, -cache);
+    };
+    [250, 700, 1300].forEach(function (t) { setTimeout(verifier, t); });
+  }
+  window.addEventListener('load', function () { setTimeout(arriverSurLesProduits, 100); });
 })();
