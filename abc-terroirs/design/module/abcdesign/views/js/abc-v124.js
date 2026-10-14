@@ -137,8 +137,8 @@
       var gal = el('section', 'abc-photos', '<h2>Nos dégustations en images</h2><p>Une soirée de dégustation de whiskies et de rhums chez Spi &amp; Bi, en octobre 2026.</p>' +
         '<div class="abc-photos__grid"><img src="' + IMG + 'degustation-1.jpg" alt="Participants levant leur verre lors d\'une dégustation chez Spi & Bi" loading="lazy">' +
         '<img src="' + IMG + 'degustation-2.jpg" alt="Animateur présentant une bouteille lors d\'une dégustation chez Spi & Bi" loading="lazy"></div>' +
-        '<p class="abc-photos__cta"><strong>Comment réserver ?</strong> 1. Achetez une ou plusieurs places sur le site. 2. Appelez le <a href="tel:+33255547980">02 55 54 79 80</a> avec votre numéro de commande pour choisir la date de votre séance. ' +
-        'Séance privée ou en entreprise : écrivez-nous à <a href="mailto:abc3ladmirault@yahoo.com">abc3ladmirault@yahoo.com</a>.</p>');
+        '<p class="abc-photos__cta"><strong>Comment réserver ?</strong> 1. Achetez une ou plusieurs places sur le site. 2. Choisissez votre date en nous indiquant votre numéro de commande : par téléphone au <a href="tel:+33255547980">02 55 54 79 80</a>, par e-mail à <a href="mailto:abc3ladmirault@yahoo.com">abc3ladmirault@yahoo.com</a> ou par le <a href="' + BASE + 'nous-contacter">formulaire de contact</a>. ' +
+        'Séance privée ou en entreprise : contactez-nous de la même façon.</p>');
       var anchor = page === 'product' ? document.querySelector('.product-tabcontent, .tabs, #product-description') : document.querySelector('#js-product-list-header, .block-category, #category-description');
       if (anchor) (page === 'product' ? anchor.parentNode.insertBefore(gal, anchor) : anchor.parentNode.insertBefore(gal, anchor.nextSibling));
     }
@@ -173,7 +173,7 @@
           '<div class="abc-deg-home__txt"><p class="abc-deg-home__k">Dégustations &amp; ateliers</p>' +
           '<h2>Venez déguster avec nous</h2>' +
           '<p>Whiskies, rhums, gins, vins, bières, cidres : 1 à 2 heures pour découvrir, comparer et échanger, accompagnées de produits du terroir. Entre amis, en famille ou entre collègues, et aussi en séance privée sur mesure.</p>' +
-          '<p>Achetez vos places en ligne, puis appelez-nous pour choisir votre date.</p>' +
+          '<p>Achetez vos places en ligne, puis choisissez votre date par téléphone, par e-mail ou par message.</p>' +
           '<div class="abc-cta-row abc-cta-row--left"><a class="abc-btn abc-btn--main" href="' + BASE + '162-degustations-sur-mesure-">Voir les dégustations</a>' +
           '<a class="abc-btn abc-btn--ghost" href="tel:+33255547980">Choisir sa date : 02 55 54 79 80</a></div></div>');
         budgets.parentNode.insertBefore(deg, budgets.nextSibling);
@@ -204,7 +204,7 @@
         // Dégustation : rappeler qu'après l'achat, la date se choisit par téléphone
         var help = isDeg
           ? el('p', 'abc-product-help abc-product-help--deg',
-            '<strong>Après votre achat</strong>, appelez le <a href="tel:+33255547980">02 55 54 79 80</a> avec votre numéro de commande pour choisir la date de votre séance.')
+            '<strong>Après votre achat</strong>, choisissez la date de votre séance en nous indiquant votre numéro de commande : au <a href="tel:+33255547980">02 55 54 79 80</a>, à <a href="mailto:abc3ladmirault@yahoo.com">abc3ladmirault@yahoo.com</a> ou par le <a href="' + BASE + 'nous-contacter">formulaire de contact</a>.')
           : el('p', 'abc-product-help',
             'Envie d\'un coffret personnalisé ou d\'une commande pour votre entreprise ? ' +
             '<a href="' + BASE + 'nous-contacter">Contactez-nous</a> ou appelez le <a href="tel:+33240897626">' + TEL + '</a>.');
