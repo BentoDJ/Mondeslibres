@@ -536,3 +536,8 @@ body.category-id-193 .block-category .category-cover { display: none !important;
   .abc-navbar__link, .abc-dd__btn { padding: 0 8px; font-size: 14px; }
   .abc-navbar__more { padding-left: 4px; }
 }
+
+/* Accueil, ordinateur et tablette : diaporama moins haut (380 px au lieu de ~745 px sur grand écran), toutes les diapositives à la même hauteur */
+@media (min-width: 768px) {
+  body.abc-slider-bas .flexslider .slides img { width: 100% !important; height: auto !important; aspect-ratio: 2208 / 912; object-fit: cover; object-position: center; }
+}

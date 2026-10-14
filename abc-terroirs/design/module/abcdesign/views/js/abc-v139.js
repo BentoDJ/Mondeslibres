@@ -242,6 +242,16 @@
 
     // 3. Accueil : boutons sous le texte de présentation + blocs par budget
     if (page === 'index') {
+      // Diaporama sur ordinateur : version large et basse de la diapositive de Noël (même design, moins haute).
+      // Sur mobile, l'image d'origine (presque carrée) reste mieux lisible.
+      if (window.innerWidth >= 768) {
+        var IMGS = ((document.querySelector('link[href*="abcdesign/views/css"]') || {}).href || '').replace(/views\/css\/[^/?]+.*$/, 'views/img/');
+        document.querySelectorAll('img[src*="diapo-accueil-noel"], img[data-src*="diapo-accueil-noel"]').forEach(function (im) {
+          im.src = IMGS + 'diapo-noel-large.jpg';
+          if (im.getAttribute('data-src')) im.setAttribute('data-src', IMGS + 'diapo-noel-large.jpg');
+        });
+        document.body.classList.add('abc-slider-bas');
+      }
       var intro = document.querySelector('#czbannercmsblock .container');
       if (intro && !intro.querySelector('.abc-cta-row')) {
         var row = el('div', 'abc-cta-row',
