@@ -308,16 +308,27 @@
     };
     // sur mobile, la barre du logo se colle en haut (avec une petite animation) : on réserve sa hauteur
     var barreMobile = window.innerWidth < 992 ? ((document.querySelector('#header .header-top') || {}).offsetHeight || 0) : 0;
-    var aller = function () {
-      window.scrollTo(0, Math.max(0, titre.getBoundingClientRect().top + window.pageYOffset - Math.max(hautColle(), barreMobile) - 12));
+    var cible = function () {
+      return window.pageYOffset + titre.getBoundingClientRect().top - Math.max(hautColle(), barreMobile) - 12;
     };
-    aller();
-    // l'en-tête peut se coller en haut juste après le défilement et cacher le titre : on remonte un peu si besoin
-    var verifier = function () {
-      var cache = Math.max(hautColle(), 0) + 8 - titre.getBoundingClientRect().top;
-      if (cache > 0) window.scrollBy(0, -cache);
+    // pas d'animation si l'appareil demande moins de mouvements (réglage d'accessibilité)
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { window.scrollTo(0, Math.max(0, cible())); return; }
+    // défilement doux (accélère puis ralentit) ; la cible est recalculée à chaque image,
+    // ce qui absorbe en douceur les changements de taille de l'en-tête pendant le mouvement
+    var depart = window.pageYOffset, debut = null, duree = 900, stop = false;
+    var annuler = function () { stop = true; };   // l'utilisateur touche l'écran ou la molette : on le laisse faire
+    ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { window.addEventListener(ev, annuler, { passive: true, once: true }); });
+    var adoucir = function (t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+    var image = function (now) {
+      if (stop) return;
+      if (debut === null) debut = now;
+      var t = Math.min(1, (now - debut) / duree);
+      var y = Math.max(0, depart + (cible() - depart) * adoucir(t));
+      try { window.scrollTo({ top: y, behavior: 'instant' }); } catch (e) { window.scrollTo(0, y); }
+      if (t < 1) requestAnimationFrame(image);
     };
-    [250, 700, 1300].forEach(function (t) { setTimeout(verifier, t); });
+    requestAnimationFrame(image);
   }
-  window.addEventListener('load', function () { setTimeout(arriverSurLesProduits, 100); });
+  var lancerArrivee = function () { setTimeout(arriverSurLesProduits, 150); };
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', lancerArrivee); else lancerArrivee();
 })();

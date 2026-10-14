@@ -475,3 +475,15 @@ body.category-id-190 .block-category .category-cover,
 body.category-id-191 .block-category .category-cover,
 body.category-id-192 .block-category .category-cover,
 body.category-id-193 .block-category .category-cover { display: none !important; }
+
+/* Mobile : quand la barre du logo se colle en haut de l'écran (vers 175 px de défilement), le thème la sort
+   de la page et tout le contenu remontait d'un coup de 52 px. On garde sa place pour un défilement sans à-coup. */
+@media (max-width: 991px) { #header { min-height: 52px; } }
+
+/* « Nouveau » : simple mot en couleur, et non plus une pastille qui ressemble à un bouton */
+.abc-news, .abc-news * { cursor: default; }
+.abc-news .abc-news__tag {
+  padding: 0 10px 0 0 !important; border-radius: 0 !important; background: none !important;
+  color: var(--abc-olive-dark) !important; font-size: 12px !important; font-weight: 700 !important; letter-spacing: .1em;
+  border-right: 1px solid var(--abc-line); box-shadow: none !important;
+}
