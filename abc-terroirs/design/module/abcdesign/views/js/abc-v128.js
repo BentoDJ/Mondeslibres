@@ -48,10 +48,10 @@
 
   // Blocs « Un coffret pour chaque budget » de l'accueil
   var BUDGETS = [
-    ['Moins de 25 €', 'Petites attentions', '30-selection-moins-de-25'],
-    ['25 à 50 €', 'Les incontournables', '31-selection-25-a-50'],
-    ['Plus de 50 €', 'Pour faire sensation', '32-selection-plus-de-50'],
-    ['Sur mesure', 'Vous choisissez, on compose', 'nous-contacter']
+    ['Moins de 25 €', 'Pour un petit cadeau', '30-selection-moins-de-25'],
+    ['25 à 50 €', 'Pour un anniversaire ou un merci', '31-selection-25-a-50'],
+    ['Plus de 50 €', 'Pour les grandes occasions', '32-selection-plus-de-50'],
+    ['Sur mesure', 'Composé selon vos goûts et votre budget', 'nous-contacter']
   ];
 
   function el(tag, cls, html) {
