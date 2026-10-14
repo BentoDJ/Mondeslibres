@@ -410,3 +410,8 @@ input.form-control, select.form-control, textarea.form-control { border-radius: 
   #header .header_logo { background: transparent !important; height: auto !important; }
   .product-miniature .product-title, .product-miniature .product-title a { font-size: 14px !important; }
 }
+
+/* Étapes de réservation des dégustations (courtes, une par ligne) */
+.abc-steps { margin: 6px 0 0; padding-left: 1.3em; }
+.abc-steps li { margin: 2px 0; line-height: 1.45; }
+.abc-product-help--deg .abc-steps { margin-top: 4px; }
