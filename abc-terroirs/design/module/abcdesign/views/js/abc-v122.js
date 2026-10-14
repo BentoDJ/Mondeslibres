@@ -13,6 +13,7 @@
   var LIENS_RAPIDES = [
     ['Noël', '172-idees-cadeaux-noel'],
     ['Coffrets cadeaux', '3-coffrets-gourmands'],
+    ['Dégustations', '162-degustations-sur-mesure-'],
     ['Moins de 25 €', '30-selection-moins-de-25'],
     ['Vins', '5-vins'],
     ['Whiskies', '12-whiskies'],
@@ -163,6 +164,17 @@
         budgets.appendChild(grid);
         var block = document.getElementById('czbannercmsblock');
         block.parentNode.insertBefore(budgets, block.nextSibling);
+
+        // Bloc « Dégustations » de l'accueil
+        var IMGD = ((document.querySelector('link[href*="abcdesign/views/css"]') || {}).href || '').replace(/views\/css\/[^/?]+.*$/, 'views/img/');
+        var deg = el('section', 'abc-deg-home',
+          '<div class="abc-deg-home__img"><img src="' + IMGD + 'degustation-1.jpg" alt="Dégustation de whiskies et de rhums chez Spi & Bi" loading="lazy"></div>' +
+          '<div class="abc-deg-home__txt"><p class="abc-deg-home__k">Dégustations &amp; ateliers</p>' +
+          '<h2>Venez déguster avec nous</h2>' +
+          '<p>Whiskies, rhums, gins, vins, bières, cidres : 1 à 2 heures pour découvrir, comparer et échanger, accompagnées de produits du terroir. Entre amis, en famille ou entre collègues, et aussi en séance privée sur mesure.</p>' +
+          '<div class="abc-cta-row abc-cta-row--left"><a class="abc-btn abc-btn--main" href="' + BASE + '162-degustations-sur-mesure-">Voir les dégustations</a>' +
+          '<a class="abc-btn abc-btn--ghost" href="tel:+33255547980">Réserver : 02 55 54 79 80</a></div></div>');
+        budgets.parentNode.insertBefore(deg, budgets.nextSibling);
       }
     }
 

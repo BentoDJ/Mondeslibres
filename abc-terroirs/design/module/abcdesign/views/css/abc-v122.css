@@ -393,6 +393,16 @@ input.form-control, select.form-control, textarea.form-control { border-radius: 
 .abc-photos a { color: var(--abc-olive-dark) !important; font-weight: 600; text-decoration: underline; }
 @media (max-width: 767px) { .abc-photos__grid { grid-template-columns: 1fr; } }
 
+/* --- Bloc Dégustations (accueil) ------------------------------------------ */
+.abc-deg-home { max-width: 1170px; margin: 8px auto 48px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; background: var(--abc-cream); border: 1px solid var(--abc-line); border-radius: var(--abc-radius); overflow: hidden; }
+.abc-deg-home__img img { width: 100%; height: 100%; object-fit: cover; display: block; min-height: 260px; }
+.abc-deg-home__txt { padding: 32px 36px; display: flex; flex-direction: column; justify-content: center; }
+.abc-deg-home__k { text-transform: uppercase; letter-spacing: .08em; font-size: 12.5px !important; font-weight: 600; color: var(--abc-olive) !important; margin: 0 0 6px; }
+.abc-deg-home h2 { font-family: Fraunces, Georgia, serif !important; font-size: clamp(24px, 3vw, 32px) !important; font-weight: 600 !important; margin: 0 0 10px; color: var(--abc-ink) !important; text-transform: none !important; }
+.abc-deg-home p { color: var(--abc-muted); margin: 0; }
+.abc-cta-row--left { justify-content: flex-start; }
+@media (max-width: 767px) { .abc-deg-home { grid-template-columns: 1fr; margin: 8px 15px 40px; } .abc-deg-home__txt { padding: 22px 20px; } .abc-deg-home__img img { min-height: 0; aspect-ratio: 16 / 9; } }
+
 /* --- Mobile -------------------------------------------------------------- */
 @media (max-width: 767px) {
   #czbannercmsblock .container { padding: 24px 18px !important; }
