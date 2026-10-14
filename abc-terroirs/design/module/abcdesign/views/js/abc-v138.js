@@ -26,6 +26,33 @@
   // Encart « Nouveau » de l'accueil (laisser '' pour ne rien afficher)
   var NOUVEAUTE = 'Remises dégressives : <strong>-5 %</strong> dès 300 € HT d\'achat, <strong>-10 %</strong> dès 600 € HT.';
 
+  // Ordinateur : une seule barre de navigation. Raccourcis affichés dans la barre (les autres restent sur mobile)
+  // [texte, page, texte court pour écran moyen, priorité : 1 toujours, 2 masqué sous 1200 px]
+  // (Vins, Épicerie, Alcools, Bières restent accessibles par le bouton « Catégories »)
+  var LIENS_BARRE = [
+    ['Noël', '172-idees-cadeaux-noel', 'Noël', 1],
+    ['Coffrets cadeaux', '3-coffrets-gourmands', 'Coffrets', 1],
+    ['Dégustations', '162-degustations-sur-mesure-', 'Dégustations', 1],
+    ['Sans alcool', '167-sans-alcool', 'Sans alcool', 1],
+    ['Vins', '5-vins', 'Vins', 2]
+  ];
+  // Petits menus déroulants de la barre (remplacent « Notre enseigne… / Nos prestations… / Infos pour les pros »)
+  var MENUS_BARRE = [
+    ['La boutique', [
+      ['Notre histoire', '156-histoire-'],
+      ['Nos boutiques', '157-nos-boutiques'],
+      ['Dégustations sur mesure', '162-degustations-sur-mesure-'],
+      ['Location de tireuse à bière', '195-location-tireuse-a-biere'],
+      ['Sélection mariage', '204-selection-mariage']
+    ]],
+    ['Pros', [
+      ['Infos pour les pros', '163-infos-pour-les-pros'],
+      ['Demande de devis', '165-demande-de-devis-remises-commerciales'],
+      ['Exemples de coffrets', '164-exemple-de-coffrets'],
+      ['Nos partenaires', '202-exemple-de-partenaires']
+    ]]
+  ];
+
   // Réseaux sociaux (en haut de page, et Facebook ajouté en bas s'il manque)
   var SOCIAL = [
     ['Facebook', 'https://www.facebook.com/AbcTerroirs/', 'facebook'],
@@ -83,20 +110,55 @@
 
     // 2. Raccourcis sous le menu
     var header = document.getElementById('header');
-    if (header && !document.querySelector('.abc-quick')) {
-      var bar = el('nav', 'abc-quick');
-      bar.setAttribute('aria-label', 'Accès rapide');
-      var inner = el('div', 'abc-quick__inner');
-      LIENS_RAPIDES.forEach(function (l) {
-        var a = el('a', 'abc-chip' + (l[1].indexOf('noel') > -1 ? ' abc-chip--hot' : ''), esc(l[0]));
-        a.href = BASE + l[1];
-        if (location.href.indexOf(l[1]) > -1) a.className += ' is-active';
-        inner.appendChild(a);
-      });
-      bar.appendChild(inner);
+    if (header && !document.querySelector('.abc-quick, .abc-navbar')) {
       var menuBar = header.querySelector('.header-top-inner');
-      if (menuBar && window.innerWidth >= 992) menuBar.parentNode.insertBefore(bar, menuBar);   // ordinateur : entre logo et menu
-      else header.parentNode.insertBefore(bar, header.nextSibling);                              // mobile : sous l'en-tête
+      var mainMenu = document.getElementById('_desktop_main_menu');
+      if (menuBar && mainMenu && window.innerWidth >= 992) {
+        // Ordinateur : une seule ligne « Catégories · raccourcis · La boutique ▾ · Pros ▾ · Panier »
+        var nav = el('nav', 'abc-navbar');
+        nav.setAttribute('aria-label', 'Navigation principale');
+        LIENS_BARRE.forEach(function (l) {
+          var a = el('a', 'abc-navbar__link abc-prio-' + l[3] + (l[1].indexOf('noel') > -1 ? ' abc-navbar__link--hot' : ''),
+            '<span class="abc-long">' + esc(l[0]) + '</span><span class="abc-court">' + esc(l[2]) + '</span>');
+          a.href = BASE + l[1];
+          if (location.href.indexOf(l[1]) > -1) a.className += ' is-active';
+          nav.appendChild(a);
+        });
+        var droite = el('div', 'abc-navbar__more');
+        MENUS_BARRE.forEach(function (m, i) {
+          var dd = el('div', 'abc-dd');
+          var btn = el('button', 'abc-dd__btn', esc(m[0]));
+          btn.type = 'button'; btn.setAttribute('aria-expanded', 'false'); btn.setAttribute('aria-controls', 'abc-dd-' + i);
+          var list = el('div', 'abc-dd__list');
+          list.id = 'abc-dd-' + i;
+          m[1].forEach(function (l) { var a = el('a', '', esc(l[0])); a.href = BASE + l[1]; list.appendChild(a); });
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            var open = dd.classList.toggle('is-open');
+            btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+          });
+          dd.appendChild(btn); dd.appendChild(list); droite.appendChild(dd);
+        });
+        nav.appendChild(droite);
+        document.addEventListener('click', function () {
+          document.querySelectorAll('.abc-dd.is-open').forEach(function (d) { d.classList.remove('is-open'); d.querySelector('button').setAttribute('aria-expanded', 'false'); });
+        });
+        document.addEventListener('keydown', function (e) { if (e.key === 'Escape') document.body.click(); });
+        mainMenu.parentNode.insertBefore(nav, mainMenu);
+        document.body.classList.add('abc-has-navbar');
+      } else {
+        var bar = el('nav', 'abc-quick');
+        bar.setAttribute('aria-label', 'Accès rapide');
+        var inner = el('div', 'abc-quick__inner');
+        LIENS_RAPIDES.forEach(function (l) {
+          var a = el('a', 'abc-chip' + (l[1].indexOf('noel') > -1 ? ' abc-chip--hot' : ''), esc(l[0]));
+          a.href = BASE + l[1];
+          if (location.href.indexOf(l[1]) > -1) a.className += ' is-active';
+          inner.appendChild(a);
+        });
+        bar.appendChild(inner);
+        header.parentNode.insertBefore(bar, header.nextSibling);   // mobile et tablette : sous l'en-tête
+      }
     }
 
     // 2 ter. Encart « Nouveau », tout en haut de toutes les pages, sous la barre de recherche
@@ -114,9 +176,9 @@
         // Même espace au-dessus (barre de recherche) et en dessous (raccourcis Noël, Coffrets cadeaux…)
         var centrer = function () {
           var haut = sw.getBoundingClientRect().bottom;
-          var cible = document.querySelector('.abc-quick .abc-chip') || document.querySelector('.abc-quick') || hc.parentNode;
+          var cible = document.querySelector('.abc-navbar__link') || document.querySelector('.abc-quick .abc-chip') || document.querySelector('.abc-quick') || hc.parentNode;
           var bas = cible === hc.parentNode ? cible.getBoundingClientRect().bottom : cible.getBoundingClientRect().top;
-          if (cible.classList && cible.classList.contains('abc-chip')) {   // on vise le texte « Noël », pas la marge du bouton
+          if (cible.classList && (cible.classList.contains('abc-chip') || cible.classList.contains('abc-navbar__link'))) {   // on vise le texte « Noël », pas la marge du bouton
             var r = document.createRange(); r.selectNodeContents(cible); bas = r.getBoundingClientRect().top;
           }
           var h = news.getBoundingClientRect().height;
