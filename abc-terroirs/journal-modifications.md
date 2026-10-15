@@ -203,6 +203,8 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 98 | Texte des catégories de produits placé sous la liste | Texte entre le titre et les produits | Sous les produits (24 catégories, liste TEXTE_EN_BAS du module) : on arrive toujours directement sur les produits |
 | 99 | Images allégées (vitesse) | Diapo « Valise nantaise » 1,1 Mo (3872 px), miniature menu Vins 413 Ko (chargée sur toutes les pages), photos dégustation 510 Ko, diapo Noël 171 Ko | 168 Ko, 52 Ko, 198 Ko, 107 Ko ; accueil 2,5 Mo → 0,9 Mo. Originaux dans sauvegardes/images-allegees et images-module-avant-compression |
 | 100 | Boutons grille / liste des catégories | Mots anglais « Grid » « List » par-dessus les icônes | Icônes seules (libellés en français gardés pour les lecteurs d'écran) |
+| 101 | Modules → Réassurance → 1er bloc (fiches produits, panier, commande) | « Garanties sécurité — Paiement sécurisé par Paypal » | « Paiement sécurisé — Carte bancaire ou PayPal, connexion chiffrée. » |
+| 102 | Boutons de partage des fiches produits | Facebook, X, Pinterest | Facebook et X (Pinterest masqué par le module abcdesign 1.5.5) |
 
 **Suivi des places : `suivi-degustations.xlsx`** (à la racine de ce dossier). Onglets Achats (une ligne par commande), Seances (planning et places restantes), Reservations (appels des clients) et Tarifs (prix et remises sur volume). Le mode d'emploi est dans le premier onglet.
 

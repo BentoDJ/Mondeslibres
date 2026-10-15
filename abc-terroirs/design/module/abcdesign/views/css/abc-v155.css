@@ -771,3 +771,6 @@ h1, h2, h3, .h1, .h2, .abc-budget strong, .abc-avis__note strong { font-size-adj
 
 /* Boutons « grille / liste » des catégories : le mot anglais (Grid, List) passait par-dessus les icônes */
 #grid a, #list a { color: transparent !important; overflow: hidden; white-space: nowrap; text-indent: 200%; }
+
+/* Fiche produit : bouton de partage Pinterest retiré (Facebook et X gardés) */
+.social-sharing li.pinterest { display: none !important; }
