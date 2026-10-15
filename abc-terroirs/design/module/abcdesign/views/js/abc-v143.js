@@ -39,7 +39,7 @@
   // Petits menus déroulants de la barre (remplacent « Notre enseigne… / Nos prestations… / Infos pour les pros »)
   var MENUS_BARRE = [
     ['La boutique', [
-      ['Notre histoire', '156-histoire-'],
+      ['Notre histoire', '155-notre-enseigne-depuis-20-ans'],
       ['Nos boutiques', '157-nos-boutiques'],
       ['Dégustations sur mesure', '162-degustations-sur-mesure-'],
       ['Location de tireuse à bière', '195-location-tireuse-a-biere'],

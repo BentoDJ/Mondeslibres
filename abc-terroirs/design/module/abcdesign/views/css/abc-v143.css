@@ -571,3 +571,16 @@ body.category-id-194 .block-category .category-cover,
 body.category-id-195 .block-category .category-cover,
 body.category-id-202 .block-category .category-cover,
 body.category-id-205 .block-category .category-cover { display: none !important; }
+
+/* « Notre enseigne depuis 2006 » (catégorie 155) : l'histoire s'affiche directement,
+   sans boutons de sous-catégories ni encadré de menu à gauche */
+body.category-id-155 #subcategories,
+body.category-id-155 #left-column,
+body.category-id-155 #js-product-list-top,
+body.category-id-155 #js-product-list,
+body.category-id-155 #js-product-list-bottom,
+body.category-id-155 .page-not-found,
+body.category-id-155 #products { display: none !important; }
+body.category-id-155 #content-wrapper { width: 100% !important; max-width: 860px; margin: 0 auto; float: none !important; }
+body.category-id-155 #category-description h2 { font-family: Fraunces, Georgia, serif; font-size: 26px; margin: 0 0 14px; }
+body.category-id-155 #category-description p { font-size: 17px; line-height: 1.65; margin: 0 0 14px; }
