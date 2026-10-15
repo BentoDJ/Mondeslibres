@@ -719,3 +719,55 @@ h1, h2, h3, .h1, .h2, .abc-budget strong, .abc-avis__note strong { font-size-adj
 /* Le thème met une majuscule à chaque mot (« Ajouter À Ma Liste D'envies », « Détails Du Produit », menus) : on garde l'écriture normale */
 .st-wishlist-bt-content, .ap-btn-wishlist span, .product-tabs .nav-link, .tabs .nav-link,
 .dropdown-item, .dropdown-item.dropdown-submenu, #_desktop_top_menu a, .category-top-menu a { text-transform: none !important; }
+
+/* ===== Panier : progression vers les remises dégressives ===== */
+.abc-palier { background: var(--abc-olive-soft); border: 1px solid #dfe5c2; border-radius: 4px; padding: 12px 14px 26px; margin: 0 0 14px; }
+.abc-palier__txt { margin: 0 0 10px; font-size: 14px; line-height: 1.4; color: var(--abc-ink); }
+.abc-palier__txt strong { color: var(--abc-olive-dark); }
+.abc-palier__barre { position: relative; height: 6px; background: #fff; border-radius: 3px; box-shadow: inset 0 0 0 1px #dfe5c2; }
+.abc-palier__fond { position: absolute; left: 0; top: 0; bottom: 0; background: var(--abc-olive); border-radius: 3px; transition: width .5s ease; }
+.abc-palier__cran { position: absolute; top: -3px; transform: translateX(-50%); }
+.abc-palier__cran i { display: block; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid #c9d29b; box-sizing: border-box; }
+.abc-palier__cran.is-ok i { background: var(--abc-olive); border-color: var(--abc-olive); }
+.abc-palier__cran em { position: absolute; top: 15px; left: 50%; transform: translateX(-50%); font-style: normal; font-size: 11.5px; color: var(--abc-muted); white-space: nowrap; }
+.abc-palier__cran:last-child { transform: translateX(-100%); }
+.abc-palier__cran:last-child i { margin-left: auto; }
+.abc-palier__cran:last-child em { left: auto; right: 0; transform: none; }
+.abc-palier__cran.is-ok em { color: var(--abc-olive-dark); font-weight: 600; }
+#blockcart-modal .abc-palier { margin: 14px 0 16px; }
+@media (prefers-reduced-motion: reduce) { .abc-palier__fond { transition: none; } }
+
+/* ===== Fiche produit : « Vous aimerez aussi » ===== */
+.abc-suggest { margin: 36px 0 12px; min-height: 330px; }
+.abc-suggest h2 { font-family: "Libre Caslon Text", Georgia, serif !important; font-size: clamp(21px, 2.4vw, 26px) !important; font-weight: 400 !important; color: var(--abc-ink) !important; text-transform: none !important; margin: 0 0 16px; }
+.abc-suggest__rail { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.abc-carte { display: flex; flex-direction: column; text-decoration: none !important; color: var(--abc-ink) !important; border: 1px solid var(--abc-line); border-radius: 4px; background: #fff; padding: 12px 12px 14px;
+  opacity: 0; transform: translateY(8px); transition: opacity .45s ease, transform .45s ease, border-color .2s ease; }
+.abc-suggest.is-pret .abc-carte { opacity: 1; transform: none; }
+.abc-suggest.is-pret .abc-carte:nth-child(2) { transition-delay: .06s, .06s, 0s; }
+.abc-suggest.is-pret .abc-carte:nth-child(3) { transition-delay: .12s, .12s, 0s; }
+.abc-suggest.is-pret .abc-carte:nth-child(4) { transition-delay: .18s, .18s, 0s; }
+.abc-carte:hover, .abc-carte:focus-visible { border-color: var(--abc-olive); }
+.abc-carte__img { display: block; aspect-ratio: 1 / 1; overflow: hidden; margin-bottom: 10px; }
+.abc-carte__img img { width: 100%; height: 100%; object-fit: contain; display: block; transition: transform .35s ease; }
+.abc-carte:hover .abc-carte__img img { transform: scale(1.04); }
+.abc-carte__nom { font-size: 14px; line-height: 1.35; flex: 1; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.abc-carte__prix { margin-top: 8px; font-weight: 700; color: var(--abc-olive-dark); font-size: 15px; }
+.abc-carte__prix s { color: var(--abc-muted); font-weight: 400; margin-right: 4px; }
+@media (max-width: 991px) {
+  .abc-suggest { min-height: 0; }
+  .abc-suggest__rail { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; gap: 12px; padding-bottom: 6px; margin: 0 -15px; padding-left: 15px; padding-right: 15px; scroll-padding: 0 15px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+  .abc-suggest__rail::-webkit-scrollbar { display: none; }
+  .abc-carte { flex: 0 0 42%; scroll-snap-align: start; }
+}
+@media (max-width: 575px) { .abc-carte { flex-basis: 44%; padding: 10px; } .abc-carte__nom { font-size: 13.5px; } }
+@media (prefers-reduced-motion: reduce) { .abc-carte, .abc-carte__img img { transition: none; transform: none !important; } }
+
+/* ===== Catégories : texte de présentation sous les produits ===== */
+.abc-cat-texte { margin: 28px 0 8px; padding-top: 20px; border-top: 1px solid var(--abc-line); }
+.abc-cat-texte #category-description, .abc-cat-texte #category-description p { color: var(--abc-muted); font-size: 14.5px; line-height: 1.6; max-width: 760px; margin: 0; }
+.abc-texte-en-bas #main .block-category { padding-bottom: 0; }
+#cart .cart-grid-right > .abc-palier { margin-bottom: 16px; }
+
+/* Boutons « grille / liste » des catégories : le mot anglais (Grid, List) passait par-dessus les icônes */
+#grid a, #list a { color: transparent !important; overflow: hidden; white-space: nowrap; text-indent: 200%; }

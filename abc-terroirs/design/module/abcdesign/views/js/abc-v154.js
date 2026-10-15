@@ -558,4 +558,137 @@
   }
   var lancerArrivee = function () { setTimeout(arriverSurLesProduits, 150); };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', lancerArrivee); else lancerArrivee();
+  // 13. Panier : barre de progression vers les remises dégressives (règles panier « REMISE COMMERCIALE »,
+  //     sur le sous-total des produits TTC). Affichée sur la page panier et dans la fenêtre « Produit ajouté ».
+  var PALIERS = [[300, 5], [600, 10]];   // [montant TTC, remise en %] : à garder identique aux règles panier
+  var totalPanier = null;
+  function euros(n) { return (Math.round(n * 100) / 100).toFixed(2).replace('.', ',').replace(',00', '') + ' €'; }
+  function lireTotal(cart) {
+    try { return cart.subtotals.products.amount; } catch (e) { return null; }
+  }
+  function blocRemise(total) {
+    if (!total || total <= 0) return null;
+    var max = PALIERS[PALIERS.length - 1][0], atteint = null, suivant = null;
+    PALIERS.forEach(function (p) { if (total >= p[0]) atteint = p; else if (!suivant) suivant = p; });
+    var txt;
+    if (!atteint) txt = 'Plus que <strong>' + euros(suivant[0] - total) + '</strong> pour profiter de <strong>-' + suivant[1] + ' %</strong> sur votre commande.';
+    else if (suivant) txt = 'Remise de <strong>-' + atteint[1] + ' %</strong> appliquée. Plus que <strong>' + euros(suivant[0] - total) + '</strong> pour passer à <strong>-' + suivant[1] + ' %</strong>.';
+    else txt = 'Remise de <strong>-' + atteint[1] + ' %</strong> appliquée à votre commande.';
+    var d = el('div', 'abc-palier' + (atteint ? ' is-ok' : ''),
+      '<p class="abc-palier__txt">' + txt + '</p>' +
+      '<div class="abc-palier__barre" role="progressbar" aria-valuemin="0" aria-valuemax="' + max + '" aria-valuenow="' + Math.round(Math.min(total, max)) + '" aria-label="Progression vers les remises">' +
+      '<span class="abc-palier__fond" style="width:' + Math.min(100, total / max * 100).toFixed(1) + '%"></span>' +
+      PALIERS.map(function (p) { return '<span class="abc-palier__cran' + (total >= p[0] ? ' is-ok' : '') + '" style="left:' + (p[0] / max * 100) + '%"><i></i><em>-' + p[1] + ' % · ' + p[0] + ' €</em></span>'; }).join('') +
+      '</div>');
+    return d;
+  }
+  function afficherRemise() {
+    if (totalPanier === null) return;
+    // page panier : en haut du récapitulatif
+    // (placée juste au-dessus du récapitulatif, que le thème redessine à chaque changement de quantité)
+    var resume = document.querySelector('#cart .cart-grid-right .cart-summary');
+    if (resume) {
+      document.querySelectorAll('#cart .cart-grid-right > .abc-palier').forEach(function (a) { a.remove(); });
+      var b = blocRemise(totalPanier); if (b) resume.parentNode.insertBefore(b, resume);
+    }
+    // fenêtre « Produit ajouté avec succès »
+    var modal = document.querySelector('#blockcart-modal .cart-content');
+    if (modal) {
+      var a2 = modal.querySelector('.abc-palier'); if (a2) a2.remove();
+      var b2 = blocRemise(totalPanier);
+      if (b2) { var actions = modal.querySelector('.cart-content-btn'); if (actions) modal.insertBefore(b2, actions); else modal.appendChild(b2); }
+    }
+  }
+  function brancherRemise() {
+    if (window.prestashop && window.prestashop.cart) totalPanier = lireTotal(window.prestashop.cart);
+    afficherRemise();
+    if (!window.prestashop || typeof window.prestashop.on !== 'function') return;
+    window.prestashop.on('updateCart', function (e) {
+      var t = e && e.resp && e.resp.cart ? lireTotal(e.resp.cart) : null;
+      if (t !== null) { totalPanier = t; setTimeout(afficherRemise, 30); }
+    });
+    window.prestashop.on('updatedCart', function () { setTimeout(afficherRemise, 30); });
+    // la fenêtre « Produit ajouté » arrive après coup : on la complète dès qu'elle apparaît
+    new MutationObserver(function (l) {
+      for (var i = 0; i < l.length; i++) for (var j = 0; j < l[i].addedNodes.length; j++) {
+        var n = l[i].addedNodes[j];
+        if (n.nodeType === 1 && (n.id === 'blockcart-modal' || (n.querySelector && n.querySelector('#blockcart-modal')))) { afficherRemise(); return; }
+      }
+    }).observe(document.body, { childList: true });
+  }
+  ready(brancherRemise);
+
+  // 14. Fiche produit : « Vous aimerez aussi », 4 produits de la même catégorie, de prix proche.
+  //     Chargé seulement quand on approche du bas de la fiche (rien de plus à télécharger sinon).
+  function vousAimerezAussi() {
+    var body = document.body;
+    if (!body.classList.contains('page-product') || document.querySelector('.abc-suggest')) return;
+    var idProduit = ((body.className.match(/\bproduct-id-(\d+)\b/) || [])[1]);
+    // catégorie la plus précise du fil d'Ariane (avant le produit lui-même)
+    var liens = [].slice.call(document.querySelectorAll('.breadcrumb a[href]')).map(function (a) { return a.href; })
+      .filter(function (h) { return /\/\d+-[^\/]+$/.test(h.split(/[?#]/)[0]) && !/\.html/.test(h); });
+    var url = liens.length ? liens[liens.length - 1] : null;
+    if (!url) {
+      var idCat = ((body.className.match(/\bproduct-id-category-(\d+)\b/) || [])[1]);
+      if (!idCat || idCat === '1' || idCat === '2') return;
+      url = BASE + 'index.php?id_category=' + idCat + '&controller=category';
+    }
+    var ancre = document.querySelector('#main .product-tabcontent') || document.querySelector('#main .abc-photos') || document.querySelector('#main .product-container');
+    if (!ancre || !idProduit) return;
+    var prixEl = document.querySelector('.product-prices [itemprop="price"], .product-prices .current-price-value, .current-price [content]');
+    var prix = prixEl ? parseFloat(prixEl.getAttribute('content')) : NaN;
+
+    var sec = el('section', 'abc-suggest', '<h2>Vous aimerez aussi</h2><div class="abc-suggest__rail"></div>');
+    ancre.parentNode.insertBefore(sec, ancre.nextSibling);
+    var rail = sec.querySelector('.abc-suggest__rail');
+
+    var charger = function () {
+      fetch(url + (url.indexOf('?') === -1 ? '?' : '&') + 'resultsPerPage=36', { headers: { Accept: 'application/json' }, credentials: 'same-origin' })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          var liste = (j.products || []).filter(function (p) { return String(p.id_product) !== idProduit && p.cover; });
+          if (!isNaN(prix)) liste.sort(function (a, b) { return Math.abs(a.price_amount - prix) - Math.abs(b.price_amount - prix); });
+          // pas deux fois la même gamme (ex. 50 cl et 70 cl du même gin)
+          var gamme = function (n) { return n.toLowerCase().split(/[\s–-]+/).slice(0, 2).join(' '); };
+          var nomActuel = (document.querySelector('#main h1') || {}).textContent || '';
+          var vues = {}; vues[gamme(nomActuel.trim())] = 1;
+          var choix = [], reste = [];
+          liste.forEach(function (p) { var g = gamme(p.name); if (!vues[g] && choix.length < 4) { vues[g] = 1; choix.push(p); } else reste.push(p); });
+          while (choix.length < 4 && reste.length) choix.push(reste.shift());
+          if (!choix.length) { sec.remove(); return; }
+          rail.innerHTML = choix.map(function (p) {
+            var img = (p.cover.bySize && (p.cover.bySize.home_default || p.cover.bySize.medium_default)) || p.cover.medium || p.cover.large;
+            var ancien = p.has_discount ? '<s>' + esc(p.regular_price) + '</s> ' : '';
+            return '<a class="abc-carte" href="' + esc(p.url) + '">' +
+              '<span class="abc-carte__img"><img src="' + esc(img.url) + '" alt="' + esc(p.name) + '" width="' + (img.width || 250) + '" height="' + (img.height || 250) + '" loading="lazy" decoding="async"></span>' +
+              '<span class="abc-carte__nom">' + esc(p.name) + '</span>' +
+              '<span class="abc-carte__prix">' + ancien + esc(p.price) + '</span></a>';
+          }).join('');
+          requestAnimationFrame(function () { sec.classList.add('is-pret'); });
+        })
+        .catch(function () { sec.remove(); });
+    };
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { io.disconnect(); charger(); } }, { rootMargin: '700px 0px' });
+      io.observe(sec);
+    } else charger();
+  }
+  ready(vousAimerezAussi);
+
+  // 15. Catégories de produits : le petit texte de présentation passe sous la liste des produits,
+  //     pour qu'on arrive directement sur les produits (le texte reste lu par Google).
+  var TEXTE_EN_BAS = [7, 15, 16, 20, 21, 22, 27, 28, 29, 171, 182, 183, 184, 186, 187, 188, 189, 190, 191, 192, 193, 194, 197, 205];
+  function texteSousLesProduits() {
+    if (!document.body.classList.contains('page-category')) return;
+    var id = +((document.body.className.match(/\bcategory-id-(\d+)\b/) || [])[1]);
+    if (TEXTE_EN_BAS.indexOf(id) === -1) return;
+    var d = document.getElementById('category-description');
+    var liste = document.getElementById('products') || document.getElementById('js-product-list');
+    if (!d || !liste || !d.textContent.trim()) return;
+    var bloc = el('div', 'abc-cat-texte');
+    bloc.appendChild(d);
+    liste.parentNode.insertBefore(bloc, liste.nextSibling);
+    document.body.classList.add('abc-texte-en-bas');
+  }
+  ready(texteSousLesProduits);
 })();
