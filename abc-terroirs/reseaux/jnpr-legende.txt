@@ -1,4 +1,8 @@
-LÉGENDE INSTAGRAM (avec jnpr-post-instagram.jpg)
+PUBLICATION INSTAGRAM : carrousel de 4 images dans cet ordre
+1. jnpr-post-instagram.jpg  2. jnpr-carrousel-1.jpg (JNPR n°3)  3. jnpr-carrousel-2.jpg (BTTR n°1)  4. jnpr-carrousel-3.jpg (VRMH n°1)
+(ou seulement jnpr-post-instagram.jpg pour un post simple)
+
+LÉGENDE INSTAGRAM
 
 L'apéro, sans l'alcool. Pas sans le goût.
 
@@ -11,6 +15,8 @@ Dans notre rayon :
 · VRMH n°1, un vermouth pour vos cocktails
 
 Capitaine de soirée, pause détox ou simplement curieux : passez les découvrir, on vous conseille avec plaisir.
+
+29,90 € la bouteille de 70 cl. Faites défiler pour nos idées de service →
 
 📍 Spi & Bi, 5 place Paul-Émile Ladmirault, Nantes
 🛒 Aussi sur abcterroirs.com, rayon Sans alcool
