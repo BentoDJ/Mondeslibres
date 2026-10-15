@@ -2,7 +2,7 @@
 /**
  * ABC Terroirs : habillage du site
  *
- * Ce module ajoute une feuille de style (views/css/abc-v148.css ; le numéro dans le nom force les navigateurs à recharger le style), les polices Google Fonts
+ * Ce module ajoute une feuille de style (views/css/abc-v149.css ; le numéro dans le nom force les navigateurs à recharger le style), les polices Google Fonts
  * et un petit script (views/js/abc.js) : raccourcis de navigation, boutons d'action,
  * aide quand une recherche ne trouve rien.
  * Pour revenir à l'ancien design : Modules > ce module > Désactiver.
@@ -17,7 +17,7 @@ class Abcdesign extends Module
     {
         $this->name = 'abcdesign';
         $this->tab = 'front_office_features';
-        $this->version = '1.4.8';
+        $this->version = '1.4.9';
         $this->author = 'ABC Terroirs';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = ['min' => '1.7.0.0', 'max' => _PS_VERSION_];
@@ -38,17 +38,17 @@ class Abcdesign extends Module
     {
         $this->context->controller->registerStylesheet(
             'abcdesign-fonts',
-            'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap',
+            'https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap',
             ['server' => 'remote', 'media' => 'all', 'priority' => 990]
         );
         $this->context->controller->registerStylesheet(
             'abcdesign',
-            'modules/' . $this->name . '/views/css/abc-v148.css',
+            'modules/' . $this->name . '/views/css/abc-v149.css',
             ['media' => 'all', 'priority' => 1000]
         );
         $this->context->controller->registerJavascript(
             'abcdesign-js',
-            'modules/' . $this->name . '/views/js/abc-v148.js',
+            'modules/' . $this->name . '/views/js/abc-v149.js',
             ['position' => 'bottom', 'priority' => 1000]
         );
     }
