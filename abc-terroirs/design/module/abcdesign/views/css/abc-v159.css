@@ -784,3 +784,6 @@ html, body { overflow-x: clip; max-width: 100%; }
   #header .mobile-menu .menu-icon .cat-title { color: transparent !important; overflow: hidden; white-space: nowrap; text-indent: 200%; width: 34px !important; }
   #header .mobile-menu .menu-icon { width: 34px !important; }
 }
+
+/* Mobile : plus d'icônes Facebook / Instagram à côté du logo (elles restent en bas de page et sur ordinateur) */
+@media (max-width: 991px) { .abc-social-top { display: none !important; } }
