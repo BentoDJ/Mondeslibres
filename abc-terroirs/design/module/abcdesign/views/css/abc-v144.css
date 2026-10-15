@@ -584,3 +584,37 @@ body.category-id-155 #products { display: none !important; }
 body.category-id-155 #content-wrapper { width: 100% !important; max-width: 860px; margin: 0 auto; float: none !important; }
 body.category-id-155 #category-description h2 { font-family: Fraunces, Georgia, serif; font-size: 26px; margin: 0 0 14px; }
 body.category-id-155 #category-description p { font-size: 17px; line-height: 1.65; margin: 0 0 14px; }
+
+/* ===== Page « Demande de devis » (catégorie 165) : formulaire guidé ===== */
+body.category-id-165 #js-product-list-top, body.category-id-165 #js-product-list, body.category-id-165 #js-product-list-bottom,
+body.category-id-165 #products .page-not-found, body.category-id-165 .page-not-found { display: none !important; }
+.abc-devis { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 28px; margin: 26px 0 40px; scroll-margin-top: 80px; }
+.abc-devis__form { background: #fff; border: 1px solid var(--abc-line); border-radius: var(--abc-radius); padding: 26px; }
+.abc-devis__form h2 { font-family: Fraunces, Georgia, serif !important; font-size: 26px !important; margin: 0 0 18px; }
+.abc-devis fieldset { border: 0; padding: 0; margin: 0 0 18px; }
+.abc-devis legend { font-size: 15px; font-weight: 600; color: var(--abc-ink); margin-bottom: 8px; }
+.abc-devis legend small, .abc-champ small { font-weight: 400; color: var(--abc-muted); }
+.abc-choix { display: inline-block; margin: 0 6px 8px 0; cursor: pointer; }
+.abc-choix input { position: absolute; opacity: 0; pointer-events: none; }
+.abc-choix span { display: inline-block; padding: 8px 14px; border: 1px solid var(--abc-line); border-radius: 999px; font-size: 14.5px; background: #fff; transition: background .15s, border-color .15s; }
+.abc-choix input:checked + span { background: var(--abc-olive); border-color: var(--abc-olive); color: #fff; }
+.abc-choix input:focus-visible + span { outline: 2px solid var(--abc-olive-dark); outline-offset: 2px; }
+.abc-devis__row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.abc-champ { display: block; font-size: 14.5px; font-weight: 600; margin: 0 0 14px; }
+.abc-champ input, .abc-champ textarea { display: block; width: 100%; margin-top: 6px; padding: 11px 13px; border: 1px solid var(--abc-line); border-radius: 10px; font: 400 15px Inter, Arial, sans-serif; background: #fff; }
+.abc-champ input:focus, .abc-champ textarea:focus { border-color: var(--abc-olive); outline: none; box-shadow: 0 0 0 3px rgba(122,138,32,.15); }
+.abc-hp { position: absolute !important; left: -9999px !important; }
+.abc-devis button[type=submit] { margin-top: 6px; border: 0; cursor: pointer; }
+.abc-devis button[disabled] { opacity: .6; cursor: wait; }
+.abc-devis__msg { margin: 10px 0 0; font-size: 14.5px; } .abc-devis__msg.is-err { color: #a3361f; font-weight: 600; }
+.abc-devis__rgpd { margin: 8px 0 0; font-size: 12.5px; color: var(--abc-muted); }
+.abc-devis__aside { align-self: start; background: var(--abc-cream); border-radius: var(--abc-radius); padding: 22px; }
+.abc-devis__aside h3 { font-family: Fraunces, Georgia, serif; font-size: 20px; margin: 0 0 10px; }
+.abc-devis__aside p { font-size: 15px; line-height: 1.6; margin: 0 0 10px; }
+.abc-devis__aside a { color: var(--abc-olive-dark) !important; font-weight: 600; }
+@media (max-width: 767px) {
+  .abc-devis { grid-template-columns: 1fr; gap: 18px; }
+  .abc-devis__form { padding: 18px; }
+  .abc-devis__row { grid-template-columns: 1fr; gap: 0; }
+}
+.abc-devis .abc-champ, .abc-devis legend { text-align: left !important; }

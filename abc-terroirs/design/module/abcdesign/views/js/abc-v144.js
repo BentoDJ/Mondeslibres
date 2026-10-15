@@ -81,7 +81,7 @@
     ['Moins de 25 €', '', '30-selection-moins-de-25'],
     ['25 à 50 €', '', '31-selection-25-a-50'],
     ['Plus de 50 €', '', '32-selection-plus-de-50'],
-    ['Sur mesure', '', 'nous-contacter']
+    ['Sur mesure', '', '165-demande-de-devis-remises-commerciales#devis']
   ];
 
   function el(tag, cls, html) {
@@ -257,7 +257,7 @@
         var row = el('div', 'abc-cta-row',
           '<a class="abc-btn abc-btn--main" href="' + BASE + '3-coffrets-gourmands">Voir tous les coffrets</a>' +
           '<a class="abc-btn abc-btn--ghost" href="' + BASE + '172-idees-cadeaux-noel">Idées cadeaux de Noël</a>' +
-          '<a class="abc-btn abc-btn--ghost" href="' + BASE + 'nous-contacter">Composer un coffret sur mesure</a>');
+          '<a class="abc-btn abc-btn--ghost" href="' + BASE + '165-demande-de-devis-remises-commerciales#devis">Composer un coffret sur mesure</a>');
         intro.appendChild(row);
 
         var budgets = el('section', 'abc-budgets');
@@ -296,7 +296,7 @@
             '<p>Dites-nous votre budget et vos envies : nous le confectionnons sur mesure dans nos boutiques de la place Saint-Pierre et de la rue Franklin, à Nantes.</p>' +
           '</div>' +
           '<div class="abc-cta-band__actions">' +
-            '<a class="abc-btn abc-btn--light" href="' + BASE + 'nous-contacter">Demander un devis</a>' +
+            '<a class="abc-btn abc-btn--light" href="' + BASE + '165-demande-de-devis-remises-commerciales#devis">Demander un devis</a>' +
             '<a class="abc-btn abc-btn--outline-light" href="tel:+33240897626">Appeler le ' + TEL + '</a>' +
           '</div>' +
         '</div>');
@@ -355,6 +355,68 @@
       window.prestashop.on('updateProductList', function () { setTimeout(versLaListe, 50); });
     }
   }
+  // 10. Page « Demande de devis » (catégorie 165) : formulaire guidé, envoyé à commercial@abcterroirs.com
+  //     par controllers/front/devis.php (copie gardée dans data/devis.csv)
+  function formulaireDevis() {
+    if (!document.body.classList.contains('category-id-165') || document.getElementById('devis')) return;
+    var cible = document.querySelector('#category-description') || document.querySelector('.block-category');
+    if (!cible) return;
+    var opts = function (name, list, type) {
+      return list.map(function (v, i) {
+        return '<label class="abc-choix"><input type="' + (type || 'radio') + '" name="' + name + '" value="' + esc(v) + '"' + (i === 0 && type !== 'checkbox' ? ' required' : '') + '><span>' + esc(v) + '</span></label>';
+      }).join('');
+    };
+    var sec = el('section', 'abc-devis');
+    sec.id = 'devis';
+    sec.innerHTML =
+      '<form class="abc-devis__form" novalidate>' +
+        '<h2>Votre demande de devis</h2>' +
+        '<fieldset><legend>Votre projet</legend>' + opts('projet', ['Cadeaux clients', 'Cadeaux salariés / CSE', 'Séminaire ou événement', 'Mariage', 'Autre']) + '</fieldset>' +
+        '<div class="abc-devis__row">' +
+          '<label class="abc-champ">Nombre de coffrets<input type="number" name="nombre" min="1" inputmode="numeric" required placeholder="Ex. 25"></label>' +
+          '<label class="abc-champ">Date souhaitée<input type="text" name="date" placeholder="Ex. semaine du 15 décembre"></label>' +
+        '</div>' +
+        '<fieldset><legend>Budget par coffret</legend>' + opts('budget', ['Moins de 25 €', '25 à 50 €', '50 à 100 €', 'Plus de 100 €', 'À définir ensemble']) + '</fieldset>' +
+        '<fieldset><legend>Réception</legend>' + opts('reception', ['Retrait en boutique', 'Livraison à une adresse', 'Expédition à plusieurs destinataires']) + '</fieldset>' +
+        '<fieldset><legend>Préférences <small>(facultatif)</small></legend>' + opts('pref', ['Avec alcool', 'Sans alcool', 'Sans porc', 'Sucré', 'Salé', '100 % local'], 'checkbox') + '</fieldset>' +
+        '<div class="abc-devis__row">' +
+          '<label class="abc-champ">Entreprise<input type="text" name="entreprise" autocomplete="organization"></label>' +
+          '<label class="abc-champ">Nom et prénom *<input type="text" name="nom" autocomplete="name" required></label>' +
+        '</div>' +
+        '<div class="abc-devis__row">' +
+          '<label class="abc-champ">E-mail *<input type="email" name="email" autocomplete="email" required></label>' +
+          '<label class="abc-champ">Téléphone<input type="tel" name="tel" autocomplete="tel"></label>' +
+        '</div>' +
+        '<label class="abc-champ">Un mot sur votre projet <small>(facultatif)</small><textarea name="message" rows="4" placeholder="Thème, contraintes, logo, message à joindre…"></textarea></label>' +
+        '<label class="abc-hp" aria-hidden="true">Site web<input type="text" name="site_web" tabindex="-1" autocomplete="off"></label>' +
+        '<button type="submit" class="abc-btn abc-btn--main">Envoyer ma demande</button>' +
+        '<p class="abc-devis__msg" role="status" aria-live="polite"></p>' +
+        '<p class="abc-devis__rgpd">Vos coordonnées servent uniquement à répondre à votre demande.</p>' +
+      '</form>' +
+      '<aside class="abc-devis__aside"><h3>Vous préférez en parler&nbsp;?</h3><p>Davy Lechardour<br><a href="tel:+33240897626">02 40 89 76 26</a><br><a href="tel:+33663402330">06 63 40 23 30</a><br><a href="mailto:commercial@abcterroirs.com">commercial@abcterroirs.com</a></p><p>Ou passez nous voir : 5 place Saint-Pierre, Nantes.</p></aside>';
+    cible.parentNode.insertBefore(sec, cible.nextSibling);
+    var form = sec.querySelector('form'), msg = sec.querySelector('.abc-devis__msg'), t0 = Math.floor(Date.now() / 1000);
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      var fd = new FormData(form);
+      fd.append('preferences', [].map.call(form.querySelectorAll('input[name=pref]:checked'), function (c) { return c.value; }).join(', '));
+      fd.append('token', (window.prestashop && prestashop.static_token) || '');
+      fd.append('t0', t0);
+      var btn = form.querySelector('button'); btn.disabled = true; btn.textContent = 'Envoi en cours…'; msg.className = 'abc-devis__msg';
+      fetch(BASE + 'index.php?fc=module&module=abcdesign&controller=devis', { method: 'POST', body: fd, credentials: 'same-origin' })
+        .then(function (r) { return r.json(); })
+        .then(function (j) {
+          if (j.ok) {
+            form.innerHTML = '<h2>Merci, votre demande est envoyée</h2><p>Nous revenons vers vous avec une proposition. Pour toute question : <a href="tel:+33240897626">02 40 89 76 26</a>.</p>';
+          } else { msg.textContent = j.message; msg.className += ' is-err'; btn.disabled = false; btn.textContent = 'Envoyer ma demande'; }
+        })
+        .catch(function () { msg.textContent = 'L\'envoi a échoué. Appelez-nous au 02 40 89 76 26 ou écrivez à commercial@abcterroirs.com.'; msg.className += ' is-err'; btn.disabled = false; btn.textContent = 'Envoyer ma demande'; });
+    });
+    if (location.hash === '#devis') setTimeout(function () { sec.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 300);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', formulaireDevis); else formulaireDevis();
+
   // 9. Textes du thème restés en anglais dans les listes de produits (retraduits aussi après un tri ou un filtre)
   function traduireListe() {
     document.querySelectorAll('#js-product-list-top div, .products-selection div, .products-selection p, nav.pagination div, nav.pagination p').forEach(function (e) {
