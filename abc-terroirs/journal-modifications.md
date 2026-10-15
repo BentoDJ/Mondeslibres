@@ -208,6 +208,7 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 103 | Défilement sur mobile | La page pouvait glisser vers la droite | Rebond normal gardé (essai sans rebond en 1.5.6 annulé, trop brusque) ; glissement à droite bloqué (overflow-x: clip, module 1.5.8). Vérifié : aucune page n'a d'espace réel sous le pied de page ni de contenu qui dépasse à droite |
 | 104 | En-tête mobile | Le mot « MENU » passait par-dessus le logo | Icône 3 traits seule, logo bien dégagé (testé iPhone 13, iPhone SE, Galaxy S9+) |
 | 105 | En-tête mobile | Icônes Facebook et Instagram à côté du logo | Retirées sur mobile (gardées en bas de page et sur ordinateur), module 1.5.9 |
+| 106 | Fin de page sur iPhone | Vidéo du 15/10 : on pouvait descendre d'un écran entier dans du blanc sous le pied de page (et glisser à droite) ; non reproduit sous Chrome | La page est coupée net à la fin du pied de page (main#page : overflow clip), module 1.6.0. Menus, en-tête collé et fenêtres testés sans changement. À confirmer sur un vrai iPhone |
 
 **Suivi des places : `suivi-degustations.xlsx`** (à la racine de ce dossier). Onglets Achats (une ligne par commande), Seances (planning et places restantes), Reservations (appels des clients) et Tarifs (prix et remises sur volume). Le mode d'emploi est dans le premier onglet.
 

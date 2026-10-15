@@ -787,3 +787,9 @@ html, body { overflow-x: clip; max-width: 100%; }
 
 /* Mobile : plus d'icônes Facebook / Instagram à côté du logo (elles restent en bas de page et sur ordinateur) */
 @media (max-width: 991px) { .abc-social-top { display: none !important; } }
+
+/* La page s'arrête net à la fin du pied de page, en bas comme à droite :
+   sur iPhone, un élément invisible prolongeait la page (zone blanche sous le pied de page, glissement à droite).
+   Les éléments fixes (en-tête collé, menu mobile, bouton « haut de page ») ne sont pas concernés. */
+main#page { position: relative; overflow: clip; }
+@supports not (overflow: clip) { main#page { overflow: hidden; } }
