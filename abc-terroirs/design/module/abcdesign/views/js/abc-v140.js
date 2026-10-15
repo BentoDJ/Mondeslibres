@@ -355,6 +355,29 @@
       window.prestashop.on('updateProductList', function () { setTimeout(versLaListe, 50); });
     }
   }
+  // 9. Textes du thème restés en anglais dans les listes de produits (retraduits aussi après un tri ou un filtre)
+  function traduireListe() {
+    document.querySelectorAll('#js-product-list-top div, .products-selection div, .products-selection p, nav.pagination div, nav.pagination p').forEach(function (e) {
+      if (e.children.length) return;
+      var m = e.textContent.match(/Affichage de (\d+)-(\d+) of (\d+) élément\(s\)/);
+      if (m) e.textContent = m[3] === '1' ? '1 produit' : 'Produits ' + m[1] + ' à ' + m[2] + ' sur ' + m[3];
+    });
+    document.querySelectorAll('.products-sort-order a, .products-sort-order .select-title').forEach(function (a) {
+      a.childNodes.forEach(function (t) {
+        if (t.nodeType === 3) t.textContent = t.textContent.replace('Reference, A to Z', 'Référence, de A à Z').replace('Reference, Z to A', 'Référence, de Z à A');
+      });
+    });
+    document.querySelectorAll('#grid a, #list a').forEach(function (a) {
+      var fr = a.closest('#grid') ? 'Affichage en grille' : 'Affichage en liste';
+      a.title = fr; a.setAttribute('aria-label', fr);
+    });
+  }
+  function brancherTraduction() {
+    traduireListe();
+    if (window.prestashop && typeof window.prestashop.on === 'function') window.prestashop.on('updateProductList', function () { setTimeout(traduireListe, 60); });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', brancherTraduction); else brancherTraduction();
+
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', brancherTri); else brancherTri();
 
   // 8. Catégorie sans sous-catégories (ex. Martinique), ouverte depuis un lien du site :
