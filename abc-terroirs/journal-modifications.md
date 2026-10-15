@@ -205,6 +205,7 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 100 | Boutons grille / liste des catégories | Mots anglais « Grid » « List » par-dessus les icônes | Icônes seules (libellés en français gardés pour les lecteurs d'écran) |
 | 101 | Modules → Réassurance → 1er bloc (fiches produits, panier, commande) | « Garanties sécurité — Paiement sécurisé par Paypal » | « Paiement sécurisé — Carte bancaire ou PayPal, connexion chiffrée. » |
 | 102 | Boutons de partage des fiches produits | Facebook, X, Pinterest | Facebook et X (Pinterest masqué par le module abcdesign 1.5.5) |
+| 103 | Bas de page | Sur iPhone / Mac, l'effet « élastique » laissait voir une bande blanche sous le pied de page | Effet désactivé (overscroll-behavior, module 1.5.6). Vérifié : aucune page n'a d'espace réel sous le pied de page |
 
 **Suivi des places : `suivi-degustations.xlsx`** (à la racine de ce dossier). Onglets Achats (une ligne par commande), Seances (planning et places restantes), Reservations (appels des clients) et Tarifs (prix et remises sur volume). Le mode d'emploi est dans le premier onglet.
 

@@ -774,3 +774,6 @@ h1, h2, h3, .h1, .h2, .abc-budget strong, .abc-avis__note strong { font-size-adj
 
 /* Fiche produit : bouton de partage Pinterest retiré (Facebook et X gardés) */
 .social-sharing li.pinterest { display: none !important; }
+
+/* Fin de page : pas d'effet « élastique » qui laissait voir une bande blanche sous le pied de page (iPhone, Mac) */
+html, body { overscroll-behavior-y: none; }
