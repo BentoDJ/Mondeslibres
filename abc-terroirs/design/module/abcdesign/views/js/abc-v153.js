@@ -24,7 +24,7 @@
   ];
 
   // Encart « Nouveau » de l'accueil (laisser '' pour ne rien afficher)
-  var NOUVEAUTE = 'Remises dégressives : <strong>-5 %</strong> dès 300 € HT d\'achat, <strong>-10 %</strong> dès 600 € HT.';
+  var NOUVEAUTE = 'Remises dégressives : <strong>-5 %</strong> dès 300 € TTC, <strong>-10 %</strong> dès 600 € TTC.';
 
   // Ordinateur : une seule barre de navigation. Raccourcis affichés dans la barre (les autres restent sur mobile)
   // [texte, page, texte court pour écran moyen, priorité : 1 toujours, 2 masqué sous 1200 px]
