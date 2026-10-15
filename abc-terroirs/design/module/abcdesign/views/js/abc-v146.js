@@ -60,6 +60,16 @@
   ];
 
   // Les 3 boutiques (horaires : site, PagesJaunes et Mappy, octobre 2026)
+  // Avis Google des 3 boutiques (notes relevées sur Google Maps le 15/10/2026 : à mettre à jour de temps en temps)
+  // [nom, adresse, note, identifiant Google de la fiche]
+  var AVIS_GOOGLE = [
+    ['ABC Terroirs Saint-Pierre', '5 place Saint-Pierre', '4,6', 'ChIJRRzrmaTuBUgRMVzdzQVsrQA'],
+    ['ABC Terroirs Franklin', '9 rue Franklin', '4,7', 'ChIJl58IwxzsBUgRzxfxUidYYIs'],
+    ['Spi & Bi', '5 place Paul-Émile Ladmirault', '4,9', 'ChIJf9l54uztBUgRlgaJeI_wpgs']
+  ];
+  // Quelques avis clients recopiés mot pour mot depuis Google : [texte, prénom + initiale, boutique]. Vide = rien affiché.
+  var AVIS_CITES = [];
+
   var BOUTIQUES = [
     { nom: 'ABC Terroirs Saint-Pierre', sous: 'Épicerie fine & cave (boutique historique)', adr: '5 place Saint-Pierre, 44000 Nantes', tel: '02 40 89 76 26',
       h: [['Lundi – vendredi', '9h30 – 19h30'], ['Samedi', '9h30 – 20h'], ['Dimanche', 'Fermé']] },
@@ -284,6 +294,25 @@
         budgets.parentNode.insertBefore(deg, budgets.nextSibling);
 
       }
+    }
+
+    // 4 bis. Tout en bas : avis Google des boutiques
+    var pied = document.getElementById('footer');
+    if (pied && page !== 'cart' && page !== 'order' && !document.querySelector('.abc-avis')) {
+      var cartes = AVIS_GOOGLE.map(function (a) {
+        var pct = Math.round(parseFloat(a[2].replace(',', '.')) / 5 * 100);
+        return '<div class="abc-avis__carte"><p class="abc-avis__nom">' + esc(a[0]) + '</p><p class="abc-avis__adr">' + esc(a[1]) + '</p>' +
+          '<p class="abc-avis__note"><strong>' + a[2] + '</strong><span class="abc-etoiles" role="img" aria-label="' + a[2] + ' sur 5"><span style="width:' + pct + '%"></span></span></p>' +
+          '<p class="abc-avis__liens"><a href="https://search.google.com/local/reviews?placeid=' + a[3] + '" target="_blank" rel="noopener">Lire les avis</a>' +
+          '<a href="https://search.google.com/local/writereview?placeid=' + a[3] + '" target="_blank" rel="noopener">Donner mon avis</a></p></div>';
+      }).join('');
+      var cites = AVIS_CITES.map(function (c) {
+        return '<figure class="abc-avis__cite"><blockquote>« ' + esc(c[0]) + ' »</blockquote><figcaption>' + esc(c[1]) + ' · ' + esc(c[2]) + ' · avis Google</figcaption></figure>';
+      }).join('');
+      var bloc = el('section', 'abc-avis',
+        '<div class="abc-avis__inner"><div class="abc-avis__tete"><h2>Nos clients en parlent</h2><p>Les notes de nos trois boutiques sur Google.</p></div>' +
+        '<div class="abc-avis__cartes">' + cartes + '</div>' + (cites ? '<div class="abc-avis__cites">' + cites + '</div>' : '') + '</div>');
+      pied.parentNode.insertBefore(bloc, pied);
     }
 
     // 4. Avant le pied de page : bandeau « sur mesure / entreprises » (sauf panier)

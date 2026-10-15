@@ -624,3 +624,27 @@ body.category-id-165 #products .page-not-found, body.category-id-165 .page-not-f
   .abc-social-top { top: 100px; gap: 10px; }
   .abc-social { width: 44px; height: 44px; border-width: 2px; background-size: 22px 22px; }
 }
+
+/* ===== « Nos clients en parlent » : notes Google des 3 boutiques, tout en bas ===== */
+.abc-avis { background: #fff; border-top: 1px solid var(--abc-line); padding: 38px 15px 42px; }
+.abc-avis__inner { max-width: 1200px; margin: 0 auto; }
+.abc-avis__tete { text-align: center; margin-bottom: 22px; }
+.abc-avis__tete h2 { font-family: Fraunces, Georgia, serif !important; font-size: clamp(24px, 3vw, 30px) !important; margin: 0 0 6px; }
+.abc-avis__tete p { margin: 0; color: var(--abc-muted); font-size: 15px; }
+.abc-avis__cartes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.abc-avis__carte { background: var(--abc-cream); border-radius: var(--abc-radius); padding: 20px; text-align: center; }
+.abc-avis__nom { font-weight: 600; font-size: 16px; margin: 0; color: var(--abc-ink); }
+.abc-avis__adr { font-size: 13.5px; color: var(--abc-muted); margin: 2px 0 10px; }
+.abc-avis__note { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 0 0 12px; }
+.abc-avis__note strong { font-family: Fraunces, Georgia, serif; font-size: 30px; color: var(--abc-olive-dark); line-height: 1; }
+.abc-etoiles { position: relative; display: inline-block; font-size: 20px; line-height: 1; letter-spacing: 2px; color: #d9d2bd; }
+.abc-etoiles::before { content: "★★★★★"; }
+.abc-etoiles span { position: absolute; left: 0; top: 0; overflow: hidden; white-space: nowrap; color: #e3a92b; }
+.abc-etoiles span::before { content: "★★★★★"; }
+.abc-avis__liens { display: flex; justify-content: center; gap: 14px; margin: 0; font-size: 14px; }
+.abc-avis__liens a { color: var(--abc-olive-dark) !important; font-weight: 600; text-decoration: underline !important; }
+.abc-avis__cites { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+.abc-avis__cite { margin: 0; padding: 18px; border: 1px solid var(--abc-line); border-radius: var(--abc-radius); }
+.abc-avis__cite blockquote { margin: 0 0 8px; font-size: 15px; line-height: 1.55; }
+.abc-avis__cite figcaption { font-size: 13px; color: var(--abc-muted); }
+@media (max-width: 767px) { .abc-avis__cartes, .abc-avis__cites { grid-template-columns: 1fr; gap: 12px; } .abc-avis { padding: 28px 15px 32px; } }
