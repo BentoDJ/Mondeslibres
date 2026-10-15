@@ -710,3 +710,12 @@ h1, h2, h3, .h1, .h2, .products-section-title, .block_title, .productpage_title,
 body, body * { font-size-adjust: 0.53; }
 h1, h2, h3, .h1, .h2, .abc-budget strong, .abc-avis__note strong { font-size-adjust: none; }
 #search_widget form input[type="text"].ui-autocomplete-input { border-radius: 3px 0 0 3px !important; }
+
+/* Catégorie technique « Attention mentions légales » (n° 199) : masquée des menus et arborescences */
+.category-top-menu a[href*="199-attention-mentions-legales"], #_desktop_top_menu a[href*="199-attention-mentions-legales"],
+#_mobile_top_menu a[href*="199-attention-mentions-legales"] { display: none !important; }
+.category-top-menu li:has(> a[href*="199-attention-mentions-legales"]) { display: none !important; }
+
+/* Le thème met une majuscule à chaque mot (« Ajouter À Ma Liste D'envies », « Détails Du Produit », menus) : on garde l'écriture normale */
+.st-wishlist-bt-content, .ap-btn-wishlist span, .product-tabs .nav-link, .tabs .nav-link,
+.dropdown-item, .dropdown-item.dropdown-submenu, #_desktop_top_menu a, .category-top-menu a { text-transform: none !important; }

@@ -262,8 +262,8 @@
       if (window.innerWidth >= 768) {
         var IMGS = ((document.querySelector('link[href*="abcdesign/views/css"]') || {}).href || '').replace(/views\/css\/[^/?]+.*$/, 'views/img/');
         document.querySelectorAll('img[src*="diapo-accueil-noel"], img[data-src*="diapo-accueil-noel"]').forEach(function (im) {
-          im.src = IMGS + 'diapo-noel-large.jpg';
-          if (im.getAttribute('data-src')) im.setAttribute('data-src', IMGS + 'diapo-noel-large.jpg');
+          im.src = IMGS + 'diapo-noel-large-v2.jpg';
+          if (im.getAttribute('data-src')) im.setAttribute('data-src', IMGS + 'diapo-noel-large-v2.jpg');
         });
         document.body.classList.add('abc-slider-bas');
       }
@@ -459,6 +459,32 @@
     });
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', referenceVide); else referenceVide();
+
+  // 12. Petites corrections de textes du thème et du pied de page (orthographe, majuscules)
+  var CORRECTIONS = [
+    ["Ajouter À Ma Liste D'envies", "Ajouter à ma liste d'envies"],
+    ['Détails Du Produit', 'Détails du produit'],
+    ['A propos de notre enseigne', 'À propos de notre enseigne'],
+    ["Conditions d'utilisation", 'Conditions générales de vente'],
+    ['5 Place St Pierre', '5 place Saint-Pierre'],
+    ['place ladmirault', 'place Ladmirault'],
+    ['ATTENTION, MAGASINS DANGEREUX POUR LES GOURMANDS !', 'Attention, magasins dangereux pour les gourmands\u00a0!'],
+    ['Produits Connexes', 'Vous aimerez aussi'],
+    ['Vous Aimerez Aussi', 'Vous aimerez aussi']
+  ];
+  function corrigerTextes(racine) {
+    var w = document.createTreeWalker(racine || document.body, NodeFilter.SHOW_TEXT), n, t;
+    while ((n = w.nextNode())) {
+      t = n.nodeValue;
+      if (!t || t.length > 200) continue;
+      for (var i = 0; i < CORRECTIONS.length; i++) {
+        if (t.indexOf(CORRECTIONS[i][0]) > -1) { t = t.split(CORRECTIONS[i][0]).join(CORRECTIONS[i][1]); }
+      }
+      if (t !== n.nodeValue) n.nodeValue = t;
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { corrigerTextes(); }); else corrigerTextes();
+  if (window.prestashop && typeof window.prestashop.on === 'function') window.prestashop.on('updatedProduct', function () { setTimeout(corrigerTextes, 60); });
   if (window.prestashop && typeof window.prestashop.on === 'function') window.prestashop.on('updatedProduct', function () { setTimeout(referenceVide, 50); });
 
   // 9. Textes du thème restés en anglais dans les listes de produits (retraduits aussi après un tri ou un filtre)
