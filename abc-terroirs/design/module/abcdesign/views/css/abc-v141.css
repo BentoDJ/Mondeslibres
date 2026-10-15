@@ -542,3 +542,32 @@ body.category-id-193 .block-category .category-cover { display: none !important;
   body.abc-slider-bas .flexslider .slides img { width: 100% !important; height: auto !important; aspect-ratio: 2208 / 912; object-fit: cover; object-position: center; }
 }
 
+
+/* Catégories sans bandeau de produits (moins de 5 photos utilisables) : l'ancienne image prise sur Internet est masquée.
+   Les 20 grandes catégories ont un bandeau composé de leurs propres produits (images-pretes/bandeaux/). */
+body.category-id-7 .block-category .category-cover,
+body.category-id-11 .block-category .category-cover,
+body.category-id-22 .block-category .category-cover,
+body.category-id-27 .block-category .category-cover,
+body.category-id-28 .block-category .category-cover,
+body.category-id-29 .block-category .category-cover,
+body.category-id-32 .block-category .category-cover,
+body.category-id-165 .block-category .category-cover,
+body.category-id-166 .block-category .category-cover,
+body.category-id-169 .block-category .category-cover,
+body.category-id-170 .block-category .category-cover,
+body.category-id-182 .block-category .category-cover,
+body.category-id-183 .block-category .category-cover,
+body.category-id-184 .block-category .category-cover,
+body.category-id-186 .block-category .category-cover,
+body.category-id-187 .block-category .category-cover,
+body.category-id-188 .block-category .category-cover,
+body.category-id-189 .block-category .category-cover,
+body.category-id-190 .block-category .category-cover,
+body.category-id-191 .block-category .category-cover,
+body.category-id-192 .block-category .category-cover,
+body.category-id-193 .block-category .category-cover,
+body.category-id-194 .block-category .category-cover,
+body.category-id-195 .block-category .category-cover,
+body.category-id-202 .block-category .category-cover,
+body.category-id-205 .block-category .category-cover { display: none !important; }

@@ -1,0 +1,431 @@
+{
+ "3": {
+  "slug": "3-coffrets-gourmands",
+  "action": "bandeau",
+  "nb": 6,
+  "produits": [
+   "892",
+   "894",
+   "896",
+   "936",
+   "429",
+   "89"
+  ]
+ },
+ "4": {
+  "slug": "4-epicerie",
+  "action": "bandeau",
+  "nb": 6,
+  "produits": [
+   "89",
+   "809",
+   "104",
+   "822",
+   "840",
+   "945"
+  ]
+ },
+ "5": {
+  "slug": "5-vins",
+  "action": "bandeau",
+  "nb": 14,
+  "produits": [
+   "475",
+   "589",
+   "1",
+   "487",
+   "479",
+   "59",
+   "917",
+   "613",
+   "785",
+   "37",
+   "38",
+   "791",
+   "790",
+   "633"
+  ]
+ },
+ "6": {
+  "slug": "6-alcool",
+  "action": "bandeau",
+  "nb": 10,
+  "produits": [
+   "406",
+   "596",
+   "70",
+   "743",
+   "739",
+   "738",
+   "709",
+   "708",
+   "695",
+   "619"
+  ]
+ },
+ "7": {
+  "slug": "7-bieres",
+  "action": "masquer",
+  "nb": 0
+ },
+ "9": {
+  "slug": "9-vins-rouges",
+  "action": "bandeau",
+  "nb": 9,
+  "produits": [
+   "475",
+   "487",
+   "479",
+   "647",
+   "785",
+   "918",
+   "781",
+   "27",
+   "21"
+  ]
+ },
+ "10": {
+  "slug": "10-vins-blancs",
+  "action": "bandeau",
+  "nb": 13,
+  "produits": [
+   "589",
+   "1",
+   "917",
+   "613",
+   "37",
+   "38",
+   "791",
+   "790",
+   "633",
+   "789",
+   "588",
+   "29",
+   "42"
+  ]
+ },
+ "11": {
+  "slug": "11-vins-petillants",
+  "action": "masquer",
+  "nb": 4
+ },
+ "12": {
+  "slug": "12-whiskies",
+  "action": "bandeau",
+  "nb": 7,
+  "produits": [
+   "70",
+   "360",
+   "358",
+   "333",
+   "319",
+   "75",
+   "73"
+  ]
+ },
+ "13": {
+  "slug": "13-rhums",
+  "action": "bandeau",
+  "nb": 11,
+  "produits": [
+   "406",
+   "743",
+   "739",
+   "738",
+   "709",
+   "708",
+   "695",
+   "520",
+   "425",
+   "417",
+   "306"
+  ]
+ },
+ "14": {
+  "slug": "14-autres",
+  "action": "bandeau",
+  "nb": 11,
+  "produits": [
+   "405",
+   "596",
+   "619",
+   "607",
+   "605",
+   "594",
+   "586",
+   "585",
+   "495",
+   "404",
+   "299"
+  ]
+ },
+ "15": {
+  "slug": "15-epicerie-sucree",
+  "action": "bandeau",
+  "nb": 6,
+  "produits": [
+   "89",
+   "809",
+   "840",
+   "945",
+   "374",
+   "879"
+  ]
+ },
+ "16": {
+  "slug": "16-epicerie-salee",
+  "action": "bandeau",
+  "nb": 5,
+  "produits": [
+   "104",
+   "822",
+   "841",
+   "829",
+   "827"
+  ]
+ },
+ "20": {
+  "slug": "20-vins-de-loire",
+  "action": "bandeau",
+  "nb": 5,
+  "produits": [
+   "475",
+   "487",
+   "479",
+   "27",
+   "21"
+  ]
+ },
+ "21": {
+  "slug": "21-vins-de-loire",
+  "action": "bandeau",
+  "nb": 10,
+  "produits": [
+   "589",
+   "1",
+   "37",
+   "38",
+   "791",
+   "790",
+   "789",
+   "588",
+   "29",
+   "42"
+  ]
+ },
+ "22": {
+  "slug": "22-autres-vignobles",
+  "action": "masquer",
+  "nb": 0
+ },
+ "27": {
+  "slug": "27-autres-vignobles",
+  "action": "masquer",
+  "nb": 4
+ },
+ "28": {
+  "slug": "28-autres-vignobles",
+  "action": "masquer",
+  "nb": 3
+ },
+ "29": {
+  "slug": "29-vins-de-loire",
+  "action": "masquer",
+  "nb": 2
+ },
+ "30": {
+  "slug": "30-selection-moins-de-25",
+  "action": "bandeau",
+  "nb": 6,
+  "produits": [
+   "141",
+   "704",
+   "89",
+   "143",
+   "137",
+   "449"
+  ]
+ },
+ "31": {
+  "slug": "31-selection-25-a-50",
+  "action": "bandeau",
+  "nb": 5,
+  "produits": [
+   "892",
+   "896",
+   "936",
+   "935",
+   "732"
+  ]
+ },
+ "32": {
+  "slug": "32-selection-plus-de-50",
+  "action": "masquer",
+  "nb": 4
+ },
+ "164": {
+  "slug": "164-exemple-de-coffrets",
+  "action": "bandeau",
+  "nb": 6,
+  "produits": [
+   "892",
+   "896",
+   "141",
+   "732",
+   "704",
+   "143"
+  ]
+ },
+ "165": {
+  "slug": "165-demande-de-devis-",
+  "action": "masquer",
+  "nb": 0
+ },
+ "166": {
+  "slug": "166-idees-cadeaux-fete-des-peres",
+  "action": "masquer",
+  "nb": 2
+ },
+ "167": {
+  "slug": "167-sans-alcool",
+  "action": "bandeau",
+  "nb": 5,
+  "produits": [
+   "549",
+   "677",
+   "676",
+   "548",
+   "493"
+  ]
+ },
+ "169": {
+  "slug": "169-vins",
+  "action": "masquer",
+  "nb": 1
+ },
+ "170": {
+  "slug": "170-spiritueux",
+  "action": "masquer",
+  "nb": 2
+ },
+ "171": {
+  "slug": "171-gins",
+  "action": "bandeau",
+  "nb": 6,
+  "produits": [
+   "608",
+   "601",
+   "378",
+   "280",
+   "368",
+   "50"
+  ]
+ },
+ "172": {
+  "slug": "172-idees-cadeaux-noel",
+  "action": "bandeau",
+  "nb": 7,
+  "produits": [
+   "70",
+   "569",
+   "505",
+   "333",
+   "319",
+   "317",
+   "76"
+  ]
+ },
+ "182": {
+  "slug": "182-whiskies-francais",
+  "action": "masquer",
+  "nb": 1
+ },
+ "183": {
+  "slug": "183-whiskies-japonais",
+  "action": "masquer",
+  "nb": 1
+ },
+ "184": {
+  "slug": "184-whiskies-ecossais",
+  "action": "masquer",
+  "nb": 2
+ },
+ "186": {
+  "slug": "186-regionale",
+  "action": "masquer",
+  "nb": 3
+ },
+ "187": {
+  "slug": "187-originale",
+  "action": "masquer",
+  "nb": 4
+ },
+ "188": {
+  "slug": "188-traditionnel",
+  "action": "masquer",
+  "nb": 4
+ },
+ "189": {
+  "slug": "189-martinique",
+  "action": "masquer",
+  "nb": 1
+ },
+ "190": {
+  "slug": "190-guadeloupe",
+  "action": "masquer",
+  "nb": 1
+ },
+ "191": {
+  "slug": "191-amerique-latine",
+  "action": "masquer",
+  "nb": 1
+ },
+ "192": {
+  "slug": "192-caraibes",
+  "action": "masquer",
+  "nb": 4
+ },
+ "193": {
+  "slug": "193-autres",
+  "action": "masquer",
+  "nb": 3
+ },
+ "194": {
+  "slug": "194-autres",
+  "action": "masquer",
+  "nb": 3
+ },
+ "195": {
+  "slug": "195-location-tireuse-a-biere",
+  "action": "masquer",
+  "nb": 0
+ },
+ "202": {
+  "slug": "202-exemple-de-partenaires",
+  "action": "masquer",
+  "nb": 0
+ },
+ "204": {
+  "slug": "204-selection-mariage",
+  "action": "bandeau",
+  "nb": 11,
+  "produits": [
+   "475",
+   "589",
+   "59",
+   "600",
+   "619",
+   "606",
+   "605",
+   "604",
+   "599",
+   "594",
+   "588"
+  ]
+ },
+ "205": {
+  "slug": "205-sauces-piquantes",
+  "action": "masquer",
+  "nb": 2
+ }
+}
