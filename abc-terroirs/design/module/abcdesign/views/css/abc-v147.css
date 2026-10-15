@@ -648,3 +648,4 @@ body.category-id-165 #products .page-not-found, body.category-id-165 .page-not-f
 .abc-avis__cite blockquote { margin: 0 0 8px; font-size: 15px; line-height: 1.55; }
 .abc-avis__cite figcaption { font-size: 13px; color: var(--abc-muted); }
 @media (max-width: 767px) { .abc-avis__cartes, .abc-avis__cites { grid-template-columns: 1fr; gap: 12px; } .abc-avis { padding: 28px 15px 32px; } }
+.abc-etoiles--sm { font-size: 13px; letter-spacing: 1px; margin-right: 4px; vertical-align: -1px; }

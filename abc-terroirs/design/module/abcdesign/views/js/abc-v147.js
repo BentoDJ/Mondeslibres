@@ -68,7 +68,12 @@
     ['Spi & Bi', '5 place Paul-Émile Ladmirault', '4,9', 'ChIJf9l54uztBUgRlgaJeI_wpgs']
   ];
   // Quelques avis clients recopiés mot pour mot depuis Google : [texte, prénom + initiale, boutique]. Vide = rien affiché.
-  var AVIS_CITES = [];
+  // Source : avis Google de Spi & Bi, relayés sur boucherie-mailhet.fr/abc-terroirs-spi-bi/ (relevé le 15/10/2026)
+  var AVIS_CITES = [
+    ['Très grand choix de bières et spiritueux, dégustation... L\'accueil du dirigeant est très agréable et il donne de bons conseils. À connaître !', 'Gilles L.', 'Spi & Bi'],
+    ['Super conseil, accueil et un très large choix autant sur les bières que les spiritueux. La bonne humeur est au rendez-vous.', 'Evie V.', 'Spi & Bi'],
+    ['Que des supers produits ! Accueil toujours sympathique par de vrais connaisseurs', 'Tino R.', 'Spi & Bi']
+  ];
 
   var BOUTIQUES = [
     { nom: 'ABC Terroirs Saint-Pierre', sous: 'Épicerie fine & cave (boutique historique)', adr: '5 place Saint-Pierre, 44000 Nantes', tel: '02 40 89 76 26',
@@ -307,7 +312,7 @@
           '<a href="https://search.google.com/local/writereview?placeid=' + a[3] + '" target="_blank" rel="noopener">Donner mon avis</a></p></div>';
       }).join('');
       var cites = AVIS_CITES.map(function (c) {
-        return '<figure class="abc-avis__cite"><blockquote>« ' + esc(c[0]) + ' »</blockquote><figcaption>' + esc(c[1]) + ' · ' + esc(c[2]) + ' · avis Google</figcaption></figure>';
+        return '<figure class="abc-avis__cite"><blockquote>« ' + esc(c[0]) + ' »</blockquote><figcaption><span class="abc-etoiles abc-etoiles--sm" role="img" aria-label="5 sur 5"><span style="width:100%"></span></span> ' + esc(c[1]) + ' · ' + esc(c[2]) + ' · avis Google</figcaption></figure>';
       }).join('');
       var bloc = el('section', 'abc-avis',
         '<div class="abc-avis__inner"><div class="abc-avis__tete"><h2>Nos clients en parlent</h2><p>Les notes de nos trois boutiques sur Google.</p></div>' +
