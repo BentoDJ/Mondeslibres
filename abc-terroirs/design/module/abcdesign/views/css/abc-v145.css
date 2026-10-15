@@ -618,3 +618,9 @@ body.category-id-165 #products .page-not-found, body.category-id-165 .page-not-f
   .abc-devis__row { grid-template-columns: 1fr; gap: 0; }
 }
 .abc-devis .abc-champ, .abc-devis legend { text-align: left !important; }
+
+/* Facebook et Instagram plus visibles sur ordinateur (mobile inchangé) */
+@media (min-width: 992px) {
+  .abc-social-top { top: 100px; gap: 10px; }
+  .abc-social { width: 44px; height: 44px; border-width: 2px; background-size: 22px 22px; }
+}
