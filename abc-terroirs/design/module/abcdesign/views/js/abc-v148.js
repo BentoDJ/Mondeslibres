@@ -451,6 +451,16 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', formulaireDevis); else formulaireDevis();
 
+  // 11. Fiche produit : « Référence : » vide masquée (pour les navigateurs qui ne lisent pas :has en CSS)
+  function referenceVide() {
+    document.querySelectorAll('.product-reference').forEach(function (r) {
+      var v = r.querySelector('[itemprop="sku"]');
+      r.classList.toggle('abc-vide', !v || !v.textContent.trim());
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', referenceVide); else referenceVide();
+  if (window.prestashop && typeof window.prestashop.on === 'function') window.prestashop.on('updatedProduct', function () { setTimeout(referenceVide, 50); });
+
   // 9. Textes du thème restés en anglais dans les listes de produits (retraduits aussi après un tri ou un filtre)
   function traduireListe() {
     document.querySelectorAll('#js-product-list-top div, .products-selection div, .products-selection p, nav.pagination div, nav.pagination p').forEach(function (e) {
