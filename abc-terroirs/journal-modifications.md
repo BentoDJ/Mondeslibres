@@ -1,0 +1,230 @@
+# Journal des modifications faites sur abcterroirs.com
+
+Modifications faites le **13/10/2026** par Claude, via le compte employé « Assistant contenu », avec l'accord du gérant. Chaque texte a été sauvegardé avant modification, puis relu dans l'administration et sur le site public après enregistrement.
+
+Pour annuler une modification, il suffit de remettre le texte « Avant » au même endroit.
+
+## Numéro de TVA
+
+| Où | Avant | Après |
+|---|---|---|
+| Apparence → Pages → « Conditions d'utilisation », article 1 | TVA FR68533172094 (numéro de Bienmanger.com) | TVA **FR06489517870** |
+
+## Ancienneté : « depuis 2006 » partout
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 1 | Apparence → Pages → « Conditions d'utilisation », mots-clés méta | existe depuis plus de 15 ans | existe depuis 2006 |
+| 2 | Apparence → Pages → « À propos de notre enseigne » | ABC TERROIRS existe **depuis plus de 15 ans** | ABC TERROIRS existe **depuis 2006** |
+| 3 | Modules → CZ Banner CMS Block (texte de l'accueil) | le meilleur du terroir local depuis 18 ans, à Nantes | le meilleur du terroir local depuis 2006, à Nantes |
+| 4 | Modules → CZ Image slider → diapositive n° 1, titre | Depuis 18 ans sur Nantes, demandez conseil.... | Depuis 2006 à Nantes, demandez conseil.... |
+| 5 | Catalogue → Catégories → n° 155, nom (menu du haut) | NOTRE ENSEIGNE DEPUIS 20 ANS | NOTRE ENSEIGNE DEPUIS 2006 (l'adresse `155-notre-enseigne-depuis-20-ans` est volontairement **inchangée**, pour ne casser aucun lien) |
+| 6 | Catalogue → Catégories → n° 3 « Coffrets gourmands », description | Depuis 19 ans, nous réalisons… | Depuis 2006, nous réalisons… |
+| 7 | Catalogue → Catégories → n° 7 « Bières », méta-titre | Plus gros défenseur des bières locales depuis 15 ans | … depuis 2006 |
+| 8 | Catalogue → Catégories → n° 30 « Sélection moins de 25 € », description | fiers de défendre les couleurs locales depuis 15 ans | … depuis 2006 |
+| 9 | Catalogue → Catégories → n° 165 « Demande de devis », description | Avec 17 ans d'expérience, nous saurons… | Forts de notre expérience depuis 2006, nous saurons… |
+| 10 | Catalogue → Catégories → n° 202 « Exemple de partenaires », méta-titre | De nombreux partenaires depuis 18 ans | … depuis 2006 |
+| 11 | Catalogue → Catégories → n° 204 « Sélection Mariage », description | Depuis 18 ans, des clients nous ont fait confiance | Depuis 2006, des clients… |
+| 12 | Catalogue → Produits → n° 312 « Mètre de bière nantaises », résumé | Depuis 18 ans, nous valorisons les brasseurs locaux | Depuis 2006, nous valorisons… |
+| 13 | Catalogue → Produits → n° 241 « Boîte sucrette Tour LU V2 », méta-description | l'équipe fait depuis 16 ans du sur-mesure | l'équipe fait depuis 2006 du sur-mesure |
+
+## Deuxième série (13/10/2026, avec l'accord du gérant)
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 14 | Modules → Réassurance → bloc « Politique retours », description (visible sur **toutes les fiches produits**) | (à modifier dans le module "Réassurance") | Retour possible sous 14 jours, voir nos conditions de vente |
+| 15 | Apparence → Liste de liens → bloc « Produits » (bas de page) | Nouveaux produits (page vide « Désolé pour le dérangement ») | Meilleures ventes, Alcool, Bières, Coffrets gourmands, Épicerie, Idées cadeaux NOEL, Sans alcool |
+| 16 | Catalogue → Catégories → n° 2 (catégorie racine), nom | ATTENTION | Accueil (adresse `attention` **inchangée** : les 98 adresses produits `/attention/…` fonctionnent toujours) |
+| 17 | Catalogue → Catégories → n° 185 | Whiskies américain, active | Whiskies américains, **désactivée** (vide) |
+| 18 | Catalogue → Catégories → n° 168 « Bières » (sans alcool) | active | **désactivée** (vide) |
+| 19 | Catalogue → Catégories → n° 203 « Jus et Soft » | active | **désactivée** (vide) |
+| 20 | Catalogue → Catégories → n° 198 « Autres vignobles » | active | **désactivée** (vide) |
+| 21 | Produit n° 312, résumé | on ne décompte une 100aine actuellement en LA | on en compte une centaine actuellement en Loire-Atlantique |
+| 22 | Produits n° 131, 394 et 395 (Coffret Nantes surprenant), résumé | quelques uns | quelques-uns |
+
+Pour réactiver une catégorie quand elle aura des produits : Catalogue → Catégories → la catégorie → Afficher = Oui.
+
+**Volontairement non désactivée :** la catégorie n° 199 « ATTENTION MENTIONS LEGALES », parce qu'elle contient le texte légal sur l'alcool. Même chose pour la catégorie racine n° 2, dont la description et le méta-titre (« ATTENTION, MENTIONS LEGALES ») contiennent aussi ce texte : seul son nom a changé.
+
+## Troisième série (13/10/2026) : images et noms des coffrets
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 23 | Modules → Bannière (mention alcool, accueil) | Image « angelot qui boit » (sauvegardée dans `sauvegardes/ancienne-banniere-alcool-angelot.jpg`) | `images-pretes/bandeau-mention-alcool-556.png`, même taille que l'ancienne. Description : « L'abus d'alcool est dangereux pour la santé, à consommer avec modération. Vente interdite aux mineurs. » |
+| 24 | Modules → CZ Image slider | — | Nouvelle diapositive n° 3 « Coffrets de Noël », lien vers Idées cadeaux Noël, **placée en premier** |
+| 25 | Modules → CZ Image slider → diapositive n° 1 « Just for you » | Activée | **Désactivée**, pas supprimée (image sauvegardée dans `sauvegardes/ancienne-diapo-1-just-for-you.jpg`). À réactiver après Noël, en même temps que la désactivation de la diapositive Noël. |
+
+### Renommage des coffrets (V1/V2/V3 → Petit/Moyen/Grand)
+
+Les adresses web (URL) sont **inchangées** : les liens déjà partagés et le référencement Google continuent de fonctionner.
+
+| Produit | Avant | Après | Adresse conservée |
+|---|---|---|---|
+| 240 | BOITE SUCRETTE TOUR LU garnie V1 | Boîte sucrette Tour LU garnie – Petite | `boite-sucrette-tour-lu-garnie-v1` |
+| 241 | BOITE SUCRETTE TOUR LU garnie V2 | Boîte sucrette Tour LU garnie – Grande | `boite-sucrette-tour-lu-garnie-v2` |
+| 389 | COFFRET 100% NANTAISES V1 | Coffret 100 % Nantaises – Petit | `coffret-100-nantaises-v1` |
+| 132 | COFFRET 100% NANTAISES V2 | Coffret 100 % Nantaises – Moyen | `coffret-100-nantaises-v2` |
+| 237 | COFFRET 100% NANTAISES V3 | Coffret 100 % Nantaises – Grand | `coffret-100-nantaises-v3-` |
+| 392 | COFFRET 100% SARRAZIN V1 | Coffret 100 % sarrasin – Petit | `coffret-100-sarrazin-v1` |
+| 127 | COFFRET 100% SARRAZIN V2 | Coffret 100 % sarrasin – Moyen | `coffret-100-sarrazin-v2` |
+| 393 | COFFRET 100% SARRAZIN V3 | Coffret 100 % sarrasin – Grand | `coffret-100-sarrazin-v3` |
+| 396 | COFFRET GRUE JAUNE V2 | Coffret Grue jaune – Moyen | `coffret-grue-jaune-v2` |
+| 397 | COFFRET GRUE JAUNE V3 | Coffret Grue jaune – Grand | `coffret-grue-jaune-v3` |
+| 231 | COFFRET LA NANTILLAISE V1 | Coffret La Nantillaise – Petit | `coffret-la-nantillaise-v1` |
+| 126 | COFFRET LA NANTILLAISE V2 | Coffret La Nantillaise – Grand | `coffret-la-nantillaise-v2` |
+| 394 | COFFRET NANTES SURPRENANT V1 | Coffret Nantes surprenant – Petit | `coffret-nantes-surprenant-v1` |
+| 131 | COFFRET NANTES SURPRENANT V2 | Coffret Nantes surprenant – Moyen | `coffret-nantes-surprenant-v2` |
+| 395 | COFFRET NANTES SURPRENANT V3 | Coffret Nantes surprenant – Grand | `coffret-nantes-surprenant-v3` |
+| 650 | COFFRET PETIT BEURRE "BONNES FETES" sucré salé V1 | Coffret petit beurre « Bonnes fêtes » sucré-salé – Petit | `coffret-petit-beurre-bonnes-fetes-sucre-sale-v1` |
+| 649 | COFFRET PETIT BEURRE "BONNES FETES" sucré salé v2 | Coffret petit beurre « Bonnes fêtes » sucré-salé – Grand | `coffret-petit-beurre-bonnes-fetes-sucre-sale-v2` |
+| 390 | COFFRET VOYAGE EXTRAORDINAIRE V1 | Coffret Voyage extraordinaire – Petit | `coffret-voyage-extraordinaire-v1` |
+| 243 | COFFRET VOYAGE EXTRAORDINAIRE V2 | Coffret Voyage extraordinaire – Moyen | `coffret-voyage-extraordinaire-v2` |
+| 391 | COFFRET VOYAGE EXTRAORDINAIRE V3 | Coffret Voyage extraordinaire – Grand | `coffret-voyage-extraordinaire-v3` |
+
+Non renommé : n° 671 « BOITE PETIT BEURRE BONNES FETES v2 » (30,70 €), qui semble faire doublon avec le n° 649. **À vérifier par le gérant.**
+
+## Quatrième série (13/10/2026) : nouveau design en ligne
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 26 | Modules → **« ABC Terroirs - Habillage du site »** (module `abcdesign`, installé depuis le gestionnaire de modules) | Design d'origine du thème Paprica | Nouveau design : polices Fraunces/Inter, couleurs olive et crème, cartes produits, bandeau « Attention » et pied de page aux couleurs de la boutique. Code source : `design/module/abcdesign/`. |
+
+**Pour revenir à l'ancien design :** Modules → Gestionnaire de modules → rechercher « ABC Terroirs » → **Désactiver**. Rien d'autre n'a été touché : ni le thème, ni ses fichiers.
+
+L'installation du module a aussi vidé le cache : le menu affiche maintenant « NOTRE ENSEIGNE DEPUIS 2006 », et les meilleures ventes ont leurs nouveaux noms.
+
+## Cinquième série (13/10/2026) : recherche, raccourcis et boutons d'action
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 27 | Catalogue → Produits → onglet Options → **mots-clés (tags)** de 77 produits (catégories Coffrets gourmands et Idées cadeaux Noël) | Tags existants (souvent vides) | Ajout de « panier garni, coffret cadeau, cadeau, cadeau entreprise » sur les coffrets, « cadeau » sur les bouteilles seules, « noël, cadeau de noël » sur les idées de Noël. Les tags existants sont conservés. Liste avant/après : `sauvegardes/mots-cles-avant-apres.jsonl`. |
+| 28 | Modules → « ABC Terroirs - Habillage du site » **version 1.1** | Version 1.0 (design seul) | Ajout de raccourcis sous le logo (Noël, Coffrets cadeaux, Moins de 25 €, Vins, Whiskies, Bières locales, Épicerie fine, Sans alcool, Cadeaux d'entreprise), de 3 boutons sur l'accueil, des blocs « Un coffret pour chaque budget », d'un bandeau « sur mesure / entreprises » avec devis et téléphone avant le pied de page, d'un encart d'aide sur les fiches produits et en haut des résultats de recherche, et d'un exemple dans la barre de recherche (« Coffret, muscadet, whisky, petit beurre… »). |
+
+**Effet sur la recherche** (testé sur le site) :
+
+| Recherche | Avant | Après |
+|---|---|---|
+| panier garni | 0 résultat | 47 |
+| coffret cadeau | 2 (whiskies) | 47 |
+| cadeau entreprise | 0 | 47 |
+| noël | 3 (vins « Hautes Noëlles ») | 33 |
+
+**Pour modifier les raccourcis ou les boutons :** fichier `design/module/abcdesign/views/js/abc.js` (listes `LIENS_RAPIDES` et `BUDGETS`), puis refaire le zip et réinstaller le module. **Pour tout retirer :** désactiver le module.
+
+## Sixième série (13/10/2026) : alias de recherche
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 29 | Paramètres de la boutique → Rechercher → **Alias** | 14 alias (fautes de « coffret ») | +14 alias : whiskey, wisky, whiskys → whisky ; sarrazin → sarrasin ; coffrets → coffret ; paniers → panier ; bieres → biere ; cadeaux → cadeau ; vins → vin ; chocolats → chocolat ; calvas → calvados ; champagnes → champagne ; rhums → rhum ; gins → gin |
+
+Effet testé sur le site : « whiskey » passe de 3 à 35 résultats, « sarrazin » de 4 à 12, « paniers garnis » de 0 à 47.
+
+| 30 | Catalogue → Produits → mots-clés des 12 produits LU (n° 156, 238, 239, 240, 241, 479, 480, 481, 504, 505, 741, 742) | — | Ajout du mot-clé « tourlu » |
+| 31 | Paramètres de la boutique → Rechercher → Alias | — | **lu → tourlu** |
+
+Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur minimale n'a pas pu être changée. Cette astuce contourne le problème : l'alias est appliqué avant la vérification de longueur. Résultat : « lu » trouve exactement les 12 produits LU (0 avant). Pour un nouveau produit LU, il suffit d'ajouter le mot-clé « tourlu ».
+
+## Septième série (13/10/2026) : corrections mobiles (module 1.1.1)
+
+| # | Problème signalé | Correction |
+|---|---|---|
+| 32 | Logo trop gros sur l'accueil mobile, qui débordait sur les raccourcis | Logo limité à 50 px de haut sur mobile |
+| 33 | Une bouteille seule sur sa rangée (grille décalée) | Grille de produits en rangées alignées (flexbox) au lieu des flottants du thème |
+| 34 | Pastille verte vide sur les cartes produits (bouton panier du thème déformé) | Le style des boutons ne s'applique plus aux boutons des cartes |
+| 35 | Raccourcis (Noël, Coffrets cadeaux…) trop marqués | Simples liens texte, soulignés en olive au survol |
+| 36 | Logo encore trop gros sur mobile (module 1.1.2) | Logo à 40 px sur toutes les pages mobiles, sans fond blanc. Feuille de style renommée `abc-v112.css` pour forcer les téléphones à recharger le style. |
+| 37 | Emoji 🎄 devant « Noël » dans les raccourcis (module 1.1.3) | Retiré. Script renommé `abc-v113.js` pour forcer le rechargement. |
+| 38 | Emojis 📞 (bandeau) et 🎁 (encart fiche produit) (module 1.1.4) | Retirés. Le bouton devient « Appeler le 02 40 89 76 26 ». Script renommé `abc-v114.js`. |
+| 39 | Catalogue → Catégories → n° 30, 31, 32 et 172 → **image de couverture** (vignettes des sous-catégories de « Coffrets gourmands ») | Pouces levés, homme en costume, « Aucune image disponible » → photos de coffrets : boîte sucrette Tour LU (< 25 €), Nantes surprenant (25 à 50 €), Voyage extraordinaire (> 50 €), Folie foie gras (Noël). Anciennes images : `sauvegardes/images-categories/` ; nouvelles : `images-pretes/categories/`. |
+| 40 | Module 1.1.5 + images des sous-catégories | Le bandeau vert « Un coffret sur mesure » remontait derrière « Meilleures ventes » sur mobile : il est maintenant toujours sous le contenu. L'effet « fond harmonisé » qui assombrissait les photos produits est supprimé. Les blocs budget sont cadrés pareil (flèche en haut à droite, titres sur une ligne). Les vignettes de sous-catégories sont éclaircies (fond gris → presque blanc). Style renommé `abc-v115.css`. |
+| 41 | Catalogue → Catégories → n° 172 « Idées cadeaux Noël » : nom, description, méta-titre, méta-description | Nom « Idées cadeaux NOEL ». **Texte de la fête des pères recopié par erreur** (« Découvrez des idées cadeaux originales pour la fête des pères… »). Sauvegarde : `sauvegardes/cat172-avant-texte-noel.json` | Nom « Idées cadeaux Noël » (adresse inchangée) ; texte de Noël : coffrets confectionnés sur mesure dans les boutiques de la place Saint-Pierre et de la rue Franklin, références vins et spiritueux, Spi & Bi, retrait en boutique ou Colissimo, devis entreprises |
+| 42 | Modules → CZ Image slider → diapositive « Coffrets de Noël » : image et légende | « Composés à la main place Saint-Pierre » (ancienne image : `sauvegardes/diapo-noel-v1.jpg`) | « Noël 2026 · Sur mesure » / « Confectionnés sur mesure dans nos boutiques Saint-Pierre et Franklin, à Nantes. » |
+| 43 | Module 1.1.6 : bandeau « Un coffret sur mesure » | « nous le composons à la main, place Saint-Pierre à Nantes » | « nous le confectionnons sur mesure dans nos boutiques de la place Saint-Pierre et de la rue Franklin, à Nantes » |
+| 44 | Module 1.1.7 : icônes des réseaux sociaux (barre verte en bas) | Seule une petite icône Instagram visible ; LinkedIn présent mais invisible | Icônes blanches dans un cercle pour Instagram et LinkedIn (et Facebook dès que son lien est ajouté dans le module « Liens réseaux sociaux »), ouverture dans un nouvel onglet. **Reste à faire (droit manquant) :** Modules → Liens réseaux sociaux → Facebook = https://www.facebook.com/AbcTerroirs/ |
+| 45 | Module 1.1.8 : Facebook et Instagram en haut de page | — | Deux petites icônes rondes vert olive : sous « Mon compte » sur ordinateur, entre le logo et la loupe sur mobile. Facebook est aussi ajouté dans le pied de page par le module, donc il n'est plus nécessaire de configurer « Liens réseaux sociaux ». Les liens se modifient dans `abc-v118.js` (liste `SOCIAL`). |
+| 46 | Modules → Liens réseaux sociaux (ps_socialfollow) → Facebook | vide | https://www.facebook.com/AbcTerroirs/ (le module affiche désormais Facebook lui-même dans le pied de page ; le script ne l'ajoute plus en double) |
+| 47 | Produits n° 649 et 650 → légende de la photo | « ABC, créateur de contenu gourmand depuis 19 ans ! » | « … depuis 2006 ! » |
+| 48 | Apparence → Pages → **Mentions légales** | Sans directeur de publication ni hébergeur, texte par défaut PrestaShop avec lien cassé, carré doré parasite (sauvegarde : `sauvegardes/cms2-mentions-legales-avant.html`) | Contenu de `mentions-legales.html` : éditeur (boutiques Saint-Pierre et Franklin), RCS, TVA, directeur de la publication, hébergeur OVH, crédits |
+| 49 | Apparence → Pages → **Paiement sécurisé** | « Avec SSL / Avec Visa/Mastercard/Paypal / A propos de ce service » (sauvegarde : `sauvegardes/cms5-paiement-securise-avant.html`) | Contenu de `paiement-securise.html` : paiement chiffré, moyens acceptés, contact |
+| 50 | Apparence → Pages → **CGV** (conditions d'utilisation) | Sauvegarde : `sauvegardes/cms3-cgv-avant-corrections.html` | Rétractation remboursée sous **14 jours** (et non 30), par le même moyen de paiement ; renvoi corrigé (article 11) ; mention de la plateforme européenne des litiges (fermée) remplacée par un contact amiable ; **article 15 réécrit (RGPD)**, sans Criteo/Shopzilla ni loi de 2004. Version complète : `cgv-corrigees.html`. **Pas de médiateur** de la consommation : obligatoire pour la vente aux particuliers, à choisir (voir README). |
+| 51 | Catalogue → Produits → **photos** de 50 produits (61 photos) | Photos sur fond gris de studio (originales : `sauvegardes/photos-produits-originales/`, correspondance ancienne → nouvelle image : `sauvegardes/photos-remplacees.jsonl`) | Même photo détourée sur fond blanc, même légende, même image principale. 23 photos écartées car le détourage automatique les abîmait (sachets transparents, boîtes ouvertes, bouteilles en verre clair) ou parce qu'elles étaient trop petites : elles restent telles quelles. |
+| 52 | Paramètres avancés → Performances → Vider le cache | — | Fait : le menu affiche bien « NOTRE ENSEIGNE DEPUIS 2006 ». |
+| 53 | Module 1.1.9 : **Nos 3 boutiques** | Seule l'adresse de Saint-Pierre en bas de page ; la page « Magasins » ne montrait que 2 boutiques (sans Spi & Bi) | Bloc « Nos 3 boutiques à Nantes » en bas de **toutes les pages** et sur la page « Magasins » : Saint-Pierre, Franklin et Spi & Bi, avec adresse (lien Google Maps), horaires et téléphone cliquable. Les horaires viennent du site, de PagesJaunes (mis à jour en août 2026) et de Mappy. Ils se modifient dans `abc-v119.js` (liste `BOUTIQUES`). |
+| 54 | Catalogue → Catégories → n° 157 « Nos boutiques », description | Liste des 3 boutiques sans horaires (sauvegarde : `sauvegardes/cat157-nos-boutiques-avant.html`) | Les 3 boutiques avec adresses, téléphones et horaires (`nos-boutiques.html`) |
+
+## Huitième série (14/10/2026) : demandes d'Axel
+
+| # | Où | Avant | Après |
+|---|---|---|---|
+| 55 | Produits **mis hors ligne** (non supprimés) : Nona Spritz 20 cl (521), Nona June 20 cl (522), Nona Ginger 20 cl (523), Nona Ginger 70 cl (524), liqueur St Germain 50 cl (493), tequilas José Cuervo Silver (541) et Reposado (542), mezcal Tobala 12 ans Lokita (544), sauce Fat Cat (641), purée de piment Hellicious (643), coffret purées Hellicious (673) | En ligne | Hors ligne (page introuvable pour les visiteurs). Pour les remettre : fiche produit → interrupteur « En ligne ». Pour les supprimer définitivement : Catalogue → Produits → Supprimer. |
+| 56 | Produits en **rupture temporaire** : rhum Worthy Park 109 Proof (495), gin Ki No Bi (348), gin Saxon Garden – Wessex (532), gin Komasa Ichigo (534) | Disponibles à la vente | Toujours visibles, mais « Disponible à la vente » décoché (pas de bouton panier), avec la mention « Rupture temporaire : ce produit revient bientôt… » en tête du résumé. Pour les remettre en vente : recocher « Disponible à la vente » (onglet Options) et retirer la mention. |
+| 57 | Sauce piquante Hellicious (642), résumé | Parfums « La Pizza » et « La Méchante Myrtille » (sauvegarde : `sauvegardes/produit-642-hellicious-avant.html`) | « La Jalapeño Rhum » (jalapeño, rhum et citron, piquant 2/5) remplace « La Pizza ». **Le champ « Choisissez votre parfum » ne propose pas de liste** : le client tape lui-même le parfum (voir la remarque sur la création d'un article par recette). |
+| 58 | Module 1.2.1 : photos de la dégustation | — | Galerie « Nos dégustations en images » (2 photos, avec l'accord des participants) sur la page « Dégustations sur mesure » et sur les fiches « 1 place séance dégustation », avec le téléphone et l'e-mail de réservation |
+| 59 | Rendre les dégustations faciles à trouver (module 1.2.2) | Page « Dégustations sur mesure » cachée dans le menu « Nos prestations autres » | Raccourci **« Dégustations »** en haut de toutes les pages ; bloc **« Venez déguster avec nous »** sur l'accueil (photo, boutons « Voir les dégustations » et « Réserver : 02 55 54 79 80 ») ; lien « Dégustations sur mesure » en bas de page (Apparence → Liste de liens → Produits) ; alias de recherche atelier(s), soirée(s), dégustations, initiation → dégustation |
+| 60 | Textes des dégustations mis en cohérence (module 1.2.3) | « Réservez votre place en boutique, au téléphone ou par e-mail », alors que les places s'achètent en ligne | Fiches « séance » : encart **« Après votre achat, appelez le 02 55 54 79 80 avec votre numéro de commande pour choisir la date de votre séance »** (à la place de l'encart « coffret personnalisé »). Galerie : « Comment réserver ? 1. Achetez une ou plusieurs places sur le site. 2. Appelez le 02 55 54 79 80… ». Accueil : « Achetez vos places en ligne, puis appelez-nous pour choisir votre date » et bouton « Choisir sa date : 02 55 54 79 80 ». Pour annuler : réinstaller `abcdesign.zip` de la version précédente (commit précédent du dépôt). |
+| 61 | Dégustations : autres moyens de choisir sa date (module 1.2.4) | Le site indiquait seulement le téléphone | Fiches, galerie et accueil : la date se choisit **par téléphone (02 55 54 79 80), par e-mail (abc3ladmirault@yahoo.com) ou par le formulaire de contact**, en donnant son numéro de commande. Excel : colonne « Moyen de contact » ajoutée dans Reservations. Pour annuler : réinstaller le zip du commit précédent. |
+| 62 | Listes de produits : tri, filtres et changement de page (module 1.2.5) | Après « Prix croissant », un filtre ou « page suivante », le thème renvoyait tout en haut de la page (`window.scrollTo(0, 0)` dans `themes/Paprica/assets/js/theme.js`) | La page se replace sur le début de la liste des produits (barre « Trier par »), juste sous l'en-tête. Le thème n'est pas modifié. Pour annuler : réinstaller le zip du commit précédent. |
+| 63 | Dégustations : textes raccourcis (module 1.2.6 et catégorie 162) | Gros blocs de texte : description de la catégorie centrée en gros titres (834 caractères, « Réservez votre place directement dans une boutique »), longue phrase sous la galerie et sous le bouton panier | Description de la catégorie réécrite (490 caractères) : 2 phrases courtes, « Comment réserver ? » en 2 étapes, conditions en italique. Fiches : encart « Comment réserver ? » en 2 étapes. Accueil : une phrase et les 2 étapes, un seul bouton « Voir les dégustations ». Galerie : photos seules, sans texte de réservation (déjà au-dessus). Sauvegarde : `sauvegardes/categorie-162-degustations-avant.json` (champ `tiny`) ; à recoller dans Catalogue → Catégories → Dégustations sur mesure → Description. |
+| 64 | Catégorie 162, description | Contenait « Comment réserver ? » en 2 étapes | Bloc retiré à la demande (doublon avec les explications plus détaillées en dessous). Restent les 2 phrases de présentation et les conditions en italique. |
+| 65 | Accueil, bloc « Venez déguster avec nous » (module 1.2.7) | Les 2 étapes de réservation sous le texte | Étapes retirées : le « Comment réserver ? » ne reste que dans l'encart vert des fiches dégustation, sous le bouton panier. |
+| 66 | Accueil, « Un coffret pour chaque budget » (module 1.2.8) | Petites attentions / Les incontournables / Pour faire sensation / Vous choisissez, on compose | Pour un petit cadeau / Pour un anniversaire ou un merci / Pour les grandes occasions / Composé selon vos goûts et votre budget. Les textes se modifient dans la liste `BUDGETS` du fichier JS du module. |
+| 67 | Accueil, « Un coffret pour chaque budget » (module 1.2.9) | Un sous-titre sous chaque montant | Sous-titres retirés : les cartes n'affichent plus que « Moins de 25 € », « 25 à 50 € », « Plus de 50 € » et « Sur mesure ». Cartes plus compactes ; sur mobile, texte centré et sans flèche. Pour remettre un sous-titre : 2e texte de la liste `BUDGETS` dans le fichier JS du module. |
+| 68 | Accueil : encart « Nouveau » (module 1.3.0) | — | Encadré au milieu de l'accueil (entre « Un coffret pour chaque budget » et les dégustations) : « NOUVEAU — Remises dégressives : -5 % dès 300 € HT d'achat, -10 % dès 600 € HT. » Le texte se change dans la variable `NOUVEAUTE` en haut du fichier JS du module ; la mettre à `''` retire l'encart. Les remises elles-mêmes sont gérées dans Catalogue → Réductions → Règles panier : **confirmé le 14/10/2026 qu'elles s'appliquent bien**. |
+| 69 | Encart « Nouveau » déplacé (module 1.3.1) | Au milieu de l'accueil seulement | Tout en haut de **toutes les pages**, juste sous la barre de recherche (au-dessus des raccourcis). Sur mobile, sous la barre du logo, étiquette « Nouveau » à gauche du texte. Même réglage : variable `NOUVEAUTE` du fichier JS ; `''` pour le retirer. |
+| 70 | Rhums (catégorie 13) et Whiskies (catégorie 12) : sous-catégories (module 1.3.2) | Drapeaux et cartes (Martinique, Guadeloupe, Amérique latine, Caraïbes, Autres ; France, Japon, Écosse, « drapeaux du monde ») au-dessus des produits | Images masquées : les sous-catégories s'affichent en boutons avec leur nom. **Les images ne sont pas supprimées** de l'administration. Pour les remettre : retirer le bloc « Rhums (13) et Whiskies (12) » à la fin du CSS du module. |
+| 71 | Module 1.3.3 : encart « Nouveau » et sous-catégories | Encart en bandeau sous l'en-tête ; images masquées seulement pour Rhums et Whiskies | **Ordinateur** : encart dans l'en-tête, à droite du logo, juste sous la barre de recherche (même largeur). Mobile et tablette : inchangé (bandeau sous la barre du logo). **Toutes les catégories** : images des sous-catégories masquées (images prises sur Internet, y compris les photos de coffrets de la n° 39), sous-catégories en boutons. Images non supprimées de l'administration ; pour les remettre : retirer le bloc « Toutes les catégories » du CSS du module. Les grandes images en tête de catégorie (ex. les vignes sur « Vins ») ne sont pas touchées. |
+| 72 | Encart « Nouveau » dans l'en-tête (module 1.3.4) | Collé 10 px sous la barre de recherche | Placé à égale distance entre la barre de recherche et la ligne des raccourcis (Noël, Coffrets cadeaux…) : 45 px au-dessus et 45 px en dessous sur ordinateur. La position se recalcule automatiquement selon la largeur de l'écran. |
+| 73 | Drapeaux en tête de catégorie (module 1.3.5) | Grandes images de drapeaux en haut des catégories : Whiskies français (182), japonais (183), écossais (184), autres (193, drapeaux du monde) ; Rhums Martinique (189), Guadeloupe (190), Amérique latine (191), Caraïbes (192) ; Régionale (186) ; Traditionnel (188, logo tricolore) | Images masquées : la page commence directement par le titre et les produits. Vérifié sur les 57 pages de catégories du site : plus aucun drapeau visible (avec la n° 70-71 pour les vignettes de sous-catégories). Images conservées dans l'administration ; pour en remettre une, retirer sa ligne dans le bloc « Images de drapeaux » du CSS du module. Non masquée : rhums « Autres » (194), une carte du monde sans drapeaux. |
+| 74 | Arrivée sur les produits (module 1.3.6) | En cliquant sur une catégorie comme Martinique, la page s'ouvrait en haut : en-tête, raccourcis, fil d'Ariane, puis les produits bien plus bas | Pour les catégories **sans sous-catégories** (Martinique, Guadeloupe, Whiskies japonais, Vins de Loire…) ouvertes depuis un lien du site, la page défile toute seule jusqu'au titre de la catégorie : titre, tri et premiers produits visibles d'un coup. Pas de défilement si on arrive depuis Google ou un lien extérieur, si on actualise la page ou si on revient en arrière. Les catégories qui ont des sous-catégories (Vins, Rhums…) s'ouvrent toujours en haut. |
+| 75 | Module 1.3.7 : mouvement fluide et étiquette « Nouveau » | Arrivée sur les produits par un saut brusque ; sur mobile, le contenu remontait d'un coup de 52 px quand la barre du logo se collait en haut ; « Nouveau » en pastille verte qui ressemblait à un bouton | Défilement animé (0,9 s, accélère puis ralentit), qui démarre sans attendre les images et s'arrête si l'utilisateur touche l'écran ; pas d'animation si le téléphone demande de réduire les mouvements. Place de la barre du logo réservée sur mobile : plus d'à-coup en faisant défiler n'importe quelle page. « Nouveau » devient un simple mot vert foncé, séparé du texte par un trait. |
+| 76 | Navigation ordinateur : une seule barre (module 1.3.8) | Trois niveaux empilés : ligne de raccourcis (10 liens, sur 2 lignes à 1024 px), puis bouton « Catégories », puis menu « Notre enseigne depuis 2006 / Nos prestations autres / Infos pour les pros » | **Une seule ligne** : « Catégories » (menu des produits, inchangé) · Noël · Coffrets · Dégustations · Sans alcool · Vins · **La boutique ▾** (Notre histoire, Nos boutiques, Dégustations sur mesure, Location de tireuse à bière, Sélection mariage) · **Pros ▾** (Infos pour les pros, Demande de devis, Exemples de coffrets, Nos partenaires) · Panier. Entre 992 et 1199 px, « Vins » est masqué (il reste dans « Catégories »). Les menus s'ouvrent au survol, au clic ou au clavier (Échap pour fermer). Mobile inchangé. L'ancien menu du thème est seulement masqué sur ordinateur (pas supprimé). Liens modifiables dans `LIENS_BARRE` et `MENUS_BARRE` du fichier JS du module. |
+| 77 | Accueil : diaporama moins haut sur ordinateur (module 1.3.9) | Diapositive « Les coffrets de Noël » presque carrée : 920 × 745 px, elle prenait tout l'écran ; la photo de la valise faisait 920 × 616, la hauteur sautait d'une diapositive à l'autre | Sur ordinateur et tablette : version large de la diapositive de Noël (même design, `views/img/diapo-noel-large.jpg`, source `images-pretes/diapo-noel-large-source.html`) et toutes les diapositives à la même hauteur (380 px sur grand écran, proportionnelle en dessous). Mobile inchangé. L'image d'origine reste dans le module Diaporama. **Après Noël** : en désactivant la diapositive Noël dans le module Diaporama, la version large disparaît aussi. |
+| 78 | Noms des 344 produits en ligne harmonisés (320 modifiés) | Noms en MAJUSCULES ou mélangés, séparateurs et unités variables (70cl / 70 cl), fautes (Ecosse, Strenght, « copy of »…) | Même règle partout : majuscule au début, aux noms propres et aux sigles seulement ; « Type Nom (précision) – Producteur ou origine contenance » ; unités espacées (70 cl, 100 g, 10 ans). Adresse (URL) de chaque page conservée et vérifiée produit par produit. Liste complète : `noms-produits-harmonises.csv`. Anciens noms : `sauvegardes/noms-produits-avant-harmonisation.json` ; journal de la mise à jour : `sauvegardes/noms-produits-journal-mise-a-jour.log`. Les 120 produits hors ligne ne sont pas modifiés. Pour annuler un nom : fiche produit → champ Nom → remettre l'ancien (voir le CSV). |
+| 79 | Listes de produits : restes d'anglais (module 1.4.0) | « Affichage de 1-12 of 62 élément(s) » (en haut sur mobile et en bas de chaque liste) ; tri « Reference, A to Z / Z to A » ; bulles « Grid » / « List » | « Produits 1 à 12 sur 62 » (« 1 produit » s'il n'y en a qu'un) ; « Référence, de A à Z / de Z à A » ; « Affichage en grille / en liste ». Retraduit automatiquement après un tri, un filtre ou un changement de page. Pour corriger à la source : International → Traductions → thème Paprica (droit administrateur). |
+| 80 | Images en haut des catégories (module 1.4.1) | Images prises sur Internet (vignes, clip-arts, ampoule, banques d'images) | **20 catégories** ont un bandeau « étagère » : une rangée de leurs propres produits les plus vendus, détourés, sur fond blanc (Coffrets, Sélections < 25 € et 25-50 €, Exemples de coffrets, Noël, Épicerie, Épicerie sucrée et salée, Vins, Vins rouges, Vins blancs, Vins de Loire ×2, Alcool, Whiskies, Rhums, Gins, Autres alcools, Sans alcool, Sélection mariage). **26 catégories** avec moins de 5 photos utilisables : image masquée. Nos boutiques et Dégustations gardent leurs vraies photos. Anciennes images : `sauvegardes/images-categories-avant-bandeaux/` (à recharger dans Catalogue → Catégories → Image de couverture). Bandeaux : `images-pretes/bandeaux/` ; outil pour les refaire : `images-pretes/bandeaux/outil/`. |
+| 81 | « Notre enseigne depuis 2006 » (catégorie 155, modules 1.4.2-1.4.3) | Page vide avec deux boutons « Histoire » et « Nos boutiques » et un encadré de menu | Le texte de l'histoire s'affiche directement (repris de la catégorie Histoire, réécrit sans mise en forme Word ; « en septembre dernier » retiré car daté). Boutons de sous-catégories et encadré de menu masqués sur cette page. Le menu « La boutique → Notre histoire » mène à cette page. Sauvegarde : `sauvegardes/categorie-155-notre-enseigne-avant.json`. |
+| 82 | Demande de devis (module 1.4.4, catégorie 165) | Page de texte avec un e-mail et des téléphones ; les boutons « Demander un devis » menaient au formulaire de contact libre (type SAV) | **Formulaire guidé** sur la page Demande de devis : projet, nombre de coffrets, date, budget par coffret, réception, préférences, coordonnées, message. Envoi par e-mail à **commercial@abcterroirs.com** (« Répondre » écrit directement au client), copie de chaque demande dans `modules/abcdesign/data/devis.csv` (dossier protégé, accès web refusé : vérifié). Anti-robots : champ piège + délai minimal + jeton de session. Encadré « Vous préférez en parler ? » avec les téléphones de Davy. Les boutons « Demander un devis », « Composer un coffret sur mesure » et la carte « Sur mesure » mènent au formulaire. Intro de la page raccourcie (sauvegarde : `sauvegardes/categorie-165-devis-avant.json`). Pas de délai de réponse affiché. Essai réel envoyé le 15/10/2026 (entreprise « ESSAI du formulaire - ne pas traiter »). Code : `controllers/front/devis.php`, e-mail : `mails/fr/devis.html`. |
+| 83 | Logos Facebook et Instagram sur ordinateur (module 1.4.5) | Ronds de 32 px, pictogramme 16 px | Ronds de 44 px, pictogramme 22 px, contour plus marqué. Mobile inchangé (28 px). |
+| 84 | Descriptions des 21 produits qui n'en avaient pas | Fiches sans aucun texte (vins de Loire, pét'nat, champagne Colin, Bourgogne Pataille, pâtés de ragondin, Diablotine, La Petite Menthe, rhum arrangé Rhum de Ced…) | Résumé de 2-3 phrases : type, cépages, domaine, conseils de service, et une ligne « Nos cavistes vous conseillent… ». Uniquement des informations sûres (pas de notes de dégustation inventées ; couleur non précisée quand elle n'est pas connue : Mozaïc, La Grande Ouche, Baraka, Awa). Écrit seulement là où le résumé était vide. Textes : `descriptions-ajoutees.csv`. À compléter par l'équipe si besoin. Liste des photos à prendre : `photos-a-prendre.csv`. |
+| 85 | « Nos clients en parlent » tout en bas du site (module 1.4.6) | — | Bloc juste au-dessus du pied de page (sauf panier et commande) : les 3 boutiques avec leur **vraie note Google** relevée le 15/10/2026 (Saint-Pierre 4,6 · Franklin 4,7 · Spi & Bi 4,9), liens officiels Google « Lire les avis » et « Donner mon avis ». Aucun avis inventé : la liste `AVIS_CITES` du JS est prête pour recopier mot pour mot quelques avis (Google bloque leur lecture automatique). Notes à mettre à jour de temps en temps dans `AVIS_GOOGLE`. Au passage : le téléphone de Franklin sur Google est bien le 09 86 22 05 28. |
+| 86 | Avis clients cités (module 1.4.7) | Bloc « Nos clients en parlent » avec les notes seulement | 3 avis Google de Spi & Bi (5/5) recopiés mot pour mot (Gilles L., Evie V., Tino R.), source : avis Google relayés sur boucherie-mailhet.fr/abc-terroirs-spi-bi/ (Google bloque la lecture automatique directe). Émojis retirés ; avis plaisantant sur l'ivresse écarté (règles de publicité sur l'alcool). Aucun avis trouvé lisible pour Saint-Pierre et Franklin : à ajouter dans `AVIS_CITES` à partir de captures. |
+| 87 | 36 descriptions trop courtes complétées | Une phrase ou deux, parfois rien dans le résumé (Quernons d'Ardoise) | Texte existant conservé, avec en dessous un paragraphe : service (température), accords, usage, origine déjà connue (Quernons d'Angers, folle blanche = ancien gros-plant, melon = cépage du muscadet, cru Château-Thébaud, Jules Verne…), puis la ligne de conseil des cavistes. Seule exception : sous-verre 734, texte en MAJUSCULES remplacé par le même texte que le 731. Compléments listés dans `descriptions-ajoutees.csv` ; journal : `sauvegardes/descriptions-completees-journal.log` (contient le texte d'avant pour chaque fiche). À vérifier par l'équipe : boîte Belle Époque (694) dont le texte annonce 200 g de berlingots alors que le nom indique 100 g. |
+| 88 | Fiche produit : « Référence : » vide (module 1.4.8) | « Référence : » affiché sans valeur sous le nom des produits sans référence | Ligne masquée quand la référence est vide ; affichée normalement quand elle existe (ex. A-01002). |
+| 89 | Style « artisan » (module 1.4.9) | Codes typiques des designs générés : polices Fraunces + Inter, boutons et étiquettes en pilules, grandes cartes arrondies, flèches, petits titres en capitales espacées, effets de survol qui soulèvent | Titres en **Libre Caslon Text**, texte en **Source Sans 3** (taille compensée) ; angles nets (3-4 px) sur boutons, recherche, cartes et encadrés ; menu : lien actif souligné au lieu d'une pastille ; plus de flèches sur les budgets ; « Nouveau » et « Dégustations & ateliers » en minuscules ; plus d'ombres ni de soulèvement au survol. Couleurs et mise en page inchangées. Pour revenir en arrière : supprimer le bloc « COUCHE ARTISAN » à la fin du CSS et remettre Fraunces/Inter dans abcdesign.php. Note : la diapositive de Noël est une image, son texte reste en Fraunces. |
+| 90 | Session autonome « plus pro » : noms de catégories | « NOTRE ENSEIGNE DEPUIS 2006 », « NOS PRESTATIONS AUTRES », « INFOS POUR LES PROS » (fil d'Ariane, titres, menus) | « Notre enseigne depuis 2006 », « Nos prestations », « Infos pour les pros ». Adresses des pages inchangées. Journal : `sauvegardes/noms-categories-majuscules.log`. |
+| 91 | Textes et majuscules (modules 1.5.0-1.5.1) | « Ajouter À Ma Liste D'envies », « Détails Du Produit », menus avec une majuscule à chaque mot (forcée par le thème) ; « ATTENTION, MAGASINS DANGEREUX POUR LES GOURMANDS ! » ; pied de page « A propos », « Conditions d'utilisation » (page des CGV), « 5 Place St Pierre » ; « place ladmirault » | Écriture normale ; « Attention, magasins dangereux pour les gourmands ! » (une ligne) ; « À propos de notre enseigne », « Conditions générales de vente », « 5 place Saint-Pierre » ; « place Ladmirault ». Catégorie technique « Attention mentions légales » (199) masquée des menus et arborescences. |
+| 92 | Titres Google / onglet de 48 fiches produits | Slogans sans le nom du produit (ex. Méphisto : « Meilleur vin rouge de la Loire chez ABC TERROIRS ») | « Nom du produit \| ABC Terroirs Nantes ». Le slogan devient la description Google quand elle était vide. Adresses inchangées. Avant/après : `sauvegardes/titres-produits-avant-apres.log`. |
+| 93 | Diapositive de Noël aux nouvelles polices | Texte de l'image en Fraunces, bouton en pilule avec flèche | Refaite en Libre Caslon / Source Sans, bouton aux angles nets, version ordinateur (`views/img/diapo-noel-large-v2.jpg`) et mobile (module Diaporama, diapositive 3). Sources : `images-pretes/`. |
+| 94 | Bandeau « Remises dégressives » en TTC | « -5 % dès 300 € HT d'achat, -10 % dès 600 € HT » | « -5 % dès 300 € TTC, -10 % dès 600 € TTC », aligné sur les règles panier n° 2 et n° 3 de l'administration (seuils en TTC) ; la règle CADOETIK -10 % est inchangée |
+| — | Non fait (droits) | Titre de l'accueil « ABC Terroirs - epicerie fine nantes panier garni cave vins cadeau » | À changer par un administrateur dans Paramètres de la boutique → Trafic & SEO → page « index », par ex. « ABC Terroirs – Épicerie fine, cave et paniers garnis à Nantes ». |
+| 95 | Barre de progression vers les remises (page panier et fenêtre « Produit ajouté ») | Rien : le client ne savait pas combien il lui manquait | « Plus que X € pour profiter de -5 % », puis « Remise de -5 % appliquée. Plus que X € pour passer à -10 % » ; seuils 300 / 600 € TTC sur le sous-total produits (variable PALIERS du module, à garder identique aux règles panier). Vérifié avec un panier test : la règle -5 % s'applique bien toute seule à 312,50 € |
+| 96 | « Vous aimerez aussi » sur les fiches produits | Aucune suggestion | 4 produits de la même catégorie, au prix le plus proche, sans doublon de gamme ; chargés seulement en approchant du bas de la page ; défilement horizontal sur mobile |
+| 97 | Textes de présentation de 13 catégories qui n'en avaient pas | Vides : Gins, Whiskies français / japonais / écossais / autres, Martinique, Guadeloupe, Amérique latine, Caraïbes, Autres rhums, Sans alcool, Vins oranges (x2) | 1 à 2 phrases à partir des produits réellement en rayon. Sauvegarde : sauvegardes/descriptions-categories-avant-textes.json |
+| 98 | Texte des catégories de produits placé sous la liste | Texte entre le titre et les produits | Sous les produits (24 catégories, liste TEXTE_EN_BAS du module) : on arrive toujours directement sur les produits |
+| 99 | Images allégées (vitesse) | Diapo « Valise nantaise » 1,1 Mo (3872 px), miniature menu Vins 413 Ko (chargée sur toutes les pages), photos dégustation 510 Ko, diapo Noël 171 Ko | 168 Ko, 52 Ko, 198 Ko, 107 Ko ; accueil 2,5 Mo → 0,9 Mo. Originaux dans sauvegardes/images-allegees et images-module-avant-compression |
+| 100 | Boutons grille / liste des catégories | Mots anglais « Grid » « List » par-dessus les icônes | Icônes seules (libellés en français gardés pour les lecteurs d'écran) |
+| 101 | Modules → Réassurance → 1er bloc (fiches produits, panier, commande) | « Garanties sécurité — Paiement sécurisé par Paypal » | « Paiement sécurisé — Carte bancaire ou PayPal, connexion chiffrée. » |
+| 102 | Boutons de partage des fiches produits | Facebook, X, Pinterest | Facebook et X (Pinterest masqué par le module abcdesign 1.5.5) |
+| 103 | Défilement sur mobile | La page pouvait glisser vers la droite | Rebond normal gardé (essai sans rebond en 1.5.6 annulé, trop brusque) ; glissement à droite bloqué (overflow-x: clip, module 1.5.8). Vérifié : aucune page n'a d'espace réel sous le pied de page ni de contenu qui dépasse à droite |
+| 104 | En-tête mobile | Le mot « MENU » passait par-dessus le logo | Icône 3 traits seule, logo bien dégagé (testé iPhone 13, iPhone SE, Galaxy S9+) |
+| 105 | En-tête mobile | Icônes Facebook et Instagram à côté du logo | Retirées en 1.5.9 par erreur (malentendu), remises en 1.6.1 |
+| 106 | Fin de page sur iPhone | Vidéo du 15/10 : on pouvait descendre d'un écran entier dans du blanc sous le pied de page (et glisser à droite) ; non reproduit sous Chrome | La page est coupée net à la fin du pied de page (main#page : overflow clip), module 1.6.0. Menus, en-tête collé et fenêtres testés sans changement. À confirmer sur un vrai iPhone |
+| 107 | Boutons de partage des fiches produits (sous « Ajouter au panier ») | Facebook, X (Pinterest déjà masqué) | Tous masqués, module 1.6.1 |
+
+**Suivi des places : `suivi-degustations.xlsx`** (à la racine de ce dossier). Onglets Achats (une ligne par commande), Seances (planning et places restantes), Reservations (appels des clients) et Tarifs (prix et remises sur volume). Le mode d'emploi est dans le premier onglet.
+
+**Non fait :** l'image du **whisky Paul John Bold** (342) est bien la mauvaise (c'est un « As We Get It » d'Ian Macleod). Il faut une photo de la vraie bouteille, prise en boutique : je ne reprends pas les photos d'autres sites pour une question de droits.
+
+**À vérifier :** le téléphone de Franklin. La fiche magasin de PrestaShop indique 02 28 29 30 08, alors que la page « Nos boutiques » et PagesJaunes indiquent **09 86 22 05 28** (c'est ce numéro qui est affiché). Spi & Bi ne peut pas être ajouté comme vrai « magasin » PrestaShop sans le droit « Magasins » (Paramètres de la boutique → Contact).
+
+## Volontairement non modifié
+
+- Catégorie n° 156 « Histoire » : « présence dans le guide du Routard **depuis 15 ans** ». C'est un autre fait (depuis quand la boutique est dans le Routard), pas l'ancienneté de la boutique. **À vérifier par le gérant.**
+- Une légende d'image produit, « ABC, créateur de contenu gourmand depuis 19 ans ! », sur la photo `petit-beurre-bonnes-fetes-sucre-sale-v2.jpg`. Elle se modifie dans la fiche produit, en cliquant sur la photo puis sur le champ « Légende ». Elle reste à faire.
+- Les âges des produits (whisky 10 ans, rhum 7 ans, etc.), qui sont des caractéristiques des produits.
+
+## Restant à faire par un compte administrateur
+
+- ~~Vider le cache~~ : fait.
+- **Remettre « Vérifier l'adresse IP du cookie » sur Oui** : Paramètres avancés → Administration.
+- **Désactiver le compte « Assistant contenu »** : Paramètres avancés → Équipe → Employés → Actif = Non.
