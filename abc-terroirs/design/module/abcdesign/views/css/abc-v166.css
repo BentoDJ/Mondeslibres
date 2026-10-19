@@ -829,3 +829,11 @@ main#page { position: relative; overflow: clip; }
 .abc-map__liste button span { color: var(--abc-muted); }
 .abc-map__liste button:hover, .abc-map__liste button:focus-visible { border-color: var(--abc-olive); }
 @media (max-width: 767px) { .abc-map { height: 320px; } .abc-map__liste button { width: 100%; border-radius: var(--abc-radius); } .abc-map__liste li { width: 100%; } }
+
+/* ===== Menu « Catégories » (colonne de gauche) : texte et flèches en blanc sur le vert ===== */
+#_desktop_top_menu.verticalmenu_block #top-menu > li > a,
+#_desktop_top_menu.verticalmenu_block #top-menu > li > a:hover,
+#_desktop_top_menu.verticalmenu_block #top-menu > li > a:focus { color: #fff !important; }
+#_desktop_top_menu.verticalmenu_block #top-menu > li > a::before,
+#_desktop_top_menu.verticalmenu_block #top-menu > li > a .sub-menu-arrow { filter: brightness(0) invert(1); }
+#_desktop_top_menu.verticalmenu_block #top-menu > li > a::after { background: rgba(255,255,255,.75); }
