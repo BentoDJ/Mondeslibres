@@ -839,3 +839,6 @@ main#page { position: relative; overflow: clip; }
 #_desktop_top_menu.verticalmenu_block #top-menu > li > a { padding-left: 12px !important; }
 #_desktop_top_menu.verticalmenu_block #top-menu > li > a::before { display: none !important; }
 #_desktop_top_menu.verticalmenu_block #top-menu > li > a::after { background: rgba(255,255,255,.75); left: 12px; right: 12px; }
+
+/* ===== Vignettes produits : pas de boutons verts au survol (envies, vue rapide, panier) ===== */
+.product-miniature .outer-functional, .product-miniature .functional-buttons { display: none !important; }
