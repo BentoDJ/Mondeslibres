@@ -131,3 +131,12 @@ LIVE.update({
  '707': ('A-00110', OK, 'confirmé par le patron'),
 })
 PATRON_ARCHIVER = ['532', '622', '468', '482', '508', '348', '300', '529', '711', '503', '650']
+
+# 2e retour du patron (export annoté « OK », 19/10/2026) : propositions validées
+for _pid in ['103','161','238','240','262','370','470','503','504','505','603','610','629','630','631','649','661','665','671','675','692','709','710','739','740','741','742','743']:
+    _r = LIVE.get(_pid) or HIGH.get(_pid) or LOW.get(_pid) or EXIST.get(_pid)
+LIVE.update({
+ '239': ('A-00444', OK, 'choix du patron : réf. de la boîte plate Tour LU N&B (fiche LMB « vide boîte »)'),
+ '693': ('A-06983', OK, 'choix du patron : même réf. que la pâte à tartiner PB noisette ou caramel'),
+})
+PATRON_OK = ['103','161','238','240','262','370','470','503','504','505','603','610','629','630','631','649','661','665','671','675','692','709','710','739','740','741','742','743','239','693','430']
