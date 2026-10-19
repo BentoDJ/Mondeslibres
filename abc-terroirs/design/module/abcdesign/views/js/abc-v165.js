@@ -75,12 +75,13 @@
     ['Que des supers produits ! Accueil toujours sympathique par de vrais connaisseurs', 'Tino R.', 'Spi & Bi']
   ];
 
+  // pos : coordonnées GPS (OpenStreetMap, 19/10/2026) pour la carte
   var BOUTIQUES = [
-    { nom: 'ABC Terroirs Saint-Pierre', sous: 'Épicerie fine & cave (boutique historique)', adr: '5 place Saint-Pierre, 44000 Nantes', tel: '02 40 89 76 26',
+    { nom: 'ABC Terroirs Saint-Pierre', sous: 'Épicerie fine & cave (boutique historique)', adr: '5 place Saint-Pierre, 44000 Nantes', tel: '02 40 89 76 26', pos: [47.21787, -1.55145],
       h: [['Lundi – vendredi', '9h30 – 19h30'], ['Samedi', '9h30 – 20h'], ['Dimanche', 'Fermé']] },
-    { nom: 'ABC Terroirs Franklin', sous: 'Épicerie fine & cave', adr: '9 rue Franklin, 44000 Nantes', tel: '09 86 22 05 28',
+    { nom: 'ABC Terroirs Franklin', sous: 'Épicerie fine & cave', adr: '9 rue Franklin, 44000 Nantes', tel: '09 86 22 05 28', pos: [47.21441, -1.56340],
       h: [['Lundi', '11h – 14h / 15h – 19h30'], ['Mardi – samedi', '10h – 14h / 15h – 19h30'], ['Dimanche', 'Fermé']] },
-    { nom: 'Spi & Bi', sous: 'Cave à spiritueux, bières et cidres', adr: '5 place Paul-Émile Ladmirault, 44000 Nantes', tel: '02 55 54 79 80',
+    { nom: 'Spi & Bi', sous: 'Cave à spiritueux, bières et cidres', adr: '5 place Paul-Émile Ladmirault, 44000 Nantes', tel: '02 55 54 79 80', pos: [47.21365, -1.56409],
       h: [['Mardi – samedi', '10h30 – 14h / 15h – 19h30'], ['Dimanche – lundi', 'Fermé']] }
   ];
   function carteBoutique(bq) {
@@ -89,6 +90,85 @@
       '<p><a href="https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(bq.adr) + '" target="_blank" rel="noopener">' + esc(bq.adr) + '</a></p>' +
       '<table>' + bq.h.map(function (l) { return '<tr><td>' + esc(l[0]) + '</td><td>' + esc(l[1]) + '</td></tr>'; }).join('') + '</table>' +
       '<p><a href="tel:+33' + tel.slice(1) + '">' + esc(bq.tel) + '</a></p></div>';
+  }
+
+  // Carte des 3 boutiques (Leaflet + OpenStreetMap, sans cookies ni clé). Survol ou toucher d'un repère = petite fiche.
+  // Si la carte ne se charge pas, on revient aux 3 pavés.
+  function blocBoutiques(titre, cls) {
+    var sec = el('section', 'abc-stores ' + (cls || ''), '<h2>' + titre + '</h2>' +
+      '<div class="abc-map" role="region" aria-label="Carte de nos boutiques à Nantes"></div>' +
+      '<ul class="abc-map__liste">' + BOUTIQUES.map(function (bq, i) {
+        return '<li><button type="button" data-i="' + i + '"><strong>' + esc(bq.nom) + '</strong><span>' + esc(bq.adr.replace(/, 44000 Nantes$/, '')) + '</span></button></li>';
+      }).join('') + '</ul>');
+    setTimeout(activerCartes, 0);
+    return sec;
+  }
+  // Active les cartes présentes dans la page. Rappelée après chargement : certains thèmes recopient le contenu
+  // de la page (la copie n'aurait plus de surveillance), donc on cherche les cartes dans le DOM à chaque fois.
+  function activerCartes() {
+    [].forEach.call(document.querySelectorAll('.abc-stores .abc-map'), function (zone) {
+      if (zone.abcSuivi || zone.classList.contains('leaflet-container')) return; // propriété JS : non recopiée avec le HTML
+      zone.abcSuivi = true;
+      var sec = zone.closest('.abc-stores');
+      function repli() {
+        if (!sec.querySelector('.abc-stores__grid')) {
+          zone.remove(); var li = sec.querySelector('.abc-map__liste'); if (li) li.remove();
+          sec.insertAdjacentHTML('beforeend', '<div class="abc-stores__grid">' + BOUTIQUES.map(carteBoutique).join('') + '</div>');
+        }
+      }
+      function demarrer() {
+        chargerLeaflet(function (ok) { if (!document.body.contains(zone)) return; if (ok) dessinerCarte(sec, zone); else repli(); });
+      }
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { io.disconnect(); demarrer(); } }, { rootMargin: '600px' });
+        io.observe(zone);
+      } else demarrer();
+    });
+  }
+  function cartesApresChargement() { activerCartes(); setTimeout(activerCartes, 1500); }
+  if (document.readyState === 'complete') cartesApresChargement(); else window.addEventListener('load', cartesApresChargement);
+  var leafletEtat = null, leafletAttente = [];
+  function chargerLeaflet(cb) {
+    if (window.L && window.L.map) return cb(true);
+    leafletAttente.push(cb);
+    if (leafletEtat) return;
+    leafletEtat = 'charge';
+    var base = ((document.querySelector('link[href*="abcdesign/views/css"]') || {}).href || '').replace(/views\/css\/[^/?]+.*$/, 'views/lib/leaflet/');
+    var fin = function (ok) { leafletEtat = ok ? 'ok' : 'ko'; leafletAttente.splice(0).forEach(function (f) { f(ok); }); };
+    if (!base) return fin(false);
+    var css = document.createElement('link'); css.rel = 'stylesheet'; css.href = base + 'leaflet.css'; document.head.appendChild(css);
+    var js = document.createElement('script'); js.src = base + 'leaflet.js'; js.async = true;
+    js.onload = function () { fin(!!(window.L && window.L.map)); }; js.onerror = function () { fin(false); };
+    document.head.appendChild(js);
+  }
+  function ficheCarte(bq) {
+    var tel = bq.tel.replace(/\s/g, '');
+    return '<div class="abc-pop"><strong class="abc-pop__nom">' + esc(bq.nom) + '</strong><span class="abc-pop__sous">' + esc(bq.sous) + '</span>' +
+      '<span class="abc-pop__adr">' + esc(bq.adr) + '</span>' +
+      '<table>' + bq.h.map(function (l) { return '<tr><td>' + esc(l[0]) + '</td><td>' + esc(l[1]) + '</td></tr>'; }).join('') + '</table>' +
+      '<span class="abc-pop__liens"><a href="tel:+33' + tel.slice(1) + '">' + esc(bq.tel) + '</a>' +
+      '<a href="https://www.google.com/maps/dir/?api=1&destination=' + encodeURIComponent(bq.nom + ', ' + bq.adr) + '" target="_blank" rel="noopener">Itinéraire</a></span></div>';
+  }
+  function dessinerCarte(sec, zone) {
+    var L = window.L, tactile = window.matchMedia && matchMedia('(hover: none)').matches;
+    var carte = L.map(zone, { scrollWheelZoom: false, dragging: !tactile, tap: true, zoomControl: true, attributionControl: true });
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>' }).addTo(carte);
+    var reperes = BOUTIQUES.map(function (bq, i) {
+      var m = L.marker(bq.pos, {
+        icon: L.divIcon({ className: 'abc-pin', html: '<span><b>' + (i + 1) + '</b></span>', iconSize: [30, 38], iconAnchor: [15, 36], popupAnchor: [0, -34] }),
+        title: bq.nom, alt: bq.nom, riseOnHover: true
+      }).addTo(carte);
+      m.bindPopup(ficheCarte(bq), { maxWidth: 280, minWidth: 220, autoPanPadding: [20, 20], className: 'abc-popup' });
+      if (!tactile) m.on('mouseover', function () { m.openPopup(); });
+      return m;
+    });
+    carte.fitBounds(L.latLngBounds(BOUTIQUES.map(function (b) { return b.pos; })), { padding: tactile ? [24, 24] : [40, 40], maxZoom: 16 });
+    carte.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank" rel="noopener">Leaflet</a>');
+    [].forEach.call(sec.querySelectorAll('.abc-map__liste button'), function (bt) {
+      var m = reperes[+bt.getAttribute('data-i')];
+      bt.addEventListener('click', function () { m.openPopup(); });
+      if (!tactile) bt.addEventListener('mouseenter', function () { m.openPopup(); });
+    });
   }
 
   // Blocs « Un coffret pour chaque budget » de l'accueil
@@ -231,13 +311,13 @@
     // 2 ter. Nos 3 boutiques : en bas de toutes les pages, et sur la page « Magasins »
     var fc = document.querySelector('#footer .footer-container');
     if (fc && page !== 'stores' && !document.querySelector('.abc-stores')) {
-      var sec = el('section', 'abc-stores', '<h2>Nos 3 boutiques à Nantes</h2><div class="abc-stores__grid">' + BOUTIQUES.map(carteBoutique).join('') + '</div>');
+      var sec = blocBoutiques('Nos 3 boutiques à Nantes');
       fc.parentNode.insertBefore(sec, fc);
     }
     if (page === 'stores') {
       var main = document.querySelector('#main .page-content, #main');
       if (main && !main.querySelector('.abc-stores--page')) {
-        var sp = el('section', 'abc-stores abc-stores--page', '<h2>Nos 3 boutiques</h2><div class="abc-stores__grid">' + BOUTIQUES.map(carteBoutique).join('') + '</div>');
+        var sp = blocBoutiques('Nos 3 boutiques', 'abc-stores--page');
         main.insertBefore(sp, main.firstChild);
         [...main.children].forEach(function (c) { if (c !== sp && !c.matches('h1, header, .page-header')) c.style.display = 'none'; });
       }

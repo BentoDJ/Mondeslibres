@@ -805,3 +805,27 @@ main#page { position: relative; overflow: clip; }
 .product-variants .product-variants-item .input-container:hover .radio-label { border-color: var(--abc-olive); }
 .product-variants .product-variants-item .input-radio:checked + .radio-label { background: var(--abc-olive); border-color: var(--abc-olive); color: #fff; }
 .product-variants .product-variants-item .input-radio:focus-visible + .radio-label { outline: 2px solid var(--abc-olive-dark); outline-offset: 2px; }
+
+/* ===== Nos 3 boutiques : carte avec fiches au survol ===== */
+.abc-map { height: 400px; border: 1px solid var(--abc-line); border-radius: var(--abc-radius); overflow: hidden; background: var(--abc-olive-soft); z-index: 0; }
+.abc-map .leaflet-tile-pane { filter: saturate(.55) sepia(.12); }
+.abc-pin { background: none; border: 0; }
+.abc-pin span { display: flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg); background: var(--abc-olive); border: 2px solid #fff; box-shadow: 0 2px 6px rgba(0,0,0,.3); color: #fff; font: 600 13px/1 system-ui, sans-serif; }
+.abc-pin:hover span, .abc-pin:focus span { background: var(--abc-olive-dark); }
+.abc-pin b { transform: rotate(45deg); font-weight: 600; }
+.abc-popup .leaflet-popup-content-wrapper { border-radius: var(--abc-radius); box-shadow: 0 6px 20px rgba(0,0,0,.18); }
+.abc-popup .leaflet-popup-content { margin: 14px 16px; font-size: 13.5px; line-height: 1.4; color: var(--abc-ink); }
+.abc-pop strong, .abc-pop span { display: block; }
+.abc-pop__nom { font-family: "Libre Caslon Text", Georgia, serif; font-size: 17px; font-weight: 600; }
+.abc-pop__sous { color: var(--abc-muted); font-size: 12.5px; margin-top: 1px; }
+.abc-pop__adr { margin-top: 6px; }
+.abc-pop table { width: 100%; margin: 8px 0 0; border-collapse: collapse; font-size: 13px; }
+.abc-pop td { padding: 2px 0; border: 0; vertical-align: top; }
+.abc-pop td + td { text-align: right; font-weight: 500; padding-left: 10px; }
+.abc-pop .abc-pop__liens { display: flex; gap: 14px; margin-top: 10px; }
+.abc-pop a { color: var(--abc-olive-dark) !important; font-weight: 600; text-decoration: underline; text-underline-offset: 2px; }
+.abc-map__liste { display: flex; flex-wrap: wrap; gap: 10px; list-style: none; margin: 12px 0 0; padding: 0; }
+.abc-map__liste button { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; background: #fff; border: 1px solid var(--abc-line); border-radius: 999px; padding: 8px 14px; font-size: 13.5px; color: var(--abc-ink); cursor: pointer; text-align: left; }
+.abc-map__liste button span { color: var(--abc-muted); }
+.abc-map__liste button:hover, .abc-map__liste button:focus-visible { border-color: var(--abc-olive); }
+@media (max-width: 767px) { .abc-map { height: 320px; } .abc-map__liste button { width: 100%; border-radius: var(--abc-radius); } .abc-map__liste li { width: 100%; } }
