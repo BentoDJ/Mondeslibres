@@ -210,6 +210,7 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 105 | En-tête mobile | Icônes Facebook et Instagram à côté du logo | Retirées en 1.5.9 par erreur (malentendu), remises en 1.6.1 |
 | 106 | Fin de page sur iPhone | Vidéo du 15/10 : on pouvait descendre d'un écran entier dans du blanc sous le pied de page (et glisser à droite) ; non reproduit sous Chrome | La page est coupée net à la fin du pied de page (main#page : overflow clip), module 1.6.0. Menus, en-tête collé et fenêtres testés sans changement. À confirmer sur un vrai iPhone |
 | 107 | Boutons de partage des fiches produits (sous « Ajouter au panier ») | Facebook, X (Pinterest déjà masqué) | Tous masqués, module 1.6.1 |
+| 108 | Catalogue → 11 produits désactivés (décision du patron : articles archivés dans LMB) | En ligne | Hors ligne (rien supprimé, réactivables) : Gin Saxon Garden, Rhum Clairin Casimir, La Petite Menthe, Triptyque Combier 20 cl, Whisky Porh Puce, Gin Ki No Bi, Gin Sakurao, Gin Etsu 20 cl, Sardines à poêler, Boîte Délices & Gourmandises, Coffret petit beurre « Bonnes fêtes » petit. Vérifié : pages en 404, plus dans les listes |
 
 **Suivi des places : `suivi-degustations.xlsx`** (à la racine de ce dossier). Onglets Achats (une ligne par commande), Seances (planning et places restantes), Reservations (appels des clients) et Tarifs (prix et remises sur volume). Le mode d'emploi est dans le premier onglet.
 
