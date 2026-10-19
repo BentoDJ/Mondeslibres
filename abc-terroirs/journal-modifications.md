@@ -215,6 +215,7 @@ Les mots de moins de 3 lettres sont ignorés par la recherche, et la longueur mi
 | 110 | Fiches produits (module 1.6.2) | Ligne « Référence » cachée seulement si vide | Toujours cachée côté client (code interne), visible dans l'administration, les commandes et les factures |
 | 111 | Catalogue → champ « Référence » de 24 produits | Anciens codes ou vide | Références LMB validées par le patron (2e retour). Avant/après : sauvegardes/references-lmb-appliquees-2026-10-19-lot2.json. Total : 448 produits avec leur réf. LMB |
 | 112 | Fiche « Pet'Nat Syl Save the Bul' » (n° 453), champ Référence | vide | A-05491 (« Phyl Save the Bul' » dans LMB) ; coffret marin sans alcool et les 2 Triptyques confirmés archivés, sans réf. LMB |
+| 113 | Paramètres avancés → Performances ; Attributs ; fiche « Sauces piquantes Piq'Hans » (n° 639) | Déclinaisons désactivées ; fiche simple sans réf. | Déclinaisons activées (par le compte principal). Attribut « Parfum » (liste déroulante) avec 8 valeurs. Fiche 639 passée en 8 déclinaisons, toutes à 12,90 € TTC, chacune avec sa réf. LMB : L'Originale A-07148, La Passionnée A-07154, L'Atomique A-07147, Deep Purple A-07157, Taj Malave A-07150, L'Enfumée A-07153, Marble Queen A-05658, Nectar Noir A-07159. Ajout au panier testé |
 
 **Suivi des places : `suivi-degustations.xlsx`** (à la racine de ce dossier). Onglets Achats (une ligne par commande), Seances (planning et places restantes), Reservations (appels des clients) et Tarifs (prix et remises sur volume). Le mode d'emploi est dans le premier onglet.
 
