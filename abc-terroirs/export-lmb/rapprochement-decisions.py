@@ -115,3 +115,11 @@ LIVE = {
  '239': (None, NF, 'LMB : seulement la boîte plate vide'), '290': (None, NF, ''), '129': (None, NF, ''),
  '453': (None, NF, 'LMB : seulement le magnum'), '430': (None, NF, ''),
 }
+
+# Après extraction complète du catalogue LMB (2 533 actifs + 4 725 archivés), 19/10/2026
+LIVE.update({
+ '261': ('A-04064', OK, 'LMB actif : Barbancourt « Cinq étoiles » 8 ans (l\'ancienne réf. du site était la bonne)'),
+ '521': ('A-04912', OK, 'une réf. LMB active pour les 3 parfums 20 cl'), '522': ('A-04912', OK, 'idem'),
+ '430': ('A-03231', OK, 'Delaunay = Domaine de la Bareille'),
+ '290': ('A-03534', V, 'LMB : gin « Deuxième chance » de La Piautre au même prix (51,90 €), peut-être renommé'),
+})
