@@ -834,6 +834,8 @@ main#page { position: relative; overflow: clip; }
 #_desktop_top_menu.verticalmenu_block #top-menu > li > a,
 #_desktop_top_menu.verticalmenu_block #top-menu > li > a:hover,
 #_desktop_top_menu.verticalmenu_block #top-menu > li > a:focus { color: #fff !important; }
-#_desktop_top_menu.verticalmenu_block #top-menu > li > a::before,
 #_desktop_top_menu.verticalmenu_block #top-menu > li > a .sub-menu-arrow { filter: brightness(0) invert(1); }
-#_desktop_top_menu.verticalmenu_block #top-menu > li > a::after { background: rgba(255,255,255,.75); }
+/* une seule flèche : on retire celle devant le nom, on garde celle de droite */
+#_desktop_top_menu.verticalmenu_block #top-menu > li > a { padding-left: 12px !important; }
+#_desktop_top_menu.verticalmenu_block #top-menu > li > a::before { display: none !important; }
+#_desktop_top_menu.verticalmenu_block #top-menu > li > a::after { background: rgba(255,255,255,.75); left: 12px; right: 12px; }
