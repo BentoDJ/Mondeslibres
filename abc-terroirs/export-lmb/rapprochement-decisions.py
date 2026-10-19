@@ -123,3 +123,11 @@ LIVE.update({
  '430': ('A-03231', OK, 'Delaunay = Domaine de la Bareille'),
  '290': ('A-03534', V, 'LMB : gin « Deuxième chance » de La Piautre au même prix (51,90 €), peut-être renommé'),
 })
+
+# Retour du patron (fichier refs-lmb-manquantes annoté, 19/10/2026)
+LIVE.update({
+ '743': ('A-01407', OK, 'confirmé par le patron'), '671': ('A-03183', OK, 'confirmé par le patron'),
+ '258': ('A-04087', OK, 'confirmé par le patron'), '390': ('A-05220', OK, 'confirmé par le patron'),
+ '707': ('A-00110', OK, 'confirmé par le patron'),
+})
+PATRON_ARCHIVER = ['532', '622', '468', '482', '508', '348', '300', '529', '711', '503', '650']
