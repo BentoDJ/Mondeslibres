@@ -140,3 +140,11 @@ LIVE.update({
  '693': ('A-06983', OK, 'choix du patron : même réf. que la pâte à tartiner PB noisette ou caramel'),
 })
 PATRON_OK = ['103','161','238','240','262','370','470','503','504','505','603','610','629','630','631','649','661','665','671','675','692','709','710','739','740','741','742','743','239','693','430']
+
+# 3e retour (19/10/2026)
+LIVE.update({
+ '453': ('A-05491', OK, "Confirmé : dans LMB c'est « Phyl Save the Bul' » (Pet'Nat, Delaunay = Domaine de la Bareille)"),
+ '129': (None, NF, 'Archivé (confirmé par la boutique) : pas de réf. LMB, produit désactivé sur le site'),
+ '484': (None, NF, 'Archivé (confirmé par la boutique) : pas de réf. LMB, produit désactivé sur le site'),
+ '639': (None, V, "Une fiche pour plusieurs parfums sur le site. Réfs LMB des parfums cités sur la fiche : L'Originale A-07148 · La Passionnée A-07154 · L'Atomique A-07147 · Deep Purple A-07157 · Taj Malave A-07150 · L'Enfumée A-07153 · Marble Queen A-05658 · Nectar Noir A-07159"),
+})
