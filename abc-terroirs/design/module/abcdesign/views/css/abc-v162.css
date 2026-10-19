@@ -792,3 +792,7 @@ html, body { overflow-x: clip; max-width: 100%; }
    Les éléments fixes (en-tête collé, menu mobile, bouton « haut de page ») ne sont pas concernés. */
 main#page { position: relative; overflow: clip; }
 @supports not (overflow: clip) { main#page { overflow: hidden; } }
+
+/* Fiche produit : la référence (code LMB interne) n'est pas affichée aux clients.
+   Elle reste dans l'administration, les commandes et les factures. */
+.product-reference { display: none !important; }
