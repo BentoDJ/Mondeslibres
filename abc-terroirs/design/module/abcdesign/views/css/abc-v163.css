@@ -796,3 +796,12 @@ main#page { position: relative; overflow: clip; }
 /* Fiche produit : la référence (code LMB interne) n'est pas affichée aux clients.
    Elle reste dans l'administration, les commandes et les factures. */
 .product-reference { display: none !important; }
+
+/* ===== Fiche produit : déclinaisons en pastilles cliquables (ex. parfums Piq'Hans) ===== */
+.product-variants .product-variants-item > ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; padding: 0; }
+.product-variants .product-variants-item .input-container { float: none; position: relative; margin: 0; }
+.product-variants .product-variants-item .input-radio { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; z-index: 1; }
+.product-variants .product-variants-item .radio-label { display: block; padding: 9px 15px; border: 1px solid var(--abc-line); border-radius: 999px; background: #fff; color: var(--abc-ink); font-weight: 500; font-size: 14px; line-height: 1.2; box-shadow: none; transition: background-color .15s, border-color .15s, color .15s; }
+.product-variants .product-variants-item .input-container:hover .radio-label { border-color: var(--abc-olive); }
+.product-variants .product-variants-item .input-radio:checked + .radio-label { background: var(--abc-olive); border-color: var(--abc-olive); color: #fff; }
+.product-variants .product-variants-item .input-radio:focus-visible + .radio-label { outline: 2px solid var(--abc-olive-dark); outline-offset: 2px; }
