@@ -802,4 +802,34 @@
     document.body.classList.add('abc-texte-en-bas');
   }
   ready(texteSousLesProduits);
+  // 16. Vignettes produits : un bouton « Ajouter au panier » sous le prix (remplace les carrés verts du survol,
+  //     qui étaient le seul moyen d'ajouter depuis une liste sur téléphone). Produit à choix (ex. parfums) :
+  //     bouton « Choisir » qui ouvre la fiche, pour ne pas ajouter un parfum au hasard.
+  function boutonsPanierVignettes() {
+    [].forEach.call(document.querySelectorAll('.product-miniature'), function (m) {
+      if (m.querySelector('.abc-mini-panier')) return;
+      var prix = m.querySelector('.product-price-and-shipping');
+      var lien = m.querySelector('.product-title a, a.product-thumbnail');
+      if (!prix || !lien) return;
+      var bloc = el('div', 'abc-mini-panier');
+      var form = m.querySelector('form.add-to-cart-or-refresh');
+      var aChoix = (m.getAttribute('data-id-product-attribute') || '0') !== '0';
+      if (form && !aChoix) {
+        var bt = form.querySelector('[data-button-action="add-to-cart"]');
+        if (bt) bt.textContent = 'Ajouter au panier';
+        bloc.appendChild(form);
+      } else {
+        bloc.innerHTML = '<a class="btn btn-primary" href="' + lien.getAttribute('href').replace(/"/g, '&quot;') + '">Choisir</a>';
+      }
+      prix.parentNode.insertBefore(bloc, prix.nextSibling);
+    });
+  }
+  ready(function () {
+    boutonsPanierVignettes();
+    // Listes rechargées (filtres, pages suivantes) : on rajoute les boutons
+    var zone = document.getElementById('main') || document.body;
+    var attente = null;
+    new MutationObserver(function () { clearTimeout(attente); attente = setTimeout(boutonsPanierVignettes, 150); })
+      .observe(zone, { childList: true, subtree: true });
+  });
 })();

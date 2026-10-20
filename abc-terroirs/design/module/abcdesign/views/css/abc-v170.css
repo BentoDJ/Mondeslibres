@@ -859,3 +859,11 @@ main#page { position: relative; overflow: clip; }
   body > .ui-autocomplete { z-index: 1001 !important; box-sizing: border-box; border: 0 !important; border-bottom: 1px solid var(--abc-line) !important; box-shadow: 0 10px 20px rgba(35,38,31,.12) !important; max-height: 60vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
   body > .ui-autocomplete li a, body > .ui-autocomplete .ui-menu-item-wrapper { font-size: 15px !important; font-size-adjust: none; padding: 10px 14px !important; white-space: normal; }
 }
+
+/* ===== Vignettes produits : bouton « Ajouter au panier » sous le prix ===== */
+.product-miniature .abc-mini-panier { margin: 10px 0 0; }
+.product-miniature .abc-mini-panier form { margin: 0; }
+.product-miniature .abc-mini-panier .btn { display: block !important; float: none !important; position: static !important; width: 100% !important; max-width: none !important; height: auto !important; overflow: visible !important; text-indent: 0 !important; white-space: normal !important; background-image: none !important; min-height: 40px; margin: 0; padding: 9px 10px !important; font-size: 14px !important; font-weight: 600; line-height: 1.3; text-align: center; text-transform: none !important; letter-spacing: 0 !important; color: #fff !important; background: var(--abc-olive) !important; border: 0 !important; border-radius: 3px !important; box-shadow: none !important; }
+.product-miniature .abc-mini-panier .btn:hover, .product-miniature .abc-mini-panier .btn:focus-visible { background-color: var(--abc-olive-dark) !important; }
+.product-miniature .abc-mini-panier .btn::before, .product-miniature .abc-mini-panier .btn::after { display: none !important; }
+.product-miniature .abc-mini-panier a.btn { background: #fff !important; color: var(--abc-olive-dark) !important; border: 1px solid var(--abc-olive) !important; }
