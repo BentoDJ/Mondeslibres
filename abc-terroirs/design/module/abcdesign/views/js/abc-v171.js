@@ -802,34 +802,60 @@
     document.body.classList.add('abc-texte-en-bas');
   }
   ready(texteSousLesProduits);
-  // 16. Vignettes produits : un bouton « Ajouter au panier » sous le prix (remplace les carrés verts du survol,
-  //     qui étaient le seul moyen d'ajouter depuis une liste sur téléphone). Produit à choix (ex. parfums) :
-  //     bouton « Choisir » qui ouvre la fiche, pour ne pas ajouter un parfum au hasard.
-  function boutonsPanierVignettes() {
-    [].forEach.call(document.querySelectorAll('.product-miniature'), function (m) {
-      if (m.querySelector('.abc-mini-panier')) return;
-      var prix = m.querySelector('.product-price-and-shipping');
-      var lien = m.querySelector('.product-title a, a.product-thumbnail');
-      if (!prix || !lien) return;
-      var bloc = el('div', 'abc-mini-panier');
-      var form = m.querySelector('form.add-to-cart-or-refresh');
-      var aChoix = (m.getAttribute('data-id-product-attribute') || '0') !== '0';
-      if (form && !aChoix) {
-        var bt = form.querySelector('[data-button-action="add-to-cart"]');
-        if (bt) bt.textContent = 'Ajouter au panier';
-        bloc.appendChild(form);
-      } else {
-        bloc.innerHTML = '<a class="btn btn-primary" href="' + lien.getAttribute('href').replace(/"/g, '&quot;') + '">Choisir</a>';
-      }
-      prix.parentNode.insertBefore(bloc, prix.nextSibling);
-    });
+
+  // 16. Fiche produit : quantité avec de gros boutons − et + (les petites flèches du thème étaient trop petites au doigt),
+  //     et sur téléphone un petit bandeau « Ajouté au panier » en bas de l'écran à la place de la grande fenêtre.
+  function quantiteFacile() {
+    var input = document.getElementById('quantity_wanted');
+    if (!input || input.abcQte) return;
+    input.abcQte = true;
+    var conteneur = input.closest('.qty') || input.parentNode;
+    if (!conteneur || conteneur.querySelector('.abc-qte-btn')) return;
+    input.setAttribute('inputmode', 'numeric');
+    input.setAttribute('pattern', '[0-9]*');
+    var mini = function () { return Math.max(1, parseInt(input.getAttribute('min'), 10) || 1); };
+    var changer = function (delta) {
+      var v = (parseInt(input.value, 10) || mini()) + delta;
+      input.value = Math.max(mini(), Math.min(999, v));
+      if (window.jQuery) jQuery(input).trigger('change'); else input.dispatchEvent(new Event('change', { bubbles: true }));
+    };
+    var moins = el('button', 'abc-qte-btn abc-qte-btn--moins', '−');
+    var plus = el('button', 'abc-qte-btn abc-qte-btn--plus', '+');
+    moins.type = plus.type = 'button';
+    moins.setAttribute('aria-label', 'Une bouteille de moins');
+    plus.setAttribute('aria-label', 'Une bouteille de plus');
+    moins.addEventListener('click', function () { changer(-1); });
+    plus.addEventListener('click', function () { changer(1); });
+    conteneur.classList.add('abc-qte');
+    conteneur.insertBefore(moins, conteneur.firstChild);
+    conteneur.appendChild(plus);
+  }
+  function bandeauPanier(nom, qte) {
+    var vieux = document.querySelector('.abc-toast'); if (vieux) vieux.remove();
+    var urlPanier = (window.prestashop && prestashop.urls && prestashop.urls.pages && prestashop.urls.pages.cart) || '/panier';
+    var t = el('div', 'abc-toast', '<p><strong>Ajouté au panier</strong>' + (nom ? '<span>' + esc(nom) + (qte > 1 ? ' × ' + qte : '') + '</span>' : '') + '</p>' +
+      '<a class="abc-toast__btn" href="' + urlPanier + (urlPanier.indexOf('?') > -1 ? '&' : '?') + 'action=show">Voir le panier</a>' +
+      '<button type="button" class="abc-toast__fermer" aria-label="Fermer">×</button>');
+    t.setAttribute('role', 'status');
+    document.body.appendChild(t);
+    requestAnimationFrame(function () { t.classList.add('is-visible'); });
+    var fermer = function () { t.classList.remove('is-visible'); setTimeout(function () { t.remove(); }, 300); };
+    t.querySelector('.abc-toast__fermer').addEventListener('click', fermer);
+    setTimeout(fermer, 6000);
   }
   ready(function () {
-    boutonsPanierVignettes();
-    // Listes rechargées (filtres, pages suivantes) : on rajoute les boutons
-    var zone = document.getElementById('main') || document.body;
-    var attente = null;
-    new MutationObserver(function () { clearTimeout(attente); attente = setTimeout(boutonsPanierVignettes, 150); })
-      .observe(zone, { childList: true, subtree: true });
+    if (document.body.id !== 'product') return;
+    quantiteFacile();
+    // La zone « Ajouter au panier » est redessinée quand on change de déclinaison : on remet les boutons
+    if (window.prestashop && prestashop.on) prestashop.on('updatedProduct', function () { setTimeout(quantiteFacile, 50); });
+    if (window.jQuery) jQuery(document).on('show.bs.modal', '#blockcart-modal', function (e) {
+      if (window.innerWidth >= 768) return;
+      e.preventDefault();
+      var m = this;
+      var nom = ((m.querySelector('.product-name') || document.querySelector('h1')) || {}).textContent || '';
+      var q = parseInt(((m.textContent || '').match(/Quantit[ée]\s*:\s*(\d+)/) || [])[1], 10) || 1;
+      setTimeout(function () { if (m.parentNode) m.parentNode.removeChild(m); }, 0);
+      bandeauPanier(nom.trim(), q);
+    });
   });
 })();

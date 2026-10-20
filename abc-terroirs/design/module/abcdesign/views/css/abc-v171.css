@@ -860,10 +860,31 @@ main#page { position: relative; overflow: clip; }
   body > .ui-autocomplete li a, body > .ui-autocomplete .ui-menu-item-wrapper { font-size: 15px !important; font-size-adjust: none; padding: 10px 14px !important; white-space: normal; }
 }
 
-/* ===== Vignettes produits : bouton « Ajouter au panier » sous le prix ===== */
-.product-miniature .abc-mini-panier { margin: 10px 0 0; }
-.product-miniature .abc-mini-panier form { margin: 0; }
-.product-miniature .abc-mini-panier .btn { display: block !important; float: none !important; position: static !important; width: 100% !important; max-width: none !important; height: auto !important; overflow: visible !important; text-indent: 0 !important; white-space: normal !important; background-image: none !important; min-height: 40px; margin: 0; padding: 9px 10px !important; font-size: 14px !important; font-weight: 600; line-height: 1.3; text-align: center; text-transform: none !important; letter-spacing: 0 !important; color: #fff !important; background: var(--abc-olive) !important; border: 0 !important; border-radius: 3px !important; box-shadow: none !important; }
-.product-miniature .abc-mini-panier .btn:hover, .product-miniature .abc-mini-panier .btn:focus-visible { background-color: var(--abc-olive-dark) !important; }
-.product-miniature .abc-mini-panier .btn::before, .product-miniature .abc-mini-panier .btn::after { display: none !important; }
-.product-miniature .abc-mini-panier a.btn { background: #fff !important; color: var(--abc-olive-dark) !important; border: 1px solid var(--abc-olive) !important; }
+/* ===== Fiche produit : quantité avec gros boutons − et + ===== */
+.product-quantity .abc-qte { display: flex !important; align-items: stretch; width: auto !important; float: left; margin-right: 10px; }
+.abc-qte .bootstrap-touchspin { display: block !important; width: auto !important; }
+.abc-qte .input-group-btn-vertical, .abc-qte .bootstrap-touchspin-prefix, .abc-qte .bootstrap-touchspin-postfix { display: none !important; }
+.abc-qte #quantity_wanted { width: 52px !important; height: 48px !important; padding: 0 !important; text-align: center; font-size: 17px !important; font-size-adjust: none !important; font-weight: 600; color: var(--abc-ink) !important; background: #fff !important; border: 1px solid var(--abc-line) !important; border-left: 0 !important; border-right: 0 !important; border-radius: 0 !important; box-shadow: none !important; -moz-appearance: textfield; }
+.abc-qte-btn { width: 46px; height: 48px; padding: 0; font-size: 24px; font-size-adjust: none; line-height: 1; color: var(--abc-olive-dark); background: #fff; border: 1px solid var(--abc-line); cursor: pointer; touch-action: manipulation; }
+.abc-qte-btn--moins { border-radius: 3px 0 0 3px; }
+.abc-qte-btn--plus { border-radius: 0 3px 3px 0; }
+.abc-qte-btn:hover, .abc-qte-btn:focus-visible { background: var(--abc-olive-soft); border-color: var(--abc-olive); }
+.abc-qte-btn:focus { outline: none; }
+.abc-qte-btn:focus-visible { outline: 2px solid var(--abc-olive-dark); outline-offset: -2px; }
+.product-quantity .add .add-to-cart { height: 48px; min-width: 180px; touch-action: manipulation; }
+@media (max-width: 767px) {
+  .product-quantity { display: flex; flex-wrap: wrap; align-items: stretch; gap: 10px; }
+  .product-quantity .abc-qte { float: none; margin: 0; }
+  .product-quantity .add { flex: 1 1 160px; float: none; margin: 0 !important; }
+  .product-quantity .add .add-to-cart { width: 100%; min-width: 0; }
+}
+
+/* ===== Téléphone : bandeau « Ajouté au panier » en bas de l'écran ===== */
+.abc-toast { position: fixed; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); z-index: 2000; display: flex; align-items: center; gap: 12px; padding: 12px 40px 12px 14px; background: var(--abc-ink); color: #fff; border-radius: 6px; box-shadow: 0 8px 24px rgba(0,0,0,.25); transform: translateY(140%); transition: transform .25s ease; }
+.abc-toast.is-visible { transform: none; }
+.abc-toast p { flex: 1; min-width: 0; margin: 0; font-size: 14px; line-height: 1.35; color: #fff !important; }
+.abc-toast strong { display: block; font-size: 15px; color: #fff; }
+.abc-toast span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: rgba(255,255,255,.8); }
+.abc-toast__btn { flex: 0 0 auto; padding: 10px 12px; font-size: 14px; font-weight: 600; color: #fff !important; background: var(--abc-olive); border-radius: 3px; text-decoration: none !important; }
+.abc-toast__fermer { position: absolute; top: 4px; right: 6px; width: 30px; height: 30px; padding: 0; font-size: 22px; line-height: 1; color: rgba(255,255,255,.75); background: none; border: 0; }
+@media (prefers-reduced-motion: reduce) { .abc-toast { transition: none; } }
