@@ -888,3 +888,17 @@ main#page { position: relative; overflow: clip; }
 .abc-toast__btn { flex: 0 0 auto; padding: 10px 12px; font-size: 14px; font-weight: 600; color: #fff !important; background: var(--abc-olive); border-radius: 3px; text-decoration: none !important; }
 .abc-toast__fermer { position: absolute; top: 4px; right: 6px; width: 30px; height: 30px; padding: 0; font-size: 22px; line-height: 1; color: rgba(255,255,255,.75); background: none; border: 0; }
 @media (prefers-reduced-motion: reduce) { .abc-toast { transition: none; } }
+
+/* ===== Page panier : mêmes boutons − et + ===== */
+.cart-overview .qty.abc-qte { display: flex !important; align-items: stretch; width: auto !important; max-width: none; padding: 0; }
+.cart-overview .abc-qte .js-cart-line-product-quantity { width: 48px !important; height: 44px !important; padding: 0 !important; text-align: center; font-size: 16px !important; font-size-adjust: none !important; font-weight: 600; color: var(--abc-ink) !important; background: #fff !important; border: 1px solid var(--abc-line) !important; border-left: 0 !important; border-right: 0 !important; border-radius: 0 !important; box-shadow: none !important; -moz-appearance: textfield; }
+.cart-overview .abc-qte .js-cart-line-product-quantity::-webkit-outer-spin-button, .cart-overview .abc-qte .js-cart-line-product-quantity::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.cart-overview .abc-qte-btn { width: 44px; height: 44px; }
+@media (max-width: 767px) {
+  .cart-overview .product-line-actions .hidden-md-up { display: none !important; }
+  .cart-overview .product-line-actions > .row { display: flex; align-items: center; margin: 12px 0 0; }
+  .cart-overview .product-line-actions > .row > .col-xs-6 { flex: 1 1 auto; width: auto; max-width: none; padding: 0; }
+  .cart-overview .product-line-actions > .row > .col-xs-6 > .row { display: flex; align-items: center; justify-content: space-between; margin: 0; }
+  .cart-overview .product-line-actions > .row > .col-xs-6 > .row > .price { width: auto; padding: 0 0 0 12px; text-align: right; }
+  .cart-overview .product-line-actions > .row > .col-xs-2.text-xs-right { flex: 0 0 auto; width: auto; padding: 0 0 0 14px; }
+}

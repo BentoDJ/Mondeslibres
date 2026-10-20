@@ -858,4 +858,60 @@
       bandeauPanier(nom.trim(), q);
     });
   });
+  // 16 bis. Correctif : le thème (ancien) annonce « panier modifié » sans joindre la réponse du serveur, alors que
+  //         PrestaShop 1.7.8 la lit (e.resp.cart) et plante : le panier changeait bien, mais l'écran ne se mettait
+  //         jamais à jour (quantités, total, ligne supprimée). On complète l'annonce avant qu'elle soit lue.
+  if (window.prestashop && typeof prestashop.emit === 'function' && !prestashop.abcEmitCorrige) {
+    var emitOrigine = prestashop.emit;
+    prestashop.emit = function (nom, evt) {
+      if (nom === 'updateCart' && evt && typeof evt === 'object' && !evt.resp) evt.resp = { cart: prestashop.cart };
+      return emitOrigine.apply(this, arguments);
+    };
+    prestashop.abcEmitCorrige = true;
+  }
+
+  // 17. Page panier : mêmes gros boutons − et + que sur la fiche produit. Ils actionnent les boutons d'origine
+  //     (cachés), donc le panier se met à jour comme avant. À 1 bouteille, « − » retire le produit du panier.
+  function quantitePanier() {
+    [].forEach.call(document.querySelectorAll('.cart-overview input.js-cart-line-product-quantity'), function (input) {
+      var conteneur = input.closest('.qty');
+      if (!conteneur || conteneur.querySelector('.abc-qte-btn')) return;
+      var ligne = input.closest('.cart-item') || conteneur;
+      var nom = ((ligne.querySelector('.product-line-info .label') || {}).textContent || '').trim();
+      input.setAttribute('inputmode', 'numeric');
+      var moins = el('button', 'abc-qte-btn abc-qte-btn--moins', '−');
+      var plus = el('button', 'abc-qte-btn abc-qte-btn--plus', '+');
+      moins.type = plus.type = 'button';
+      var majLibelle = function () {
+        var un = (parseInt(input.value, 10) || 1) <= 1;
+        moins.setAttribute('aria-label', un ? 'Retirer ' + nom + ' du panier' : 'Une bouteille de moins');
+        moins.title = un ? 'Retirer du panier' : '';
+      };
+      majLibelle();
+      plus.setAttribute('aria-label', 'Une bouteille de plus');
+      // Le panier du thème réagit aux événements « touchspin.on.startupspin / startdownspin » du champ
+      var declencher = function (nomEvt) { if (window.jQuery) jQuery(input).trigger(nomEvt); };
+      plus.addEventListener('click', function () { declencher('touchspin.on.startupspin'); });
+      moins.addEventListener('click', function () {
+        if ((parseInt(input.value, 10) || 1) <= 1) {
+          var r = ligne.querySelector('[data-link-action="delete-from-cart"]');
+          if (r) { if (window.jQuery) jQuery(r).trigger('click'); else r.click(); }
+          return;
+        }
+        declencher('touchspin.on.startdownspin');
+      });
+      input.addEventListener('change', majLibelle);
+      conteneur.classList.add('abc-qte');
+      conteneur.insertBefore(moins, conteneur.firstChild);
+      conteneur.appendChild(plus);
+    });
+  }
+  ready(function () {
+    if (document.body.id !== 'cart') return;
+    quantitePanier();
+    // Le panier est redessiné après chaque changement : on remet les boutons
+    var attente = null;
+    new MutationObserver(function () { clearTimeout(attente); attente = setTimeout(quantitePanier, 60); })
+      .observe(document.getElementById('main') || document.body, { childList: true, subtree: true });
+  });
 })();
