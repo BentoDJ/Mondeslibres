@@ -842,3 +842,20 @@ main#page { position: relative; overflow: clip; }
 
 /* ===== Vignettes produits : pas de boutons verts au survol (envies, vue rapide, panier) ===== */
 .product-miniature .outer-functional, .product-miniature .functional-buttons { display: none !important; }
+
+/* ===== Recherche sur téléphone : vraie barre pleine largeur sous l'en-tête ===== */
+@media (max-width: 991px) {
+  #search_widget { overflow: visible !important; position: static !important; }
+  #search_widget .search_toggle { left: 0 !important; right: 0 !important; top: 100% !important; width: auto !important; margin: 0 !important; padding: 10px 15px 12px !important; background: #fff !important; border-bottom: 1px solid var(--abc-line); box-shadow: 0 10px 20px rgba(35,38,31,.12); z-index: 1000 !important; }
+  #search_widget .search_toggle form { display: flex !important; align-items: stretch; width: 100%; }
+  #search_widget .search_toggle form input[type=text] { flex: 1 1 auto; min-width: 0; width: auto !important; height: 46px !important; margin: 0 !important; padding: 0 14px !important; font-size: 16px !important; font-size-adjust: none !important; color: var(--abc-ink) !important; background: #fff !important; border: 1px solid var(--abc-olive) !important; border-right: 0 !important; }
+  #search_widget .search_toggle form input[type=text]::placeholder { color: var(--abc-muted) !important; opacity: 1 !important; font-size: 15px; }
+  #search_widget .search_toggle form input[type=text]::-webkit-input-placeholder { color: var(--abc-muted) !important; opacity: 1 !important; }
+  #search_widget .search_toggle form input[type=text], #search_widget .search_toggle form input.ui-autocomplete-input { border-radius: 3px 0 0 3px !important; }
+  #search_widget .search_toggle form button[type=submit] { border-radius: 0 3px 3px 0 !important; }
+  #search_widget .search_toggle form button[type=submit] { position: static !important; flex: 0 0 auto; width: auto !important; height: 46px !important; margin: 0 !important; padding: 0 16px !important; font-size: 15px !important; font-size-adjust: none !important; font-weight: 600; line-height: 46px; color: #fff !important; text-indent: 0 !important; background-image: none !important; }
+  #search_widget .search_toggle form button[type=submit]::before, #search_widget .search_toggle form button[type=submit]::after { display: none !important; }
+  /* Suggestions pendant la frappe : au-dessus de tout, lisibles, et qui défilent si la liste est longue */
+  body > .ui-autocomplete { z-index: 1001 !important; box-sizing: border-box; border: 0 !important; border-bottom: 1px solid var(--abc-line) !important; box-shadow: 0 10px 20px rgba(35,38,31,.12) !important; max-height: 60vh; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+  body > .ui-autocomplete li a, body > .ui-autocomplete .ui-menu-item-wrapper { font-size: 15px !important; font-size-adjust: none; padding: 10px 14px !important; white-space: normal; }
+}

@@ -199,8 +199,39 @@
     // 1. Barre de recherche : un exemple concret de ce qu'on peut chercher
     var s = document.querySelector('#search_widget input[name="s"]');
     if (s) {
-      s.setAttribute('placeholder', 'Coffret, muscadet, whisky, petit beurre…');
+      var exemple = window.innerWidth < 992 ? 'Coffret, muscadet, whisky…' : 'Coffret, muscadet, whisky, petit beurre…';
+      s.setAttribute('placeholder', exemple);
       s.setAttribute('aria-label', 'Rechercher un produit');
+      // Le thème efface l'exemple dès qu'on touche le champ : on le remet, pour qu'on sache quoi taper
+      s.addEventListener('focus', function () { setTimeout(function () { if (!s.getAttribute('placeholder')) s.setAttribute('placeholder', exemple); }, 0); });
+      // Téléphone : en touchant la loupe, le champ s'ouvre et le clavier sort tout de suite
+      var loupe = document.querySelector('#search_widget .search_button');
+      if (loupe) loupe.addEventListener('click', function () {
+        if (window.innerWidth >= 992) return;
+        var boite = document.querySelector('#search_widget .search_toggle');
+        if (boite && getComputedStyle(boite).display !== 'none') s.focus();
+      });
+      // Téléphone : les suggestions s'affichent sous la barre (et non par-dessus le champ), sur toute la largeur.
+      // La bibliothèque repositionne la liste à chaque lettre tapée : on la surveille pour la remettre en place.
+      var placerSuggestions = function () {
+        if (window.innerWidth >= 992) return;
+        var liste = document.querySelector('body > .ui-autocomplete');
+        var boite = document.querySelector('#search_widget .search_toggle');
+        if (!liste || !boite) return;
+        var haut = Math.round(boite.getBoundingClientRect().bottom + window.pageYOffset) + 'px';
+        if (liste.style.top !== haut) liste.style.top = haut;
+        if (liste.style.left !== '0px') liste.style.left = '0px';
+        if (liste.style.width !== '100%') liste.style.width = '100%';
+      };
+      var surveillerListe = function () {
+        var liste = document.querySelector('body > .ui-autocomplete');
+        if (!liste || liste.abcSuivi) return;
+        liste.abcSuivi = true;
+        new MutationObserver(placerSuggestions).observe(liste, { attributes: true, attributeFilter: ['style'] });
+        placerSuggestions();
+      };
+      s.addEventListener('focus', surveillerListe);
+      s.addEventListener('input', surveillerListe);
     }
 
     // 2. Raccourcis sous le menu
