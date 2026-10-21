@@ -2,7 +2,7 @@
 /**
  * ABC Terroirs : habillage du site
  *
- * Ce module ajoute une feuille de style (views/css/abc-v176.css ; le numéro dans le nom force les navigateurs à recharger le style), les polices Google Fonts
+ * Ce module ajoute une feuille de style (views/css/abc-v177.css ; le numéro dans le nom force les navigateurs à recharger le style), les polices Google Fonts
  * et un petit script (views/js/abc.js) : raccourcis de navigation, boutons d'action,
  * aide quand une recherche ne trouve rien.
  * Pour revenir à l'ancien design : Modules > ce module > Désactiver.
@@ -17,7 +17,7 @@ class Abcdesign extends Module
     {
         $this->name = 'abcdesign';
         $this->tab = 'front_office_features';
-        $this->version = '1.7.6';
+        $this->version = '1.7.7';
         $this->author = 'ABC Terroirs';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = ['min' => '1.7.0.0', 'max' => _PS_VERSION_];
@@ -79,12 +79,12 @@ class Abcdesign extends Module
         );
         $this->context->controller->registerStylesheet(
             'abcdesign',
-            'modules/' . $this->name . '/views/css/abc-v176.css',
+            'modules/' . $this->name . '/views/css/abc-v177.css',
             ['media' => 'all', 'priority' => 1000]
         );
         $this->context->controller->registerJavascript(
             'abcdesign-js',
-            'modules/' . $this->name . '/views/js/abc-v176.js',
+            'modules/' . $this->name . '/views/js/abc-v177.js',
             ['position' => 'bottom', 'priority' => 1000]
         );
     }

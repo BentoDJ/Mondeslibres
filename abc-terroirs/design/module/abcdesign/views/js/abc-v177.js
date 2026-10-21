@@ -953,4 +953,65 @@
         .catch(function () { msg.textContent = 'L\'envoi n\'a pas fonctionné. Téléchargez la facture avec l\'autre bouton, ou appelez-nous au 02 40 89 76 26.'; msg.className = 'abc-facture__msg is-erreur'; btMail.disabled = false; });
     });
   });
+  // 19. Commande, étape Adresse : raccourci « Je retire ma commande en boutique ». Le client ne remplit que son nom
+  //     et son téléphone ; l'adresse est remplie avec celle de la boutique (PrestaShop exige une adresse sur chaque
+  //     commande), puis le retrait en magasin est choisi tout seul à l'étape Livraison.
+  var RETRAIT = { adresse: 'Retrait en boutique - 5 place Saint-Pierre', cp: '44000', ville: 'Nantes', pays: '8' };
+  var retraitActif = function () { try { return sessionStorage.getItem('abcRetrait') === '1'; } catch (e) { return false; } };
+  var retraitMemo = function (v) { try { sessionStorage.setItem('abcRetrait', v ? '1' : '0'); } catch (e) {} };
+  function champ(form, nom) { return form.querySelector('[name="' + nom + '"]'); }
+  function groupe(form, nom) { var c = champ(form, nom); return c && c.closest('.form-group'); }
+  function appliquerRetrait(form, actif) {
+    var pays = champ(form, 'id_country');
+    if (actif && pays && pays.value !== RETRAIT.pays) {
+      // le changement de pays redessine le formulaire : le raccourci sera réappliqué ensuite
+      pays.value = RETRAIT.pays;
+      if (window.jQuery) jQuery(pays).trigger('change'); else pays.dispatchEvent(new Event('change', { bubbles: true }));
+      return;
+    }
+    var remplir = { address1: RETRAIT.adresse, postcode: RETRAIT.cp, city: RETRAIT.ville };
+    Object.keys(remplir).forEach(function (n) {
+      var c = champ(form, n); if (!c) return;
+      if (actif) { if (!c.value || c.abcAuto) { c.value = remplir[n]; c.abcAuto = true; } }
+      else if (c.abcAuto) { c.value = ''; c.abcAuto = false; }
+    });
+    ['company', 'vat_number', 'address1', 'address2', 'postcode', 'city', 'id_country', 'id_state', 'dni'].forEach(function (n) {
+      var g = groupe(form, n); if (g) g.style.display = actif ? 'none' : '';
+    });
+    var tel = champ(form, 'phone');
+    if (tel) {
+      tel.required = actif;
+      var g = tel.closest('.form-group'), com = g && g.querySelector('.form-control-comment');
+      if (com) com.textContent = actif ? 'Pour vous prévenir quand votre commande est prête' : 'Facultatif';
+    }
+  }
+  function raccourciRetrait() {
+    if (document.body.id !== 'checkout') return;
+    var form = document.querySelector('#checkout-addresses-step .js-address-form form, #checkout-addresses-step form[data-refresh-url]');
+    if (form && !form.querySelector('.abc-retrait') && champ(form, 'address1')) {
+      var bloc = el('div', 'abc-retrait',
+        '<label><input type="checkbox" class="abc-retrait__case"> <span><strong>Je retire ma commande en boutique</strong>' +
+        '<small>Gratuit, chez ABC Terroirs, 5 place Saint-Pierre à Nantes. Indiquez seulement votre nom et votre téléphone.</small></span></label>');
+      var premier = form.querySelector('.form-group');
+      (premier ? premier.parentNode : form).insertBefore(bloc, premier);
+      var caseR = bloc.querySelector('input');
+      caseR.checked = retraitActif();
+      caseR.addEventListener('change', function () { retraitMemo(caseR.checked); appliquerRetrait(form, caseR.checked); });
+      if (caseR.checked) appliquerRetrait(form, true);
+    }
+    // étape Livraison : choisir le retrait en magasin si le client l'a demandé
+    if (retraitActif()) {
+      var etape = document.querySelector('#checkout-delivery-step');
+      var opt = etape && [].find.call(etape.querySelectorAll('.delivery-option'), function (o) { return /retrait/i.test(o.textContent); });
+      var radio = opt && opt.querySelector('input[type=radio]');
+      if (radio && !radio.checked && !etape.abcRetraitChoisi) { etape.abcRetraitChoisi = true; radio.click(); }
+    }
+  }
+  ready(function () {
+    if (document.body.id !== 'checkout') return;
+    raccourciRetrait();
+    var attenteR = null;
+    new MutationObserver(function () { clearTimeout(attenteR); attenteR = setTimeout(raccourciRetrait, 80); })
+      .observe(document.getElementById('main') || document.body, { childList: true, subtree: true });
+  });
 })();

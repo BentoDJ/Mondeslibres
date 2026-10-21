@@ -916,3 +916,11 @@ main#page { position: relative; overflow: clip; }
 .abc-facture__msg.is-ok { color: var(--abc-olive-dark) !important; font-weight: 600; }
 .abc-facture__msg.is-erreur { color: #a3341f !important; }
 @media (max-width: 767px) { .abc-facture__actions .abc-facture__btn { display: block; width: 100%; text-align: center; } }
+
+/* ===== Commande : raccourci « Je retire ma commande en boutique » ===== */
+.abc-retrait { margin: 6px 0 18px; padding: 14px 16px; background: var(--abc-olive-soft); border: 1px solid #dfe5c2; border-radius: var(--abc-radius); }
+.abc-retrait label { display: flex; gap: 12px; align-items: flex-start; margin: 0; cursor: pointer; text-align: left !important; width: 100%; }
+.abc-retrait label span { flex: 1; text-align: left !important; }
+.abc-retrait input { width: 20px; height: 20px; margin-top: 2px; flex: 0 0 auto; accent-color: var(--abc-olive); }
+.abc-retrait strong { display: block; font-size: 16px; color: var(--abc-ink); }
+.abc-retrait small { display: block; margin-top: 2px; font-size: 14px; color: var(--abc-muted); }
