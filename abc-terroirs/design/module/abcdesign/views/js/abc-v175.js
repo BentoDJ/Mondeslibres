@@ -927,8 +927,20 @@
     var cible = document.querySelector('#content-hook_order_confirmation .card-block, #content-hook_order_confirmation, #order-confirmation .page-content, #main');
     if (!cible || document.querySelector('.abc-facture')) return;
     var bloc = el('div', 'abc-facture',
-      '<p><strong>Votre facture</strong> est disponible dès maintenant. Gardez-la précieusement.</p>' +
-      '<a class="btn btn-primary abc-facture__btn" href="' + lien + '" target="_blank" rel="noopener">Télécharger ma facture (PDF)</a>');
+      '<p><strong>Votre facture</strong> est disponible dès maintenant.</p>' +
+      '<div class="abc-facture__actions">' +
+      '<a class="btn btn-primary abc-facture__btn" href="' + lien + '" target="_blank" rel="noopener">Télécharger ma facture (PDF)</a>' +
+      '<button type="button" class="btn abc-facture__btn abc-facture__btn--mail">Recevoir ma facture par e-mail</button>' +
+      '</div><p class="abc-facture__msg" role="status" aria-live="polite"></p>');
     cible.appendChild(bloc);
+    var btMail = bloc.querySelector('.abc-facture__btn--mail'), msg = bloc.querySelector('.abc-facture__msg');
+    btMail.addEventListener('click', function () {
+      btMail.disabled = true; msg.className = 'abc-facture__msg'; msg.textContent = 'Envoi en cours…';
+      var fd = new FormData(); fd.append('id_order', idCommande); fd.append('key', cle);
+      fetch(base + 'index.php?fc=module&module=abcdesign&controller=facture', { method: 'POST', body: fd, credentials: 'same-origin' })
+        .then(function (r) { return r.json(); })
+        .then(function (d) { msg.textContent = d.message; msg.className = 'abc-facture__msg ' + (d.ok ? 'is-ok' : 'is-erreur'); btMail.disabled = false; })
+        .catch(function () { msg.textContent = 'L\'envoi n\'a pas fonctionné. Téléchargez la facture avec l\'autre bouton, ou appelez-nous au 02 40 89 76 26.'; msg.className = 'abc-facture__msg is-erreur'; btMail.disabled = false; });
+    });
   });
 })();
