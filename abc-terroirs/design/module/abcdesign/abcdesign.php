@@ -2,7 +2,7 @@
 /**
  * ABC Terroirs : habillage du site
  *
- * Ce module ajoute une feuille de style (views/css/abc-v172.css ; le numéro dans le nom force les navigateurs à recharger le style), les polices Google Fonts
+ * Ce module ajoute une feuille de style (views/css/abc-v173.css ; le numéro dans le nom force les navigateurs à recharger le style), les polices Google Fonts
  * et un petit script (views/js/abc.js) : raccourcis de navigation, boutons d'action,
  * aide quand une recherche ne trouve rien.
  * Pour revenir à l'ancien design : Modules > ce module > Désactiver.
@@ -17,7 +17,7 @@ class Abcdesign extends Module
     {
         $this->name = 'abcdesign';
         $this->tab = 'front_office_features';
-        $this->version = '1.7.2';
+        $this->version = '1.7.3';
         $this->author = 'ABC Terroirs';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = ['min' => '1.7.0.0', 'max' => _PS_VERSION_];
@@ -31,11 +31,47 @@ class Abcdesign extends Module
 
     public function install()
     {
-        return parent::install() && $this->registerHook('actionFrontControllerSetMedia');
+        return parent::install() && $this->registerHook('actionFrontControllerSetMedia')
+            && $this->registerHook('actionEmailSendBefore');
+    }
+
+    /**
+     * Copie cachée à la boutique du mail « Paiement accepté » envoyé au client (celui qui contient la facture PDF),
+     * envoyée à l'adresse e-mail de la boutique (Paramètres de la boutique → Contact → Coordonnées).
+     */
+    public function hookActionEmailSendBefore($params)
+    {
+        if (!isset($params['template']) || $params['template'] !== 'payment') {
+            return true;
+        }
+        $copie = Configuration::get('PS_SHOP_EMAIL');
+        if (!Validate::isEmail($copie)) {
+            return true;
+        }
+        $destinataires = is_array($params['to']) ? $params['to'] : [$params['to']];
+        if (in_array($copie, $destinataires, true)) {
+            return true;
+        }
+        $bcc = isset($params['bcc']) ? $params['bcc'] : null;
+        if (empty($bcc)) {
+            $params['bcc'] = $copie;
+        } elseif (is_array($bcc)) {
+            if (!in_array($copie, $bcc, true)) {
+                $params['bcc'][] = $copie;
+            }
+        } elseif ($bcc !== $copie) {
+            $params['bcc'] = [$bcc, $copie];
+        }
+
+        return true;
     }
 
     public function hookActionFrontControllerSetMedia()
     {
+        if (!Configuration::get('ABCDESIGN_COPIE_FACTURE')) {
+            $this->registerHook('actionEmailSendBefore');
+            Configuration::updateValue('ABCDESIGN_COPIE_FACTURE', 1);
+        }
         $this->context->controller->registerStylesheet(
             'abcdesign-fonts',
             'https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap',
@@ -43,12 +79,12 @@ class Abcdesign extends Module
         );
         $this->context->controller->registerStylesheet(
             'abcdesign',
-            'modules/' . $this->name . '/views/css/abc-v172.css',
+            'modules/' . $this->name . '/views/css/abc-v173.css',
             ['media' => 'all', 'priority' => 1000]
         );
         $this->context->controller->registerJavascript(
             'abcdesign-js',
-            'modules/' . $this->name . '/views/js/abc-v172.js',
+            'modules/' . $this->name . '/views/js/abc-v173.js',
             ['position' => 'bottom', 'priority' => 1000]
         );
     }
