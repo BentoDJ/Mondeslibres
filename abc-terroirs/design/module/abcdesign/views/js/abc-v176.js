@@ -843,8 +843,18 @@
     t.querySelector('.abc-toast__fermer').addEventListener('click', fermer);
     setTimeout(fermer, 6000);
   }
+  // Les vignettes (« produits déjà vus », etc.) gardent un petit formulaire d'ajout au panier caché (anciens carrés
+  // verts). Sur une fiche produit, le thème envoyait ces formulaires avec celui de la fiche quand on changeait la
+  // quantité : l'adresse de la page basculait vers un autre produit. On les retire (ils ne sont plus affichés).
+  function retirerFormulairesVignettes() {
+    [].forEach.call(document.querySelectorAll('.product-miniature .outer-functional form.add-to-cart-or-refresh'), function (f) { f.remove(); });
+  }
   ready(function () {
     if (document.body.id !== 'product') return;
+    retirerFormulairesVignettes();
+    var attenteV = null;
+    new MutationObserver(function () { clearTimeout(attenteV); attenteV = setTimeout(retirerFormulairesVignettes, 50); })
+      .observe(document.getElementById('main') || document.body, { childList: true, subtree: true });
     quantiteFacile();
     // La zone « Ajouter au panier » est redessinée quand on change de déclinaison : on remet les boutons
     if (window.prestashop && prestashop.on) prestashop.on('updatedProduct', function () { setTimeout(quantiteFacile, 50); });
