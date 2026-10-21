@@ -25,6 +25,10 @@
 
   // Encart « Nouveau » de l'accueil (laisser '' pour ne rien afficher)
   var NOUVEAUTE = 'Remises dégressives : <strong>-5 %</strong> dès 300 € TTC, <strong>-10 %</strong> dès 600 € TTC.';
+  // Événement ponctuel affiché à la place de l'encart « Nouveau » jusqu'à la date de fin (puis retour automatique)
+  var EVENEMENT = Date.now() < new Date('2026-11-01T00:00:00+01:00').getTime()
+    ? { tag: 'Halloween', texte: 'Défi sauce piquante <strong>samedi 31/10</strong> chez Spi &amp; Bi : <strong>-20 %</strong> sur les sauces à gagner.' }
+    : null;
 
   // Ordinateur : une seule barre de navigation. Raccourcis affichés dans la barre (les autres restent sur mobile)
   // [texte, page, texte court pour écran moyen, priorité : 1 toujours, 2 masqué sous 1200 px]
@@ -290,7 +294,7 @@
     // 2 ter. Encart « Nouveau », tout en haut de toutes les pages, sous la barre de recherche
     //        (texte : variable NOUVEAUTE en haut de ce fichier ; '' pour le retirer)
     if (NOUVEAUTE && header && !document.querySelector('.abc-news')) {
-      var news = el('div', 'abc-news', '<div class="abc-news__box"><span class="abc-news__tag">Nouveau</span><p>' + NOUVEAUTE + '</p></div>');
+      var news = el('div', 'abc-news' + (EVENEMENT ? ' abc-news--evenement' : ''), '<div class="abc-news__box"><span class="abc-news__tag">' + (EVENEMENT ? EVENEMENT.tag : 'Nouveau') + '</span><p>' + (EVENEMENT ? EVENEMENT.texte : NOUVEAUTE) + '</p></div>');
       var sw = document.getElementById('search_widget');
       var hc = sw && sw.parentNode;
       if (sw && hc && window.innerWidth >= 992) {

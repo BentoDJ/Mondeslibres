@@ -924,3 +924,8 @@ main#page { position: relative; overflow: clip; }
 .abc-retrait input { width: 20px; height: 20px; margin-top: 2px; flex: 0 0 auto; accent-color: var(--abc-olive); }
 .abc-retrait strong { display: block; font-size: 16px; color: var(--abc-ink); }
 .abc-retrait small { display: block; margin-top: 2px; font-size: 14px; color: var(--abc-muted); }
+
+/* ===== Encart d'événement (Halloween) à la place de « Nouveau » ===== */
+.abc-news--evenement .abc-news__box { border-color: #e8731c !important; }
+.abc-news--evenement .abc-news__tag { color: #c4580c !important; }
+.abc-news--evenement strong { color: #c4580c !important; }
