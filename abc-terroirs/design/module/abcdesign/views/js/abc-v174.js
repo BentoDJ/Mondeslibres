@@ -914,4 +914,21 @@
     new MutationObserver(function () { clearTimeout(attente); attente = setTimeout(quantitePanier, 60); })
       .observe(document.getElementById('main') || document.body, { childList: true, subtree: true });
   });
+  // 18. Page de confirmation de commande : bouton « Télécharger ma facture », pour que le client ait sa facture
+  //     même si le mail n'arrive pas. PrestaShop sert la facture avec le numéro de commande et la clé de sécurité
+  //     de la commande (présents dans l'adresse de cette page), y compris pour un achat sans compte.
+  ready(function () {
+    if (document.body.id !== 'order-confirmation') return;
+    var q = new URLSearchParams(window.location.search);
+    var idCommande = q.get('id_order'), cle = q.get('key');
+    if (!idCommande || !/^\d+$/.test(idCommande) || !cle || !/^[a-f0-9]{32}$/i.test(cle)) return;
+    var base = (window.prestashop && prestashop.urls && prestashop.urls.base_url) || '/';
+    var lien = base + 'index.php?controller=pdf-invoice&id_order=' + idCommande + '&secure_key=' + cle;
+    var cible = document.querySelector('#content-hook_order_confirmation .card-block, #content-hook_order_confirmation, #order-confirmation .page-content, #main');
+    if (!cible || document.querySelector('.abc-facture')) return;
+    var bloc = el('div', 'abc-facture',
+      '<p><strong>Votre facture</strong> est disponible dès maintenant. Gardez-la précieusement.</p>' +
+      '<a class="btn btn-primary abc-facture__btn" href="' + lien + '" target="_blank" rel="noopener">Télécharger ma facture (PDF)</a>');
+    cible.appendChild(bloc);
+  });
 })();
