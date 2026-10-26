@@ -1018,4 +1018,18 @@
     new MutationObserver(function () { clearTimeout(attenteR); attenteR = setTimeout(raccourciRetrait, 80); })
       .observe(document.getElementById('main') || document.body, { childList: true, subtree: true });
   });
+
+  // 20. Formulaire de contact : preuve anti-robots ajoutée par le script au bout de 3 secondes (vérifiée par le module)
+  ready(function () {
+    if (document.body.id !== 'contact') return;
+    setTimeout(function () {
+      [].forEach.call(document.querySelectorAll('form'), function (f) {
+        var jeton = f.querySelector('input[name=token]');
+        if (!jeton || !f.querySelector('[name=submitMessage]') || f.querySelector('input[name=abc_h]')) return;
+        var preuve = document.createElement('input');
+        preuve.type = 'hidden'; preuve.name = 'abc_h'; preuve.value = jeton.value.split('').reverse().join('');
+        f.appendChild(preuve);
+      });
+    }, 3000);
+  });
 })();

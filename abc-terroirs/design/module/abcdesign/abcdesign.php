@@ -2,7 +2,7 @@
 /**
  * ABC Terroirs : habillage du site
  *
- * Ce module ajoute une feuille de style (views/css/abc-v178.css ; le numéro dans le nom force les navigateurs à recharger le style), les polices Google Fonts
+ * Ce module ajoute une feuille de style (views/css/abc-v179.css ; le numéro dans le nom force les navigateurs à recharger le style), les polices Google Fonts
  * et un petit script (views/js/abc.js) : raccourcis de navigation, boutons d'action,
  * aide quand une recherche ne trouve rien.
  * Pour revenir à l'ancien design : Modules > ce module > Désactiver.
@@ -17,7 +17,7 @@ class Abcdesign extends Module
     {
         $this->name = 'abcdesign';
         $this->tab = 'front_office_features';
-        $this->version = '1.7.8';
+        $this->version = '1.7.9';
         $this->author = 'ABC Terroirs';
         $this->need_instance = 0;
         $this->ps_versions_compliancy = ['min' => '1.7.0.0', 'max' => _PS_VERSION_];
@@ -72,6 +72,7 @@ class Abcdesign extends Module
             $this->registerHook('actionEmailSendBefore');
             Configuration::updateValue('ABCDESIGN_COPIE_FACTURE', 1);
         }
+        $this->filtrerRobotsContact();
         $this->context->controller->registerStylesheet(
             'abcdesign-fonts',
             'https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Source+Sans+3:wght@400;600;700&display=swap',
@@ -79,13 +80,31 @@ class Abcdesign extends Module
         );
         $this->context->controller->registerStylesheet(
             'abcdesign',
-            'modules/' . $this->name . '/views/css/abc-v178.css',
+            'modules/' . $this->name . '/views/css/abc-v179.css',
             ['media' => 'all', 'priority' => 1000]
         );
         $this->context->controller->registerJavascript(
             'abcdesign-js',
-            'modules/' . $this->name . '/views/js/abc-v178.js',
+            'modules/' . $this->name . '/views/js/abc-v179.js',
             ['position' => 'bottom', 'priority' => 1000]
         );
+    }
+
+    /**
+     * Formulaire de contact : un message n'est accepté que si le champ abc_h a été rempli par le
+     * script de la page (anti-robots). Sinon on remplit le piège « url » du module contactform,
+     * qui refuse alors l'envoi avec son message « veuillez réessayer ».
+     */
+    private function filtrerRobotsContact()
+    {
+        if (!isset($this->context->controller->php_self) || $this->context->controller->php_self !== 'contact'
+            || !Tools::isSubmit('submitMessage')) {
+            return;
+        }
+        $jeton = (string) Tools::getValue('token');
+        $preuve = (string) Tools::getValue('abc_h');
+        if ($jeton === '' || !hash_equals(strrev($jeton), $preuve)) {
+            $_POST['url'] = 'robot';
+        }
     }
 }
