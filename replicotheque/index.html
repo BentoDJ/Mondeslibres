@@ -1,0 +1,948 @@
+<meta charset="utf-8">
+<title>Réplicothèque</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;1,8..60,400&display=swap">
+<style>
+/* Layout: banc de montage. Liste des répliques à gauche, moniteur (écran + sous-titre) à droite, collant. */
+:root {
+  --bg: #ECEEF1;
+  --surface: #FFFFFF;
+  --ink: #161A20;
+  --muted: #5A626E;
+  --line: #D4D8DE;
+  --accent: #A3540F;
+  --accent-soft: #F4E6D6;
+  --screen: #0D1015;
+  --screen-edge: #262B33;
+  --subtitle: #F5F2E8;
+  --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --font-quote: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0F1217; --surface: #161A21; --ink: #E6E9ED; --muted: #959DA9; --line: #272D36;
+    --accent: #E7A142; --accent-soft: #2B2217; --screen: #05070A; --screen-edge: #2C323C; --subtitle: #F5F2E8;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0F1217; --surface: #161A21; --ink: #E6E9ED; --muted: #959DA9; --line: #272D36;
+  --accent: #E7A142; --accent-soft: #2B2217; --screen: #05070A; --screen-edge: #2C323C; --subtitle: #F5F2E8;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 15px; line-height: 1.5; }
+.wrap {
+  max-width: 1240px; margin: 0 auto;
+  padding-block: 28px 48px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: flex; flex-direction: column; gap: 22px;
+}
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px 24px; }
+h1 { margin: 0; font-family: var(--font-display); font-weight: 800; font-size: clamp(2.6rem, 7vw, 4.4rem); line-height: .9; letter-spacing: .01em; text-transform: uppercase; }
+h1 span { color: var(--accent); }
+.lede { margin: 0; color: var(--muted); max-width: 46ch; text-wrap: balance; }
+
+.controls { display: flex; flex-direction: column; gap: 12px; }
+.search { position: relative; }
+.search input {
+  width: 100%; padding: 14px 16px 14px 44px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink);
+  font: 500 1.05rem var(--font-body);
+}
+.search input::placeholder { color: var(--muted); }
+.search svg { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--muted); }
+.search kbd { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font: 500 .75rem var(--font-mono); color: var(--muted); border: 1px solid var(--line); border-radius: 5px; padding: 1px 6px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  border: 1px solid var(--line); background: transparent; border-radius: 999px;
+  padding: 5px 12px; font-size: .86rem; cursor: pointer; color: var(--ink);
+}
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.chip.fav[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+
+.bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--surface); }
+.seg button { border: 0; background: transparent; padding: 6px 12px; font-size: .85rem; cursor: pointer; color: var(--muted); }
+.seg button + button { border-left: 1px solid var(--line); }
+.seg button[aria-pressed="true"] { color: var(--ink); background: var(--accent-soft); font-weight: 600; }
+.bar-left { display: flex; flex-wrap: wrap; gap: 8px; }
+.random {
+  display: inline-flex; align-items: center; gap: 8px; border: 0; cursor: pointer;
+  background: var(--accent); color: var(--surface); border-radius: 8px; padding: 7px 14px; font-weight: 600; font-size: .9rem;
+}
+.random:hover { filter: brightness(1.06); }
+.random svg { width: 16px; height: 16px; }
+
+.main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 460px); gap: 28px; align-items: start; }
+.listcol { min-width: 0; }
+.count { font: 500 .78rem var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+.list { list-style: none; margin: 0; padding: 0; }
+.row {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 14px;
+  padding: 12px 10px; border-bottom: 1px solid var(--line); cursor: pointer; border-radius: 6px;
+}
+.row:hover { background: var(--surface); }
+.row[aria-selected="true"] { background: var(--accent-soft); }
+.row .q { font-family: var(--font-quote); font-size: 1.06rem; line-height: 1.4; min-width: 0; }
+.row .m { grid-column: 1; font: .76rem var(--font-mono); color: var(--muted); min-width: 0; }
+.row .d { grid-row: 1 / span 2; grid-column: 2; align-self: center; font: 500 .78rem var(--font-mono); color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.row .star { color: var(--accent); }
+.empty { padding: 32px 4px; color: var(--muted); display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.empty button { border: 1px solid var(--line); background: var(--surface); border-radius: 8px; padding: 6px 12px; cursor: pointer; }
+
+.monitor {
+  position: sticky; top: calc(env(safe-area-inset-top, 0px) + 16px); display: flex; flex-direction: column; gap: 12px; min-width: 0;
+  max-height: calc(100vh - 32px); overflow-y: auto; padding-right: 4px;
+}
+.slate { display: flex; justify-content: space-between; gap: 10px; font: 500 .74rem var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.slate b { color: var(--ink); font-weight: 500; }
+.screen {
+  aspect-ratio: 16 / 9; max-width: 100%; background: var(--screen); border-radius: 6px;
+  border: 1px solid var(--screen-edge);
+  display: flex; flex-direction: column; justify-content: flex-end; align-items: center;
+  padding: 22px 20px 18px; position: relative; overflow: hidden;
+  background-image: radial-gradient(120% 90% at 50% 20%, rgba(255,255,255,.05), transparent 60%);
+}
+.screen::before, .screen::after { /* repères de cadrage */
+  content: ""; position: absolute; width: 18px; height: 18px; border: 1px solid rgba(255,255,255,.22);
+}
+.screen::before { top: 12px; left: 12px; border-right: 0; border-bottom: 0; }
+.screen::after { top: 12px; right: 12px; border-left: 0; border-bottom: 0; }
+.tc { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); font: 500 .7rem var(--font-mono); color: rgba(255,255,255,.45); letter-spacing: .1em; }
+.sub {
+  margin: 0; text-align: center; color: var(--subtitle); font: 500 clamp(1.05rem, 2.1vw, 1.45rem)/1.35 var(--font-body);
+  text-shadow: 0 1px 2px #000, 0 0 8px rgba(0,0,0,.8); text-wrap: balance; max-width: 34ch;
+}
+.screen.flash .sub { animation: in .35s ease-out; }
+@keyframes in { from { opacity: .2; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .screen.flash .sub { animation: none; } }
+
+.meta { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 16px; margin: 0; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.meta div { min-width: 0; }
+.meta dt { font: 500 .68rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.meta dd { margin: 2px 0 0; font-weight: 500; overflow-wrap: anywhere; }
+.meta .src { grid-column: 1 / -1; }
+.meta .src dd { font-family: var(--font-quote); font-size: 1.15rem; font-weight: 500; }
+
+.actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); background: var(--surface);
+  border-radius: 8px; padding: 8px 13px; cursor: pointer; font-size: .9rem; font-weight: 500; color: var(--ink); text-decoration: none;
+}
+.btn:hover { border-color: var(--muted); }
+.btn svg { width: 16px; height: 16px; }
+.btn.primary { background: var(--ink); color: var(--bg); border-color: var(--ink); }
+.btn[aria-pressed="true"] { color: var(--accent); border-color: var(--accent); }
+.find { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: baseline; font-size: .86rem; color: var(--muted); }
+.find a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.find a:hover { color: var(--accent); }
+
+.sampler { display: flex; flex-direction: column; gap: 10px; padding-top: 14px; border-top: 1px solid var(--line); }
+.sampler h2 { margin: 0; font: 500 .74rem var(--font-mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+.sampler h2 b { color: var(--accent); font-weight: 500; }
+.bundled { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 8px; background: var(--accent-soft); font-size: .88rem; }
+.bundled p { margin: 0; flex: 1 1 100%; color: var(--muted); font-size: .8rem; }
+.drop {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; text-align: center;
+  border: 1.5px dashed var(--line); border-radius: 8px; padding: 16px 12px; color: var(--muted); font-size: .88rem; cursor: pointer;
+}
+.drop:hover, .drop.over { border-color: var(--accent); color: var(--ink); }
+.drop strong { color: var(--ink); font-weight: 600; }
+.drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+#editor { display: flex; flex-direction: column; gap: 10px; }
+.bundled a { color: var(--ink); text-decoration-color: var(--accent); text-underline-offset: 3px; }
+.wavebox { position: relative; }
+.wave { display: block; width: 100%; height: 110px; border-radius: 6px; background: var(--screen); cursor: crosshair; touch-action: none; }
+.filename { font: .76rem var(--font-mono); color: var(--muted); overflow-wrap: anywhere; }
+.times { display: flex; flex-wrap: wrap; gap: 4px 14px; font: .78rem var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.times b { color: var(--ink); font-weight: 500; }
+.opts { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: .84rem; color: var(--muted); }
+.opts label { display: inline-flex; align-items: center; gap: 6px; cursor: pointer; }
+.btn.small { padding: 6px 10px; font-size: .84rem; }
+.hint { margin: 0; font-size: .8rem; color: var(--muted); }
+
+.toast {
+  position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 20px); transform: translateX(-50%) translateY(20px);
+  background: var(--ink); color: var(--bg); padding: 8px 16px; border-radius: 8px; font-size: .88rem; opacity: 0; pointer-events: none; transition: .2s;
+}
+.toast.show { opacity: 1; transform: translateX(-50%); }
+
+footer { color: var(--muted); font-size: .82rem; max-width: 70ch; border-top: 1px solid var(--line); padding-top: 14px; }
+footer kbd { font: .75rem var(--font-mono); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; }
+
+@media (max-width: 900px) {
+  .main { grid-template-columns: minmax(0, 1fr); }
+  .monitor { position: static; order: -1; max-height: none; overflow: visible; padding-right: 0; }
+  .search kbd { display: none; }
+}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Réplico<span>thèque</span></h1>
+    <p class="lede" id="lede">Des répliques de films, de séries, de radio et de discours, à copier ou à retrouver en clip pour un sample ou un montage.</p>
+  </header>
+
+  <section class="controls" aria-label="Filtres">
+    <label class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="q" type="search" placeholder="Un mot, un film, un personnage… (ex. « Gabin », « dream », « cons »)" autocomplete="off" aria-label="Rechercher une réplique">
+      <kbd>/</kbd>
+    </label>
+    <div class="chips" id="moods" role="group" aria-label="Situation"></div>
+    <div class="bar">
+      <div class="bar-left">
+        <div class="seg" id="types" role="group" aria-label="Type de source"></div>
+        <div class="seg" id="langs" role="group" aria-label="Langue"></div>
+      </div>
+      <button class="random" id="random" type="button" title="Raccourci : R">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/></svg>
+        Au hasard
+      </button>
+    </div>
+  </section>
+
+  <div class="main">
+    <div class="listcol">
+      <div class="count" id="count"></div>
+      <ul class="list" id="list" role="listbox" aria-label="Répliques"></ul>
+    </div>
+
+    <aside class="monitor" id="monitor" aria-live="polite">
+      <div class="slate"><span id="slType">Film</span><span><b id="slLang">VF</b> · <span id="slDur">≈ 3 s</span></span></div>
+      <div class="screen" id="screen">
+        <span class="tc" id="tc">REPL 001</span>
+        <p class="sub" id="sub"></p>
+      </div>
+      <dl class="meta">
+        <div class="src"><dt>Source</dt><dd id="mSrc"></dd></div>
+        <div><dt>Qui parle</dt><dd id="mWho"></dd></div>
+        <div><dt>Année</dt><dd id="mYear"></dd></div>
+      </dl>
+      <div class="actions">
+        <button class="btn primary" id="copy" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+          Copier
+        </button>
+        <button class="btn" id="fav" type="button" aria-pressed="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m12 3 2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1-4.4-4.3 6.1-.9z"/></svg>
+          <span>Favori</span>
+        </button>
+      </div>
+      <div class="find" id="find"></div>
+
+      <section class="sampler" aria-label="Sampler">
+        <h2><span>Sampler</span><b id="smpName"></b></h2>
+        <div class="bundled" id="bundled" hidden>
+          <span>Extrait audio fourni.</span>
+          <button class="btn small" type="button" id="bPlay">▶ Écouter</button>
+          <button class="btn small" type="button" id="bLoad">Ouvrir dans le sampler</button>
+          <button class="btn small" type="button" id="bSave">Télécharger le WAV</button>
+          <p id="bCredit"></p>
+        </div>
+        <label class="drop" id="drop">
+          <strong>Glisse ici un fichier audio ou vidéo</strong>
+          <span>ou clique pour en choisir un : WAV, MP3, M4A, MP4…</span>
+          <input type="file" id="file" accept="audio/*,video/*">
+        </label>
+        <div id="editor" hidden>
+          <div class="filename" id="fname"></div>
+          <div class="wavebox"><canvas class="wave" id="wave" aria-label="Forme d'onde : glisse pour sélectionner la réplique"></canvas></div>
+          <div class="times">
+            <span>Début <b id="tIn">0:00.000</b></span>
+            <span>Fin <b id="tOut">0:00.000</b></span>
+            <span>Durée <b id="tLen">0,00 s</b></span>
+          </div>
+          <div class="actions">
+            <button class="btn primary small" type="button" id="play">▶ Écouter</button>
+            <button class="btn small" type="button" id="loop" aria-pressed="false">Boucle</button>
+            <button class="btn small" type="button" id="zin" aria-label="Zoomer">＋</button>
+            <button class="btn small" type="button" id="zout" aria-label="Dézoomer">－</button>
+            <button class="btn small" type="button" id="export">Exporter le WAV</button>
+          </div>
+          <div class="opts">
+            <label><input type="checkbox" id="optNorm" checked> Normaliser à −1 dB</label>
+            <label><input type="checkbox" id="optFade" checked> Fondus de 10 ms</label>
+            <label><input type="checkbox" id="optMono"> Mono</label>
+          </div>
+          <p class="hint">Glisse sur l'onde pour sélectionner, tire les bords pour ajuster, molette pour zoomer. <kbd>Espace</kbd> pour écouter.</p>
+        </div>
+      </section>
+    </aside>
+  </div>
+
+  <footer>
+    Les extraits fournis viennent d'enregistrements publics (NASA, archives du gouvernement américain), avec leur source sous chaque extrait.
+    Pour les autres répliques, le sampler découpe tes propres fichiers directement dans ton navigateur : rien n'est envoyé ailleurs.
+    Le son des films et des émissions reste la propriété de leurs ayants droit : vérifie les droits avant de publier un sample.
+    Raccourcis : <kbd>/</kbd> chercher, <kbd>R</kbd> au hasard, <kbd>↑</kbd> <kbd>↓</kbd> parcourir, <kbd>C</kbd> copier, <kbd>Espace</kbd> écouter.
+  </footer>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+// [réplique, source, année, qui parle, type (f film, s série, r radio & TV, d discours), langue, situations]
+const DATA = [
+// Cinéma français
+["T'as de beaux yeux, tu sais.","Le Quai des brumes",1938,"Jean Gabin (Jean)","f","fr","amour"],
+["Atmosphère, atmosphère… Est-ce que j'ai une gueule d'atmosphère ?","Hôtel du Nord",1938,"Arletty (Raymonde)","f","fr","colere humour"],
+["Bizarre, bizarre… — Moi, j'ai dit bizarre ? Comme c'est bizarre.","Drôle de drame",1937,"Louis Jouvet et Michel Simon","f","fr","absurde humour"],
+["Paris est tout petit pour ceux qui s'aiment d'un aussi grand amour.","Les Enfants du paradis",1945,"","f","fr","amour"],
+["Tu me fends le cœur !","Marius",1931,"Raimu (César)","f","fr","humour"],
+["Salauds de pauvres !","La Traversée de Paris",1956,"Jean Gabin (Grandgil)","f","fr","colere"],
+["Si tu ne viens pas à Lagardère, Lagardère ira à toi !","Le Bossu",1959,"Jean Marais (Lagardère)","f","fr","menace triomphe"],
+["Si vous n'aimez pas la mer, si vous n'aimez pas la montagne, si vous n'aimez pas la ville… allez vous faire foutre !","À bout de souffle",1960,"Jean-Paul Belmondo (Michel Poiccard)","f","fr","intro colere"],
+["Tu n'as rien vu à Hiroshima. Rien.","Hiroshima mon amour",1959,"Eiji Okada (Lui)","f","fr","mystere philo"],
+["Deux intellectuels assis vont moins loin qu'une brute qui marche.","Un taxi pour Tobrouk",1961,"","f","fr","philo humour"],
+["Les cons, ça ose tout. C'est même à ça qu'on les reconnaît.","Les Tontons flingueurs",1963,"Lino Ventura (Fernand Naudin)","f","fr","humour"],
+["Aux quatre coins de Paris qu'on va le retrouver, éparpillé par petits bouts, façon puzzle.","Les Tontons flingueurs",1963,"Bernard Blier (Raoul Volfoni)","f","fr","menace humour"],
+["Faut reconnaître… c'est du brutal !","Les Tontons flingueurs",1963,"Jean Lefebvre (Paul Volfoni)","f","fr","humour"],
+["Mais il connaît pas Raoul, ce mec ! Il va avoir un réveil pénible.","Les Tontons flingueurs",1963,"Bernard Blier (Raoul Volfoni)","f","fr","menace"],
+["Et mes fesses ? Tu les aimes, mes fesses ?","Le Mépris",1963,"Brigitte Bardot (Camille)","f","fr","amour"],
+["Un barbu, c'est un barbu. Trois barbus, c'est des barbouzes.","Les Barbouzes",1964,"","f","fr","humour absurde"],
+["Quand les types de 130 kilos disent certaines choses, ceux de 60 kilos les écoutent.","Cent mille dollars au soleil",1964,"","f","fr","menace humour"],
+["Ah ben maintenant, elle va marcher beaucoup moins bien, forcément !","Le Corniaud",1965,"Bourvil (Antoine Maréchal)","f","fr","absurde humour"],
+["Qu'est-ce que je peux faire ? J'sais pas quoi faire.","Pierrot le Fou",1965,"Anna Karina (Marianne)","f","fr","desespoir absurde"],
+["Il n'y a pas d'hélice, hélas. — C'est là qu'est l'os.","La Grande Vadrouille",1966,"Bourvil et Louis de Funès","f","fr","humour absurde"],
+["Quand on mettra les cons sur orbite, t'as pas fini de tourner.","Le Pacha",1968,"Jean Gabin","f","fr","humour colere"],
+["Salomon, vous êtes juif ?!","Les Aventures de Rabbi Jacob",1973,"Louis de Funès (Victor Pivert)","f","fr","humour"],
+["Oublie que t'as aucune chance, vas-y, fonce ! On sait jamais !","Les Bronzés font du ski",1979,"Michel Blanc (Jean-Claude Dusse)","f","fr","triomphe humour"],
+["Sur un malentendu, ça peut marcher.","Les Bronzés font du ski",1979,"Michel Blanc (Jean-Claude Dusse)","f","fr","humour amour"],
+["C'est un roc !… c'est un pic !… c'est un cap ! Que dis-je, c'est un cap ?… C'est une péninsule !","Cyrano de Bergerac",1990,"Gérard Depardieu (Cyrano)","f","fr","humour"],
+["Que trépasse si je faiblis !","Les Visiteurs",1993,"Jean Reno (Godefroy de Montmirail)","f","fr","triomphe"],
+["Monde de merde.","La Classe américaine",1993,"George Abitbol","f","fr","desespoir fin"],
+["Jusqu'ici tout va bien… Mais l'important, c'est pas la chute. C'est l'atterrissage.","La Haine",1995,"Hubert Koundé (Hubert)","f","fr","intro philo"],
+["C'est à moi que tu parles ?","La Haine",1995,"Vincent Cassel (Vinz)","f","fr","menace"],
+["Il s'appelle Juste Leblanc.","Le Dîner de cons",1998,"Jacques Villeret (François Pignon)","f","fr","humour absurde"],
+["Les temps sont durs pour les rêveurs.","Le Fabuleux Destin d'Amélie Poulain",2001,"","f","fr","philo desespoir"],
+["Vous savez, moi je ne crois pas qu'il y ait de bonne ou de mauvaise situation.","Astérix & Obélix : Mission Cléopâtre",2002,"Édouard Baer (Otis)","f","fr","philo humour"],
+["Je t'ai cassé !","Brice de Nice",2005,"Jean Dujardin (Brice)","f","fr","humour triomphe"],
+["Comment est votre blanquette ?","OSS 117 : Le Caire, nid d'espions",2006,"Jean Dujardin (Hubert Bonisseur de La Bath)","f","fr","humour"],
+["J'aime me beurrer la biscotte.","OSS 117 : Le Caire, nid d'espions",2006,"Jean Dujardin (Hubert Bonisseur de La Bath)","f","fr","humour absurde"],
+["Une dictature, c'est quand les gens sont communistes, déjà. Qu'ils ont froid, avec des chapeaux gris et des chaussures à fermeture éclair.","OSS 117 : Rio ne répond plus",2009,"Jean Dujardin (Hubert Bonisseur de La Bath)","f","fr","absurde humour"],
+["Quand un étranger vient vivre dans le Nord, il braie deux fois : quand il arrive et quand il repart.","Bienvenue chez les Ch'tis",2008,"","f","fr","fin amour"],
+["Que la Force soit avec toi.","Star Wars (VF)",1977,"","f","fr","fin triomphe"],
+["Non. Je suis ton père.","L'Empire contre-attaque (VF)",1980,"Dark Vador","f","fr","mystere menace"],
+// Cinéma international (VO)
+["Frankly, my dear, I don't give a damn.","Gone with the Wind",1939,"Clark Gable (Rhett Butler)","f","en","fin colere"],
+["Toto, I've a feeling we're not in Kansas anymore.","The Wizard of Oz",1939,"Judy Garland (Dorothy)","f","en","intro mystere"],
+["There's no place like home.","The Wizard of Oz",1939,"Judy Garland (Dorothy)","f","en","fin amour"],
+["I'll get you, my pretty, and your little dog, too!","The Wizard of Oz",1939,"Margaret Hamilton (la Méchante Sorcière)","f","en","menace"],
+["It's alive! It's alive!","Frankenstein",1931,"Colin Clive (Henry Frankenstein)","f","en","triomphe mystere"],
+["Rosebud.","Citizen Kane",1941,"Orson Welles (Charles Foster Kane)","f","en","mystere fin"],
+["Here's looking at you, kid.","Casablanca",1942,"Humphrey Bogart (Rick)","f","en","amour"],
+["Of all the gin joints in all the towns in all the world, she walks into mine.","Casablanca",1942,"Humphrey Bogart (Rick)","f","en","amour desespoir"],
+["We'll always have Paris.","Casablanca",1942,"Humphrey Bogart (Rick)","f","en","amour fin"],
+["Louis, I think this is the beginning of a beautiful friendship.","Casablanca",1942,"Humphrey Bogart (Rick)","f","en","fin"],
+["Fasten your seatbelts. It's going to be a bumpy night.","All About Eve",1950,"Bette Davis (Margo Channing)","f","en","intro menace"],
+["All right, Mr. DeMille, I'm ready for my close-up.","Sunset Boulevard",1950,"Gloria Swanson (Norma Desmond)","f","en","fin"],
+["Well, nobody's perfect.","Some Like It Hot",1959,"Joe E. Brown (Osgood)","f","en","fin humour"],
+["Bond. James Bond.","Dr. No",1962,"Sean Connery (James Bond)","f","en","intro"],
+["A martini. Shaken, not stirred.","Goldfinger",1964,"Sean Connery (James Bond)","f","en","humour"],
+["Gentlemen, you can't fight in here! This is the War Room!","Dr. Strangelove",1964,"Peter Sellers (le Président Muffley)","f","en","absurde humour"],
+["Mein Führer! I can walk!","Dr. Strangelove",1964,"Peter Sellers (Dr. Strangelove)","f","en","absurde fin"],
+["Mrs. Robinson, you're trying to seduce me. Aren't you?","The Graduate",1967,"Dustin Hoffman (Benjamin)","f","en","amour humour"],
+["What we've got here is failure to communicate.","Cool Hand Luke",1967,"Strother Martin (le Capitaine)","f","en","colere"],
+["I'm sorry, Dave. I'm afraid I can't do that.","2001: A Space Odyssey",1968,"HAL 9000","f","en","menace mystere"],
+["I'm walking here! I'm walking here!","Midnight Cowboy",1969,"Dustin Hoffman (Ratso)","f","en","colere"],
+["You've got to ask yourself one question: 'Do I feel lucky?' Well, do ya, punk?","Dirty Harry",1971,"Clint Eastwood (Harry Callahan)","f","en","menace"],
+["I'm gonna make him an offer he can't refuse.","The Godfather",1972,"Marlon Brando (Vito Corleone)","f","en","menace"],
+["Leave the gun. Take the cannoli.","The Godfather",1972,"Richard Castellano (Clemenza)","f","en","humour"],
+["Keep your friends close, but your enemies closer.","The Godfather Part II",1974,"Al Pacino (Michael Corleone)","f","en","philo menace"],
+["Just when I thought I was out, they pull me back in!","The Godfather Part III",1990,"Al Pacino (Michael Corleone)","f","en","desespoir colere"],
+["You're gonna need a bigger boat.","Jaws",1975,"Roy Scheider (Brody)","f","en","humour menace"],
+["You talkin' to me?","Taxi Driver",1976,"Robert De Niro (Travis Bickle)","f","en","menace"],
+["I'm as mad as hell, and I'm not going to take this anymore!","Network",1976,"Peter Finch (Howard Beale)","f","en","colere"],
+["May the Force be with you.","Star Wars",1977,"","f","en","fin triomphe"],
+["No. I am your father.","The Empire Strikes Back",1980,"Darth Vader","f","en","mystere menace"],
+["I love the smell of napalm in the morning.","Apocalypse Now",1979,"Robert Duvall (Kilgore)","f","en","menace intro"],
+["The horror… the horror…","Apocalypse Now",1979,"Marlon Brando (Kurtz)","f","en","desespoir fin"],
+["Here's Johnny!","The Shining",1980,"Jack Nicholson (Jack Torrance)","f","en","menace"],
+["Snakes. Why'd it have to be snakes?","Raiders of the Lost Ark",1981,"Harrison Ford (Indiana Jones)","f","en","humour"],
+["It belongs in a museum!","Indiana Jones and the Last Crusade",1989,"Harrison Ford (Indiana Jones)","f","en","colere"],
+["All those moments will be lost in time, like tears in rain. Time to die.","Blade Runner",1982,"Rutger Hauer (Roy Batty)","f","en","fin desespoir"],
+["E.T. phone home.","E.T. the Extra-Terrestrial",1982,"E.T.","f","en","fin amour"],
+["They're here.","Poltergeist",1982,"Heather O'Rourke (Carol Anne)","f","en","mystere menace"],
+["Say hello to my little friend!","Scarface",1983,"Al Pacino (Tony Montana)","f","en","menace"],
+["Go ahead, make my day.","Sudden Impact",1983,"Clint Eastwood (Harry Callahan)","f","en","menace"],
+["I'll be back.","The Terminator",1984,"Arnold Schwarzenegger (le Terminator)","f","en","menace fin"],
+["Wax on, wax off.","The Karate Kid",1984,"Pat Morita (M. Miyagi)","f","en","philo"],
+["Don't cross the streams.","Ghostbusters",1984,"Harold Ramis (Egon)","f","en","menace humour"],
+["Great Scott!","Back to the Future",1985,"Christopher Lloyd (Doc Brown)","f","en","absurde"],
+["Roads? Where we're going, we don't need roads.","Back to the Future",1985,"Christopher Lloyd (Doc Brown)","f","en","fin triomphe"],
+["I feel the need… the need for speed!","Top Gun",1986,"Tom Cruise et Anthony Edwards","f","en","triomphe"],
+["Life moves pretty fast. If you don't stop and look around once in a while, you could miss it.","Ferris Bueller's Day Off",1986,"Matthew Broderick (Ferris)","f","en","philo fin"],
+["Bueller? … Bueller?","Ferris Bueller's Day Off",1986,"Ben Stein (le prof d'économie)","f","en","absurde"],
+["There can be only one!","Highlander",1986,"","f","en","triomphe menace"],
+["Hello. My name is Inigo Montoya. You killed my father. Prepare to die.","The Princess Bride",1987,"Mandy Patinkin (Inigo Montoya)","f","en","menace intro"],
+["Inconceivable!","The Princess Bride",1987,"Wallace Shawn (Vizzini)","f","en","absurde"],
+["As you wish.","The Princess Bride",1987,"Cary Elwes (Westley)","f","en","amour"],
+["Nobody puts Baby in a corner.","Dirty Dancing",1987,"Patrick Swayze (Johnny)","f","en","amour"],
+["Get to the chopper!","Predator",1987,"Arnold Schwarzenegger (Dutch)","f","en","triomphe"],
+["Greed, for lack of a better word, is good.","Wall Street",1987,"Michael Douglas (Gordon Gekko)","f","en","philo"],
+["Yippee-ki-yay, motherfucker.","Die Hard",1988,"Bruce Willis (John McClane)","f","en","triomphe"],
+["Welcome to the party, pal!","Die Hard",1988,"Bruce Willis (John McClane)","f","en","humour"],
+["I'll have what she's having.","When Harry Met Sally…",1989,"Estelle Reiner (une cliente)","f","en","humour amour"],
+["Carpe diem. Seize the day, boys. Make your lives extraordinary.","Dead Poets Society",1989,"Robin Williams (John Keating)","f","en","philo triomphe"],
+["O Captain! My Captain!","Dead Poets Society",1989,"Ethan Hawke (Todd)","f","en","fin amour"],
+["I'm Batman.","Batman",1989,"Michael Keaton (Batman)","f","en","intro menace"],
+["Keep the change, ya filthy animal.","Home Alone",1990,"","f","en","humour"],
+["A census taker once tried to test me. I ate his liver with some fava beans and a nice chianti.","The Silence of the Lambs",1991,"Anthony Hopkins (Hannibal Lecter)","f","en","menace"],
+["Hasta la vista, baby.","Terminator 2: Judgment Day",1991,"Arnold Schwarzenegger (le Terminator)","f","en","fin menace"],
+["You can't handle the truth!","A Few Good Men",1992,"Jack Nicholson (Col. Jessup)","f","en","colere"],
+["Are you gonna bark all day, little doggie, or are you gonna bite?","Reservoir Dogs",1992,"Michael Madsen (Mr. Blonde)","f","en","menace"],
+["Life, uh… finds a way.","Jurassic Park",1993,"Jeff Goldblum (Ian Malcolm)","f","en","philo mystere"],
+["Clever girl.","Jurassic Park",1993,"Bob Peck (Muldoon)","f","en","menace fin"],
+["My mama always said life was like a box of chocolates. You never know what you're gonna get.","Forrest Gump",1994,"Tom Hanks (Forrest Gump)","f","en","philo"],
+["Run, Forrest! Run!","Forrest Gump",1994,"Robin Wright (Jenny)","f","en","triomphe"],
+["Say 'what' again. I dare you, I double dare you!","Pulp Fiction",1994,"Samuel L. Jackson (Jules)","f","en","menace colere"],
+["Zed's dead, baby. Zed's dead.","Pulp Fiction",1994,"Bruce Willis (Butch)","f","en","fin"],
+["Get busy living, or get busy dying.","The Shawshank Redemption",1994,"Tim Robbins (Andy Dufresne)","f","en","philo"],
+["Is life always this hard, or is it just when you're a kid? — Always like this.","Léon",1994,"Natalie Portman et Jean Reno","f","en","desespoir philo"],
+["Houston, we have a problem.","Apollo 13",1995,"Tom Hanks (Jim Lovell)","f","en","desespoir mystere"],
+["To infinity and beyond!","Toy Story",1995,"Tim Allen (Buzz l'Éclair)","f","en","triomphe"],
+["They may take our lives, but they'll never take our freedom!","Braveheart",1995,"Mel Gibson (William Wallace)","f","en","triomphe colere"],
+["Show me the money!","Jerry Maguire",1996,"Cuba Gooding Jr. (Rod Tidwell)","f","en","triomphe humour"],
+["You had me at hello.","Jerry Maguire",1996,"Renée Zellweger (Dorothy Boyd)","f","en","amour"],
+["Multipass!","The Fifth Element",1997,"Milla Jovovich (Leeloo)","f","en","absurde humour"],
+["Big badaboom.","The Fifth Element",1997,"Milla Jovovich (Leeloo)","f","en","absurde"],
+["I'm the king of the world!","Titanic",1997,"Leonardo DiCaprio (Jack)","f","en","triomphe"],
+["The Dude abides.","The Big Lebowski",1998,"Jeff Bridges (The Dude)","f","en","fin philo"],
+["Yeah, well, that's just, like, your opinion, man.","The Big Lebowski",1998,"Jeff Bridges (The Dude)","f","en","humour"],
+["That rug really tied the room together.","The Big Lebowski",1998,"Jeff Bridges (The Dude)","f","en","humour absurde"],
+["I see dead people.","The Sixth Sense",1999,"Haley Joel Osment (Cole)","f","en","mystere"],
+["The first rule of Fight Club is: you do not talk about Fight Club.","Fight Club",1999,"Brad Pitt (Tyler Durden)","f","en","intro"],
+["Welcome to the real world.","The Matrix",1999,"Laurence Fishburne (Morpheus)","f","en","intro mystere"],
+["There is no spoon.","The Matrix",1999,"Rowan Witt (l'enfant à la cuillère)","f","en","philo mystere"],
+["I know kung fu.","The Matrix",1999,"Keanu Reeves (Neo)","f","en","triomphe humour"],
+["Are you not entertained?","Gladiator",2000,"Russell Crowe (Maximus)","f","en","colere triomphe"],
+["My name is Maximus Decimus Meridius… and I will have my vengeance, in this life or the next.","Gladiator",2000,"Russell Crowe (Maximus)","f","en","menace"],
+["What we do in life echoes in eternity.","Gladiator",2000,"Russell Crowe (Maximus)","f","en","philo"],
+["Yer a wizard, Harry.","Harry Potter and the Philosopher's Stone",2001,"Robbie Coltrane (Hagrid)","f","en","intro"],
+["It's Levi-O-sa, not Levio-SA.","Harry Potter and the Philosopher's Stone",2001,"Emma Watson (Hermione)","f","en","humour"],
+["After all this time? — Always.","Harry Potter and the Deathly Hallows – Part 2",2011,"Michael Gambon et Alan Rickman","f","en","amour fin"],
+["One does not simply walk into Mordor.","The Lord of the Rings: The Fellowship of the Ring",2001,"Sean Bean (Boromir)","f","en","philo humour"],
+["You shall not pass!","The Lord of the Rings: The Fellowship of the Ring",2001,"Ian McKellen (Gandalf)","f","en","colere menace"],
+["All we have to decide is what to do with the time that is given us.","The Lord of the Rings: The Fellowship of the Ring",2001,"Ian McKellen (Gandalf)","f","en","philo"],
+["My precious.","The Lord of the Rings: The Two Towers",2002,"Andy Serkis (Gollum)","f","en","mystere"],
+["With great power comes great responsibility.","Spider-Man",2002,"Cliff Robertson (Oncle Ben)","f","en","philo"],
+["Just keep swimming.","Finding Nemo",2003,"Ellen DeGeneres (Dory)","f","en","triomphe humour"],
+["Why do we fall, Bruce? So we can learn to pick ourselves up.","Batman Begins",2005,"Linus Roache (Thomas Wayne)","f","en","philo"],
+["This is Sparta!","300",2006,"Gerard Butler (Léonidas)","f","en","colere triomphe"],
+["Why so serious?","The Dark Knight",2008,"Heath Ledger (le Joker)","f","en","menace"],
+["I am Iron Man.","Iron Man",2008,"Robert Downey Jr. (Tony Stark)","f","en","fin triomphe"],
+["I am Groot.","Guardians of the Galaxy",2014,"Vin Diesel (Groot)","f","en","absurde"],
+["Wakanda forever!","Black Panther",2018,"","f","en","triomphe"],
+["Avengers… assemble.","Avengers: Endgame",2019,"Chris Evans (Captain America)","f","en","triomphe"],
+// Séries
+["Pourquoi faire simple quand on peut faire compliqué ?","Les Shadoks",1968,"Claude Piéplu (narrateur)","s","fr","absurde philo"],
+["Plus ça rate, plus on a de chances que ça marche.","Les Shadoks",1968,"Claude Piéplu (narrateur)","s","fr","absurde philo"],
+["C'est pas faux.","Kaamelott",2005,"Franck Pitiot (Perceval)","s","fr","humour absurde"],
+["Le gras, c'est la vie.","Kaamelott",2005,"Jean-Christophe Hembert (Karadoc)","s","fr","humour"],
+["Live long and prosper.","Star Trek",1967,"Leonard Nimoy (Spock)","s","en","fin"],
+["D'oh!","The Simpsons",1989,"Dan Castellaneta (Homer)","s","en","absurde"],
+["How you doin'?","Friends",1994,"Matt LeBlanc (Joey)","s","en","amour humour"],
+["We were on a break!","Friends",1994,"David Schwimmer (Ross)","s","en","colere humour"],
+["That's what she said.","The Office",2005,"Steve Carell (Michael Scott)","s","en","humour"],
+["Bazinga!","The Big Bang Theory",2007,"Jim Parsons (Sheldon)","s","en","humour"],
+["Winter is coming.","Game of Thrones",2011,"Sean Bean (Ned Stark)","s","en","menace intro"],
+["You know nothing, Jon Snow.","Game of Thrones",2011,"Rose Leslie (Ygritte)","s","en","amour humour"],
+["I am the one who knocks.","Breaking Bad",2011,"Bryan Cranston (Walter White)","s","en","menace"],
+["Say my name.","Breaking Bad",2012,"Bryan Cranston (Walter White)","s","en","menace"],
+// Radio & TV
+["Ici Londres ! Les Français parlent aux Français.","Radio Londres, BBC",1940,"","r","fr","intro"],
+["Les sanglots longs des violons de l'automne blessent mon cœur d'une langueur monotone.","Radio Londres, BBC (message personnel)",1944,"","r","fr","mystere"],
+["Bonsoir. La France a peur.","Journal de TF1",1976,"Roger Gicquel","r","fr","intro desespoir"],
+["On peut rire de tout, mais pas avec n'importe qui.","Le Tribunal des flagrants délires, France Inter",1982,"Pierre Desproges","r","fr","philo humour"],
+["Il y a le bon chasseur… et le mauvais chasseur.","Les Inconnus, sketch « Les Chasseurs »",1990,"Les Inconnus","r","fr","humour absurde"],
+["Après avoir vu ça, on peut mourir tranquille. Enfin, le plus tard possible… mais on peut.","Finale de la Coupe du monde, TF1",1998,"Thierry Roland","r","fr","triomphe fin"],
+["C'est votre dernier mot ?","Qui veut gagner des millions ?, TF1",2000,"Jean-Pierre Foucault","r","fr","mystere"],
+["Vous êtes le maillon faible. Au revoir.","Le Maillon faible, TF1",2001,"Laurence Boccolini","r","fr","fin humour"],
+["Allô ! Non mais allô, quoi ! T'es une fille et t'as pas de shampoing ?","Les Anges de la téléréalité, NRJ 12",2013,"Nabilla","r","fr","absurde humour"],
+["Oh, the humanity!","Reportage sur le Hindenburg, radio WLS",1937,"Herbert Morrison","r","en","desespoir"],
+["Ladies and gentlemen, we interrupt our program of dance music to bring you a special bulletin.","The War of the Worlds, CBS Radio",1938,"Orson Welles et la troupe du Mercury Theatre","r","en","intro mystere"],
+["Good night, and good luck.","See It Now, CBS",1954,"Edward R. Murrow","r","en","fin"],
+["Ladies and gentlemen, Elvis has left the building.","Louisiana Hayride, radio KWKH",1956,"Horace Lee Logan","r","en","fin"],
+["And that's the way it is.","CBS Evening News",1962,"Walter Cronkite","r","en","fin"],
+["Float like a butterfly, sting like a bee.","Interview avant Liston–Clay",1964,"Muhammad Ali","r","en","triomphe"],
+["Houston, Tranquility Base here. The Eagle has landed.","Apollo 11, transmission",1969,"Neil Armstrong","r","en","triomphe fin"],
+["That's one small step for man, one giant leap for mankind.","Apollo 11, transmission",1969,"Neil Armstrong","r","en","triomphe intro"],
+// Discours
+["Quoi qu'il arrive, la flamme de la résistance française ne doit pas s'éteindre et ne s'éteindra pas.","Appel du 18 juin, BBC",1940,"Charles de Gaulle","d","fr","triomphe"],
+["Paris ! Paris outragé ! Paris brisé ! Paris martyrisé ! Mais Paris libéré !","Discours de l'Hôtel de Ville",1944,"Charles de Gaulle","d","fr","triomphe colere"],
+["Je vous ai compris !","Discours d'Alger",1958,"Charles de Gaulle","d","fr","intro"],
+["Vive le Québec libre !","Discours de Montréal",1967,"Charles de Gaulle","d","fr","triomphe"],
+["Vous n'avez pas, monsieur Mitterrand, le monopole du cœur.","Débat présidentiel",1974,"Valéry Giscard d'Estaing","d","fr","colere"],
+["Au revoir.","Allocution de fin de mandat",1981,"Valéry Giscard d'Estaing","d","fr","fin"],
+["Je vous demande de vous arrêter !","Meeting de campagne",1995,"Édouard Balladur","d","fr","colere absurde"],
+["Abracadabrantesque.","Interview télévisée",2000,"Jacques Chirac","d","fr","absurde"],
+["Notre maison brûle et nous regardons ailleurs.","Sommet de la Terre, Johannesburg",2002,"Jacques Chirac","d","fr","desespoir philo"],
+["Casse-toi, pauv' con !","Salon de l'agriculture",2008,"Nicolas Sarkozy","d","fr","colere"],
+["Moi, président de la République…","Débat présidentiel",2012,"François Hollande","d","fr","intro"],
+["The only thing we have to fear is fear itself.","Discours d'investiture",1933,"Franklin D. Roosevelt","d","en","philo"],
+["We shall fight on the beaches, we shall fight on the landing grounds… we shall never surrender.","Chambre des communes",1940,"Winston Churchill","d","en","triomphe"],
+["Ask not what your country can do for you — ask what you can do for your country.","Discours d'investiture",1961,"John F. Kennedy","d","en","philo"],
+["The torch has been passed to a new generation of Americans.","Discours d'investiture",1961,"John F. Kennedy","d","en","intro triomphe"],
+["Ich bin ein Berliner.","Discours de Berlin-Ouest",1963,"John F. Kennedy","d","en","triomphe"],
+["Let them come to Berlin.","Discours de Berlin-Ouest",1963,"John F. Kennedy","d","en","colere triomphe"],
+["I have a dream.","Marche sur Washington",1963,"Martin Luther King Jr.","d","en","triomphe philo"],
+["I am not a crook.","Conférence de presse",1973,"Richard Nixon","d","en","absurde"],
+["Mr. Gorbachev, tear down this wall!","Discours de la porte de Brandebourg",1987,"Ronald Reagan","d","en","colere"],
+["Read my lips: no new taxes.","Convention républicaine",1988,"George H. W. Bush","d","en","absurde"],
+["Stay hungry. Stay foolish.","Discours à Stanford",2005,"Steve Jobs","d","en","philo fin"],
+["Yes we can.","Discours du New Hampshire",2008,"Barack Obama","d","en","triomphe"],
+];
+
+const MOODS = [
+  ["intro","Ouverture"],["fin","Chute / fin"],["menace","Menace"],["colere","Coup de gueule"],["humour","Comique"],
+  ["amour","Amour"],["triomphe","Victoire"],["desespoir","Désespoir"],["philo","Philo"],["mystere","Mystère"],["absurde","Absurde"],
+];
+const TYPES = [["","Tout"],["f","Films"],["s","Séries"],["r","Radio & TV"],["d","Discours"]];
+const TYPE_LABEL = { f: "Film", s: "Série", r: "Radio & TV", d: "Discours" };
+const LANGS = [["","FR + VO"],["fr","FR"],["en","EN"]];
+
+// Extraits libres de droits livrés avec la page : réplique → [fichier dans samples/, crédit, lien source]
+const SAMPLES = {
+  "That's one small step for man, one giant leap for mankind.": ["armstrong-1969_one-small-step.wav", "NASA, mission Apollo 11. Domaine public.", "https://www.nasa.gov/wp-content/uploads/2015/01/590331main_ringtone_smallStep.mp3"],
+  "Houston, Tranquility Base here. The Eagle has landed.": ["armstrong-1969_the-eagle-has-landed.wav", "NASA, mission Apollo 11. Domaine public.", "https://www.nasa.gov/wp-content/uploads/2015/01/590333main_ringtone_eagleHasLanded_extended.mp3"],
+  "The only thing we have to fear is fear itself.": ["roosevelt-1933_fear-itself.wav", "Discours d'investiture, 4 mars 1933, via archive.org. Discours présidentiel ; vérifie le statut de l'enregistrement avant un usage commercial.", "https://archive.org/details/02a44f72-7608-461e-aaf8-3e53ac07e852"],
+  "Ask not what your country can do for you — ask what you can do for your country.": ["kennedy-1961_ask-not.wav", "Discours d'investiture, 20 janvier 1961, via archive.org, marqué domaine public.", "https://archive.org/details/JohnF.KennedyInauguralAddress"],
+  "The torch has been passed to a new generation of Americans.": ["kennedy-1961_the-torch-has-been-passed.wav", "Discours d'investiture, 20 janvier 1961, via archive.org, marqué domaine public.", "https://archive.org/details/JohnF.KennedyInauguralAddress"],
+  "Ich bin ein Berliner.": ["kennedy-1963_ich-bin-ein-berliner.wav", "Discours de Berlin-Ouest, 26 juin 1963, via archive.org. Discours présidentiel ; vérifie le statut de l'enregistrement avant un usage commercial.", "https://archive.org/details/john-f.-kennedy-ich-bin-ein-berliner-speech"],
+  "Let them come to Berlin.": ["kennedy-1963_let-them-come-to-berlin.wav", "Discours de Berlin-Ouest, 26 juin 1963, via archive.org. Discours présidentiel ; vérifie le statut de l'enregistrement avant un usage commercial.", "https://archive.org/details/john-f.-kennedy-ich-bin-ein-berliner-speech"],
+};
+
+const items = DATA.map((d, i) => ({
+  id: i, q: d[0], src: d[1], year: d[2], who: d[3], type: d[4], lang: d[5], moods: d[6].split(" "), wav: SAMPLES[d[0]] || null,
+}));
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+items.forEach(it => { it.hay = norm([it.q, it.src, it.who, it.year].join(" ")); });
+
+// ≈ 2,6 mots par seconde à l'oral, arrondi à la demi-seconde
+const dur = q => Math.max(1, Math.round(q.split(/\s+/).length / 2.6 * 2) / 2);
+const fmtDur = q => "≈ " + String(dur(q)).replace(".", ",") + " s";
+
+const store = {
+  get() { try { return JSON.parse(localStorage.getItem("repl-favs") || "[]"); } catch { return []; } },
+  set(v) { try { localStorage.setItem("repl-favs", JSON.stringify(v)); } catch {} },
+};
+const state = { q: "", mood: "", type: "", lang: "", favOnly: false, wavOnly: false, sel: 10, favs: new Set(store.get()) };
+let view = [];
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+function buildControls() {
+  $("moods").innerHTML =
+    `<button class="chip fav" type="button" data-fav aria-pressed="false">★ Favoris</button>` +
+    `<button class="chip fav" type="button" data-wav aria-pressed="false">♪ Avec WAV</button>` +
+    MOODS.map(([k, l]) => `<button class="chip" type="button" data-mood="${k}" aria-pressed="false">${l}</button>`).join("");
+  $("types").innerHTML = TYPES.map(([k, l]) => `<button type="button" data-type="${k}" aria-pressed="${k === "" }">${l}</button>`).join("");
+  $("langs").innerHTML = LANGS.map(([k, l]) => `<button type="button" data-lang="${k}" aria-pressed="${k === ""}">${l}</button>`).join("");
+  $("lede").textContent = `${items.length} répliques de films, de séries, de radio et de discours, à copier ou à retrouver en clip pour un sample ou un montage.`;
+}
+
+function filter() {
+  const terms = norm(state.q).split(/\s+/).filter(Boolean);
+  view = items.filter(it =>
+    (!state.mood || it.moods.includes(state.mood)) &&
+    (!state.type || it.type === state.type) &&
+    (!state.lang || it.lang === state.lang) &&
+    (!state.favOnly || state.favs.has(it.id)) &&
+    (!state.wavOnly || it.wav) &&
+    terms.every(t => it.hay.includes(t))
+  );
+}
+
+function renderList() {
+  filter();
+  $("count").textContent = view.length === items.length
+    ? `${items.length} répliques` : `${view.length} sur ${items.length} répliques`;
+  if (!view.length) {
+    $("list").innerHTML = `<li class="empty">${state.favOnly && !state.favs.size
+      ? "Tu n'as pas encore de favori. Ajoute-en avec l'étoile du moniteur."
+      : "Aucune réplique ne correspond. Essaie un autre mot ou retire un filtre."}
+      <button type="button" id="reset">Tout afficher</button></li>`;
+    $("reset").onclick = reset;
+    return;
+  }
+  $("list").innerHTML = view.map(it => `
+    <li class="row" role="option" data-id="${it.id}" aria-selected="${it.id === state.sel}" tabindex="-1">
+      <span class="q">${state.favs.has(it.id) ? '<span class="star" aria-label="favori">★ </span>' : ""}${esc(it.q)}</span>
+      <span class="m">${esc(it.src)} · ${it.year}${it.who ? " · " + esc(it.who) : ""}</span>
+      <span class="d">${it.wav ? "♪ WAV" : fmtDur(it.q)}</span>
+    </li>`).join("");
+}
+
+function findLinks(it) {
+  const links = [["YouTube", "https://www.youtube.com/results?search_query=" + encodeURIComponent(`"${it.q}" ${it.src}`)]];
+  if (it.lang === "en") {
+    links.push(["Yarn", "https://getyarn.io/yarn-find?text=" + encodeURIComponent(it.q)]);
+    links.push(["PlayPhrase", "https://www.playphrase.me/#/search?q=" + encodeURIComponent(it.q)]);
+  } else if (it.type === "r" || it.type === "d") {
+    links.push(["INA", "https://www.ina.fr/recherche?q=" + encodeURIComponent(it.q)]);
+  }
+  return `<span>Trouver le clip :</span>` + links.map(([l, u]) => `<a href="${u}" target="_blank" rel="noopener">${l} ↗</a>`).join("");
+}
+
+function renderMonitor() {
+  const it = items[state.sel];
+  $("sub").textContent = it.q;
+  $("tc").textContent = "RÉPL " + String(it.id + 1).padStart(3, "0");
+  $("slType").textContent = TYPE_LABEL[it.type];
+  $("slLang").textContent = it.lang === "fr" ? "Français" : "VO anglaise";
+  $("slDur").textContent = fmtDur(it.q);
+  $("mSrc").textContent = it.src;
+  $("mWho").textContent = it.who || "—";
+  $("mYear").textContent = it.year;
+  const fav = state.favs.has(it.id);
+  $("fav").setAttribute("aria-pressed", fav);
+  $("fav").querySelector("span").textContent = fav ? "En favori" : "Favori";
+  $("fav").querySelector("svg").setAttribute("fill", fav ? "currentColor" : "none");
+  $("find").innerHTML = findLinks(it);
+  $("smpName").textContent = sampleName(it) + ".wav";
+  $("bundled").hidden = !it.wav;
+  if (it.wav) $("bCredit").innerHTML = `${esc(it.wav[1])} <a href="${it.wav[2]}" target="_blank" rel="noopener">Source ↗</a>`;
+  const s = $("screen"); s.classList.remove("flash"); void s.offsetWidth; s.classList.add("flash");
+}
+
+function select(id, { scroll = false } = {}) {
+  state.sel = id;
+  document.querySelectorAll(".row").forEach(r => r.setAttribute("aria-selected", +r.dataset.id === id));
+  renderMonitor();
+  const row = document.querySelector(`.row[data-id="${id}"]`);
+  if (row && scroll) row.scrollIntoView({ block: "nearest" });
+  if (window.matchMedia("(max-width: 900px)").matches && !scroll) $("monitor").scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function setPressed(groupId, attr, value) {
+  $(groupId).querySelectorAll(`[${attr}]`).forEach(b => b.setAttribute("aria-pressed", b.getAttribute(attr) === value));
+}
+
+function reset() {
+  Object.assign(state, { q: "", mood: "", type: "", lang: "", favOnly: false, wavOnly: false });
+  $("q").value = "";
+  setPressed("moods", "data-mood", "_");
+  $("moods").querySelectorAll("[data-fav], [data-wav]").forEach(b => b.setAttribute("aria-pressed", "false"));
+  setPressed("types", "data-type", ""); setPressed("langs", "data-lang", "");
+  renderList();
+}
+
+function random() {
+  const pool = (view.length ? view : items).filter(it => it.id !== state.sel);
+  const it = pool[Math.floor(Math.random() * pool.length)] || items[0];
+  select(it.id, { scroll: true });
+}
+
+async function copy() {
+  const it = items[state.sel];
+  const text = `« ${it.q} » (${it.src}, ${it.year})`;
+  try { await navigator.clipboard.writeText(text); toast("Réplique copiée"); }
+  catch {
+    const r = document.createRange(); r.selectNodeContents($("sub"));
+    const sel = getSelection(); sel.removeAllRanges(); sel.addRange(r);
+    toast("Texte sélectionné : fais Ctrl+C");
+  }
+}
+
+function toggleFav() {
+  const id = state.sel;
+  state.favs.has(id) ? state.favs.delete(id) : state.favs.add(id);
+  store.set([...state.favs]);
+  toast(state.favs.has(id) ? "Ajoutée aux favoris" : "Retirée des favoris");
+  renderList(); renderMonitor();
+}
+
+let toastT;
+function toast(msg) {
+  const t = $("toast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 1600);
+}
+
+// ---------- Fichiers : WAV, zip, téléchargement ----------
+const slug = s => norm(s).replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+const sampleName = it => `${slug(it.src).slice(0, 28).replace(/-+$/, "")}_${it.year}_${slug(it.q).slice(0, 40).replace(/-+$/, "")}`;
+
+function encodeWav(chs, sr) {
+  const nc = chs.length, len = chs[0].length, size = len * nc * 2;
+  const buf = new ArrayBuffer(44 + size), v = new DataView(buf);
+  const w = (o, s) => { for (let i = 0; i < s.length; i++) v.setUint8(o + i, s.charCodeAt(i)); };
+  w(0, "RIFF"); v.setUint32(4, 36 + size, true); w(8, "WAVE"); w(12, "fmt ");
+  v.setUint32(16, 16, true); v.setUint16(20, 1, true); v.setUint16(22, nc, true); v.setUint32(24, sr, true);
+  v.setUint32(28, sr * nc * 2, true); v.setUint16(32, nc * 2, true); v.setUint16(34, 16, true);
+  w(36, "data"); v.setUint32(40, size, true);
+  let o = 44;
+  for (let i = 0; i < len; i++) for (let c = 0; c < nc; c++) {
+    const s = Math.max(-1, Math.min(1, chs[c][i])); v.setInt16(o, s < 0 ? s * 0x8000 : s * 0x7FFF, true); o += 2;
+  }
+  return new Uint8Array(buf);
+}
+
+const CRC = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+const crc32 = b => { let c = 0xFFFFFFFF; for (let i = 0; i < b.length; i++) c = CRC[(c ^ b[i]) & 255] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; };
+// Zip sans compression contenant un seul fichier
+function zipOne(name, data) {
+  const nm = new TextEncoder().encode(name), crc = crc32(data), n = data.length;
+  const lh = new DataView(new ArrayBuffer(30));
+  lh.setUint32(0, 0x04034b50, true); lh.setUint16(4, 20, true); lh.setUint16(6, 0x0800, true); lh.setUint16(12, 0x21, true);
+  lh.setUint32(14, crc, true); lh.setUint32(18, n, true); lh.setUint32(22, n, true); lh.setUint16(26, nm.length, true);
+  const cd = new DataView(new ArrayBuffer(46));
+  cd.setUint32(0, 0x02014b50, true); cd.setUint16(4, 20, true); cd.setUint16(6, 20, true); cd.setUint16(8, 0x0800, true); cd.setUint16(14, 0x21, true);
+  cd.setUint32(16, crc, true); cd.setUint32(20, n, true); cd.setUint32(24, n, true); cd.setUint16(28, nm.length, true);
+  const end = new DataView(new ArrayBuffer(22));
+  end.setUint32(0, 0x06054b50, true); end.setUint16(8, 1, true); end.setUint16(10, 1, true);
+  end.setUint32(12, 46 + nm.length, true); end.setUint32(16, 30 + nm.length + n, true);
+  return new Blob([lh, nm, data, cd, nm, end]);
+}
+
+// Dans claude.ai, le téléchargement passe par la capacité "downloads" (format .zip) ; en local, WAV direct.
+const inViewer = !!(window.claude && window.claude.use);
+let downloadsP = null;
+const getDownloads = () => downloadsP ||= (inViewer ? window.claude.use("downloads").catch(() => null) : Promise.resolve(null));
+
+async function saveWav(name, bytes) {
+  if (inViewer) {
+    const d = await getDownloads();
+    if (!d) { toast("Le téléchargement n'est pas disponible ici. Ouvre la page en local."); return; }
+    try { await d.save({ filename: name + ".zip", data: zipOne(name + ".wav", bytes) }); toast("WAV enregistré, dans un .zip"); }
+    catch (e) { if (e?.code !== "declined") toast(e?.code === "rate_limited" ? "Une demande est déjà ouverte." : "Le téléchargement n'a pas pu se faire."); }
+    return;
+  }
+  const url = URL.createObjectURL(new Blob([bytes], { type: "audio/wav" }));
+  const a = document.createElement("a"); a.href = url; a.download = name + ".wav";
+  document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+  toast("WAV exporté");
+}
+
+// ---------- Sampler ----------
+const smp = { ctx: null, buf: null, v0: 0, v1: 1, s0: 0, s1: 0, src: null, playing: false, loop: false, a: 0, b: 0, t0: 0 };
+const actx = () => smp.ctx ||= new (window.AudioContext || window.webkitAudioContext)();
+const fmtT = t => { const m = Math.floor(t / 60), s = t - m * 60; return `${m}:${s.toFixed(3).padStart(6, "0")}`; };
+const hasSel = () => smp.s1 - smp.s0 > 0.01;
+
+async function loadAudio(ab, label, selectAll) {
+  stop();
+  try { smp.buf = await actx().decodeAudioData(ab); }
+  catch { toast("Ce fichier n'a pas pu être lu. Essaie un WAV, MP3, M4A ou MP4."); return; }
+  const d = smp.buf.duration;
+  smp.v0 = 0; smp.v1 = d;
+  [smp.s0, smp.s1] = selectAll || d < 20 ? [0, d] : [0, 0];
+  $("fname").textContent = `${label} · ${fmtT(d)} · ${smp.buf.sampleRate} Hz · ${smp.buf.numberOfChannels > 1 ? "stéréo" : "mono"}`;
+  $("editor").hidden = false;
+  times(); draw();
+}
+
+async function loadFile(f) {
+  if (!f) return;
+  if (f.size > 1.5e9) { toast("Fichier trop lourd : découpe d'abord un extrait de quelques minutes."); return; }
+  toast("Lecture du fichier…");
+  loadAudio(await f.arrayBuffer(), f.name, false);
+}
+
+function times() {
+  $("tIn").textContent = fmtT(smp.s0); $("tOut").textContent = fmtT(smp.s1);
+  $("tLen").textContent = (smp.s1 - smp.s0).toFixed(2).replace(".", ",") + " s";
+}
+
+function draw() {
+  const cv = $("wave"), b = smp.buf; if (!b || $("editor").hidden) return;
+  const dpr = devicePixelRatio || 1, W = cv.clientWidth, H = cv.clientHeight;
+  if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
+  const g = cv.getContext("2d"); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, W, H);
+  const css = getComputedStyle(document.documentElement);
+  const acc = css.getPropertyValue("--accent").trim(), fg = css.getPropertyValue("--subtitle").trim();
+  const sr = b.sampleRate, c0 = b.getChannelData(0), c1 = b.numberOfChannels > 1 ? b.getChannelData(1) : null;
+  const span = smp.v1 - smp.v0, t2x = t => (t - smp.v0) / span * W;
+  const sel = hasSel();
+  if (sel) { g.globalAlpha = .2; g.fillStyle = acc; g.fillRect(t2x(smp.s0), 0, t2x(smp.s1) - t2x(smp.s0), H); g.globalAlpha = 1; }
+  const per = span * sr / W, step = Math.max(1, Math.floor(per / 300)), i0 = smp.v0 * sr, mid = H / 2;
+  for (let x = 0; x < W; x++) {
+    const a = Math.floor(i0 + x * per), e = Math.min(c0.length, a + Math.max(1, Math.ceil(per)));
+    let mn = 1, mx = -1;
+    for (let i = a; i < e; i += step) { const s = c1 ? (c0[i] + c1[i]) / 2 : c0[i]; if (s < mn) mn = s; if (s > mx) mx = s; }
+    if (mx < mn) continue;
+    const t = smp.v0 + (x + .5) / W * span, inside = sel && t >= smp.s0 && t <= smp.s1;
+    g.fillStyle = inside ? acc : fg; g.globalAlpha = inside ? 1 : .5;
+    g.fillRect(x, mid - mx * mid * .92, 1, Math.max(1, (mx - mn) * mid * .92));
+  }
+  g.globalAlpha = 1;
+  if (sel) { g.fillStyle = acc; [smp.s0, smp.s1].forEach(t => g.fillRect(t2x(t) - 1, 0, 2, H)); }
+  if (smp.playing) { g.fillStyle = fg; g.fillRect(t2x(playPos()), 0, 1.5, H); }
+  g.globalAlpha = .55; g.fillStyle = fg; g.font = "10px " + css.getPropertyValue("--font-mono");
+  g.fillText(fmtT(smp.v0), 5, 13); const r = fmtT(smp.v1); g.fillText(r, W - g.measureText(r).width - 5, 13);
+  g.globalAlpha = 1;
+}
+
+function zoom(f, center) {
+  const d = smp.buf.duration, span = Math.min(d, Math.max(.05, (smp.v1 - smp.v0) * f));
+  let v0 = center - (center - smp.v0) * (span / (smp.v1 - smp.v0));
+  v0 = Math.max(0, Math.min(d - span, v0));
+  smp.v0 = v0; smp.v1 = v0 + span; draw();
+}
+const selCenter = () => hasSel() ? (smp.s0 + smp.s1) / 2 : (smp.v0 + smp.v1) / 2;
+
+function playPos() {
+  const el = actx().currentTime - smp.t0, len = smp.b - smp.a;
+  return smp.a + (smp.loop && hasSel() ? el % len : Math.min(el, len));
+}
+function setPlayBtn() { $("play").textContent = smp.playing ? "■ Stop" : "▶ Écouter"; }
+function stop() {
+  if (smp.src) { smp.src.onended = null; try { smp.src.stop(); } catch {} }
+  smp.src = null; smp.playing = false; setPlayBtn(); draw();
+}
+function play() {
+  if (!smp.buf) return;
+  if (smp.playing) { stop(); return; }
+  const c = actx(); c.resume();
+  const s = c.createBufferSource(); s.buffer = smp.buf; s.connect(c.destination);
+  smp.a = hasSel() ? smp.s0 : smp.v0; smp.b = hasSel() ? smp.s1 : smp.buf.duration;
+  if (smp.loop && hasSel()) { s.loop = true; s.loopStart = smp.a; s.loopEnd = smp.b; s.start(0, smp.a); }
+  else s.start(0, smp.a, smp.b - smp.a);
+  s.onended = () => { if (smp.src === s) { smp.src = null; smp.playing = false; setPlayBtn(); draw(); } };
+  smp.src = s; smp.playing = true; smp.t0 = c.currentTime; setPlayBtn();
+  const tick = () => { if (!smp.playing) return; draw(); requestAnimationFrame(tick); };
+  tick();
+}
+
+function exportSel() {
+  const b = smp.buf;
+  if (!b || !hasSel()) { toast("Sélectionne d'abord la réplique sur l'onde."); return; }
+  const sr = b.sampleRate, a = Math.floor(smp.s0 * sr), e = Math.floor(smp.s1 * sr);
+  let chs = Array.from({ length: b.numberOfChannels }, (_, c) => b.getChannelData(c).slice(a, e));
+  if ($("optMono").checked && chs.length > 1) {
+    const m = new Float32Array(chs[0].length);
+    chs.forEach(ch => ch.forEach((v, i) => { m[i] += v / chs.length; })); chs = [m];
+  }
+  const len = chs[0].length;
+  if ($("optFade").checked) {
+    const f = Math.min(Math.floor(len / 4), Math.round(sr * .01));
+    chs.forEach(ch => { for (let i = 0; i < f; i++) { const k = i / f; ch[i] *= k; ch[len - 1 - i] *= k; } });
+  }
+  if ($("optNorm").checked) {
+    let pk = 0; chs.forEach(ch => ch.forEach(v => { const x = Math.abs(v); if (x > pk) pk = x; }));
+    if (pk > 0) { const gn = 0.891 / pk; chs.forEach(ch => { for (let i = 0; i < len; i++) ch[i] *= gn; }); }
+  }
+  saveWav(sampleName(items[state.sel]), encodeWav(chs, sr));
+}
+
+// Souris / doigt sur l'onde
+(() => {
+  const cv = $("wave"); let drag = null, anchor = 0;
+  const x2t = e => { const r = cv.getBoundingClientRect(); return Math.max(0, Math.min(smp.buf.duration, smp.v0 + (e.clientX - r.left) / r.width * (smp.v1 - smp.v0))); };
+  const near = e => { const t = x2t(e), tol = 7 * (smp.v1 - smp.v0) / cv.clientWidth;
+    return !hasSel() ? null : Math.abs(t - smp.s0) < tol ? "s0" : Math.abs(t - smp.s1) < tol ? "s1" : null; };
+  cv.addEventListener("pointerdown", e => {
+    if (!smp.buf) return;
+    drag = near(e);
+    if (!drag) { drag = "new"; anchor = x2t(e); smp.s0 = smp.s1 = anchor; }
+    cv.setPointerCapture(e.pointerId); times(); draw();
+  });
+  cv.addEventListener("pointermove", e => {
+    if (!smp.buf) return;
+    if (!drag) { cv.style.cursor = near(e) ? "ew-resize" : "crosshair"; return; }
+    const t = x2t(e);
+    if (drag === "new") { smp.s0 = Math.min(anchor, t); smp.s1 = Math.max(anchor, t); }
+    else { smp[drag] = t; if (smp.s0 > smp.s1) { [smp.s0, smp.s1] = [smp.s1, smp.s0]; drag = drag === "s0" ? "s1" : "s0"; } }
+    times(); draw();
+  });
+  const end = () => { if (drag && smp.playing) { stop(); } drag = null; };
+  cv.addEventListener("pointerup", end); cv.addEventListener("pointercancel", end);
+  cv.addEventListener("wheel", e => {
+    if (!smp.buf) return; e.preventDefault();
+    if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
+      const d = smp.buf.duration, span = smp.v1 - smp.v0, sh = e.deltaX / cv.clientWidth * span;
+      smp.v0 = Math.max(0, Math.min(d - span, smp.v0 + sh)); smp.v1 = smp.v0 + span; draw();
+    } else zoom(Math.exp(e.deltaY * .002), x2t(e));
+  }, { passive: false });
+})();
+
+$("file").addEventListener("change", e => { loadFile(e.target.files[0]); e.target.value = ""; });
+const drop = $("drop");
+["dragenter", "dragover"].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add("over"); }));
+["dragleave", "drop"].forEach(t => drop.addEventListener(t, () => drop.classList.remove("over")));
+drop.addEventListener("drop", e => { e.preventDefault(); loadFile(e.dataTransfer.files[0]); });
+$("play").addEventListener("click", play);
+$("loop").addEventListener("click", () => {
+  smp.loop = !smp.loop; $("loop").setAttribute("aria-pressed", smp.loop);
+  if (smp.playing) { stop(); play(); }
+});
+$("zin").addEventListener("click", () => smp.buf && zoom(.5, selCenter()));
+$("zout").addEventListener("click", () => smp.buf && zoom(2, selCenter()));
+$("export").addEventListener("click", exportSel);
+window.addEventListener("resize", draw);
+
+// Extraits fournis
+let preview = null;
+async function fetchSample(it) {
+  const r = await fetch("samples/" + it.wav[0]);
+  if (!r.ok) throw new Error(r.status);
+  return r.arrayBuffer();
+}
+$("bPlay").addEventListener("click", () => {
+  const it = items[state.sel]; if (!it.wav) return;
+  if (preview) { preview.pause(); }
+  preview = new Audio("samples/" + it.wav[0]); preview.play().catch(() => toast("Lecture impossible ici."));
+});
+$("bLoad").addEventListener("click", async () => {
+  const it = items[state.sel]; if (!it.wav) return;
+  try { await loadAudio(await fetchSample(it), it.wav[0], true); $("editor").scrollIntoView({ behavior: "smooth", block: "nearest" }); }
+  catch { toast("Impossible de charger l'extrait. Glisse le fichier depuis le dossier samples."); }
+});
+$("bSave").addEventListener("click", async () => {
+  const it = items[state.sel]; if (!it.wav) return;
+  try { saveWav(it.wav[0].replace(/\.wav$/, ""), new Uint8Array(await fetchSample(it))); }
+  catch { // page ouverte en file:// : lien direct vers le fichier
+    const a = document.createElement("a"); a.href = "samples/" + it.wav[0]; a.download = it.wav[0];
+    document.body.append(a); a.click(); a.remove();
+  }
+});
+
+buildControls();
+renderList();
+renderMonitor();
+
+$("q").addEventListener("input", e => { state.q = e.target.value; renderList(); });
+$("moods").addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.hasAttribute("data-fav")) { state.favOnly = !state.favOnly; b.setAttribute("aria-pressed", state.favOnly); }
+  else if (b.hasAttribute("data-wav")) { state.wavOnly = !state.wavOnly; b.setAttribute("aria-pressed", state.wavOnly); }
+  else { state.mood = state.mood === b.dataset.mood ? "" : b.dataset.mood; setPressed("moods", "data-mood", state.mood || "_"); }
+  renderList();
+});
+$("types").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; state.type = b.dataset.type; setPressed("types", "data-type", state.type); renderList(); });
+$("langs").addEventListener("click", e => { const b = e.target.closest("button"); if (!b) return; state.lang = b.dataset.lang; setPressed("langs", "data-lang", state.lang); renderList(); });
+$("list").addEventListener("click", e => { const r = e.target.closest(".row"); if (r) select(+r.dataset.id); });
+$("random").addEventListener("click", random);
+$("copy").addEventListener("click", copy);
+$("fav").addEventListener("click", toggleFav);
+
+document.addEventListener("keydown", e => {
+  const typing = e.target.matches("input, textarea");
+  if (e.key === "/" && !typing) { e.preventDefault(); $("q").focus(); return; }
+  if (e.key === "Escape" && typing) { e.target.blur(); return; }
+  if (typing || e.metaKey || e.ctrlKey || e.altKey) return;
+  if (e.key === " " && smp.buf && !e.target.matches("button")) { e.preventDefault(); play(); }
+  else if (e.key === "r" || e.key === "R") random();
+  else if (e.key === "c" || e.key === "C") copy();
+  else if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    if (!view.length) return;
+    e.preventDefault();
+    const i = view.findIndex(it => it.id === state.sel);
+    const n = e.key === "ArrowDown" ? Math.min(view.length - 1, i + 1) : Math.max(0, i - 1);
+    select(view[i < 0 ? 0 : n].id, { scroll: true });
+  }
+});
+</script>
