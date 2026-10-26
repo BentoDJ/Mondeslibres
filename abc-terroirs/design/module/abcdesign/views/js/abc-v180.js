@@ -1032,4 +1032,36 @@
       });
     }, 3000);
   });
+
+  // 21. Entrée du site : case « Je ne suis pas un robot », retenue 30 jours (cookie abc_humain).
+  // Les moteurs de recherche et les pages de paiement ne la voient pas ; le contenu reste dans la page pour Google.
+  ready(function () {
+    if (/abc_humain=1/.test(document.cookie)) return;
+    if (/bot|crawl|spider|slurp|lighthouse|facebookexternalhit|preview/i.test(navigator.userAgent)) return;
+    if (/^(order-confirmation|module-)/.test(document.body.id || '')) return;
+    var logo = document.querySelector('#header img.logo');
+    var porte = el('div', 'abc-porte',
+      '<div class="abc-porte__boite" role="dialog" aria-modal="true" aria-labelledby="abc-porte-titre">' +
+        (logo ? '<img class="abc-porte__logo" alt="ABC Terroirs" src="' + logo.src + '">' : '') +
+        '<p id="abc-porte-titre" class="abc-porte__titre">Bienvenue chez ABC Terroirs</p>' +
+        '<p class="abc-porte__texte">Une petite vérification avant d\'entrer.</p>' +
+        '<label class="abc-porte__case"><input type="checkbox"><span class="abc-porte__carre" aria-hidden="true"></span>' +
+        '<span>Je ne suis pas un robot</span></label>' +
+      '</div>');
+    document.body.appendChild(porte);
+    document.documentElement.classList.add('abc-porte-ouverte');
+    var caseP = porte.querySelector('input');
+    try { caseP.focus({ preventScroll: true }); } catch (e) {}
+    caseP.addEventListener('change', function () {
+      if (!caseP.checked) return;
+      document.cookie = 'abc_humain=1; max-age=' + 60 * 60 * 24 * 30 + '; path=/; SameSite=Lax';
+      porte.classList.add('is-validee');
+      setTimeout(function () {
+        porte.classList.add('is-fermee');
+        document.documentElement.classList.remove('abc-porte-ouverte');
+        setTimeout(function () { porte.remove(); }, 300);
+      }, 500);
+    });
+  });
 })();
+

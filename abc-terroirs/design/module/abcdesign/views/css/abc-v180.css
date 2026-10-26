@@ -929,3 +929,18 @@ main#page { position: relative; overflow: clip; }
 .abc-news--evenement .abc-news__box { border-color: #e8731c !important; }
 .abc-news--evenement .abc-news__tag { color: #c4580c !important; }
 .abc-news--evenement strong { color: #c4580c !important; }
+
+/* 21. Entrée du site : case « Je ne suis pas un robot » */
+html.abc-porte-ouverte, html.abc-porte-ouverte body { overflow: hidden; }
+.abc-porte { position: fixed; inset: 0; z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 16px; background: rgba(35, 38, 31, .55); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: opacity .3s ease; }
+.abc-porte.is-fermee { opacity: 0; }
+.abc-porte__boite { width: 100%; max-width: 380px; padding: 28px 24px 24px; background: var(--abc-cream); border-radius: var(--abc-radius); box-shadow: 0 20px 50px rgba(0,0,0,.25); text-align: center; }
+.abc-porte__logo { display: block; max-width: 150px; height: auto; margin: 0 auto 16px; mix-blend-mode: multiply; }
+.abc-porte__titre { margin: 0 0 4px; font-family: 'Libre Caslon Text', Georgia, serif; font-size: 21px; color: var(--abc-ink); }
+.abc-porte__texte { margin: 0 0 20px; font-size: 14px; color: var(--abc-muted); }
+.abc-porte__case { display: flex; align-items: center; gap: 12px; margin: 0; padding: 14px 16px; background: #fff; border: 1px solid var(--abc-line); border-radius: 8px; cursor: pointer; font-size: 16px; font-weight: 600; color: var(--abc-ink); text-align: left; }
+.abc-porte__case input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.abc-porte__carre { flex: none; position: relative; width: 26px; height: 26px; border: 2px solid var(--abc-muted); border-radius: 5px; background: #fff; transition: background .2s, border-color .2s; }
+.abc-porte__case input:focus-visible + .abc-porte__carre { outline: 2px solid var(--abc-olive); outline-offset: 2px; }
+.abc-porte__case input:checked + .abc-porte__carre { background: var(--abc-olive); border-color: var(--abc-olive); }
+.abc-porte__case input:checked + .abc-porte__carre::after { content: ""; position: absolute; left: 8px; top: 3px; width: 7px; height: 13px; border: solid #fff; border-width: 0 3px 3px 0; transform: rotate(45deg); }
