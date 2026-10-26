@@ -10,6 +10,8 @@ Tous les fichiers sont en WAV 44,1 kHz, 16 bits, mono, normalisés à −1 dBFS,
 | `kennedy-1961_the-torch-has-been-passed.wav` | The torch has been passed to a new generation of Americans. | [archive.org, JFK Inaugural Address](https://archive.org/details/JohnF.KennedyInauguralAddress) | 1:42.52 → 1:47.62 | Marqué domaine public sur archive.org |
 | `kennedy-1963_ich-bin-ein-berliner.wav` | Ich bin ein Berliner. | [archive.org](https://archive.org/details/john-f.-kennedy-ich-bin-ein-berliner-speech) | 1:55.55 → 1:58.28 | Discours présidentiel, statut de l'enregistrement non précisé par la source : à vérifier avant un usage commercial |
 | `kennedy-1963_let-them-come-to-berlin.wav` | Let them come to Berlin. | [archive.org](https://archive.org/details/john-f.-kennedy-ich-bin-ein-berliner-speech) | 2:46.09 → 2:48.89 | Idem |
+| `reagan-1987_open-this-gate.wav` | Mr. Gorbachev, open this gate! | [archive.org, USIA 306-9636](https://archive.org/details/306-9636) | 33:50.11 → 33:53.53 | Domaine public (U.S. Information Agency) |
+| `reagan-1987_tear-down-this-wall.wav` | Mr. Gorbachev, tear down this wall! | [archive.org, USIA 306-9636](https://archive.org/details/306-9636) | 34:18.23 → 34:22.46 | Domaine public (U.S. Information Agency) |
 | `roosevelt-1933_fear-itself.wav` | The only thing we have to fear is fear itself. | [archive.org](https://archive.org/details/02a44f72-7608-461e-aaf8-3e53ac07e852) | 2:53.77 → 2:59.78 | Discours présidentiel, enregistrement radio d'époque, statut non précisé par la source : à vérifier avant un usage commercial |
 
 ## Pourquoi il n'y a pas les films
