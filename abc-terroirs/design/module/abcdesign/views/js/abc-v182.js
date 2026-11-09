@@ -29,7 +29,7 @@
   var EVENEMENT = Date.now() < new Date('2026-11-01T00:00:00+01:00').getTime()
     ? { tag: 'Halloween', texte: 'Défi sauce piquante <strong>samedi 31/10</strong> chez Spi &amp; Bi : <strong>-20 %</strong> sur les sauces à gagner.' }
     : Date.now() < new Date('2026-12-01T00:00:00+01:00').getTime()
-      ? { tag: 'Novembre', eco: true, texte: 'Mois de la consigne : découvrez nos <a href="/207-bouteilles-consignees"><strong>bouteilles consignées</strong></a>, lavées et réutilisées.' }
+      ? { tag: 'Novembre', eco: true, texte: 'Mois de la consigne : partenaires de longue date de <strong>Bout\' à Bout\'</strong>, découvrez nos <a href="/207-bouteilles-consignees"><strong>bouteilles consignées</strong></a>.' }
       : null;
 
   // Ordinateur : une seule barre de navigation. Raccourcis affichés dans la barre (les autres restent sur mobile)
