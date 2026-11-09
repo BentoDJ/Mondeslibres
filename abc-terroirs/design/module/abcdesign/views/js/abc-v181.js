@@ -28,7 +28,9 @@
   // Événement ponctuel affiché à la place de l'encart « Nouveau » jusqu'à la date de fin (puis retour automatique)
   var EVENEMENT = Date.now() < new Date('2026-11-01T00:00:00+01:00').getTime()
     ? { tag: 'Halloween', texte: 'Défi sauce piquante <strong>samedi 31/10</strong> chez Spi &amp; Bi : <strong>-20 %</strong> sur les sauces à gagner.' }
-    : null;
+    : Date.now() < new Date('2026-12-01T00:00:00+01:00').getTime()
+      ? { tag: 'Novembre', eco: true, texte: 'Mois de la consigne : découvrez nos <a href="/207-bouteilles-consignees"><strong>bouteilles consignées</strong></a>, lavées et réutilisées.' }
+      : null;
 
   // Ordinateur : une seule barre de navigation. Raccourcis affichés dans la barre (les autres restent sur mobile)
   // [texte, page, texte court pour écran moyen, priorité : 1 toujours, 2 masqué sous 1200 px]
@@ -294,7 +296,7 @@
     // 2 ter. Encart « Nouveau », tout en haut de toutes les pages, sous la barre de recherche
     //        (texte : variable NOUVEAUTE en haut de ce fichier ; '' pour le retirer)
     if (NOUVEAUTE && header && !document.querySelector('.abc-news')) {
-      var news = el('div', 'abc-news' + (EVENEMENT ? ' abc-news--evenement' : ''), '<div class="abc-news__box"><span class="abc-news__tag">' + (EVENEMENT ? EVENEMENT.tag : 'Nouveau') + '</span><p>' + (EVENEMENT ? EVENEMENT.texte : NOUVEAUTE) + '</p></div>');
+      var news = el('div', 'abc-news' + (EVENEMENT ? ' abc-news--evenement' + (EVENEMENT.eco ? ' abc-news--eco' : '') : ''), '<div class="abc-news__box"><span class="abc-news__tag">' + (EVENEMENT ? EVENEMENT.tag : 'Nouveau') + '</span><p>' + (EVENEMENT ? EVENEMENT.texte : NOUVEAUTE) + '</p></div>');
       var sw = document.getElementById('search_widget');
       var hc = sw && sw.parentNode;
       if (sw && hc && window.innerWidth >= 992) {
@@ -1063,5 +1065,28 @@
       }, 500);
     });
   });
-})();
 
+  // 22. Bouteilles consignées : badge « Consigné » sur les vignettes et les fiches (liste à tenir à jour, catégorie 207)
+  var CONSIGNES = [120, 121, 230, 440];
+  var ICONE_CONSIGNE = '<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 0 1 13.7-5.6M20 4v4h-4M20 12a8 8 0 0 1-13.7 5.6M4 20v-4h4"/></svg>';
+  function badgesConsigne() {
+    [].forEach.call(document.querySelectorAll('.js-product-miniature[data-id-product]'), function (m) {
+      if (m.abcConsigne || CONSIGNES.indexOf(+m.getAttribute('data-id-product')) < 0) return;
+      var cadre = m.querySelector('.thumbnail-container'); if (!cadre) return;
+      m.abcConsigne = true;
+      cadre.appendChild(el('span', 'abc-consigne', ICONE_CONSIGNE + 'Consigné'));
+    });
+    var idp = document.getElementById('product_page_product_id');
+    var titre = document.querySelector('h1.productpage_title');
+    if (idp && titre && CONSIGNES.indexOf(+idp.value) >= 0 && !document.querySelector('.abc-consigne-fiche')) {
+      titre.parentNode.insertBefore(el('a', 'abc-consigne abc-consigne-fiche', ICONE_CONSIGNE + 'Bouteille consignée : lavée et réutilisée'), titre.nextSibling);
+      document.querySelector('.abc-consigne-fiche').href = '/207-bouteilles-consignees';
+    }
+  }
+  ready(function () {
+    badgesConsigne();
+    var attenteC = null;
+    new MutationObserver(function () { clearTimeout(attenteC); attenteC = setTimeout(badgesConsigne, 120); })
+      .observe(document.body, { childList: true, subtree: true });
+  });
+})();
