@@ -1,0 +1,150 @@
+# Décisions de rapprochement PrestaShop -> LMB, revues une à une.
+# ref = référence LMB retenue ; s = 'ok' (sûr), 'verif' (probable, à vérifier), 'nf' (introuvable dans LMB)
+OK, V, NF = 'ok', 'verif', 'nf'
+# produits dont la ref du site existe déjà dans LMB : corrections / doutes
+EXIST = {
+ '353': ('A-00888', OK, 'avait la réf. du fondant 200 g'),
+ '679': ('A-03293', OK, 'avait la réf. des sardines 160 g'),
+ '680': ('A-06139', OK, 'avait la réf. des sardines 80 g'),
+ '631': (None, V, 'LMB : boîte ronde Créations Gourmandes sucrée (A-06435, 24,60 €) ou salée (A-07189, 26,70 €)'),
+ '649': (None, V, 'réf. actuelle = boîte PB garnie à 19,90 € dans LMB, prix différent'),
+ '692': (None, V, 'LMB : pâte à tartiner noisette ou caramel (grand)'),
+ '693': (None, V, 'réf. actuelle = pâte à tartiner noisette ou caramel, pas une confiture de lait'),
+}
+# meilleurs candidats automatiques à corriger
+HIGH = {
+ '361': ('A-04523', OK, 'Distillerie Divine 50 cl classique (pas la version piment)'),
+ '470': ('A-04755', V, 'LMB : Schorle rhubarbe 1 L, vérifier le parfum'),
+ '743': (None, NF, 'pas de boîte Mucha 150 g dans LMB'),
+ '103': ('A-02862', V, 'LMB regroupe les noix caramélisées salées sous une seule réf.'),
+ '116': ('A-02604', OK, 'prix LMB 48,90 € / site 52,90 €'),
+ '709': ('A-05297', V, 'LMB : millésime 2017 seulement'),
+ '710': ('A-06060', V, 'LMB : millésime 2019 seulement'),
+ '241': ('A-02825', V, 'LMB : boîte sucrette Tour LU V2'),
+}
+LOW = {
+ '114': ('A-01409', OK, ''), '118': (None, NF, ''), '124': ('A-02254', OK, 'prix LMB 42,90 €'), '126': ('A-02192', OK, ''),
+ '127': ('A-05222', OK, ''), '129': (None, NF, ''), '131': ('A-02114', OK, ''), '132': ('A-01985', OK, ''), '144': (None, NF, ''),
+ '153': (None, NF, 'LMB : sachets 100, 200 et 300 g, pas de boîte 245 g'), '155': ('A-02959', OK, 'petit beurre carte postale 50 g'),
+ '159': ('A-01343', OK, ''), '161': ('A-01314', V, 'LMB : noix caramélisées sucrées (cajou, amande, noisette)'),
+ '162': ('A-01314', V, 'idem'), '199': ('A-01314', V, 'idem'),
+ '165': (None, NF, ''), '171': (None, NF, ''), '178': (None, NF, 'LMB : seulement le Côt La Part du Colibri'), '187': (None, NF, ''),
+ '231': ('A-05292', OK, ''), '232': ('A-02104', OK, ''), '237': ('A-05290', OK, ''), '238': ('A-01411', V, 'LMB : petite boîte Maison Suzanne 35 g'),
+ '239': (None, NF, 'proche : A-05419 (boîte Tour LU N&B 150 g, déjà utilisée par un autre produit)'),
+ '240': ('A-00022', V, 'LMB : boîte sucrette Tour LU caramels du Croisic 9,90 €'),
+ '244': (None, NF, ''), '245': ('A-01555', OK, 'Plantation s\'appelle maintenant Planteray'), '258': (None, NF, ''),
+ '261': (None, NF, ''), '262': (None, NF, ''), '263': (None, NF, ''), '264': ('A-03658', OK, ''), '268': (None, NF, ''),
+ '269': (None, NF, ''), '270': (None, NF, ''), '271': (None, NF, 'LMB : seulement Longueteau ambre'), '273': (None, NF, ''),
+ '277': (None, NF, 'LMB : seulement Botran 15'), '280': (None, NF, ''), '283': (None, NF, ''), '286': ('A-01788', OK, ''),
+ '290': (None, NF, ''), '292': (None, NF, ''), '294': ('A-03958', OK, ''), '296': ('A-00957', OK, ''), '297': ('A-03514', OK, ''),
+ '298': ('A-03515', OK, ''), '299': ('A-02897', OK, ''), '300': (None, NF, ''), '301': ('A-03963', OK, ''), '302': (None, NF, ''),
+ '303': (None, NF, ''), '307': (None, NF, ''), '332': ('A-03590', OK, ''), '348': (None, NF, 'LMB : seulement Ki No Tea'),
+ '349': ('A-04733', OK, ''), '356': ('A-00073', OK, ''), '359': ('A-03976', OK, ''), '360': ('A-03307', OK, ''),
+ '363': (None, NF, ''), '364': (None, NF, ''), '365': ('A-04331', OK, ''), '366': ('A-04333', OK, ''), '367': ('A-04332', OK, ''),
+ '368': ('A-01517', OK, ''), '370': ('A-02214', V, 'une seule réf. « bon d\'achat cadeau » dans LMB'), '375': ('A-02214', V, 'idem'),
+ '376': ('A-02214', V, 'idem'), '384': ('A-05917', V, 'LMB : La Perle Rare Roseau bio à 63,50 €'), '385': (None, NF, ''),
+ '386': (None, NF, ''), '389': ('A-05243', OK, ''), '390': (None, NF, 'pas de coffret Voyage extraordinaire V1 dans LMB'),
+ '392': ('A-06550', OK, ''), '393': ('A-05223', OK, ''), '394': ('A-05294', OK, ''), '395': ('A-05293', OK, ''),
+ '396': ('A-05387', OK, ''), '397': ('A-05912', OK, ''), '404': (None, NF, ''), '410': ('A-04257', OK, ''), '412': (None, NF, ''),
+ '417': ('A-00789', OK, ''), '424': (None, NF, ''), '425': (None, NF, ''), '426': (None, NF, ''), '428': (None, NF, ''),
+ '429': (None, NF, ''), '430': (None, NF, ''), '432': (None, NF, ''), '435': (None, NF, ''), '439': (None, NF, ''),
+ '444': ('A-00966', OK, ''), '445': (None, NF, ''), '453': (None, NF, 'LMB : seulement le magnum (A-06842)'), '458': (None, NF, ''),
+ '460': ('A-02539', OK, ''), '464': (None, NF, ''), '467': ('A-05511', V, 'LMB : Diablotine moyenne 50 cl à 9,90 €'),
+ '468': (None, NF, ''), '469': ('A-05861', OK, ''), '473': (None, NF, ''), '474': (None, NF, ''),
+ '481': (None, NF, 'LMB : seulement la boîte vide'), '482': (None, NF, ''), '484': (None, NF, ''), '486': (None, NF, ''),
+ '487': (None, NF, ''), '488': (None, NF, ''), '489': (None, NF, ''), '490': (None, NF, ''), '491': (None, NF, ''),
+ '492': ('A-05555', OK, ''), '493': (None, NF, ''), '497': (None, NF, ''), '498': (None, NF, ''), '500': (None, NF, ''),
+ '502': ('A-04946', OK, ''), '503': (None, NF, ''), '504': ('A-05652', V, 'LMB : boîte sucrette N&B caramel 12,80 €'),
+ '505': ('A-05651', V, 'LMB : boîte sucrette N&B sucrée salée 13,00 €'), '508': (None, NF, ''), '509': (None, NF, ''),
+ '511': ('A-05213', OK, ''), '512': ('A-05214', OK, ''), '513': ('A-05883', OK, ''), '514': ('A-05215', OK, ''),
+ '515': ('A-04304', OK, ''), '521': ('A-04912', OK, 'une réf. LMB pour les 3 parfums 20 cl'), '522': ('A-04912', OK, 'idem'),
+ '523': ('A-04912', OK, 'idem'), '524': ('A-04770', V, 'LMB : Nona Spritz 70 cl, pas de Ginger 70 cl'), '529': (None, NF, ''),
+ '531': (None, NF, ''), '532': (None, NF, ''), '534': ('A-04930', OK, ''), '535': ('A-05168', OK, 'une réf. LMB pour les 3 parfums'),
+ '536': ('A-05168', OK, 'idem'), '537': ('A-05168', OK, 'idem'), '538': (None, NF, ''), '539': (None, NF, ''), '543': (None, NF, ''),
+ '544': (None, NF, ''), '545': ('A-05783', OK, ''), '547': ('A-05906', OK, ''), '548': ('A-05907', OK, ''), '549': ('A-05891', OK, ''),
+ '552': ('A-05982', OK, ''), '553': (None, NF, ''), '559': ('A-04942', OK, ''), '565': ('A-05978', OK, 'une réf. LMB pour les 20 cl'),
+ '566': ('A-05978', OK, 'idem'), '567': ('A-05978', OK, 'idem'), '572': ('A-04885', OK, ''), '574': ('A-03715', OK, ''),
+ '575': ('A-04914', OK, ''), '578': ('A-01811', OK, ''), '579': ('A-01812', OK, ''), '585': ('A-06196', OK, ''), '586': ('A-06195', OK, ''),
+ '589': ('A-06117', OK, ''), '592': (None, NF, ''), '593': (None, NF, ''), '594': (None, NF, ''), '595': ('A-06202', OK, ''),
+ '596': (None, NF, ''), '597': (None, NF, ''), '602': ('A-05271', OK, ''), '603': ('A-05270', V, 'LMB : Galaad Origine à 74,90 €'),
+ '605': ('A-04298', OK, ''), '606': ('A-05167', OK, ''), '610': ('A-03996', V, 'pastis 50 cl ; le verre a sa propre réf. A-03285'),
+ '612': ('A-06303', OK, ''), '621': ('A-04741', OK, ''), '622': (None, NF, ''), '623': ('A-02609', OK, ''),
+ '626': (None, V, 'plusieurs bières Sparkle dans LMB, chacune avec sa réf.'), '629': ('A-06386', V, 'LMB : « Calendrier de l\'Avent Spiritueux »'),
+ '630': ('A-06386', V, 'idem'), '633': ('A-02606', OK, ''), '634': ('A-05518', OK, ''), '638': ('A-04361', OK, ''),
+ '639': (None, V, 'plusieurs sauces Piqu\'Hans dans LMB, une réf. par parfum'), '642': ('A-06411', OK, ''), '643': ('A-06412', OK, ''),
+ '645': ('A-00295', OK, ''), '646': ('A-03156', OK, 'prix LMB 24,90 €'), '648': ('A-04857', OK, ''), '650': (None, NF, ''),
+ '651': ('A-00413', OK, ''), '661': ('A-03672', V, 'Namnèt 75 cl'), '665': ('A-02588', V, 'LMB : bière Les Papas Brasseurs 8,50 €'),
+ '666': ('A-05082', OK, ''), '671': (None, NF, 'LMB : seulement la boîte vide'), '675': ('A-03302', V, 'réf. de la bouteille ; ici carton de 6'),
+ '677': (None, NF, ''), '688': ('A-04473', OK, ''), '689': ('A-06928', OK, ''), '707': (None, NF, ''), '711': (None, NF, ''),
+ '735': ('A-00607', OK, ''), '736': ('A-02956', OK, ''), '737': ('A-02955', OK, ''), '739': ('A-01411', V, 'LMB : petite boîte Maison Suzanne 35 g'),
+ '740': ('A-01411', V, 'idem'), '741': ('A-01411', V, 'idem'), '742': ('A-01411', V, 'idem'), '747': ('A-05964', OK, ''),
+ '749': ('A-01450', OK, ''), '750': ('A-07116', OK, ''), '751': ('A-06640', OK, ''),
+}
+
+# Vérifié dans le catalogue LMB en ligne (recherche avec archives, 19/10/2026) : prioritaire sur tout le reste
+LIVE = {
+ '671': ('A-03183', V, 'LMB : « Boîte bonne fêtes V2 » à 32,70 €'), '650': ('A-06349', OK, ''), '532': ('A-04437', OK, ''),
+ '622': ('A-04671', OK, ''), '468': ('A-05219', OK, ''), '508': ('A-04255', OK, ''),
+ '509': ('A-01930', V, 'LMB a 2 fiches à 79,90 € : A-01930 et A-02251'), '364': ('A-04513', OK, ''), '363': ('A-01964', OK, ''),
+ '348': ('A-04732', OK, ''), '300': ('A-03733', OK, ''), '529': ('A-05713', OK, ''), '711': ('A-01636', OK, ''),
+ '258': ('A-04087', OK, ''), '503': ('A-05653', V, 'LMB : boîte Délices et Gourmandises sucrée salée à 28,80 €'),
+ '390': ('A-05220', OK, ''), '481': ('A-05421', OK, ''), '165': ('A-01300', OK, ''),
+ '743': ('A-01407', V, 'LMB : boîte haute Maison Suzanne 150 g (même réf. que la boîte LU)'), '707': ('A-00110', OK, ''),
+ '594': ('A-06198', OK, ''), '626': ('A-06140', V, 'LMB : « Brasserie Sparkle » générique, sinon une réf. par bière'),
+ '538': ('A-05780', OK, ''), '539': ('A-05781', OK, ''), '531': ('A-04438', OK, ''), '596': ('A-06118', OK, ''),
+ '543': ('A-04328', OK, ''), '544': ('A-04330', OK, ''), '597': ('A-06199', OK, ''), '677': ('A-04436', OK, ''),
+ '474': ('A-05281', OK, ''), '473': ('A-04915', OK, ''), '500': ('A-04634', OK, ''), '307': ('A-03516', OK, ''),
+ '493': ('A-05574', OK, ''), '303': ('A-04359', OK, ''), '553': ('A-05910', OK, ''), '593': ('A-06121', OK, ''),
+ '592': ('A-06120', OK, ''), '268': ('A-03562', OK, 'Planteray Stiggins\' Fancy Pineapple'), '244': ('A-04066', OK, ''),
+ '261': ('A-01531', V, 'LMB : Barbancourt 8 ans à 39,90 € ; l\'ancienne réf. A-04064 n\'existe plus'), '302': ('A-04074', OK, ''),
+ '292': ('A-03535', OK, ''), '270': ('A-03559', OK, ''), '269': ('A-03560', OK, ''),
+ '262': ('A-03902', V, 'LMB a 2 fiches Montebello 3 ans : A-03902 et A-03523'), '263': ('A-03903', OK, ''),
+ '277': ('A-01533', OK, ''), '280': ('A-03792', OK, ''), '273': ('A-03662', OK, ''),
+ '283': ('A-03790', V, 'LMB : 387,50 € / site : 690 €'), '271': ('A-03508', OK, 'LMB : « Longueteau Le Vieux »'),
+ '497': ('A-04458', OK, ''), '498': ('A-04461', OK, ''), '385': ('A-03659', OK, ''), '386': ('A-03660', OK, ''),
+ '487': ('A-05567', OK, ''), '486': ('A-05566', OK, ''), '489': ('A-05569', OK, ''), '488': ('A-05568', OK, ''),
+ '491': ('A-05571', OK, ''), '490': ('A-05570', OK, ''), '428': ('A-00420', OK, ''), '424': ('A-03245', OK, ''),
+ '458': ('A-04118', OK, ''), '412': ('A-05025', OK, ''), '432': ('A-01139', OK, ''), '445': ('A-02689', OK, ''),
+ '429': ('A-01125', OK, ''), '435': ('A-00925', OK, ''), '439': ('A-01294', OK, ''), '426': ('A-01874', OK, ''),
+ '187': ('A-00496', OK, 'LMB : « Cabecôt »'), '178': ('A-00883', OK, ''), '118': ('A-02562', OK, ''), '171': ('A-01124', OK, ''),
+ '144': ('A-01759', OK, ''), '464': ('A-02493', OK, ''), '425': ('A-04250', OK, ''), '404': ('A-02051', OK, ''),
+ '153': ('A-01507', OK, ''), '467': ('A-00782', OK, ''), '524': ('A-04772', OK, ''), '521': ('A-05136', OK, ''),
+ '522': ('A-05135', OK, ''), '384': ('A-05140', OK, ''), '199': ('A-00289', OK, ''), '162': ('A-01313', OK, ''),
+ '693': (None, V, 'LMB : confiture de lait noisette A-00694 (1,90 €) ou bio A-00696 (6,90 €)'),
+ '482': (None, NF, 'aucun « Triptyque » dans LMB'), '484': (None, NF, 'aucun « Triptyque » dans LMB'),
+ '239': (None, NF, 'LMB : seulement la boîte plate vide'), '290': (None, NF, ''), '129': (None, NF, ''),
+ '453': (None, NF, 'LMB : seulement le magnum'), '430': (None, NF, ''),
+}
+
+# Après extraction complète du catalogue LMB (2 533 actifs + 4 725 archivés), 19/10/2026
+LIVE.update({
+ '261': ('A-04064', OK, 'LMB actif : Barbancourt « Cinq étoiles » 8 ans (l\'ancienne réf. du site était la bonne)'),
+ '521': ('A-04912', OK, 'une réf. LMB active pour les 3 parfums 20 cl'), '522': ('A-04912', OK, 'idem'),
+ '430': ('A-03231', OK, 'Delaunay = Domaine de la Bareille'),
+ '290': ('A-03534', V, 'LMB : gin « Deuxième chance » de La Piautre au même prix (51,90 €), peut-être renommé'),
+})
+
+# Retour du patron (fichier refs-lmb-manquantes annoté, 19/10/2026)
+LIVE.update({
+ '743': ('A-01407', OK, 'confirmé par le patron'), '671': ('A-03183', OK, 'confirmé par le patron'),
+ '258': ('A-04087', OK, 'confirmé par le patron'), '390': ('A-05220', OK, 'confirmé par le patron'),
+ '707': ('A-00110', OK, 'confirmé par le patron'),
+})
+PATRON_ARCHIVER = ['532', '622', '468', '482', '508', '348', '300', '529', '711', '503', '650']
+
+# 2e retour du patron (export annoté « OK », 19/10/2026) : propositions validées
+for _pid in ['103','161','238','240','262','370','470','503','504','505','603','610','629','630','631','649','661','665','671','675','692','709','710','739','740','741','742','743']:
+    _r = LIVE.get(_pid) or HIGH.get(_pid) or LOW.get(_pid) or EXIST.get(_pid)
+LIVE.update({
+ '239': ('A-00444', OK, 'choix du patron : réf. de la boîte plate Tour LU N&B (fiche LMB « vide boîte »)'),
+ '693': ('A-06983', OK, 'choix du patron : même réf. que la pâte à tartiner PB noisette ou caramel'),
+})
+PATRON_OK = ['103','161','238','240','262','370','470','503','504','505','603','610','629','630','631','649','661','665','671','675','692','709','710','739','740','741','742','743','239','693','430']
+
+# 3e retour (19/10/2026)
+LIVE.update({
+ '453': ('A-05491', OK, "Confirmé : dans LMB c'est « Phyl Save the Bul' » (Pet'Nat, Delaunay = Domaine de la Bareille)"),
+ '129': (None, NF, 'Archivé (confirmé par la boutique) : pas de réf. LMB, produit désactivé sur le site'),
+ '484': (None, NF, 'Archivé (confirmé par la boutique) : pas de réf. LMB, produit désactivé sur le site'),
+ '639': (None, V, "Une fiche pour plusieurs parfums sur le site. Réfs LMB des parfums cités sur la fiche : L'Originale A-07148 · La Passionnée A-07154 · L'Atomique A-07147 · Deep Purple A-07157 · Taj Malave A-07150 · L'Enfumée A-07153 · Marble Queen A-05658 · Nectar Noir A-07159"),
+})

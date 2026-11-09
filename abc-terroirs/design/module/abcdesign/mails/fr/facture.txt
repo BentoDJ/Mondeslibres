@@ -1,0 +1,7 @@
+Bonjour {firstname},
+
+Vous trouverez en pièce jointe la facture de votre commande {order_name}.
+
+Merci pour votre confiance, et à bientôt chez ABC Terroirs !
+
+ABC Terroirs · 5 place Saint-Pierre, 44000 Nantes · 02 40 89 76 26 · abcterroirs.com

@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Maquette accueil ABC Terroirs</title>
+<!-- Maquette de proposition, non connectée à la boutique.
+     Les photos sont chargées depuis abcterroirs.com : il faut une connexion internet pour les voir. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --olive: #7d8c1f; --olive-dark: #5e6a14; --olive-soft: #f1f4e0;
+    --cream: #fbf8f1; --ink: #23261f; --muted: #646a5c; --line: #e4e1d6;
+    --gold: #c9a24a; --white: #ffffff; --bg: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --olive: #b4c44f; --olive-dark: #cfdc7a; --olive-soft: #262b17;
+      --cream: #1d1f19; --ink: #eceee6; --muted: #a8ae9e; --line: #3a3d33;
+      --white: #23261f; --bg: #171914;
+    }
+  }
+  :root[data-theme="dark"] {
+    --olive: #b4c44f; --olive-dark: #cfdc7a; --olive-soft: #262b17;
+    --cream: #1d1f19; --ink: #eceee6; --muted: #a8ae9e; --line: #3a3d33;
+    --white: #23261f; --bg: #171914;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 Inter, system-ui, sans-serif; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; }
+  .wrap { max-width: 1180px; margin: 0 auto; padding: 0 16px; }
+  h1, h2, h3 { font-family: Fraunces, Georgia, serif; line-height: 1.15; margin: 0; }
+  .btn { display: inline-block; padding: 13px 22px; border-radius: 999px; font-weight: 600; text-decoration: none; transition: transform .15s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn-main { background: var(--olive); color: #fff; }
+  .btn-ghost { border: 1.5px solid var(--ink); }
+
+  .topbar { background: var(--olive-dark); color: #fff; font-size: .85rem; text-align: center; padding: 8px 16px; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .topbar { color: #171914; } }
+
+  header { border-bottom: 1px solid var(--line); background: var(--bg); position: sticky; top: 0; z-index: 5; }
+  .head { display: flex; align-items: center; gap: 24px; padding: 12px 16px; }
+  .head img { height: 56px; width: auto; border-radius: 8px; }
+  nav { display: flex; gap: 22px; font-weight: 500; font-size: .95rem; flex: 1; }
+  nav a { text-decoration: none; }
+  nav a.hot { color: var(--olive); }
+  .cart { margin-left: auto; font-weight: 600; text-decoration: none; white-space: nowrap; }
+  @media (max-width: 860px) { nav { display: none; } }
+
+  .hero { background: var(--cream); }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr 1fr; gap: 40px; align-items: center; padding-top: 56px; padding-bottom: 56px; }
+  .kicker { color: var(--olive); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; font-size: .8rem; margin-bottom: 12px; }
+  .hero h1 { font-size: clamp(2rem, 4.5vw, 3.3rem); }
+  .hero p { color: var(--muted); font-size: 1.1rem; max-width: 46ch; margin: 18px 0 26px; }
+  .hero .ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .hero-img { position: relative; }
+  .hero-img img { border-radius: 20px; aspect-ratio: 4/3.4; object-fit: contain; width: 100%; background: #fff; }
+  .badge { position: absolute; left: -14px; bottom: 22px; background: var(--white); border-radius: 14px; padding: 12px 16px; box-shadow: 0 8px 24px rgba(0,0,0,.12); font-size: .9rem; }
+  .badge b { font-family: Fraunces, serif; font-size: 1.4rem; display: block; color: var(--olive); }
+  @media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; padding-top: 32px; } .badge { left: 12px; } }
+
+  .reassure { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; padding: 28px 16px; }
+  .reassure div { display: flex; gap: 12px; align-items: flex-start; font-size: .92rem; color: var(--muted); }
+  .reassure strong { color: var(--ink); display: block; }
+  .ico { flex: 0 0 38px; height: 38px; border-radius: 50%; background: var(--olive-soft); display: grid; place-items: center; font-size: 1.1rem; }
+  @media (max-width: 860px) { .reassure { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 480px) { .reassure { grid-template-columns: 1fr; } }
+
+  section.block { padding: 56px 0; }
+  .sec-head { display: flex; justify-content: space-between; align-items: end; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .sec-head h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .sec-head p { color: var(--muted); margin: 6px 0 0; }
+
+  .budgets { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .budget { position: relative; border-radius: 16px; overflow: hidden; text-decoration: none; color: #fff; min-height: 220px; display: flex; align-items: end; background: #333; }
+  .budget img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .8; transition: transform .3s; }
+  .budget:hover img { transform: scale(1.04); }
+  .budget::after { content: ""; position: absolute; inset: 0; background: linear-gradient(transparent 35%, rgba(0,0,0,.72)); }
+  .budget span { position: relative; z-index: 1; padding: 16px; font-weight: 600; }
+  .budget span b { font-family: Fraunces, serif; font-size: 1.5rem; display: block; }
+  .budget.custom { background: var(--olive); }
+  .budget.custom::after { display: none; }
+  @media (max-width: 860px) { .budgets { grid-template-columns: 1fr 1fr; } }
+
+  .products { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .card { text-decoration: none; }
+  .card .ph { background: #fff; border-radius: 14px; overflow: hidden; aspect-ratio: 1; position: relative; }
+  .card .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .3s; }
+  .card:hover .ph img { transform: scale(1.04); }
+  .tag { position: absolute; top: 10px; left: 10px; background: var(--white); color: var(--ink); font-size: .75rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; }
+  .card h3 { font-family: Inter, sans-serif; font-size: 1rem; font-weight: 600; margin: 12px 0 2px; }
+  .card p { color: var(--muted); font-size: .88rem; margin: 0 0 6px; }
+  .card .price { font-weight: 600; color: var(--olive); }
+  @media (max-width: 860px) { .products { grid-template-columns: 1fr 1fr; gap: 16px; } }
+
+  .story { background: var(--cream); }
+  .story .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+  .story-imgs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .story-imgs img { border-radius: 14px; aspect-ratio: 1; object-fit: cover; width: 100%; background: #fff; }
+  .story-imgs img:last-child { margin-top: 40px; }
+  .story h2 { font-size: clamp(1.7rem, 3vw, 2.4rem); margin-bottom: 16px; }
+  .story p { color: var(--muted); }
+  .facts { display: flex; gap: 32px; margin-top: 24px; flex-wrap: wrap; }
+  .facts b { font-family: Fraunces, serif; font-size: 2rem; color: var(--olive); display: block; line-height: 1; }
+  .facts span { font-size: .85rem; color: var(--muted); }
+  @media (max-width: 860px) { .story .wrap { grid-template-columns: 1fr; } }
+
+  .pro { display: grid; grid-template-columns: 1.4fr 1fr; gap: 32px; align-items: center; background: var(--ink); color: var(--bg); border-radius: 24px; padding: 40px; }
+  .pro h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 10px; }
+  .pro p { opacity: .8; margin: 0; }
+  .pro ul { margin: 16px 0 0; padding-left: 18px; opacity: .9; }
+  .pro .btn-main { justify-self: end; }
+  @media (max-width: 860px) { .pro { grid-template-columns: 1fr; padding: 28px; } .pro .btn-main { justify-self: start; } }
+
+  .visit { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .shop { border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+  .shop h3 { font-size: 1.3rem; margin-bottom: 6px; }
+  .shop p { margin: 4px 0; color: var(--muted); }
+  .todo { background: #fff3c4; color: #5a4600; padding: 0 4px; border-radius: 3px; font-size: .9em; }
+  @media (max-width: 700px) { .visit { grid-template-columns: 1fr; } }
+
+  footer { border-top: 1px solid var(--line); padding: 32px 0; color: var(--muted); font-size: .88rem; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .legal-alcool { text-align: center; font-size: .8rem; color: var(--muted); padding: 10px 16px 24px; }
+
+  .note { position: fixed; right: 16px; bottom: 16px; max-width: 300px; background: var(--white); border: 2px dashed var(--olive); border-radius: 12px; padding: 12px 14px; font-size: .82rem; box-shadow: 0 6px 20px rgba(0,0,0,.12); z-index: 10; }
+  @media (max-width: 600px) { .note { display: none; } }
+  @media print { .note, header { position: static; } }
+</style>
+</head>
+<body>
+
+<div class="topbar">🎄 Coffrets de Noël disponibles · Retrait gratuit en magasin · Expédition Colissimo sous 48 h</div>
+
+<header>
+  <div class="wrap head">
+    <img src="https://abcterroirs.com/img/logo-1638759461.jpg" alt="ABC Terroirs">
+    <nav>
+      <a href="#" class="hot">Noël</a>
+      <a href="#">Coffrets gourmands</a>
+      <a href="#">Épicerie</a>
+      <a href="#">Vins &amp; spiritueux</a>
+      <a href="#">Bières locales</a>
+      <a href="#">Entreprises</a>
+    </nav>
+    <a href="#" class="cart">🛒 Panier (0)</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="kicker">Épicerie fine nantaise depuis 2006</div>
+      <h1>Offrez Nantes en coffret gourmand</h1>
+      <p>Des coffrets composés à la main, place Saint-Pierre, avec les meilleurs producteurs de Nantes, de Bretagne et des Pays de la Loire.</p>
+      <div class="ctas">
+        <a href="#" class="btn btn-main">Voir les coffrets de Noël</a>
+        <a href="#" class="btn btn-ghost">Composer un coffret sur mesure</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://abcterroirs.com/456-large_default/coffret-nantes-surprenant-v2.jpg" alt="Coffret Nantes surprenant : Diablotine, rillettes de poisson de Loire, saucisson, petits beurres">
+      <div class="badge"><b>20 ans</b>au cœur de Nantes</div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap reassure">
+  <div><span class="ico">🎁</span><span><strong>Fait main à Nantes</strong>Chaque coffret est préparé au magasin</span></div>
+  <div><span class="ico">🏪</span><span><strong>Retrait gratuit</strong>Commandez en ligne, retirez place Saint-Pierre</span></div>
+  <div><span class="ico">📦</span><span><strong>Expédié sous 48 h</strong>Partout en France avec Colissimo</span></div>
+  <div><span class="ico">🔒</span><span><strong>Paiement sécurisé</strong>Carte bancaire et PayPal</span></div>
+</div>
+
+<section class="block">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><h2>Un coffret pour chaque budget</h2><p>De la petite attention au grand cadeau.</p></div>
+    </div>
+    <div class="budgets">
+      <a href="#" class="budget"><img src="https://abcterroirs.com/141-home_default/boite-sucrette-tour-lu-garnie-v1.jpg" alt=""><span><b>Moins de 25 €</b>Petites attentions</span></a>
+      <a href="#" class="budget"><img src="https://abcterroirs.com/429-home_default/coffret-100-nantaises-v2.jpg" alt=""><span><b>25 à 50 €</b>Les incontournables</span></a>
+      <a href="#" class="budget"><img src="https://abcterroirs.com/444-home_default/coffret-voyage-extraordinaire-v3.jpg" alt=""><span><b>Plus de 50 €</b>Pour faire sensation</span></a>
+      <a href="#" class="budget custom"><span><b>Sur mesure</b>Vous choisissez, on compose →</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div><h2>Nos coffrets préférés</h2><p>Les plus offerts par nos clients.</p></div>
+      <a href="#" class="btn btn-ghost">Tous les coffrets</a>
+    </div>
+    <div class="products">
+      <a href="#" class="card">
+        <div class="ph"><img src="https://abcterroirs.com/456-home_default/coffret-nantes-surprenant-v2.jpg" alt="Coffret Nantes surprenant"><span class="tag">Meilleure vente</span></div>
+        <h3>Coffret Nantes surprenant</h3><p>Diablotine, rillettes de Loire, saucisson fleur de sel</p><span class="price">48,00 €</span>
+      </a>
+      <a href="#" class="card">
+        <div class="ph"><img src="https://abcterroirs.com/429-home_default/coffret-100-nantaises-v2.jpg" alt="Coffret 100 % Nantaises"><span class="tag">Créé par des Nantaises</span></div>
+        <h3>Coffret 100 % Nantaises</h3><p>Produits artisanaux de créatrices nantaises</p><span class="price">dès 29,90 €</span>
+      </a>
+      <a href="#" class="card">
+        <div class="ph"><img src="https://abcterroirs.com/445-home_default/coffret-100-sarrazin-v2.jpg" alt="Coffret 100 % sarrasin"><span class="tag">Exclusivité magasin</span></div>
+        <h3>Coffret 100 % sarrasin</h3><p>Le blé noir dans tous ses états</p><span class="price">dès 24,60 €</span>
+      </a>
+      <a href="#" class="card">
+        <div class="ph"><img src="https://abcterroirs.com/702-home_default/calendrier-de-l-avent-rhums-25-x-2cl.jpg" alt="Calendrier de l'Avent rhums"><span class="tag">Noël</span></div>
+        <h3>Calendrier de l'Avent rhums</h3><p>25 rhums à découvrir jusqu'à Noël</p><span class="price">109,90 €</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="block story">
+  <div class="wrap">
+    <div class="story-imgs">
+      <img src="https://abcterroirs.com/139-home_default/boite-tour-lu-plate-avec-petits-beurres.jpg" alt="Boîte Tour LU avec petits beurres artisanaux">
+      <img src="https://abcterroirs.com/111-home_default/pack-apero-nantais.jpg" alt="Pack apéro nantais avec bières locales">
+    </div>
+    <div>
+      <div class="kicker">Notre histoire</div>
+      <h2>Le meilleur du terroir nantais, choisi par des Nantais</h2>
+      <p>Depuis 2006, nous sélectionnons des producteurs que nous connaissons : petits beurres faits près de Clisson, muscadet bio, bières de brasseurs locaux, berlingots, rillettes de poissons de Loire…</p>
+      <p>Chaque coffret est composé à la main dans notre boutique de la place Saint-Pierre, au pied de la cathédrale.</p>
+      <div class="facts">
+        <div><b>20</b><span>ans d'épicerie fine</span></div>
+        <div><b>77</b><span>coffrets au choix</span></div>
+        <div><b>48 h</b><span>pour expédier votre commande</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap">
+    <div class="pro">
+      <div>
+        <h2>Cadeaux d'entreprise &amp; CSE</h2>
+        <p>Clients, salariés, salons : nous composons vos coffrets à vos couleurs, du petit sachet de berlingots au grand panier garni.</p>
+        <ul>
+          <li>Devis gratuit <span class="todo">(délai de réponse à confirmer)</span></li>
+          <li>Personnalisation et carte de vœux</li>
+          <li>Livraison groupée ou envoi individuel</li>
+        </ul>
+      </div>
+      <a href="#" class="btn btn-main">Demander un devis</a>
+    </div>
+  </div>
+</section>
+
+<section class="block" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head"><div><h2>Venez nous voir</h2><p>Goûter, demander conseil, retirer votre commande.</p></div></div>
+    <div class="visit">
+      <div class="shop">
+        <h3>ABC Terroirs · Épicerie fine</h3>
+        <p>5 place Saint-Pierre, 44000 Nantes</p>
+        <p><span class="todo">Horaires à indiquer ici</span></p>
+        <p>02 40 89 76 26</p>
+        <a href="#" class="btn btn-ghost" style="margin-top:12px">Itinéraire</a>
+      </div>
+      <div class="shop">
+        <h3>Spi &amp; Bi · Cave à spiritueux</h3>
+        <p>Place Ladmirault, Nantes</p>
+        <p><span class="todo">Adresse exacte et horaires à indiquer ici</span></p>
+        <p>La plus grande cave à spiritueux de Nantes.</p>
+        <a href="#" class="btn btn-ghost" style="margin-top:12px">Itinéraire</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 ABC Terroirs · Mentions légales · Conditions de vente · Contact</span>
+    <span>Instagram @abcterroirs</span>
+  </div>
+</footer>
+<p class="legal-alcool">L'abus d'alcool est dangereux pour la santé, à consommer avec modération. Vente d'alcool interdite aux mineurs.</p>
+
+<div class="note"><strong>Maquette de proposition.</strong> Ce n'est pas le vrai site. Elle montre ce qu'on peut obtenir avec les modules du thème actuel et les vraies photos de la boutique.</div>
+
+</body>
+</html>

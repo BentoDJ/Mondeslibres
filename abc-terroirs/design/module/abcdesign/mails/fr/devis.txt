@@ -1,0 +1,18 @@
+Nouvelle demande de devis
+
+Projet : {projet}
+Nombre de coffrets : {nombre}
+Budget par coffret : {budget}
+Date souhaitée : {date}
+Réception : {reception}
+Préférences : {preferences}
+
+Entreprise : {entreprise}
+Nom : {nom}
+E-mail : {email}
+Téléphone : {tel}
+
+Message :
+{message}
+
+Pour répondre au client, utilisez « Répondre ».
