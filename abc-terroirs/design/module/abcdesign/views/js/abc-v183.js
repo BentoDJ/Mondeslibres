@@ -1067,7 +1067,7 @@
   });
 
   // 22. Bouteilles consignées : badge « Consigné » sur les vignettes et les fiches (liste à tenir à jour, catégorie 207)
-  var CONSIGNES = [120, 121, 230, 440];
+  var CONSIGNES = [120, 121, 230, 403, 440, 455, 580, 661, 665];
   var ICONE_CONSIGNE = '<svg viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M4 12a8 8 0 0 1 13.7-5.6M20 4v4h-4M20 12a8 8 0 0 1-13.7 5.6M4 20v-4h4"/></svg>';
   function badgesConsigne() {
     [].forEach.call(document.querySelectorAll('.js-product-miniature[data-id-product]'), function (m) {
