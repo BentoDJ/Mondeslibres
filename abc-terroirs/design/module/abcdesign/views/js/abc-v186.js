@@ -23,20 +23,17 @@
     ['Cadeaux d\'entreprise', '163-infos-pour-les-pros']
   ];
 
-  // Remises dégressives (règles panier n° 2 et 3, automatiques, jusqu'au 31/12/2026 14 h)
+  // Remises dégressives permanentes (règles panier n° 2 et 3, automatiques, sans date de fin)
   var REMISES = '<strong>-5 %</strong> dès 300 € d\'achat, <strong>-10 %</strong> dès 600 €, appliqués automatiquement au panier';
-  var FIN_REMISES = new Date('2026-12-31T14:00:00+01:00').getTime();
   // Encart « Nouveau » de l'accueil (laisser '' pour ne rien afficher)
-  var NOUVEAUTE = Date.now() < FIN_REMISES ? 'Remises dégressives : ' + REMISES + '.' : '';
+  var NOUVEAUTE = 'Remises dégressives : ' + REMISES + '.';
   // Événement ponctuel affiché à la place de l'encart « Nouveau » jusqu'à la date de fin (puis retour automatique)
   // (Le bandeau « Mois de la consigne » a été retiré le 16/11/2026 à la demande de Bento : peu adapté à la livraison.)
   var EVENEMENT = Date.now() < new Date('2026-11-01T00:00:00+01:00').getTime()
     ? { tag: 'Halloween', texte: 'Défi sauce piquante <strong>samedi 31/10</strong> chez Spi &amp; Bi : <strong>-20 %</strong> sur les sauces à gagner.' }
     : Date.now() < new Date('2026-12-01T00:00:00+01:00').getTime()
-      ? { tag: 'Promotions', texte: 'Jusqu\'au 30/11 : <strong>-20 %</strong> sur les <a href="/205-sauces-piquantes"><strong>sauces piquantes</strong></a> avec le code <strong>HALLOWEEN20</strong>. Et jusqu\'au 31/12 : ' + REMISES + '.' }
-      : Date.now() < FIN_REMISES
-        ? { tag: 'Promotions', texte: 'Jusqu\'au 31/12 : ' + REMISES + '.' }
-        : null;
+      ? { tag: 'Promotions', texte: 'Jusqu\'au 30/11 : <strong>-20 %</strong> sur les <a href="/205-sauces-piquantes"><strong>sauces piquantes</strong></a> avec le code <strong>HALLOWEEN20</strong>. Et toute l\'année : ' + REMISES + '.' }
+      : { tag: 'Promotions', texte: 'Toute l\'année : ' + REMISES + '.' };
 
   // Ordinateur : une seule barre de navigation. Raccourcis affichés dans la barre (les autres restent sur mobile)
   // [texte, page, texte court pour écran moyen, priorité : 1 toujours, 2 masqué sous 1200 px]
