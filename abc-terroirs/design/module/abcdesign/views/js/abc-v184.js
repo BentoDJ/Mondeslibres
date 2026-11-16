@@ -76,9 +76,10 @@
   // Quelques avis clients recopiés mot pour mot depuis Google : [texte, prénom + initiale, boutique]. Vide = rien affiché.
   // Source : avis Google de Spi & Bi, relayés sur boucherie-mailhet.fr/abc-terroirs-spi-bi/ (relevé le 15/10/2026)
   var AVIS_CITES = [
-    ['Très grand choix de bières et spiritueux, dégustation... L\'accueil du dirigeant est très agréable et il donne de bons conseils. À connaître !', 'Gilles L.', 'Spi & Bi'],
-    ['Super conseil, accueil et un très large choix autant sur les bières que les spiritueux. La bonne humeur est au rendez-vous.', 'Evie V.', 'Spi & Bi'],
-    ['Que des supers produits ! Accueil toujours sympathique par de vrais connaisseurs', 'Tino R.', 'Spi & Bi']
+    // Un avis Google 5/5 par boutique, recopié mot pour mot (relevé le 16/11/2026), dans l'ordre des cartes ci-dessus
+    ['Très large choix de produits essentiellement régionaux ! Beaucoup de bières, vins, terrines, spécialités culinaires sucrées et salées... accueil et conseil très bon également. Pour un cadeau/souvenir, comme pour un apéro.', 'Florent L.', 'ABC Terroirs Saint-Pierre'],
+    ['Les produits sont bien sélectionnés, bons, et les conseils sont toujours agréables et précis. Cela fait des années que je commande des paniers là bas et ça s\'est toujours bien passé. Je recommande.', 'Sakio B.', 'ABC Terroirs Franklin'],
+    ['J\'ai participé à une dégustation qui était très intéressante et accessible pour un novice !', 'Harold C.', 'Spi & Bi']
   ];
 
   // pos : coordonnées GPS (OpenStreetMap, 19/10/2026) pour la carte
@@ -429,7 +430,7 @@
           '<a href="https://search.google.com/local/writereview?placeid=' + a[3] + '" target="_blank" rel="noopener">Donner mon avis</a></p></div>';
       }).join('');
       var cites = AVIS_CITES.map(function (c) {
-        return '<figure class="abc-avis__cite"><blockquote>« ' + esc(c[0]) + ' »</blockquote><figcaption><span class="abc-etoiles abc-etoiles--sm" role="img" aria-label="5 sur 5"><span style="width:100%"></span></span> ' + esc(c[1]) + ' · ' + esc(c[2]) + ' · avis Google</figcaption></figure>';
+        return '<figure class="abc-avis__cite"><blockquote>« ' + esc(c[0]) + ' »</blockquote><figcaption><span class="abc-etoiles abc-etoiles--sm" role="img" aria-label="5 sur 5"><span style="width:100%"></span></span> ' + esc(c[1]) + ' · avis Google<br><strong>' + esc(c[2]) + '</strong></figcaption></figure>';
       }).join('');
       var bloc = el('section', 'abc-avis',
         '<div class="abc-avis__inner"><div class="abc-avis__tete"><h2>Nos clients en parlent</h2><p>Les notes de nos trois boutiques sur Google.</p></div>' +
