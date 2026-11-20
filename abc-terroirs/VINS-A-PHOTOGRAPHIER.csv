@@ -117,8 +117,8 @@
 116;VIN BLANC LOIRE;NOELLA MORANTIN;FAV STELLA MARIS (sauvignon) - Noella Morantin;A-06779;Stella Maris (sauvignon) – Noëlla Morantin;906;13;1;0;
 117;VIN BLANC;LES VINS DE LAVIE;LES ROCHETTES (31 mois sur lies) - Les Vins de Lavie;A-06848;Les Rochettes, 31 mois sur lies – Les Vins de Lavie;929;6;2;0;
 118;VIN ROSE LOIRE;BOUQUET DE LOIRE;DEMI PINEAU D'AUNIS ROSE - Octavie;A-06521;Pineau d'Aunis rosé, demi-bouteille – Domaine Octavie;944;11;6;0;
-119;VIN ROSE LOIRE;DOMAINE DU HAUT PLANTY;ROSE DIABOLO FREIZH - Haut Planty;A-01693;Diabolo Freizh rosé – Domaine du Haut Planty;946;12;2;0;
-120;VIN ROSE LOIRE;MOURAT;OVNI Rosé (grolleau) - Mourat;A-01349;Ovni rosé (grolleau) – Mourat;945;7;6;0;
+119;VIN ROSE LOIRE;DOMAINE DU HAUT PLANTY;ROSE DIABOLO FREIZH - Haut Planty;A-01693;Diabolo Freizh rosé – Domaine du Haut Planty;946;12;2;0;Faite (20/11)
+120;VIN ROSE LOIRE;MOURAT;OVNI Rosé (grolleau) - Mourat;A-01349;Ovni rosé (grolleau) – Mourat;945;7;6;0;Faite (20/11)
 121;VIN PETILLANT LOIRE;CHEVALIER LE DOMAINE;SVP S'il Vous Plait (chardo-folle blanche-pinot noir) - Eric Chevalier;A-02478;SVP S'il Vous Plaît (chardonnay, folle blanche, pinot noir) – Éric Chevalier;962;8;8;0;
 122;VIN PETILLANT LOIRE;DOMAINE BEDOUET;FAV BED NAT (Souvigné Gris, Melon B) Domaine BEDOUET;A-05864;Bed Nat (souvignier gris, melon) – Domaine Bédouet;950;8;7;0;
 123;VIN PETILLANT LOIRE;DOMAINE BRUNO CORMERAIS;MTR MÉTHODE TRADITIONNELLE - Cormerais;A-01252;MTR, méthode traditionnelle – Domaine Bruno Cormerais;955;8;11;6;
@@ -148,13 +148,13 @@
 147;VIN ROUGE AUTRE REGION;CLOS DES JARRES;ABRENSIS (GREN, CAR, SYRAH) - Clos des Jarres;A-00277;Abrensis (grenache, carignan, syrah) – Clos des Jarres;967;18;11;0;
 148;VIN ROUGE AUTRE REGION;CLOS DES JARRES;F3R FONTAINE 3L TRALARI ROUGE Clos des Jarres;A-00896;Tralari rouge, fontaine 3 L – Clos des Jarres;985;23;16;0;
 149;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;ESPAGNE BOBAL - Marsilea;A-00432;Bobal – Marsilea (Espagne);980;7;0;0;
-150;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;CHILI CANTOALBA SHIRAZ - LA RONCIERE;A-03328;Cantoalba Shiraz – La Roncière (Chili);975;7;0;0;
-151;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;CHILI ECOBALANCE Chicken run CARMENERE - Emiliana;A-00794;Ecobalance Chicken Run, carménère – Emiliana (Chili);976;10;0;0;
+150;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;CHILI CANTOALBA SHIRAZ - LA RONCIERE;A-03328;Cantoalba Shiraz – La Roncière (Chili);975;7;0;0;Faite (20/11)
+151;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;CHILI ECOBALANCE Chicken run CARMENERE - Emiliana;A-00794;Ecobalance Chicken Run, carménère – Emiliana (Chili);976;10;0;0;Faite (20/11)
 152;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;ESPAGNE FUSION (Bobal/Shiraz/Merlot) DO Valencia;A-01829;Fusion (bobal, shiraz, merlot), DO Valencia (Espagne);981;6;0;0;
-153;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;AFR. DU SUD Golden Monkey - Post House;A-03334;Golden Monkey – Post House (Afrique du Sud);968;7;0;0;
+153;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;AFR. DU SUD Golden Monkey - Post House;A-03334;Golden Monkey – Post House (Afrique du Sud);968;7;0;0;Faite (20/11)
 154;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;ESPAGNE ISELEN - Bodega Mateos;A-03295;Iselen – Bodega Mateos (Espagne);982;6;0;0;
-155;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;ITALIE MALIA - GUARINI;A-01219;Malia – Guarini (Italie);993;7;2;0;
-156;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;AFR. DU SUD PINOTAGE - TERRA;A-01730;Pinotage – Terra (Afrique du Sud);969;8;0;0;
+155;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;ITALIE MALIA - GUARINI;A-01219;Malia – Guarini (Italie);993;7;2;0;Faite (20/11)
+156;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;AFR. DU SUD PINOTAGE - TERRA;A-01730;Pinotage – Terra (Afrique du Sud);969;8;0;0;Faite (20/11)
 157;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;ESPAGNE RIOJA Letargo joven - Bodega Mateos;A-02400;Rioja Letargo joven – Bodega Mateos (Espagne);983;6;0;0;
 158;VIN ROUGE AUTRE REGION;CONTINENT DU VIN;ESPAGNE Viento Aliseo - DOMINIO DE PUNCTUM;A-00786;Viento Aliseo – Dominio de Punctum (Espagne);984;7;0;0;
 159;VIN ROUGE AUTRE REGION;DOMAINE DE L'ECU;TRINITY (Grenache-Cinsault) - Domaine de l'ECU;A-05029;Trinity (grenache, cinsault) – Domaine de l'Écu;928;9;4;0;
@@ -198,4 +198,4 @@
 197;VIN ROSE AUTRE REGION;VINODIFF;"CTX D'AIX EN PROVENCE ""AROMANCE"" - Domaine Fredavelle";A-06867;Coteaux d'Aix-en-Provence « Aromance » – Domaine Fredavelle;947;8;0;0;
 198;VIN PETILLANT AUTRE REGION;DOMAINE LES OBRIERES;CINSAULT SPECIAL (Méthode Trad.) - Domaine Obrières;A-06514;Cinsault Spécial, méthode traditionnelle – Domaine les Obrières;964;6;5;0;
 199;VIN PETILLANT AUTRE REGION;SIAGI;ITALIE PROSECCO 20cl - Saccheto;A-06064;Prosecco 20 cl – Saccheto (Italie);965;11;8;3;
-200;VIN PETILLANT AUTRE REGION;SIAGI;ITALIE PROSECCO 75cl Saccheto;A-01494;Prosecco – Saccheto (Italie);966;8;6;9;
+200;VIN PETILLANT AUTRE REGION;SIAGI;ITALIE PROSECCO 75cl Saccheto;A-01494;Prosecco – Saccheto (Italie);966;8;6;9;Faite (20/11)
