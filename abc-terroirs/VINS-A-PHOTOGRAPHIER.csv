@@ -41,7 +41,7 @@
 40;VIN ROUGE LOIRE;DOMAINE LES JUSTICES;LA BAMBOCHE (Cabernet Fr) - Les Justices;A-06147;La Bamboche (cabernet franc) – Domaine Les Justices;824;13;10;0;
 41;VIN ROUGE LOIRE;DOMAINE MELARIC;LE TANDEM (cab-grolleau) - Melaric;A-01708;Le Tandem (cabernet, grolleau) – Domaine Melaric;836;10;7;0;
 42;VIN ROUGE LOIRE;DOMAINE PASSE PONT;GAMAY Côteaux d'Ancenis - Domaine Passe Pont;A-04962;AOP Coteaux d'Ancenis rouge (gamay) – Domaine Passe Pont;399;3;2;0;
-43;VIN ROUGE LOIRE;LE CHAI DE THELEME;FAV CHINON Soyons Franc 19 - Le Chai de Thélème;A-05809;AOC Chinon Soyons Franc – Le Chai de Thélème;825;9;0;0;
+43;VIN ROUGE LOIRE;LE CHAI DE THELEME;FAV CHINON Soyons Franc 19 - Le Chai de Thélème;A-05809;AOC Chinon Soyons Franc – Le Chai de Thélème;825;9;0;0;Faite
 44;VIN ROUGE LOIRE;LE CHAI DE THELEME;ALLEGRO (Grolleau N) - Le Chai de Thélème;A-06157;Allegro (grolleau noir) – Le Chai de Thélème;800;7;0;0;
 45;VIN ROUGE LOIRE;LE CHAI DE THELEME;INSPIRATION (Côt, Gamay, Grolleau) - Le Chai de Thélème;A-04995;Inspiration (côt, gamay, grolleau) – Le Chai de Thélème;820;6;0;0;
 46;VIN ROUGE LOIRE;LE CHAI DE THELEME;MILLESIME 2023 (Cab F, Gamay) - Le Chai de Thélème;A-05505;Millésime 2023 (cabernet franc, gamay) – Le Chai de Thélème;846;10;10;0;
@@ -58,73 +58,73 @@
 57;VIN ROUGE LOIRE;MOURAT;DEMI COLLECTION Rouge Mourat;A-00766;Collection rouge, demi-bouteille – Mourat;815;7;5;0;
 58;VIN ROUGE LOIRE;NOELLA MORANTIN;LA BOUDINERIE (Gamay) - Noella Morantin;A-06781;La Boudinerie (gamay) – Noëlla Morantin;826;9;5;0;
 59;VIN BLANC LOIRE;BOUQUET DE LOIRE;COTEAUX DU LAYON CLAIR DE LUNE (chenin) - Domaine Matignon;A-03892;AOC Coteaux du Layon Clair de Lune (chenin) – Domaine Matignon;887;8;2;0;
-60;VIN BLANC LOIRE;BOUQUET DE LOIRE;COUR CHEVERNY DES LYS (Romorantin) - Domaine SAUGER;A-02302;AOC Cour-Cheverny Des Lys (romorantin) – Domaine Sauger;889;11;0;0;
-61;VIN BLANC LOIRE;BOUQUET DE LOIRE;MENETOU SALON BLANC - Domaine de la Croix Margot;A-04922;AOC Menetou-Salon blanc – Domaine de la Croix Margot;886;12;0;0;
-62;VIN BLANC LOIRE;BOUQUET DE LOIRE;POUILLY FUME La Moynerie - Michel Redde;A-04921;AOC Pouilly-Fumé La Moynerie – Michel Redde;903;3;3;0;
-63;VIN BLANC LOIRE;BOUQUET DE LOIRE;SANCERRE BLANC OSMOZE - DOMAINE DENIZOT;A-05837;AOC Sancerre blanc Osmoze – Domaine Denizot;905;9;3;0;
-64;VIN BLANC LOIRE;BOUQUET DE LOIRE;"SAVENNIERES ""La Saponaire"" - Domaine Ogereau";A-04278;AOC Savennières « La Saponaire » – Domaine Ogereau;913;6;0;0;
-65;VIN BLANC LOIRE;BOUQUET DE LOIRE;TOURAINE AZAY LE RIDEAU BLANC CHENIN - Hauts Baigneux;A-04489;AOC Touraine Azay-le-Rideau blanc (chenin) – Domaine des Hauts Baigneux;915;8;8;0;
-66;VIN BLANC LOIRE;BOUQUET DE LOIRE;TOURAINE SAUVIGNON - Domaine de l'Octavie;A-05647;AOC Touraine Sauvignon – Domaine Octavie;916;11;0;0;
-67;VIN BLANC LOIRE;BOUQUET DE LOIRE;FAV CÔTES DE LA CHARITE (Chardo) MONTAILLANT;A-06016;Côtes de la Charité (chardonnay) – Montaillant;904;25;0;0;
+60;VIN BLANC LOIRE;BOUQUET DE LOIRE;COUR CHEVERNY DES LYS (Romorantin) - Domaine SAUGER;A-02302;AOC Cour-Cheverny Des Lys (romorantin) – Domaine Sauger;889;11;0;0;Faite
+61;VIN BLANC LOIRE;BOUQUET DE LOIRE;MENETOU SALON BLANC - Domaine de la Croix Margot;A-04922;AOC Menetou-Salon blanc – Domaine de la Croix Margot;886;12;0;0;Faite
+62;VIN BLANC LOIRE;BOUQUET DE LOIRE;POUILLY FUME La Moynerie - Michel Redde;A-04921;AOC Pouilly-Fumé La Moynerie – Michel Redde;903;3;3;0;Faite
+63;VIN BLANC LOIRE;BOUQUET DE LOIRE;SANCERRE BLANC OSMOZE - DOMAINE DENIZOT;A-05837;AOC Sancerre blanc Osmoze – Domaine Denizot;905;9;3;0;Faite
+64;VIN BLANC LOIRE;BOUQUET DE LOIRE;"SAVENNIERES ""La Saponaire"" - Domaine Ogereau";A-04278;AOC Savennières « La Saponaire » – Domaine Ogereau;913;6;0;0;Faite
+65;VIN BLANC LOIRE;BOUQUET DE LOIRE;TOURAINE AZAY LE RIDEAU BLANC CHENIN - Hauts Baigneux;A-04489;AOC Touraine Azay-le-Rideau blanc (chenin) – Domaine des Hauts Baigneux;915;8;8;0;Faite
+66;VIN BLANC LOIRE;BOUQUET DE LOIRE;TOURAINE SAUVIGNON - Domaine de l'Octavie;A-05647;AOC Touraine Sauvignon – Domaine Octavie;916;11;0;0;Faite
+67;VIN BLANC LOIRE;BOUQUET DE LOIRE;FAV CÔTES DE LA CHARITE (Chardo) MONTAILLANT;A-06016;Côtes de la Charité (chardonnay) – Montaillant;904;25;0;0;Faite
 68;VIN BLANC LOIRE;BOUQUET DE LOIRE;L'ENJOUEE BLANC (Chenin) - Domaine Ogereau;A-04532;L'Enjouée blanc (chenin) – Domaine Ogereau;864;0;12;0;
-69;VIN BLANC LOIRE;BOUQUET DE LOIRE;LE GALTAS (TRESSALLIER) - Jean Wambergue;A-06017;Le Galtas (tressallier) – Jean Wambergue;870;11;0;0;
-70;VIN BLANC LOIRE;BOUQUET DE LOIRE;MARYVONNE (chenin amphore + barrique) - Lamé Delisle Boucard-;A-05284;Maryvonne (chenin) – Lamé Delisle Boucard;882;41;18;0;
+69;VIN BLANC LOIRE;BOUQUET DE LOIRE;LE GALTAS (TRESSALLIER) - Jean Wambergue;A-06017;Le Galtas (tressallier) – Jean Wambergue;870;11;0;0;Faite
+70;VIN BLANC LOIRE;BOUQUET DE LOIRE;MARYVONNE (chenin amphore + barrique) - Lamé Delisle Boucard-;A-05284;Maryvonne (chenin) – Lamé Delisle Boucard;882;41;18;0;Faite
 71;VIN BLANC LOIRE;CHEVALIER LE DOMAINE;FAUVE (FB / sauv. gris) - Eric Chevalier;A-03266;Fauve (folle blanche, sauvignon gris) – Éric Chevalier;902;8;7;0;
 72;VIN BLANC LOIRE;DOMAINE BREGEON;FOLL' BLANCHE - Fred Lailler;A-05203;Foll' Blanche (folle blanche) – Domaine Brégeon;911;7;9;0;
 73;VIN BLANC LOIRE;DOMAINE DE LA BAREILLE;CHARDONNAY - DELAUNAY;A-03231;Chardonnay – Domaine de la Bareille;430;18;11;0;
 74;VIN BLANC LOIRE;DOMAINE DE LA BAREILLE;Fié Gris - DELAUNAY;A-03338;Fié gris – Domaine de la Bareille;908;12;5;0;
 75;VIN BLANC LOIRE;DOMAINE DE LA BAREILLE;Gros Plant (Folle Blanche) - DELAUNAY;A-03230;Gros Plant (folle blanche) – Domaine de la Bareille;921;10;8;0;
-76;VIN BLANC LOIRE;DOMAINE DE LA BAREILLE;L'OUCHE DU FOUR (Melon B) - Delaunay;A-06394;L'Ouche du Four (melon de Bourgogne) – Domaine de la Bareille;866;11;11;0;
+76;VIN BLANC LOIRE;DOMAINE DE LA BAREILLE;L'OUCHE DU FOUR (Melon B) - Delaunay;A-06394;L'Ouche du Four (melon de Bourgogne) – Domaine de la Bareille;866;11;11;0;Faite
 77;VIN BLANC LOIRE;DOMAINE DE LA BAREILLE;MELON ET MELECHE (90 Melon, 10 Fié G.) - DELAUNAY;A-06005;Melon et Mélèche (melon, fié gris) – Domaine de la Bareille;884;11;8;0;
 78;VIN BLANC LOIRE;DOMAINE DE LA COCHE;CHARDONNAY PIN UP - Domaine de la coche;A-00564;Chardonnay Pin Up – Domaine de la Coche;877;15;2;1;
 79;VIN BLANC LOIRE;DOMAINE DE LA COCHE;F3B FONTAINE 3L CHARDONNAY LOCAL la Coche;A-05507;Chardonnay, fontaine 3 L – Domaine de la Coche;896;7;2;0;
 80;VIN BLANC LOIRE;DOMAINE DE LA COCHE;GROLLEAU GRIS PIN UP - Domaine de la Coche;A-00992;Grolleau gris Pin Up – Domaine de la Coche;919;13;6;0;
 81;VIN BLANC LOIRE;DOMAINE DE LA COCHE;SAUVIGNON GRIS LE PARADIS La Coche;A-01647;Sauvignon gris Le Paradis – Domaine de la Coche;909;21;0;0;
-82;VIN BLANC LOIRE;DOMAINE DE LA FESSARDIERE;L'AIR INNOCENT (melon b.) - Fessardière;A-03378;L'Air Innocent (melon de Bourgogne) – Domaine de la Fessardière;860;10;0;0;
-83;VIN BLANC LOIRE;DOMAINE DE LA FESSARDIERE;LES DAMES BLANCHES (folle blanche) - Fessardière;A-03967;Les Dames Blanches (folle blanche) – Domaine de la Fessardière;872;7;0;0;
-84;VIN BLANC LOIRE;DOMAINE DE LA TOURLAUDIERE;CATORPÉE BLANC (MELON);A-00542;Catorpée blanc (melon de Bourgogne) – Domaine de la Tourlaudière;873;16;0;0;
+82;VIN BLANC LOIRE;DOMAINE DE LA FESSARDIERE;L'AIR INNOCENT (melon b.) - Fessardière;A-03378;L'Air Innocent (melon de Bourgogne) – Domaine de la Fessardière;860;10;0;0;Faite
+83;VIN BLANC LOIRE;DOMAINE DE LA FESSARDIERE;LES DAMES BLANCHES (folle blanche) - Fessardière;A-03967;Les Dames Blanches (folle blanche) – Domaine de la Fessardière;872;7;0;0;Faite
+84;VIN BLANC LOIRE;DOMAINE DE LA TOURLAUDIERE;CATORPÉE BLANC (MELON);A-00542;Catorpée blanc (melon de Bourgogne) – Domaine de la Tourlaudière;873;16;0;0;Faite
 85;VIN BLANC LOIRE;DOMAINE DE LA TOURLAUDIERE;VALLET - Tourlaudière;A-01825;Vallet – Domaine de la Tourlaudière;920;6;0;0;
-86;VIN BLANC LOIRE;DOMAINE DE ROCHAMBEAU;ANJOU MATIN D'AUTOMNE (chenin boisé) Rochambeau;A-01236;AOC Anjou Matin d'Automne (chenin) – Domaine de Rochambeau;863;10;0;0;
+86;VIN BLANC LOIRE;DOMAINE DE ROCHAMBEAU;ANJOU MATIN D'AUTOMNE (chenin boisé) Rochambeau;A-01236;AOC Anjou Matin d'Automne (chenin) – Domaine de Rochambeau;863;10;0;0;Faite
 87;VIN BLANC LOIRE;DOMAINE DE ROCHAMBEAU;PLAISIR (Aubance) - Rochambeau;A-01434;AOC Coteaux de l'Aubance Plaisir – Domaine de Rochambeau;901;7;6;0;
 88;VIN BLANC LOIRE;DOMAINE DES COGNETTES;DINGUE DE TOI (Sauv. Gris) - COGNETTES;A-03314;Dingue de Toi (sauvignon gris) – Domaine des Cognettes;894;8;0;0;
 89;VIN BLANC LOIRE;DOMAINE DES COGNETTES;SAUVIGNON BLANC - Cognettes;A-02497;Sauvignon blanc – Domaine des Cognettes;907;8;6;0;
 90;VIN BLANC LOIRE;DOMAINE DU HAUT BOURG;F5B FONTAINE 5L GROLLEAU GRIS Haut Bourg;A-02943;Grolleau gris, fontaine 5 L – Domaine du Haut Bourg;900;8;0;0;
-91;VIN BLANC LOIRE;DOMAINE DU HAUT PLANTY;"MUSCADET ""BATEAU"" - Haut Planty";A-05192;Muscadet « Bateau » – Domaine du Haut Planty;888;10;11;0;
+91;VIN BLANC LOIRE;DOMAINE DU HAUT PLANTY;"MUSCADET ""BATEAU"" - Haut Planty";A-05192;Muscadet « Bateau » – Domaine du Haut Planty;888;10;11;0;Faite
 92;VIN BLANC LOIRE;DOMAINE DU HAUT PLANTY;SAUVIGNON SINGLE BARREL HAUT PLANTY;A-00270;Sauvignon Single Barrel – Domaine du Haut Planty;910;17;0;0;
-93;VIN BLANC LOIRE;DOMAINE DU HAUT PLANTY;YONNIÈRE (Melon B.) - Haut Planty;A-01101;Yonnière (melon de Bourgogne) – Domaine du Haut Planty;924;6;0;0;
+93;VIN BLANC LOIRE;DOMAINE DU HAUT PLANTY;YONNIÈRE (Melon B.) - Haut Planty;A-01101;Yonnière (melon de Bourgogne) – Domaine du Haut Planty;924;6;0;0;Faite
 94;VIN BLANC LOIRE;DOMAINE JEAN LUC VIAUD;AUTOMNALITÉ - VIAUD;A-05238;Automnalité – Domaine Jean-Luc Viaud;869;8;0;0;
 95;VIN BLANC LOIRE;DOMAINE JEAN LUC VIAUD;PINOT GRIS - VIAUD;A-05239;Pinot gris – Domaine Jean-Luc Viaud;899;12;0;0;
-96;VIN BLANC LOIRE;DOMAINE JULIEN BRAUD;Muscadet MOULIN DE LA JUSTICE (sur Gneiss) - Julien Braud;A-03325;Muscadet Moulin de la Justice – Julien Braud;895;11;0;0;
-97;VIN BLANC LOIRE;DOMAINE LA CHANCE;LES HEURES HEUREUSES (Chenin, Cab Franc) - Domaine La Chance;A-06025;Les Heures Heureuses (chenin, cabernet franc) – Domaine La Chance;876;6;5;0;
-98;VIN BLANC LOIRE;DOMAINE LA FOLLE BERTHE;AMANDIERS (chenin) - Folle Berthe;A-00290;Amandiers (chenin) – Domaine La Folle Berthe;861;11;3;0;
-99;VIN BLANC LOIRE;DOMAINE LA FOLLE BERTHE;LES FONTENELLES (Chenin sur Argile à Silex) - La Folle Berthe;A-06736;Les Fontenelles (chenin) – Domaine La Folle Berthe;874;8;6;0;
+96;VIN BLANC LOIRE;DOMAINE JULIEN BRAUD;Muscadet MOULIN DE LA JUSTICE (sur Gneiss) - Julien Braud;A-03325;Muscadet Moulin de la Justice – Julien Braud;895;11;0;0;Faite
+97;VIN BLANC LOIRE;DOMAINE LA CHANCE;LES HEURES HEUREUSES (Chenin, Cab Franc) - Domaine La Chance;A-06025;Les Heures Heureuses (chenin, cabernet franc) – Domaine La Chance;876;6;5;0;Faite
+98;VIN BLANC LOIRE;DOMAINE LA FOLLE BERTHE;AMANDIERS (chenin) - Folle Berthe;A-00290;Amandiers (chenin) – Domaine La Folle Berthe;861;11;3;0;Faite
+99;VIN BLANC LOIRE;DOMAINE LA FOLLE BERTHE;LES FONTENELLES (Chenin sur Argile à Silex) - La Folle Berthe;A-06736;Les Fontenelles (chenin) – Domaine La Folle Berthe;874;8;6;0;Faite
 100;VIN BLANC LOIRE;DOMAINE LES HAUTES NOELLES;CABOTAGE (Chardo.) - Les Hautes Noëlles;A-04409;Cabotage (chardonnay) – Domaine les Hautes Noëlles;871;9;2;0;
 101;VIN BLANC LOIRE;DOMAINE LES HAUTES NOELLES;F3B FONTAINE MUSCADET TRIBORD 3L - Hautes Nöelles;A-03340;Muscadet Tribord, fontaine 3 L – Domaine les Hautes Noëlles;898;6;3;0;
-102;VIN BLANC LOIRE;DOMAINE MENARD GABORIT;CONTRE COURANT (melon b.) - Domaine Menard Gaborit;A-04511;Contre Courant (melon de Bourgogne) – Domaine Ménard-Gaborit;885;8;7;0;
+102;VIN BLANC LOIRE;DOMAINE MENARD GABORIT;CONTRE COURANT (melon b.) - Domaine Menard Gaborit;A-04511;Contre Courant (melon de Bourgogne) – Domaine Ménard-Gaborit;885;8;7;0;Faite
 103;VIN BLANC LOIRE;DOMAINE MENARD GABORIT;KLIMA (Chardonnay en barrique) - Domaine Ménard Gaborit;A-04539;Klima (chardonnay) – Domaine Ménard-Gaborit;923;6;5;0;
-104;VIN BLANC LOIRE;DOMAINE MENARD GABORIT;MUSCADET LES PIEDS SUR TERRE - Domaine Ménard Gaborit;A-04754;Muscadet Les Pieds sur Terre – Domaine Ménard-Gaborit;892;7;6;0;
-105;VIN BLANC LOIRE;LA GRANGE DE NOUE MEA;CH'NAIN - Hervé Bossé;A-00586;Ch'nain – La Grange de Noue Mea, Hervé Bossé;875;6;0;0;
-106;VIN BLANC LOIRE;LES BONS SENS;"COUR-CHEVERNY - ""La Porte Dorée"" (Romorantin en barrique) - Domaine Tessier";A-05363;AOC Cour-Cheverny « La Porte Dorée » (romorantin) – Domaine Tessier;891;12;6;0;
-107;VIN BLANC LOIRE;LES VINS DE LAVIE;1930 (Folle blanche) - Les vins de Lavie;A-05525;1930 (folle blanche) – Les Vins de Lavie;859;6;6;0;
+104;VIN BLANC LOIRE;DOMAINE MENARD GABORIT;MUSCADET LES PIEDS SUR TERRE - Domaine Ménard Gaborit;A-04754;Muscadet Les Pieds sur Terre – Domaine Ménard-Gaborit;892;7;6;0;Faite
+105;VIN BLANC LOIRE;LA GRANGE DE NOUE MEA;CH'NAIN - Hervé Bossé;A-00586;Ch'nain – La Grange de Noue Mea, Hervé Bossé;875;6;0;0;Faite
+106;VIN BLANC LOIRE;LES BONS SENS;"COUR-CHEVERNY - ""La Porte Dorée"" (Romorantin en barrique) - Domaine Tessier";A-05363;AOC Cour-Cheverny « La Porte Dorée » (romorantin) – Domaine Tessier;891;12;6;0;Faite
+107;VIN BLANC LOIRE;LES VINS DE LAVIE;1930 (Folle blanche) - Les vins de Lavie;A-05525;1930 (folle blanche) – Les Vins de Lavie;859;6;6;0;Faite
 108;VIN BLANC LOIRE;LES VINS DE LAVIE;AU GRÉ DES VINS (Melon, FB, Colombard) - Les Vins de Lavie;A-06187;Au Gré des Vins (melon, folle blanche, colombard) – Les Vins de Lavie;867;8;0;0;
-109;VIN BLANC LOIRE;LES VINS DE LAVIE;DENIS (melon B sur argile profond) - Les Vins de Lavie;A-05316;Denis (melon de Bourgogne) – Les Vins de Lavie;893;5;2;0;
+109;VIN BLANC LOIRE;LES VINS DE LAVIE;DENIS (melon B sur argile profond) - Les Vins de Lavie;A-05316;Denis (melon de Bourgogne) – Les Vins de Lavie;893;5;2;0;Faite
 110;VIN BLANC LOIRE;LES VINS DE LAVIE;FRANCOISES (FB, Chardo, Melon b) - Les Vins de Lavie;A-06849;Françoises (folle blanche, chardonnay, melon) – Les Vins de Lavie;912;7;10;0;
 111;VIN BLANC LOIRE;LES VINS DE LAVIE;TRIBU BLANC (Cab F. - Melon B.) - Les Vins de Lavie;A-05866;Tribu blanc (cabernet franc, melon) – Les Vins de Lavie;918;6;9;0;
 112;VIN BLANC LOIRE;LES VINS JARDINES;LA P'TITE FOLIE (FB, Melon) - Yoann Gillot;A-05729;La P'tite Folie (folle blanche, melon) – Les Vins Jardinés, Yoann Gillot;868;3;5;0;
 113;VIN BLANC LOIRE;MOURAT;COLLECTION BLANC (chardo, chenin) - Mourat;A-01224;Collection blanc (chardonnay, chenin) – Mourat;883;14;0;0;
-114;VIN BLANC LOIRE;MOURAT;OVNI Blanc (sauvignon, chardo) - Mourat;A-01348;Ovni blanc (sauvignon, chardonnay) – Mourat;897;10;7;0;
+114;VIN BLANC LOIRE;MOURAT;OVNI Blanc (sauvignon, chardo) - Mourat;A-01348;Ovni blanc (sauvignon, chardonnay) – Mourat;897;10;7;0;Faite
 115;VIN BLANC LOIRE;NICOLAS SUTEAU;ARZUR (Melon B.) - Nicolas Suteau;A-00312;Arzur (melon de Bourgogne) – Nicolas Suteau;865;9;9;0;
-116;VIN BLANC LOIRE;NOELLA MORANTIN;FAV STELLA MARIS (sauvignon) - Noella Morantin;A-06779;Stella Maris (sauvignon) – Noëlla Morantin;906;13;1;0;
-117;VIN BLANC;LES VINS DE LAVIE;LES ROCHETTES (31 mois sur lies) - Les Vins de Lavie;A-06848;Les Rochettes, 31 mois sur lies – Les Vins de Lavie;929;6;2;0;
+116;VIN BLANC LOIRE;NOELLA MORANTIN;FAV STELLA MARIS (sauvignon) - Noella Morantin;A-06779;Stella Maris (sauvignon) – Noëlla Morantin;906;13;1;0;Faite
+117;VIN BLANC;LES VINS DE LAVIE;LES ROCHETTES (31 mois sur lies) - Les Vins de Lavie;A-06848;Les Rochettes, 31 mois sur lies – Les Vins de Lavie;929;6;2;0;Faite
 118;VIN ROSE LOIRE;BOUQUET DE LOIRE;DEMI PINEAU D'AUNIS ROSE - Octavie;A-06521;Pineau d'Aunis rosé, demi-bouteille – Domaine Octavie;944;11;6;0;
 119;VIN ROSE LOIRE;DOMAINE DU HAUT PLANTY;ROSE DIABOLO FREIZH - Haut Planty;A-01693;Diabolo Freizh rosé – Domaine du Haut Planty;946;12;2;0;Faite (20/11)
 120;VIN ROSE LOIRE;MOURAT;OVNI Rosé (grolleau) - Mourat;A-01349;Ovni rosé (grolleau) – Mourat;945;7;6;0;Faite (20/11)
 121;VIN PETILLANT LOIRE;CHEVALIER LE DOMAINE;SVP S'il Vous Plait (chardo-folle blanche-pinot noir) - Eric Chevalier;A-02478;SVP S'il Vous Plaît (chardonnay, folle blanche, pinot noir) – Éric Chevalier;962;8;8;0;
-122;VIN PETILLANT LOIRE;DOMAINE BEDOUET;FAV BED NAT (Souvigné Gris, Melon B) Domaine BEDOUET;A-05864;Bed Nat (souvignier gris, melon) – Domaine Bédouet;950;8;7;0;
+122;VIN PETILLANT LOIRE;DOMAINE BEDOUET;FAV BED NAT (Souvigné Gris, Melon B) Domaine BEDOUET;A-05864;Bed Nat (souvignier gris, melon) – Domaine Bédouet;950;8;7;0;Faite
 123;VIN PETILLANT LOIRE;DOMAINE BRUNO CORMERAIS;MTR MÉTHODE TRADITIONNELLE - Cormerais;A-01252;MTR, méthode traditionnelle – Domaine Bruno Cormerais;955;8;11;6;
 124;VIN PETILLANT LOIRE;DOMAINE DE LA BAREILLE;DEBARBOUILLE Pet Nat (Melon B. et Colombard) - Delaunay;A-05490;Débarbouillé, pét'nat (melon, colombard) – Domaine de la Bareille;949;13;15;0;
 125;VIN PETILLANT LOIRE;DOMAINE DE LA BAREILLE;PHIL SAVE THE BUL' (Muscat, Folle B.) Pet' Nat' - Antoine Delaunay;A-05491;Pét'nat Syl Save the Bul' (muscat petit grain) – Domaine de la Bareille;453;8;8;0;
-126;VIN PETILLANT LOIRE;DOMAINE DE LA PAONNERIE;FAV LA MOUSSON (gamay frizzante) - La Paonnerie;A-05360;La Mousson (gamay frizzante) – Domaine de la Paonnerie;951;6;1;0;
+126;VIN PETILLANT LOIRE;DOMAINE DE LA PAONNERIE;FAV LA MOUSSON (gamay frizzante) - La Paonnerie;A-05360;La Mousson (gamay frizzante) – Domaine de la Paonnerie;951;6;1;0;Faite
 127;VIN PETILLANT LOIRE;DOMAINE DE LA TOURLAUDIERE;PETIT ONIRIK 2023 - Domaine de la Tourlaudière;A-01245;Petit Onirik – Domaine de la Tourlaudière;959;8;5;0;
 128;VIN PETILLANT LOIRE;DOMAINE DES COGNETTES;PERLES Méthode trad. BRUT - Cognettes;A-06935;Perles brut, méthode traditionnelle – Domaine des Cognettes;958;11;8;0;
 129;VIN PETILLANT LOIRE;DOMAINE DU HAUT BOURG;PLAISANCE HAUT BOURG (Grolleau Gris);A-02463;Plaisance (grolleau gris) – Domaine du Haut Bourg;960;10;0;0;
@@ -135,10 +135,10 @@
 134;VIN PETILLANT LOIRE;DOMAINE MENARD GABORIT;NUIT BLANCHE Brut (Folle B., Chardo, Melon B.) - Domaine Menard Gaborit;A-06540;Nuit Blanche brut (folle blanche, chardonnay, melon) – Domaine Ménard-Gaborit;956;6;7;0;
 135;VIN PETILLANT LOIRE;DOMAINES LANDRON JO;STRIKE! (melon b, chardonnay) JO LANDRON;A-06220;Strike! (melon, chardonnay) – Jo Landron;961;10;9;0;
 136;VIN PETILLANT LOIRE;NICOLAS SUTEAU;MERZHIN (Folle-Melon) - Nicolas Suteau;A-01251;Merzhin (folle blanche, melon) – Nicolas Suteau;953;9;6;0;
-137;VIN ROUGE AUTRE REGION;;- Topuridze;A-06773;Saperavi – Topuridze (Géorgie);989;10;0;0;
-138;VIN ROUGE AUTRE REGION;;- Pheasant's Tears;A-06772;Soif da Svam – Pheasant's Tears (Géorgie);990;10;0;0;
+137;VIN ROUGE AUTRE REGION;;- Topuridze;A-06773;Saperavi – Topuridze (Géorgie);989;10;0;0;Faite
+138;VIN ROUGE AUTRE REGION;;- Pheasant's Tears;A-06772;Soif da Svam – Pheasant's Tears (Géorgie);990;10;0;0;Faite
 139;VIN ROUGE AUTRE REGION;A BISTO DE NAS;Côtes de Duras TERRE A PIE (Merlot, Cab Sauv., Malbec) - Mouthes le Bihan;A-05193;Côtes de Duras Terre à Pie (merlot, cabernet sauvignon, malbec) – Mouthes le Bihan;978;9;0;0;
-140;VIN ROUGE AUTRE REGION;A BISTO DE NAS;FAV FRONTON LE PITCHOU (Negrette, Syrah) - Plaisance Penavayre;A-04253;Fronton Le Pitchou (négrette, syrah) – Plaisance Penavayre;986;8;0;0;
+140;VIN ROUGE AUTRE REGION;A BISTO DE NAS;FAV FRONTON LE PITCHOU (Negrette, Syrah) - Plaisance Penavayre;A-04253;Fronton Le Pitchou (négrette, syrah) – Plaisance Penavayre;986;8;0;0;Faite
 141;VIN ROUGE AUTRE REGION;ALTER WINE;MERLOT DE TINO - Clos des Augustins;A-03250;Merlot de Tino – Clos des Augustins;1003;6;0;0;
 142;VIN ROUGE AUTRE REGION;BAUDRY;PÉCHARMANT MÉMOIRE (Merlot, Cab S, Cab F) - Domaine du Grand Jaure;A-00638;Pécharmant Mémoire (merlot, cabernet sauvignon, cabernet franc) – Domaine du Grand Jaure;1004;8;0;0;
 143;VIN ROUGE AUTRE REGION;BAUDRY;PÉCHARMANT TRADITION (Merlot, Cab S, Cab F) - Domaine du Grand Jaure;A-00193;Pécharmant Tradition (merlot, cabernet sauvignon, cabernet franc) – Domaine du Grand Jaure;1005;7;5;0;
@@ -167,7 +167,7 @@
 166;VIN ROUGE AUTRE REGION;DOMAINE ROBERT VIC;PREIGNES MOURVÈDRE;A-01485;Mourvèdre – Domaine Robert Vic, Preignes;925;13;0;0;
 167;VIN ROUGE AUTRE REGION;DOMAINE SYLVAIN PATAILLE;BOURGOGNE ROUGE - Sylvain Pataille;A-04038;Bourgogne rouge – Domaine Sylvain Pataille;418;0;1;0;
 168;VIN ROUGE AUTRE REGION;EPICURVIN;K-BARRE (chardo, chenin, merlot, tannat, malbec) - Clos Troteligotte;A-04306;K-Barre (chardonnay, chenin, merlot, tannat, malbec) – Clos Troteligotte;1000;8;2;0;
-169;VIN ROUGE AUTRE REGION;MAISON MARTIN COCHER;FAV LE CABUISAT (Gamay, PN) - Martin Cocher;A-04971;Le Cabuisat (gamay, pinot noir) – Martin Cocher;988;8;0;0;
+169;VIN ROUGE AUTRE REGION;MAISON MARTIN COCHER;FAV LE CABUISAT (Gamay, PN) - Martin Cocher;A-04971;Le Cabuisat (gamay, pinot noir) – Martin Cocher;988;8;0;0;Faite
 170;VIN ROUGE AUTRE REGION;RICHAUD;CAIRANNE ROUGE SANS SOUFRE - Domaine Richaud;A-06665;Cairanne rouge sans soufre – Domaine Richaud;974;9;4;0;
 171;VIN ROUGE AUTRE REGION;SAIN BIO OSE;La Pièce (Malbec, Merlot) - Parlange & Illouz;A-03253;La Pièce (malbec, merlot) – Parlange & Illouz;1001;6;0;0;
 172;VIN ROUGE AUTRE REGION;SIAGI;ITALIE BARDOLINO Rouge Botter;A-00395;Bardolino rouge – Botter (Italie);991;15;0;0;
@@ -178,22 +178,22 @@
 177;VIN ROUGE AUTRE REGION;SIAGI;ITALIE NERO D'AVOLA BIO - Era;A-01309;Nero d'Avola bio – Era (Italie);997;11;0;0;Faite (20/11)
 178;VIN ROUGE AUTRE REGION;SIAGI;ITALIE PRIMITIVO - Caleo;A-01492;Primitivo – Caleo (Italie);998;5;3;0;
 179;VIN ROUGE AUTRE REGION;SIAGI;ITALIE SANGIOVESE LA CASCADA - Era;A-01994;Sangiovese La Cascada – Era (Italie);999;8;0;0;
-180;VIN ROUGE AUTRE REGION;VINODIFF;FAV GÉMEAUX (carignan, mourvèdre) - Les Caves Cathédrales;A-06861;Gémeaux (carignan, mourvèdre) – Les Caves Cathédrales;987;80;0;0;
+180;VIN ROUGE AUTRE REGION;VINODIFF;FAV GÉMEAUX (carignan, mourvèdre) - Les Caves Cathédrales;A-06861;Gémeaux (carignan, mourvèdre) – Les Caves Cathédrales;987;80;0;0;Faite
 181;VIN ROUGE AUTRE REGION;VINODIFF;PESSAC-LEOGNAN 2021 (Merlot, Cab S.) - Château Brown;A-06865;Pessac-Léognan 2021 (merlot, cabernet sauvignon) – Château Brown;1006;13;0;0;
 182;VIN ROUGE AUTRE REGION;VINODIFF;SAINT EMILION GRAND CRU 2016 (Merlot - Cab F. - Cab S.) - Château Cap de Mourlin;A-06860;Saint-Émilion grand cru 2016 (merlot, cabernet franc, cabernet sauvignon) – Château Cap de Mourlin;927;11;0;0;
 183;VIN BLANC AUTRE REGION;;F3B TRALARI BLANC (Grenache B, Chardo) - Clos des Jarres;A-06774;Tralari blanc (grenache blanc, chardonnay), fontaine 3 L – Clos des Jarres;933;12;3;0;
-184;VIN BLANC AUTRE REGION;DOMAINE DE LA LUOLLE;"BOURGOGNE CÔTE CHALONNAISE ""ECUME DE TERRE"" - La Luolle";A-05816;Bourgogne Côte Chalonnaise « Écume de Terre » – Domaine de la Luolle;931;7;4;0;
-185;VIN BLANC AUTRE REGION;DOMAINE LA PROVIDENCE;CARIGAGNANT BLANC (carignant blanc- gren blc - bourboulenc) - Domaine La Providence;A-05430;Carigagnant blanc (carignan blanc, grenache blanc, bourboulenc) – Domaine la Providence;932;6;1;0;
+184;VIN BLANC AUTRE REGION;DOMAINE DE LA LUOLLE;"BOURGOGNE CÔTE CHALONNAISE ""ECUME DE TERRE"" - La Luolle";A-05816;Bourgogne Côte Chalonnaise « Écume de Terre » – Domaine de la Luolle;931;7;4;0;Faite
+185;VIN BLANC AUTRE REGION;DOMAINE LA PROVIDENCE;CARIGAGNANT BLANC (carignant blanc- gren blc - bourboulenc) - Domaine La Providence;A-05430;Carigagnant blanc (carignan blanc, grenache blanc, bourboulenc) – Domaine la Providence;932;6;1;0;Faite
 186;VIN BLANC AUTRE REGION;DOMAINE MELSOLO;"FAV LOIN DE LOEIL ""Grappe"" - Melsolo";A-03853;Loin de l'Œil « Grappe » – Domaine Melsolo;935;9;0;0;
-187;VIN BLANC AUTRE REGION;DOMAINE ROUAUD;LLOSA (Vermentino) - Rouaud;A-02616;Llosa (vermentino) – Domaine Rouaud;942;10;2;0;
+187;VIN BLANC AUTRE REGION;DOMAINE ROUAUD;LLOSA (Vermentino) - Rouaud;A-02616;Llosa (vermentino) – Domaine Rouaud;942;10;2;0;Faite
 188;VIN BLANC AUTRE REGION;MAISON MARTIN COCHER;LE BUISSON (chardonnay) - Bugey - Martin Cocher;A-04969;Bugey Le Buisson (chardonnay) – Martin Cocher;939;7;0;0;Faite (20/11)
 189;VIN BLANC AUTRE REGION;MAISON MARTIN COCHER;LES DEUX BARRIQUES (chardonnay) - Bugey - Martin Cocher;A-04970;Bugey Les Deux Barriques (chardonnay) – Martin Cocher;940;6;0;0;Faite (20/11)
 190;VIN BLANC AUTRE REGION;SIAGI;ITALIE MALVASIA DOLCE RUBIGALIA;A-00146;Malvasia dolce Rubigalia (Italie);937;8;0;0;Faite (20/11)
 191;VIN BLANC AUTRE REGION;SIAGI;ITALIE MOSCATO D'ASTI VALDISERRE;A-00147;Moscato d'Asti – Valdiserre (Italie);938;8;0;0;Faite (20/11)
 192;VIN BLANC AUTRE REGION;VINO VINUM;Pin'Up (Muscat et Pinot Blanc Sec) - Domaine Simonis;A-06616;Pin'Up (muscat, pinot blanc) – Domaine Simonis;943;6;3;0;Faite (20/11)
-193;VIN BLANC AUTRE REGION;VINODIFF;FLORE & SENS (viognier) - Domaine de Pierre Belle;A-06870;Flore & Sens (viognier) – Domaine de Pierre Belle;936;21;6;0;
-194;VIN BLANC AUTRE REGION;VINODIFF;FAV LAPINOU (marsanne, roussanne, viognier);A-06862;Lapinou (marsanne, roussanne, viognier);934;41;0;0;
-195;VIN BLANC AUTRE REGION;VINODIFF;LES FANTAISIES DE CAPION BLANC (rolle, viognier, bourbou, manseng) - Château Capion;A-06859;Les Fantaisies de Capion blanc (rolle, viognier, bourboulenc, manseng) – Château Capion;941;9;2;0;
+193;VIN BLANC AUTRE REGION;VINODIFF;FLORE & SENS (viognier) - Domaine de Pierre Belle;A-06870;Flore & Sens (viognier) – Domaine de Pierre Belle;936;21;6;0;Faite
+194;VIN BLANC AUTRE REGION;VINODIFF;FAV LAPINOU (marsanne, roussanne, viognier);A-06862;Lapinou (marsanne, roussanne, viognier);934;41;0;0;Faite
+195;VIN BLANC AUTRE REGION;VINODIFF;LES FANTAISIES DE CAPION BLANC (rolle, viognier, bourbou, manseng) - Château Capion;A-06859;Les Fantaisies de Capion blanc (rolle, viognier, bourboulenc, manseng) – Château Capion;941;9;2;0;Faite
 196;VIN ROSE AUTRE REGION;CLOS DES JARRES;ILLUSION (Vermentino, Grenache) - Clos des jarres;A-00841;Illusion (vermentino, grenache) – Clos des Jarres;948;8;5;0;
 197;VIN ROSE AUTRE REGION;VINODIFF;"CTX D'AIX EN PROVENCE ""AROMANCE"" - Domaine Fredavelle";A-06867;Coteaux d'Aix-en-Provence « Aromance » – Domaine Fredavelle;947;8;0;0;
 198;VIN PETILLANT AUTRE REGION;DOMAINE LES OBRIERES;CINSAULT SPECIAL (Méthode Trad.) - Domaine Obrières;A-06514;Cinsault Spécial, méthode traditionnelle – Domaine les Obrières;964;6;5;0;
