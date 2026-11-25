@@ -16,6 +16,7 @@
     ['Dégustations', '162-degustations-sur-mesure-'],
     ['Moins de 25 €', '30-selection-moins-de-25'],
     ['Vins', '5-vins'],
+    ['Alcools', '6-alcool'],
     ['Whiskies', '12-whiskies'],
     ['Bières locales', '7-bieres'],
     ['Épicerie fine', '4-epicerie'],
@@ -32,8 +33,9 @@
   var EVENEMENT = Date.now() < new Date('2026-11-01T00:00:00+01:00').getTime()
     ? { tag: 'Halloween', texte: 'Défi sauce piquante <strong>samedi 31/10</strong> chez Spi &amp; Bi : <strong>-20 %</strong> sur les sauces à gagner.' }
     : Date.now() < new Date('2026-12-01T00:00:00+01:00').getTime()
-      ? { tag: 'Promotions', texte: 'Jusqu\'au 30/11 : <strong>-20 %</strong> sur les <a href="/205-sauces-piquantes"><strong>sauces piquantes</strong></a> avec le code <strong>HALLOWEEN20</strong>. Et toute l\'année : ' + REMISES + '.' }
-      : { tag: 'Promotions', texte: 'Toute l\'année : ' + REMISES + '.' };
+      ? { tag: 'Local', texte: '<strong>Acheter chez ABC Terroirs, c\'est soutenir le local.</strong> Et toute l\'année : ' + REMISES + '.' }
+      : { tag: 'Local', texte: '<strong>Acheter chez ABC Terroirs, c\'est soutenir le local.</strong> Et toute l\'année : ' + REMISES + '.' };
+  // (Promotion Halloween -20 % sur les sauces piquantes retirée le 25/11/2026 à la demande de Bento.)
 
   // Ordinateur : une seule barre de navigation. Raccourcis affichés dans la barre (les autres restent sur mobile)
   // [texte, page, texte court pour écran moyen, priorité : 1 toujours, 2 masqué sous 1200 px]
@@ -42,8 +44,9 @@
     ['Noël', '172-idees-cadeaux-noel', 'Noël', 1],
     ['Coffrets cadeaux', '3-coffrets-gourmands', 'Coffrets', 1],
     ['Dégustations', '162-degustations-sur-mesure-', 'Dégustations', 1],
-    ['Sans alcool', '167-sans-alcool', 'Sans alcool', 1],
-    ['Vins', '5-vins', 'Vins', 2]
+    ['Vins', '5-vins', 'Vins', 1],
+    ['Alcools', '6-alcool', 'Alcools', 1],
+    ['Sans alcool', '167-sans-alcool', 'Sans alcool', 2]
   ];
   // Petits menus déroulants de la barre (remplacent « Notre enseigne… / Nos prestations… / Infos pour les pros »)
   var MENUS_BARRE = [
@@ -632,6 +635,22 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', brancherTraduction); else brancherTraduction();
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', brancherTri); else brancherTri();
+
+  // 9 bis. Sélections de coffrets classées par prix croissant (demande de Bento, 25/11/2026)
+  //        Coffrets gourmands (3), moins de 25 € (30), 25 à 50 € (31), plus de 50 € (32), Noël (172).
+  var CAT_PAR_PRIX = /\/(3-coffrets-gourmands|30-selection-moins-de-25|31-selection-25-a-50|32-selection-plus-de-50|172-idees-cadeaux-noel)\/?$/;
+  function trierCoffretsParPrix() {
+    var id = +((document.body.className.match(/\bcategory-id-(\d+)\b/) || [])[1]);
+    if ([3, 30, 31, 32, 172].indexOf(id) > -1 && !/[?&]order=/.test(location.search)) {
+      location.replace(location.pathname + (location.search ? location.search + '&' : '?') + 'order=product.price.asc' + location.hash);
+      return;
+    }
+    document.querySelectorAll('a[href]').forEach(function (l) {
+      var h = l.getAttribute('href');
+      if (h.indexOf('?') === -1 && CAT_PAR_PRIX.test(h.replace(/#.*$/, ''))) l.setAttribute('href', h.replace(/(#.*)?$/, '?order=product.price.asc$1'));
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', trierCoffretsParPrix); else trierCoffretsParPrix();
 
   // 8. Catégorie sans sous-catégories (ex. Martinique), ouverte depuis un lien du site :
   //    on arrive directement sur les produits au lieu du haut de la page.
