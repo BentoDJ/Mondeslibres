@@ -652,6 +652,24 @@
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', trierCoffretsParPrix); else trierCoffretsParPrix();
 
+  // 9 ter. Catégories avec des rectangles de sous-catégories : la liste de gauche faisait doublon (demande de Bento, 25/11/2026).
+  //        On la masque ; si la colonne de gauche n'a plus rien d'autre, la liste des produits prend toute la largeur.
+  function sansDoublonSousCategories() {
+    if (!document.body.classList.contains('page-category')) return;
+    var sous = document.getElementById('subcategories');
+    if (!sous || !sous.querySelector('li, a')) return;
+    var gauche = document.getElementById('left-column');
+    if (!gauche) return;
+    gauche.querySelectorAll('.block-categories').forEach(function (b) { b.style.display = 'none'; });
+    var reste = [].some.call(gauche.children, function (c) { return c.style.display !== 'none' && c.innerText.trim().length > 0; });
+    if (!reste) {
+      gauche.style.display = 'none';
+      var centre = document.getElementById('content-wrapper');
+      if (centre) { centre.classList.remove('col-sm-8', 'col-md-9', 'left-column'); centre.classList.add('col-sm-12', 'col-md-12'); centre.style.width = '100%'; centre.style.maxWidth = '100%'; centre.style.flex = '0 0 100%'; }
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', sansDoublonSousCategories); else sansDoublonSousCategories();
+
   // 8. Catégorie sans sous-catégories (ex. Martinique), ouverte depuis un lien du site :
   //    on arrive directement sur les produits au lieu du haut de la page.
   function arriverSurLesProduits() {
