@@ -428,6 +428,8 @@
           // Vidéo verticale (format téléphone) pour casser le rythme des blocs horizontaux (demande de Bento, 26/11/2026)
           '<div class="abc-deg-home__vid"><video src="' + IMGD.replace(/views\/img\/$/, 'views/video/') + 'degustation-whisky.mp4" poster="' + IMGD + 'degustation-whisky.jpg" muted loop playsinline controls preload="none" aria-label="Vidéo : une soirée de dégustation de whisky chez ABC Terroirs"></video></div>');
         budgets.parentNode.insertBefore(deg, budgets.nextSibling);
+        // Encart « Cadeau de dernière minute » : les bons cadeaux (demande de Bento, 26/11/2026)
+        budgets.parentNode.insertBefore(blocBonsCadeaux(), budgets.nextSibling);
         // La vidéo ne se charge et ne démarre (sans le son) que lorsqu'elle arrive à l'écran
         var vd = deg.querySelector('video');
         if (vd && 'IntersectionObserver' in window) {
@@ -647,6 +649,23 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', brancherTraduction); else brancherTraduction();
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', brancherTri); else brancherTri();
+
+  // 9 quater. Bons cadeaux : encart sur l'accueil et en tête de la rubrique Noël (172)
+  var BONS = [['10 €', '370-bon-cadeau-10'], ['20 €', '797-bon-carte-cadeau-'], ['30 €', '375-bon-cadeau-30'], ['50 €', '376-bon-cadeau-50']];
+  function blocBonsCadeaux() {
+    var s = document.createElement('section');
+    s.className = 'abc-bons';
+    s.innerHTML = '<div class="abc-bons__txt"><p class="abc-deg-home__k">Cadeau de dernière minute</p><h2>Le bon cadeau ABC Terroirs</h2>' +
+      '<p>Il laisse choisir parmi toute la boutique : vins, spiritueux, épicerie fine, coffrets. À utiliser dans nos trois boutiques nantaises.</p></div>' +
+      '<div class="abc-bons__choix">' + BONS.map(function (b) { return '<a class="abc-bons__bon" href="' + BASE + 'attention/' + b[1] + '.html"><span>Bon cadeau</span><strong>' + b[0] + '</strong></a>'; }).join('') + '</div>';
+    return s;
+  }
+  function bonsDansNoel() {
+    if (!document.body.classList.contains('category-id-172') || document.querySelector('.abc-bons')) return;
+    var ancre = document.querySelector('#js-product-list-header, .block-category');
+    if (ancre) ancre.parentNode.insertBefore(blocBonsCadeaux(), ancre.nextSibling);
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bonsDansNoel); else bonsDansNoel();
 
   // 9 bis. Sélections de coffrets classées par prix croissant (demande de Bento, 25/11/2026)
   //        Coffrets gourmands (3), moins de 25 € (30), 25 à 50 € (31), plus de 50 € (32), Noël (172).
