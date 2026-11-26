@@ -959,3 +959,10 @@ html.abc-porte-ouverte, html.abc-porte-ouverte body { overflow: hidden; }
 .abc-video video { width: 100%; aspect-ratio: 9 / 16; max-height: 640px; object-fit: cover; border-radius: var(--abc-radius); background: #111; display: block; }
 .abc-video__txt h3 { margin: 4px 0 10px; }
 @media (max-width: 767px) { .abc-video { grid-template-columns: 1fr; } .abc-video video { max-width: 360px; margin: 0 auto; } }
+
+/* Accueil : vidéo verticale dans le bloc Dégustations (1.9.0) */
+.abc-deg-home { grid-template-columns: 1.1fr 1fr 260px; }
+.abc-deg-home__vid { background: #111; display: flex; }
+.abc-deg-home__vid video { width: 100%; aspect-ratio: 9 / 16; object-fit: cover; display: block; }
+@media (max-width: 991px) and (min-width: 768px) { .abc-deg-home { grid-template-columns: 1fr 1fr 200px; } }
+@media (max-width: 767px) { .abc-deg-home { grid-template-columns: 1fr; } .abc-deg-home__vid { background: var(--abc-cream); justify-content: center; padding: 0 20px 22px; } .abc-deg-home__vid video { max-width: 280px; border-radius: var(--abc-radius); } }

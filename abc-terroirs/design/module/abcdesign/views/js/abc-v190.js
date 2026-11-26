@@ -424,8 +424,15 @@
           '<div class="abc-deg-home__txt"><p class="abc-deg-home__k">Dégustations &amp; ateliers</p>' +
           '<h2>Venez déguster avec nous</h2>' +
           '<p>Whiskies, rhums, gins, bières… 1 à 2 heures entre amis, en famille ou entre collègues.</p>' +
-          '<div class="abc-cta-row abc-cta-row--left"><a class="abc-btn abc-btn--main" href="' + BASE + '162-degustations-sur-mesure-">Voir les dégustations</a></div></div>');
+          '<div class="abc-cta-row abc-cta-row--left"><a class="abc-btn abc-btn--main" href="' + BASE + '162-degustations-sur-mesure-">Voir les dégustations</a></div></div>' +
+          // Vidéo verticale (format téléphone) pour casser le rythme des blocs horizontaux (demande de Bento, 26/11/2026)
+          '<div class="abc-deg-home__vid"><video src="' + IMGD.replace(/views\/img\/$/, 'views/video/') + 'degustation-whisky.mp4" poster="' + IMGD + 'degustation-whisky.jpg" muted loop playsinline controls preload="none" aria-label="Vidéo : une soirée de dégustation de whisky chez ABC Terroirs"></video></div>');
         budgets.parentNode.insertBefore(deg, budgets.nextSibling);
+        // La vidéo ne se charge et ne démarre (sans le son) que lorsqu'elle arrive à l'écran
+        var vd = deg.querySelector('video');
+        if (vd && 'IntersectionObserver' in window) {
+          new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { var pr = vd.play(); if (pr && pr.catch) pr.catch(function () {}); } else vd.pause(); }); }, { threshold: 0.4 }).observe(vd);
+        }
 
       }
     }
