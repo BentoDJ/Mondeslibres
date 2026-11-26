@@ -1,0 +1,67 @@
+{
+ "167": {
+  "tiny": "",
+  "rew": "sans-alcool",
+  "name": "Sans alcool"
+ },
+ "171": {
+  "tiny": "",
+  "rew": "gins",
+  "name": "Gins"
+ },
+ "182": {
+  "tiny": "",
+  "rew": "whiskies-francais",
+  "name": "Whiskies français"
+ },
+ "183": {
+  "tiny": "",
+  "rew": "whiskies-japonais",
+  "name": "Whiskies japonais"
+ },
+ "184": {
+  "tiny": "",
+  "rew": "whiskies-ecossais",
+  "name": "Whiskies écossais"
+ },
+ "189": {
+  "tiny": "",
+  "rew": "martinique",
+  "name": "Martinique"
+ },
+ "190": {
+  "tiny": "",
+  "rew": "guadeloupe",
+  "name": "Guadeloupe"
+ },
+ "191": {
+  "tiny": "",
+  "rew": "amerique-latine",
+  "name": "Amérique Latine"
+ },
+ "192": {
+  "tiny": "",
+  "rew": "caraibes",
+  "name": "Caraïbes"
+ },
+ "193": {
+  "tiny": "",
+  "rew": "autres",
+  "name": "Autres"
+ },
+ "194": {
+  "tiny": "",
+  "rew": "autres",
+  "name": "Autres"
+ },
+ "196": {
+  "tiny": "",
+  "rew": "vins-oranges",
+  "name": "Vins oranges"
+ },
+ "197": {
+  "tiny": "",
+  "rew": "vins-de-loire",
+  "name": "Vins de Loire"
+ }
+}

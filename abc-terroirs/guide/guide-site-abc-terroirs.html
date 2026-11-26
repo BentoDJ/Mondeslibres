@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guide du site ABC Terroirs</title>
+<style>
+  :root {
+    --ink: #1f2420; --muted: #5b6259; --line: #d9ddd3; --bg: #ffffff;
+    --accent: #7d8c1f; --accent-soft: #f2f5e3; --warn: #a14a12; --warn-soft: #fbefe6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e8ebe4; --muted: #a9b0a5; --line: #3a4038; --bg: #161a16;
+      --accent: #b9c95a; --accent-soft: #252b1a; --warn: #f0a46c; --warn-soft: #2e2119;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 820px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 4px; }
+  h2 { font-size: 1.4rem; margin: 48px 0 12px; padding-top: 12px; border-top: 3px solid var(--accent); }
+  h3 { font-size: 1.1rem; margin: 28px 0 8px; }
+  p, li { max-width: 70ch; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  .menu { font-weight: 600; background: var(--accent-soft); padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+  .box { border: 1px solid var(--line); border-left: 5px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 6px; margin: 16px 0; }
+  .box.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+  .box p { margin: 6px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .95rem; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--accent-soft); }
+  .fill { min-width: 160px; }
+  ol li, ul li { margin: 4px 0; }
+  .toc { columns: 2; column-gap: 32px; padding-left: 20px; }
+  @media (max-width: 600px) { .toc { columns: 1; } table { font-size: .85rem; } .menu { white-space: normal; } td, th { overflow-wrap: anywhere; } .fill { min-width: 0; } }
+  .check li { list-style: none; margin-left: -20px; }
+  .check li::before { content: "☐ "; color: var(--accent); font-weight: 700; }
+  @media print {
+    :root { --ink:#000; --bg:#fff; }
+    body { font-size: 11pt; }
+    main { padding: 0; max-width: none; }
+    h2 { break-before: page; margin-top: 0; }
+    h2.first { break-before: auto; }
+    .box, table, li { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Guide du site abcterroirs.com</h1>
+<p class="sub">Pour gérer la boutique en ligne seul, sans aide technique au quotidien. Version d'octobre 2026, à imprimer et à garder au magasin.</p>
+
+<ol class="toc">
+  <li>L'essentiel en une page</li>
+  <li>Les accès (fiche à remplir)</li>
+  <li>Traiter une commande</li>
+  <li>Ajouter ou modifier un produit</li>
+  <li>Stocks, promotions, codes de réduction</li>
+  <li>Modifier un texte du site</li>
+  <li>Le calendrier d'entretien</li>
+  <li>En cas de problème</li>
+  <li>Avant le départ de l'alternant</li>
+</ol>
+
+<h2 class="first">1. L'essentiel en une page</h2>
+
+<p>Le site fonctionne avec <strong>PrestaShop</strong>, un logiciel de boutique en ligne. Tout se gère depuis une interface web appelée le <strong>back-office</strong>, sans écrire de code.</p>
+
+<p>Trois choses font vivre le site. Si l'une d'elles s'arrête, le site s'arrête :</p>
+<table>
+  <tr><th>Quoi</th><th>Où</th><th>À surveiller</th></tr>
+  <tr><td><strong>Le nom de domaine</strong> abcterroirs.com</td><td>OVH</td><td>Il expire le <strong>17 avril 2027</strong>, puis chaque année. S'il n'est pas renouvelé, le site et les e-mails disparaissent.</td></tr>
+  <tr><td><strong>L'hébergement</strong> (le serveur où vit le site)</td><td>OVH</td><td>Renouvellement annuel. La carte bancaire enregistrée chez OVH doit être valide.</td></tr>
+  <tr><td><strong>Les e-mails</strong> @abcterroirs.com</td><td>OVH</td><td>Ils sont compris dans l'hébergement OVH.</td></tr>
+</table>
+
+<div class="box">
+<p><strong>La règle d'or :</strong> activez le <strong>renouvellement automatique</strong> dans l'espace client OVH, avec une carte bancaire de l'entreprise valide. Ça évite 90 % des pannes « qui arrivent toutes seules ».</p>
+<p>Où ? Sur <strong>ovh.com/manager</strong>, menu <span class="menu">Facturation</span> puis <span class="menu">Mes services</span>. Vérifiez « Renouvellement automatique » pour le domaine et pour l'hébergement.</p>
+</div>
+
+<h3>Le rythme</h3>
+<ul>
+  <li><strong>Chaque jour :</strong> regarder les nouvelles commandes et les traiter (partie 3).</li>
+  <li><strong>Chaque mois :</strong> 10 minutes de contrôle (partie 7).</li>
+  <li><strong>Chaque année :</strong> faire faire une mise à jour par un professionnel (partie 7). Budget indicatif : quelques centaines d'euros.</li>
+</ul>
+
+<h2>2. Les accès (fiche à remplir)</h2>
+
+<div class="box warn">
+<p><strong>Ne notez jamais les mots de passe dans ce document s'il est stocké en ligne.</strong> Remplissez la version <strong>imprimée</strong> à la main et rangez-la dans un endroit sûr (coffre, classeur fermé). Mieux encore : utilisez un gestionnaire de mots de passe, par exemple Bitwarden, qui est gratuit.</p>
+</div>
+
+<table>
+  <tr><th>Compte</th><th>Adresse de connexion</th><th class="fill">Identifiant</th><th class="fill">Mot de passe</th></tr>
+  <tr><td>Back-office PrestaShop</td><td>abcterroirs.com/<em>adresse secrète</em> (l'adresse admin est volontairement cachée)<br>Adresse complète : ______________________</td><td></td><td></td></tr>
+  <tr><td>Espace client OVH (domaine, hébergement, e-mails)</td><td>ovh.com/manager</td><td>Identifiant OVH (type xx1234-ovh) ou e-mail</td><td></td></tr>
+  <tr><td>Boîte mail contact@</td><td>mail.ovh.net (webmail)</td><td>contact@abcterroirs.com</td><td></td></tr>
+  <tr><td>PayPal (paiements)</td><td>paypal.com/fr</td><td></td><td></td></tr>
+  <tr><td>Colissimo (expéditions)</td><td>colissimo.entreprise.laposte.fr</td><td></td><td></td></tr>
+  <tr><td>Instagram / Facebook</td><td>instagram.com/abcterroirs</td><td></td><td></td></tr>
+</table>
+
+<p>Le compte OVH doit être <strong>au nom de la société ABC TERROIRS</strong>, avec l'adresse e-mail du gérant. Si ce n'est pas le cas, voir la partie 9.</p>
+
+<h2>3. Traiter une commande</h2>
+
+<p>Quand un client commande, vous recevez un e-mail « Nouvelle commande ». Ensuite :</p>
+<ol>
+  <li>Dans le back-office, ouvrir <span class="menu">Commandes</span> puis <span class="menu">Commandes</span>. Les plus récentes sont en haut.</li>
+  <li>Cliquer sur la commande et vérifier que son état est <strong>« Paiement accepté »</strong>. Pour un chèque ou un virement, attendre de l'avoir reçu, puis changer l'état à la main.</li>
+  <li>Préparer le colis et passer l'état à <strong>« En cours de préparation »</strong>. Le client reçoit un e-mail automatique.</li>
+  <li>Une fois le colis déposé, passer à <strong>« Expédié »</strong> et coller le <strong>numéro de suivi Colissimo</strong> dans le champ prévu (bloc « Livraison », bouton crayon). Le client reçoit son lien de suivi.</li>
+  <li><strong>Retrait en magasin (click &amp; collect) :</strong> passer l'état à « Prêt pour le retrait », si cet état existe, puis « Livré » quand le client est passé.</li>
+</ol>
+<div class="box">
+<p><strong>Délais promis dans les conditions de vente :</strong> envoi sous 48 h (hors dimanche et jours fériés) pour un paiement par carte. En cas de retard, prévenez le client par e-mail.</p>
+</div>
+
+<h3>Un client veut annuler ou se faire rembourser</h3>
+<ol>
+  <li>Ouvrir la commande et cliquer sur <strong>« Remboursement partiel »</strong> ou <strong>« Retour produits »</strong>.</li>
+  <li>Pour un paiement PayPal, le remboursement se fait aussi dans PayPal (Activité, puis la transaction, puis Rembourser).</li>
+  <li>La loi impose de rembourser une rétractation <strong>sous 14 jours</strong>.</li>
+</ol>
+
+<h2>4. Ajouter ou modifier un produit</h2>
+
+<h3>Créer un nouveau coffret ou produit</h3>
+<ol>
+  <li><span class="menu">Catalogue</span> → <span class="menu">Produits</span> → bouton <strong>« Nouveau produit »</strong>.</li>
+  <li><strong>Nom</strong> : clair et précis, par exemple « Coffret Nantes gourmand – 6 produits ».</li>
+  <li><strong>Images</strong> : glisser les photos. Avant, réduisez-les à <strong>1 200 pixels de large maximum</strong>, sinon le site ralentit. Le site gratuit <em>squoosh.app</em> le fait en un clic.</li>
+  <li>Cliquer sur chaque image et remplir la <strong>légende</strong>, par exemple « Coffret Nantes gourmand avec rillettes et muscadet ». C'est ce que Google lit.</li>
+  <li><strong>Résumé et description</strong> : la composition, l'origine, le producteur.</li>
+  <li><strong>Prix</strong> : saisir le prix TTC et vérifier la <strong>taxe</strong> (5,5 % pour l'alimentaire, 20 % pour l'alcool et les objets).</li>
+  <li><strong>Quantités</strong> : indiquer le stock.</li>
+  <li><strong>Catégories</strong> : cocher la ou les catégories (Coffrets, Sélection 25-50 €…).</li>
+  <li><strong>Livraison</strong> : renseigner le <strong>poids du colis</strong>, car les frais de port sont calculés au poids.</li>
+  <li><strong>Référencement (SEO)</strong> : remplir un titre et une description <strong>différents des autres produits</strong>.</li>
+  <li>Passer le bouton en haut sur <strong>« En ligne »</strong>, puis <strong>Enregistrer</strong>. Toujours vérifier le résultat sur le site avec le bouton « Aperçu ».</li>
+</ol>
+
+<div class="box">
+<p><strong>Astuce pour les coffrets saisonniers</strong> (Noël, fête des pères…) : plutôt que d'en recréer un chaque année, <strong>dupliquez</strong> celui de l'an dernier (liste des produits, flèche à côté de « Modifier », puis « Dupliquer »), changez la composition et les photos, et mettez l'ancien <strong>hors ligne</strong>. Ne supprimez pas un produit déjà vendu : les anciennes commandes y font référence.</p>
+</div>
+
+<h2>5. Stocks, promotions, codes de réduction</h2>
+
+<h3>Mettre à jour un stock</h3>
+<p><span class="menu">Catalogue</span> → <span class="menu">Stock</span> : modifier la quantité directement dans la liste, puis valider. Un produit à 0 ne peut plus être commandé.</p>
+
+<h3>Mettre un produit en promotion</h3>
+<p>Dans le produit, ouvrir l'onglet <strong>Prix</strong>, puis « Prix spécifiques » et « Ajouter un prix spécifique ». Indiquer la réduction (en % ou en €) et les <strong>dates de début et de fin</strong>, pour que la promo s'arrête toute seule.</p>
+
+<h3>Créer un code de réduction (ex. NOEL10)</h3>
+<ol>
+  <li><span class="menu">Catalogue</span> → <span class="menu">Réductions</span> → <strong>« Ajouter une nouvelle règle panier »</strong>.</li>
+  <li>Onglet Informations : un nom, le <strong>code</strong> (ex. NOEL10) et les dates de validité.</li>
+  <li>Onglet Conditions : le montant minimum d'achat si besoin.</li>
+  <li>Onglet Actions : la réduction (ex. 10 %). Enregistrer.</li>
+</ol>
+
+<h2>6. Modifier un texte du site</h2>
+
+<table>
+  <tr><th>Je veux changer…</th><th>Où ?</th></tr>
+  <tr><td>Les pages fixes (Mentions légales, Conditions de vente, À propos, Livraison)</td><td><span class="menu">Apparence</span> → <span class="menu">Pages</span>, puis cliquer sur la page</td></tr>
+  <tr><td>Les images du grand carrousel de l'accueil</td><td><span class="menu">Modules</span> → <span class="menu">Gestionnaire de modules</span>, chercher « image slider », puis Configurer</td></tr>
+  <tr><td>Le texte de présentation de l'accueil, la bannière</td><td><span class="menu">Modules</span> → <span class="menu">Gestionnaire de modules</span>, chercher le module concerné (bloc texte, bannière), puis Configurer</td></tr>
+  <tr><td>Adresse, téléphone, horaires affichés</td><td><span class="menu">Paramètres de la boutique</span> → <span class="menu">Contact</span> → <span class="menu">Magasins</span></td></tr>
+  <tr><td>Le menu du haut</td><td><span class="menu">Modules</span> → chercher « menu », puis Configurer</td></tr>
+</table>
+
+<div class="box warn">
+<p><strong>Avant de modifier un texte important</strong> (conditions de vente, mentions légales), copiez l'ancien texte dans un fichier Word. En cas d'erreur, vous pourrez le recoller.</p>
+<p>Pour coller un texte venant de Word ou d'un site, utilisez <strong>Ctrl + Maj + V</strong> (collage sans mise en forme). Sinon, des polices et des couleurs étranges s'invitent sur le site.</p>
+</div>
+
+<h2>7. Le calendrier d'entretien</h2>
+
+<h3>Chaque mois (10 minutes)</h3>
+<ul class="check">
+  <li>Passer une <strong>commande test</strong> de bout en bout sans payer (s'arrêter à l'écran de paiement) pour vérifier que le panier fonctionne.</li>
+  <li>Vérifier que les e-mails de commande arrivent bien.</li>
+  <li>Mettre <strong>hors ligne</strong> les produits épuisés ou terminés.</li>
+  <li>Vérifier que la page d'accueil n'annonce pas une offre périmée (Noël en février…).</li>
+</ul>
+
+<h3>Chaque année</h3>
+<ul class="check">
+  <li>Vérifier dans OVH que le <strong>domaine</strong> et l'<strong>hébergement</strong> sont en renouvellement automatique, avec une carte valide.</li>
+  <li>Mettre à jour l'ancienneté du magasin dans les textes (« depuis 20 ans »…).</li>
+  <li>Relire les conditions de vente (tarifs de livraison, délais).</li>
+  <li><strong>Faire faire la mise à jour technique</strong> par un professionnel PrestaShop : mise à jour de PrestaShop, des modules et de PHP. Ne pas la faire soi-même : une mauvaise mise à jour peut casser la boutique.</li>
+</ul>
+
+<div class="box">
+<p><strong>Pourquoi une mise à jour annuelle ?</strong> Un site qui n'est jamais mis à jour devient vulnérable aux pirates (vol de données clients, faux paiements). En octobre 2026, le serveur tourne en <strong>PHP 7.4</strong>, une version qui n'est plus corrigée depuis 2022 : c'est la <strong>première chose à faire faire</strong>.</p>
+<p><strong>Qui appeler ?</strong> Un freelance ou une agence « PrestaShop » à Nantes. On en trouve sur Malt (malt.fr), sur la liste des partenaires PrestaShop (prestashop.com/fr/agences), ou par le bouche-à-oreille entre commerçants. Demandez un devis pour une « migration PrestaShop 1.7.8 vers 8.x (avec vérification du thème Paprica et des modules) + passage PHP 8.1 + sauvegarde ». <strong>Ne changez jamais la version de PHP seul dans OVH</strong> : la version actuelle de PrestaShop ne le supporterait pas.</p>
+</div>
+
+<h2>8. En cas de problème</h2>
+
+<table>
+  <tr><th>Symptôme</th><th>Que faire</th></tr>
+  <tr><td>Le site affiche une page d'erreur ou une page blanche</td><td>1. Vérifier dans OVH qu'aucun service n'est expiré (bandeau rouge).<br>2. Regarder <strong>travaux.ovh.com</strong> : il y a peut-être une panne chez OVH.<br>3. Sinon, appeler le prestataire PrestaShop. OVH garde des <strong>sauvegardes automatiques</strong> de l'hébergement des derniers jours, que le prestataire peut restaurer.</td></tr>
+  <tr><td>Plus d'e-mails reçus</td><td>Vérifier dans OVH (rubrique E-mails) que la boîte n'est pas pleine. Supprimer les vieux messages volumineux.</td></tr>
+  <tr><td>Les paiements PayPal ne passent plus</td><td>Se connecter à PayPal et vérifier les notifications (compte limité, document à fournir). Dans le back-office, ouvrir Modules puis PayPal et vérifier que le compte est bien connecté.</td></tr>
+  <tr><td>Un e-mail d'OVH annonce « votre service expire »</td><td>Ne pas l'ignorer. Mais attention aux <strong>faux e-mails</strong> (hameçonnage) : ne cliquez jamais sur le lien, connectez-vous vous-même sur ovh.com/manager pour vérifier.</td></tr>
+  <tr><td>Mot de passe du back-office oublié</td><td>Sur la page de connexion, cliquer sur « Mot de passe oublié ». Le lien arrive sur l'adresse e-mail du compte administrateur.</td></tr>
+  <tr><td>J'ai cassé une page en la modifiant</td><td>Recoller l'ancien texte gardé dans Word (partie 6). Sinon, le prestataire peut le récupérer dans une sauvegarde.</td></tr>
+</table>
+
+<h2>9. Avant le départ de l'alternant</h2>
+
+<p>À faire <strong>ensemble</strong>, avant la fin du contrat. C'est ce qui garantit que le site ne dépend plus de personne en particulier.</p>
+
+<ul class="check">
+  <li>Le compte <strong>OVH</strong> est au nom d'ABC TERROIRS, avec l'e-mail et le téléphone du gérant. Sinon : dans OVH, ouvrir <em>Mon compte</em> puis <em>Gestion des contacts</em>, et transférer le contact « propriétaire » et « facturation » au compte du gérant.</li>
+  <li>Le gérant a son <strong>propre compte administrateur</strong> dans le back-office PrestaShop (<span class="menu">Paramètres avancés</span> → <span class="menu">Équipe</span>), avec son e-mail, et il a réussi à s'y connecter seul.</li>
+  <li>Le compte back-office de l'alternant est <strong>désactivé</strong> le jour du départ. Ne pas le supprimer, pour garder l'historique.</li>
+  <li>Les comptes PayPal, Colissimo, Google (Search Console, fiche Google du magasin) et les réseaux sociaux sont au nom de la société, et le gérant en a les accès.</li>
+  <li>Les mots de passe que l'alternant connaissait sont <strong>changés</strong>.</li>
+  <li>La fiche d'accès (partie 2) est remplie et rangée.</li>
+  <li>Le gérant a fait <strong>seul, une fois</strong> : traiter une commande, créer un produit, changer un stock, créer un code promo.</li>
+  <li>Le contact d'un prestataire PrestaShop est noté ici : ____________________________</li>
+</ul>
+
+<div class="box">
+<p><strong>Au moment de la rédaction de ce guide, le site a aussi des corrections à faire</strong> (numéro de TVA erroné dans les conditions de vente, mentions légales incomplètes, PHP trop ancien, pas de sitemap). Elles sont détaillées dans le rapport d'audit joint (fichier README.md du dossier abc-terroirs). L'idéal est de les régler avant le départ de l'alternant.</p>
+</div>
+
+</main>
+</body>
+</html>

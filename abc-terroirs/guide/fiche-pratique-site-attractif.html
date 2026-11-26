@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fiche pratique ABC Terroirs</title>
+<style>
+  :root {
+    --ink: #1f2420; --muted: #5b6259; --line: #d9ddd3; --bg: #ffffff;
+    --accent: #7d8c1f; --accent-soft: #f2f5e3; --warn: #a14a12; --warn-soft: #fbefe6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e8ebe4; --muted: #a9b0a5; --line: #3a4038; --bg: #161a16;
+      --accent: #b9c95a; --accent-soft: #252b1a; --warn: #f0a46c; --warn-soft: #2e2119;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  main { max-width: 820px; margin: 0 auto; padding: 32px 16px 64px; }
+  h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 4px; }
+  h2 { font-size: 1.4rem; margin: 48px 0 12px; padding-top: 12px; border-top: 3px solid var(--accent); }
+  h3 { font-size: 1.1rem; margin: 28px 0 8px; }
+  p, li { max-width: 70ch; }
+  .sub { color: var(--muted); margin: 0 0 24px; }
+  .menu { font-weight: 600; background: var(--accent-soft); padding: 1px 6px; border-radius: 4px; white-space: nowrap; }
+  .box { border: 1px solid var(--line); border-left: 5px solid var(--accent); background: var(--accent-soft); padding: 12px 16px; border-radius: 6px; margin: 16px 0; }
+  .box.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+  .box p { margin: 6px 0; }
+  table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: .95rem; }
+  th, td { border: 1px solid var(--line); padding: 8px 10px; text-align: left; vertical-align: top; }
+  th { background: var(--accent-soft); }
+  .fill { min-width: 160px; }
+  ol li, ul li { margin: 4px 0; }
+  .toc { columns: 2; column-gap: 32px; padding-left: 20px; }
+  @media (max-width: 600px) { .toc { columns: 1; } table { font-size: .85rem; } .menu { white-space: normal; } td, th { overflow-wrap: anywhere; } .fill { min-width: 0; } }
+  .check li { list-style: none; margin-left: -20px; }
+  .check li::before { content: "☐ "; color: var(--accent); font-weight: 700; }
+  @media print {
+    :root { --ink:#000; --bg:#fff; }
+    body { font-size: 11pt; }
+    main { padding: 0; max-width: none; }
+    h2 { break-before: page; margin-top: 0; }
+    h2.first { break-before: auto; }
+    .box, table, li { break-inside: avoid; }
+    a { color: inherit; text-decoration: none; }
+  }
+  .step { border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; margin: 18px 0; break-inside: avoid; }
+  .step h3 { margin: 0 0 4px; }
+  .meta { color: var(--muted); font-size: .9rem; margin: 0 0 8px; }
+  .meta b { color: var(--ink); }
+  .ok { color: var(--accent); font-weight: 600; }
+  pre { background: var(--accent-soft); border: 1px solid var(--line); border-radius: 6px; padding: 10px 12px; white-space: pre-wrap; word-break: break-word; font-size: .85rem; }
+  code { font-size: .9em; }
+  .done::before { content: "☐ "; color: var(--accent); font-weight: 700; }
+</style>
+</head>
+<body>
+<main>
+
+<h1>Fiche pratique : rendre le site plus attractif</h1>
+<p class="sub">Chaque action pas à pas, avec où cliquer dans le back-office PrestaShop. Version du 13 octobre 2026, établie à partir du site en ligne. Cochez au fur et à mesure.</p>
+
+<div class="box">
+<p><strong>Avant de commencer.</strong> Les noms de menus sont ceux de PrestaShop 1.7.8, la version du site, en français. S'il manque un menu, utilisez la <strong>barre de recherche en haut du back-office</strong> : tapez le nom du module (« réassurance », « slider »…) et il apparaît.</p>
+<p>Après chaque modification, ouvrez le site dans un autre onglet et faites <strong>Ctrl + F5</strong> pour voir le résultat. Si rien ne change : <span class="menu">Paramètres avancés</span> → <span class="menu">Performances</span> → bouton <strong>« Vider le cache »</strong> en haut à droite.</p>
+<p>Pour coller un texte venant de Word ou d'un site : <strong>Ctrl + Maj + V</strong> (collage sans mise en forme).</p>
+</div>
+
+<ol class="toc">
+  <li>Gains rapides (environ 2 h)</li>
+  <li>Préparer Noël (environ 2 h)</li>
+  <li>Vendre plus (environ 1 h)</li>
+  <li>Être trouvé (environ 1 h)</li>
+</ol>
+
+<h2 class="first">1. Gains rapides</h2>
+
+<div class="step">
+<h3 class="done">1.1 Supprimer le texte d'exemple « à modifier dans le module Réassurance »</h3>
+<p class="meta"><b>Où on le voit :</b> sur chaque fiche produit, 3<sup>e</sup> encadré sous le bouton « Ajouter au panier ». · <b>Durée :</b> 5 min</p>
+<ol>
+  <li><span class="menu">Modules</span> → <span class="menu">Gestionnaire de modules</span>, puis taper <strong>réassurance</strong> dans la recherche.</li>
+  <li>Sur le module « Réassurance client » (blockreassurance), cliquer sur <strong>Configurer</strong>.</li>
+  <li>Dans la liste des blocs, cliquer sur le crayon du bloc <strong>« Politique retours »</strong>.</li>
+  <li>Remplacer la description par : <em>Retour possible sous 14 jours, voir nos conditions de vente.</em></li>
+  <li>Si le module le propose, mettre en lien la page « Conditions d'utilisation ». Enregistrer.</li>
+</ol>
+<p class="ok">✔ Vérifier sur une fiche produit : le texte entre parenthèses a disparu.</p>
+</div>
+
+<div class="step">
+<h3 class="done">1.2 Renommer les coffrets « V1 / V2 / V3 »</h3>
+<p class="meta"><b>Où on le voit :</b> partout (accueil, catégories, fiches). · <b>Durée :</b> 1 min par produit, une vingtaine de produits</p>
+<ol>
+  <li><span class="menu">Catalogue</span> → <span class="menu">Produits</span>. Dans le filtre « Nom » en haut de la liste, taper <strong>V2</strong> puis <strong>Rechercher</strong>. Recommencer ensuite avec V1 et V3.</li>
+  <li>Cliquer sur un produit et changer le <strong>nom</strong>. Proposition :
+    <table>
+      <tr><th>Avant</th><th>Après</th></tr>
+      <tr><td>COFFRET 100% NANTAISES V1 (29,90 €)</td><td>Coffret 100 % Nantaises – Petit</td></tr>
+      <tr><td>COFFRET 100% NANTAISES V2 (53,80 €)</td><td>Coffret 100 % Nantaises – Moyen</td></tr>
+      <tr><td>COFFRET 100% NANTAISES V3 (75,70 €)</td><td>Coffret 100 % Nantaises – Grand</td></tr>
+    </table>
+    Même principe pour Sarrasin, Voyage extraordinaire, Nantes surprenant, La Nantillaise, Grue jaune, Boîte sucrette Tour LU…</li>
+  <li><strong>Ne pas toucher à l'URL</strong> (onglet Référencement / SEO, champ « URL simplifiée ») : les liens déjà partagés et Google continuent ainsi de fonctionner.</li>
+  <li>Enregistrer.</li>
+</ol>
+</div>
+
+<div class="step">
+<h3 class="done">1.3 Harmoniser l'ancienneté : écrire « depuis 2006 » partout</h3>
+<p class="meta"><b>Où on le voit :</b> le site dit tour à tour 15, 18, 19 et 20 ans. · <b>Durée :</b> 15 min</p>
+<table>
+  <tr><th>Texte actuel</th><th>Où le modifier</th></tr>
+  <tr><td>Accueil : « le meilleur du terroir local depuis 18 ans »</td><td><span class="menu">Modules</span> → rechercher <strong>banner cms</strong> (module Codezeel « Banner CMS block », cz_bannercmsblock) → Configurer</td></tr>
+  <tr><td>Page Coffrets gourmands : « Depuis 19 ans, nous réalisons… »</td><td><span class="menu">Catalogue</span> → <span class="menu">Catégories</span> → « Coffrets gourmands » → Modifier → champ <strong>Description</strong></td></tr>
+  <tr><td>Menu : « Notre enseigne depuis 20 ans »</td><td><span class="menu">Catalogue</span> → <span class="menu">Catégories</span> → catégorie n° 155 « Notre enseigne depuis 20 ans » → <strong>Nom</strong>. Par exemple « Notre enseigne », ou « Depuis 2006 ».</td></tr>
+  <tr><td>Catégorie Bières : « défenseur des bières locales depuis 15 ans »</td><td><span class="menu">Catalogue</span> → <span class="menu">Catégories</span> → « Bières » → Description et Méta-titre (onglet SEO)</td></tr>
+  <tr><td>Catégorie « Exemple de partenaires » : « depuis 18 ans »</td><td><span class="menu">Catalogue</span> → <span class="menu">Catégories</span> → n° 202 → Description et Méta-titre</td></tr>
+  <tr><td>Produit « Mètre de bière nantaises » : « Depuis 18 ans… »</td><td><span class="menu">Catalogue</span> → <span class="menu">Produits</span> → ce produit → Description</td></tr>
+</table>
+<p>Astuce : sur Google, tapez <code>site:abcterroirs.com "ans"</code> pour retrouver les oublis.</p>
+</div>
+
+<div class="step">
+<h3 class="done">1.4 Mettre de vraies photos sur les catégories (dont Noël)</h3>
+<p class="meta"><b>Où on le voit :</b> page Coffrets gourmands. Pouces levés, homme en costume, et « Aucune image disponible » sur Idées cadeaux NOËL. · <b>Durée :</b> 20 min</p>
+<ol>
+  <li>Préparer 4 photos carrées de coffrets (environ 600 × 600 px).</li>
+  <li><span class="menu">Catalogue</span> → <span class="menu">Catégories</span> → cliquer sur la ligne <strong>« Coffrets gourmands »</strong> pour voir ses sous-catégories.</li>
+  <li>Sur « Idées cadeaux NOEL », cliquer sur <strong>Modifier</strong>.</li>
+  <li>Champ <strong>« Miniature de la catégorie »</strong> : c'est l'image affichée dans la liste des sous-catégories. Choisir la photo. On peut aussi en mettre une dans « Image de couverture », affichée en haut de la page de la catégorie.</li>
+  <li>Corriger le nom au passage : « Idées cadeaux Noël » au lieu de « NOEL » en majuscules sans tréma. Enregistrer.</li>
+  <li>Recommencer pour « Sélection moins de 25 € », « 25 à 50 € » et « plus de 50 € ».</li>
+</ol>
+</div>
+
+<div class="step">
+<h3 class="done">1.5 Nettoyer le bandeau « ATTENTION, MAGASINS DANGEREUX… »</h3>
+<p class="meta"><b>Problème :</b> un surlignage blanc derrière le texte vert, reste d'un copier-coller. · <b>Durée :</b> 5 min</p>
+<ol>
+  <li><span class="menu">Modules</span> → rechercher <strong>testimonial</strong> (module Codezeel « Testimonial CMS block », cz_testimonialcmsblock) → Configurer.</li>
+  <li>Dans l'éditeur de texte, cliquer sur le bouton <strong>&lt;&gt;</strong> (Code source).</li>
+  <li>Tout effacer et coller exactement :
+<pre>&lt;h2 style="text-align:center;color:#ffffff;"&gt;Attention, magasins dangereux pour les gourmands !&lt;/h2&gt;</pre></li>
+  <li>OK, puis Enregistrer.</li>
+  <li>Option : ce module a aussi une <strong>image de fond</strong>. Une photo des rayons du magasin la rendrait plus chaleureuse.</li>
+</ol>
+</div>
+
+<div class="step">
+<h3 class="done">1.6 Remplacer l'image « L'abus d'alcool… » (l'angelot)</h3>
+<p class="meta"><b>Durée :</b> 5 min · <b>Image prête :</b> <code>images-pretes/bandeau-mention-alcool.png</code>, aux mêmes proportions que l'actuelle</p>
+<ol>
+  <li><span class="menu">Modules</span> → rechercher <strong>bannière</strong> (module « Bannière », ps_banner) → Configurer.</li>
+  <li>Champ « Image de la bannière » : choisir <code>bandeau-mention-alcool.png</code>.</li>
+  <li>Champ « Description » : <em>L'abus d'alcool est dangereux pour la santé, à consommer avec modération.</em> Ce texte est lu par Google et par les lecteurs d'écran. Enregistrer.</li>
+</ol>
+<p>La mention est <strong>obligatoire</strong> (loi Évin), puisque le site vend de l'alcool : on la remplace, on ne la supprime pas.</p>
+</div>
+
+<div class="step">
+<h3 class="done">1.7 Changer le fond « nouilles asiatiques » du bas de page</h3>
+<p class="meta"><b>Problème :</b> c'est l'image de démonstration du thème (<code>footer-bkg.jpg</code>), inscrite dans le fichier CSS du thème. Elle <strong>ne se change pas depuis le back-office</strong>. · <b>Durée :</b> 10 min, accès FTP nécessaire</p>
+<p>Option A, sans rien installer : dans l'espace client OVH, <span class="menu">Web Cloud</span> → <span class="menu">Hébergements</span> → onglet <strong>FTP-SSH</strong> → bouton <strong>« FTP Explorer »</strong>. Ouvrir <code>www/themes/Paprica/assets/css/custom.css</code> et ajouter <strong>tout à la fin</strong> :</p>
+<pre>/* Fond du pied de page : remplace l'image de démo du thème */
+#footer { background: #23261f; }</pre>
+<p>Enregistrer, puis vider le cache PrestaShop.</p>
+<p>Option B : demander au prestataire PrestaShop de le faire (5 minutes de travail) lors de la mise à jour annuelle.</p>
+<p>Attention : ne touchez pas à <code>theme.css</code>. Seul <code>custom.css</code> est prévu pour les retouches.</p>
+</div>
+
+<div class="step">
+<h3 class="done">1.8 Compléter les liens du bas de page</h3>
+<p class="meta"><b>Problème :</b> la colonne « Produits » ne contient que « Nouveaux produits ». · <b>Durée :</b> 10 min</p>
+<ol>
+  <li><span class="menu">Apparence</span> → <span class="menu">Lien</span> (module « Bloc de liens » / Link widget).</li>
+  <li>Sur le bloc <strong>« Produits »</strong> : Modifier.</li>
+  <li>En bas, partie <strong>« Liens personnalisés »</strong>, ajouter un lien par ligne :
+    <table>
+      <tr><th>Nom</th><th>URL</th></tr>
+      <tr><td>Coffrets gourmands</td><td>https://abcterroirs.com/3-coffrets-gourmands</td></tr>
+      <tr><td>Idées cadeaux Noël</td><td>https://abcterroirs.com/172-idees-cadeaux-noel</td></tr>
+      <tr><td>Épicerie</td><td>https://abcterroirs.com/4-epicerie</td></tr>
+      <tr><td>Vins</td><td>https://abcterroirs.com/5-vins</td></tr>
+      <tr><td>Bières locales</td><td>https://abcterroirs.com/7-bieres</td></tr>
+      <tr><td>Sans alcool</td><td>https://abcterroirs.com/167-sans-alcool</td></tr>
+    </table></li>
+  <li>Enregistrer.</li>
+</ol>
+</div>
+
+<h2>2. Préparer Noël (à faire avant début novembre)</h2>
+
+<div class="step">
+<h3 class="done">2.1 Mettre une diapositive Noël en premier sur l'accueil</h3>
+<p class="meta"><b>Durée :</b> 15 min · <b>Image prête :</b> <code>images-pretes/diapo-accueil-noel.jpg</code>, au même format que les diapositives actuelles (1465 × 1186). Elle est faite avec une photo du site : une vraie photo de coffret de Noël sera encore mieux.</p>
+<ol>
+  <li><span class="menu">Modules</span> → rechercher <strong>slider</strong> (module Codezeel « Image slider », cz_imageslider) → Configurer.</li>
+  <li><strong>Ajouter une diapositive</strong> : choisir l'image, Titre « Coffrets de Noël », URL <code>https://abcterroirs.com/172-idees-cadeaux-noel</code>, Légende/description « Les coffrets de Noël sont arrivés ». Activer.</li>
+  <li>Dans la liste des diapositives, <strong>glisser-déposer</strong> la nouvelle en première position.</li>
+  <li>Désactiver la diapositive « Just for you » (bouton d'état), sans la supprimer : elle pourra resservir.</li>
+</ol>
+<p><strong>Le 26 décembre :</strong> désactiver la diapositive Noël.</p>
+</div>
+
+<div class="step">
+<h3 class="done">2.2 Remplir la catégorie « Idées cadeaux Noël »</h3>
+<p class="meta"><b>Durée :</b> 30 min</p>
+<ol>
+  <li>Pour chaque coffret qui convient à Noël : <span class="menu">Catalogue</span> → <span class="menu">Produits</span> → le produit → partie <strong>Catégories</strong> → cocher aussi « Idées cadeaux NOEL ». Le produit reste dans ses autres catégories.</li>
+  <li>Ajouter le calendrier de l'Avent rhums, les coffrets whisky, le foie gras…</li>
+  <li><span class="menu">Catalogue</span> → <span class="menu">Catégories</span> → Idées cadeaux Noël → Modifier → <strong>Description</strong> : 2 ou 3 phrases, par exemple « Nos coffrets de Noël composés à la main à Nantes… Expédition partout en France jusqu'au [date limite] ».</li>
+</ol>
+</div>
+
+<div class="step">
+<h3 class="done">2.3 Annoncer la date limite de commande</h3>
+<p class="meta"><b>Durée :</b> 5 min</p>
+<p>Dans le module « Banner CMS block » (comme en 1.3), ajouter en tête : <em>« Noël : commandez avant le [date] pour une livraison avant le 24 décembre. Retrait en magasin jusqu'au [date]. »</em></p>
+</div>
+
+<div class="step">
+<h3 class="done">2.4 Ajouter les horaires du magasin</h3>
+<p class="meta"><b>Problème :</b> les horaires ne figurent nulle part sur le site. · <b>Durée :</b> 10 min</p>
+<ol>
+  <li><span class="menu">Paramètres de la boutique</span> → <span class="menu">Contact</span> → onglet <strong>Magasins</strong> → modifier le magasin → remplir les horaires de chaque jour. Ils s'affichent sur la page « Magasins » (lien en bas de page).</li>
+  <li>Les ajouter aussi dans le texte de l'accueil (module Banner CMS block), dans un paragraphe « Venez nous voir ».</li>
+</ol>
+</div>
+
+<h2>3. Vendre plus</h2>
+
+<div class="step">
+<h3 class="done">3.1 Livraison offerte à partir d'un montant</h3>
+<p class="meta"><b>Durée :</b> 5 min · <b>À décider avec le gérant :</b> le montant (par exemple 60 € ou 80 €), selon la marge</p>
+<ol>
+  <li><span class="menu">Livraison</span> → <span class="menu">Préférences</span>.</li>
+  <li>Bloc « Gestion des frais » : champ <strong>« Livraison gratuite à partir de »</strong>, saisir le montant. Enregistrer.</li>
+  <li>Le dire sur le site : le module Réassurance (1.1) et le bandeau Noël.</li>
+</ol>
+</div>
+
+<div class="step">
+<h3 class="done">3.2 Activer les avis clients (étoiles)</h3>
+<p class="meta"><b>Durée :</b> 10 min · Gratuit</p>
+<ol>
+  <li><span class="menu">Modules</span> → <span class="menu">Catalogue de modules</span> (ou Marketplace) → rechercher <strong>commentaires produits</strong> (module officiel « Product Comments ») → Installer.</li>
+  <li>Configurer : <strong>validation obligatoire</strong> = Oui, pour relire chaque avis avant publication. Autoriser les avis des invités : au choix.</li>
+  <li>Les avis à valider apparaissent ensuite dans la configuration du module.</li>
+</ol>
+</div>
+
+<div class="step">
+<h3 class="done">3.3 Récolter des e-mails pour une newsletter</h3>
+<p class="meta"><b>Durée :</b> 10 min · Gratuit</p>
+<ol>
+  <li><span class="menu">Modules</span> → rechercher <strong>newsletter</strong> (module officiel « Inscription à la newsletter », ps_emailsubscription) → Installer, ou Activer s'il est déjà installé. Le thème a déjà un emplacement prévu en bas de page.</li>
+  <li>Configurer : texte d'accroche (« Nos nouveaux coffrets et idées cadeaux, 3 fois par an ») et un code de bienvenue si vous le souhaitez.</li>
+  <li>Pour exporter la liste : <span class="menu">Clients</span> → <span class="menu">Clients</span> → filtrer « Newsletter : Oui » → Exporter. Elle s'importe ensuite dans un outil d'envoi gratuit comme Brevo (français).</li>
+</ol>
+<p>Le RGPD impose que la case ne soit pas pré-cochée. C'est le cas par défaut dans ce module.</p>
+</div>
+
+<div class="step">
+<h3 class="done">3.4 Mieux présenter chaque coffret (au fil de l'eau)</h3>
+<ol>
+  <li>Dans le produit, champ <strong>« Résumé »</strong> (affiché à côté du prix) : 2 lignes qui donnent envie.</li>
+  <li>Champ <strong>« Description »</strong> : la composition en <strong>liste à puces</strong> avec les poids, puis les producteurs.</li>
+  <li>Onglet <strong>SEO</strong> : un méta-titre unique, par exemple « Coffret 100 % Nantaises – produits de créatrices nantaises | ABC Terroirs ».</li>
+  <li>Images : cliquer sur chaque photo et remplir la <strong>légende</strong>.</li>
+</ol>
+<p>Commencer par les 10 coffrets les plus vendus : <span class="menu">Statistiques</span> → « Meilleures ventes de produits ».</p>
+</div>
+
+<h2>4. Être trouvé</h2>
+
+<div class="step">
+<h3 class="done">4.1 Fiche Google du magasin (Google Business Profile)</h3>
+<p class="meta"><b>Durée :</b> 30 min · Gratuit · <b>Le plus rentable de toute la liste</b></p>
+<ol>
+  <li>Aller sur <strong>business.google.com</strong> avec le compte Google de la société, pas un compte personnel.</li>
+  <li>Rechercher « ABC Terroirs Nantes ». Si la fiche existe, cliquer sur <strong>« Revendiquer »</strong>, sinon la créer. Google envoie un code de validation (courrier, appel ou vidéo).</li>
+  <li>Remplir : horaires (dont les horaires spéciaux de décembre), téléphone, site <code>https://abcterroirs.com</code>, catégorie « Épicerie fine », au moins <strong>10 photos</strong> (vitrine, rayons, coffrets).</li>
+  <li>Demander un avis aux clients contents. Par exemple, un petit carton en caisse avec un QR code vers la fiche : le lien est donné dans la fiche, rubrique « Demander des avis ».</li>
+  <li>Faire de même pour Spi &amp; Bi, si c'est une boutique distincte.</li>
+</ol>
+</div>
+
+<div class="step">
+<h3 class="done">4.2 Plan du site pour Google (sitemap)</h3>
+<p class="meta"><b>Durée :</b> 15 min</p>
+<ol>
+  <li><span class="menu">Modules</span> → <span class="menu">Catalogue de modules</span> → rechercher <strong>Google sitemap</strong> (module officiel gsitemap) → Installer.</li>
+  <li>Configurer → <strong>« Générer le fichier sitemap »</strong>. Le module affiche l'adresse du sitemap.</li>
+  <li>Sur <strong>search.google.com/search-console</strong>, ajouter le site, puis menu « Sitemaps » : coller cette adresse et Envoyer.</li>
+</ol>
+</div>
+
+<div class="box">
+<p><strong>Pour aller plus loin :</strong> la maquette de page d'accueil (<code>maquette/accueil.html</code>) montre l'objectif. Avec les modules du thème, on s'en approche grâce aux étapes 1.3, 1.5, 2.1 et 2.4. Pour la reproduire fidèlement et laisser le gérant la modifier seul, il faut un module de mise en page en glisser-déposer (type Creative Elements) ou une journée de prestataire.</p>
+</div>
+
+</main>
+</body>
+</html>
