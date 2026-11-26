@@ -953,3 +953,9 @@ html.abc-porte-ouverte, html.abc-porte-ouverte body { overflow: hidden; }
 .abc-consigne-fiche:hover { background: #e6edc6; }
 .abc-news--eco .abc-news__box { border-color: var(--abc-olive) !important; }
 .abc-news--eco .abc-news__tag, .abc-news--eco strong { color: var(--abc-olive-dark) !important; }
+
+/* Vidéo des dégustations (1.8.9) */
+.abc-video { display: grid; grid-template-columns: minmax(0, 360px) 1fr; gap: 24px; align-items: center; margin: 0 0 24px; }
+.abc-video video { width: 100%; aspect-ratio: 9 / 16; max-height: 640px; object-fit: cover; border-radius: var(--abc-radius); background: #111; display: block; }
+.abc-video__txt h3 { margin: 4px 0 10px; }
+@media (max-width: 767px) { .abc-video { grid-template-columns: 1fr; } .abc-video video { max-width: 360px; margin: 0 auto; } }
