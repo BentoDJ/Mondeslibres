@@ -375,13 +375,18 @@
       var VID = IMG.replace(/views\/img\/$/, 'views/video/');
       // Vidéo de présentation des dégustations (envoyée par Bento le 26/11/2026), lecture muette en boucle, son avec les commandes
       var gal = el('section', 'abc-photos', '<h2>Nos dégustations en images</h2>' +
-        '<div class="abc-video"><video src="' + VID + 'degustation-whisky.mp4" poster="' + IMG + 'degustation-whisky.jpg" autoplay muted loop playsinline controls preload="metadata" aria-label="Vidéo : une soirée de dégustation de whisky chez ABC Terroirs"></video>' +
+        '<div class="abc-video"><video src="' + VID + 'degustation-whisky.mp4" poster="' + IMG + 'degustation-whisky.jpg" muted loop playsinline controls preload="none" aria-label="Vidéo : une soirée de dégustation de whisky chez ABC Terroirs"></video>' +
         '<div class="abc-video__txt"><p class="abc-deg-home__k">En vidéo</p><h3>Une soirée dégustation whisky</h3><p>Découverte de plusieurs whiskies, accompagnés de bouchées salées, autour de la table de la boutique. Activez le son pour la musique.</p></div></div>' +
         '<p>Une soirée de dégustation de whiskies et de rhums chez Spi &amp; Bi, en octobre 2026.</p>' +
         '<div class="abc-photos__grid"><img src="' + IMG + 'degustation-1.jpg" alt="Participants levant leur verre lors d\'une dégustation chez Spi & Bi" loading="lazy">' +
         '<img src="' + IMG + 'degustation-2.jpg" alt="Animateur présentant une bouteille lors d\'une dégustation chez Spi & Bi" loading="lazy"></div>');
       var anchor = page === 'product' ? document.querySelector('.product-tabcontent, .tabs, #product-description') : document.querySelector('#js-product-list-header, .block-category, #category-description');
       if (anchor) (page === 'product' ? anchor.parentNode.insertBefore(gal, anchor) : anchor.parentNode.insertBefore(gal, anchor.nextSibling));
+      // La vidéo (3 Mo) ne se télécharge et ne démarre que lorsqu'elle arrive à l'écran
+      var vdeg = gal.querySelector('video');
+      if (vdeg && 'IntersectionObserver' in window) {
+        new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { var pr = vdeg.play(); if (pr && pr.catch) pr.catch(function () {}); } else vdeg.pause(); }); }, { threshold: 0.4 }).observe(vdeg);
+      }
     }
 
     // 3. Accueil : boutons sous le texte de présentation + blocs par budget
